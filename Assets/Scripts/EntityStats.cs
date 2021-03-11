@@ -22,20 +22,23 @@ public class EntityStats
         public StatType statType;
         private float value;
         public Stat maxStat;
-        protected MonoBehaviour unit;
+        protected MonoBehaviour entity;
+        protected CoroutineHandler coroutineHandler;
         public bool GetIsCapped => maxStat != null;
         private Reaction[] reactions;
 
-        public Stat(MonoBehaviour unit, StatType statType, float getSetValue, Stat maxStat = null, Reaction[] reactions = null)
+        public Stat(MonoBehaviour entity, StatType statType, float getSetValue, Stat maxStat = null, Reaction[] reactions = null)
         {
+            coroutineHandler = CoroutineHandler._instance;
             Init();
-            this.unit = unit;
+            this.entity = entity;
             this.statType = statType;
             this.maxStat = maxStat;
             this.reactions = reactions;
             GetSetValue = getSetValue;
         }
-        protected virtual void Init() {
+        protected virtual void Init()
+        {
         }
         public virtual float GetSetValue
         {
@@ -47,14 +50,13 @@ public class EntityStats
                     this.value = Mathf.Min(this.value, maxStat.GetSetValue);
                 if (reactions != null)
                     foreach (Reaction reaction in reactions)
-                        if (reaction.CheckCondition(value))
-                            reaction.reactionAction?.Invoke(value);
+                        if (reaction.CheckCondition(this.value))
+                            reaction.reactionAction?.Invoke(this.value);
             }
         }
     }
     public class HpStat : Stat
     {
-        Coroutine hideHealthBarCoro;
         HealthBar healthBar;
         public HpStat(MonoBehaviour unit, StatType statType, float getSetValue, HealthBar healthBar, Stat maxStat = null, Reaction[] reactions = null) : base(unit, statType, getSetValue, maxStat, reactions)
         {
@@ -72,21 +74,7 @@ public class EntityStats
                     UpdateHealthBar();
             }
         }
-        void UpdateHealthBar()
-        {
-            if (hideHealthBarCoro != null)
-                unit.StopCoroutine(hideHealthBarCoro);
-            Debug.Log("started Coro");
-            healthBar.FadeInOut(1, 0.5f);
-            hideHealthBarCoro = unit.StartCoroutine(HideHealthBar());
-            healthBar.SetValue(GetSetValue / maxStat.GetSetValue);
-        }
-        IEnumerator HideHealthBar()
-        {
-            yield return new WaitForSeconds(healthBar.timeUntilDisapear);
-            healthBar.FadeInOut(0, 0.5f);
-            hideHealthBarCoro = null;
-        }
+        void UpdateHealthBar() => healthBar.SetValue(GetSetValue / maxStat.GetSetValue);
     }
     public class Reaction
     {
@@ -117,6 +105,6 @@ public class EntityStats
     }
     public class Death : IReactionCondition
     {
-        public bool CheckCondition(float value) => value == 0;
+        public bool CheckCondition(float value) => value <= 0;
     }
 }

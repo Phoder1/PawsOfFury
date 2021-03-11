@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using static EntityStats;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Entity
 {
-    [SerializeField] GameObject UiObject;
+    
     [Tooltip("Height 0 is the center of the Unit.")]
     [SerializeField] float healthbarHeight;
-    [SerializeField] DefualtStats defualtStats;
     Camera mainCam;
     HealthBar healthBar;
-    public EntityStats stats;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,16 +27,17 @@ public class Enemy : MonoBehaviour
         stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, healthBar, maxHp, new
             Reaction[1] {
             new Reaction(new Death(),
-            (value) => {Destroy(); })
+            (value) => {DestroyEntity(); })
             }
             ));
         stats.Add(new Stat(this, StatType.Damage, defualtStats.Damage));
         stats.Add(new Stat(this, StatType.AttackSpeed, defualtStats.AttackSpeed));
         stats.Add(new Stat(this, StatType.Range, defualtStats.Range));
     }
-    public void Destroy()
+    public void DestroyEntity()
     {
         LevelManager._instance.RemoveFromList(this);
-        Destroy(gameObject);
+        if (this != null)
+            Destroy(gameObject);
     }
 }

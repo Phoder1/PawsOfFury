@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cb16e744902a64ebc0d56e58b636de, type: 3}
   m_Name: new Targeting Settings
   m_EditorClassIdentifier: 
-  targets: 00000000
-  priorities: 00000000
+  targets: 
+  priorities: 
   locking: 0

@@ -10,11 +10,10 @@ public class NavScript : MonoBehaviour
     {
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.SetDestination(LevelManager._instance.levelEndPos);
     }
-    public void StartMove(Vector3? target = null)
-    {
-        if (target != null)
-            agent.SetDestination((Vector3)target);
+    public void StartMove()
+    {            
         agent.isStopped = false;
     }
     public void StopMove()

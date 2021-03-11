@@ -1,10 +1,10 @@
-﻿using DG.Tweening;
+﻿using Assets.StateMachine;
+using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
-using Assets.StateMachine;
 
-public partial class Unit : MonoBehaviour
+public partial class Unit : Entity
 {
     abstract class UnitState : State
     {
@@ -24,12 +24,12 @@ public partial class Unit : MonoBehaviour
         protected override void OnEnable()
         {
             levelManager = LevelManager._instance;
-            unit.navScript.StartMove(levelManager.levelEndPos);
+            unit.navScript.StartMove();
         }
         protected override void OnUpdate()
         {
 
-            EntityHit<Enemy> hit = levelManager.GetClosestEnemy(unit.gameObject);
+            EntityHit hit = levelManager.GetClosestEnemy(unit.gameObject);
             if (hit.distance <= unit.stats.GetStatValue(StatType.Range))
                 unit.state.State = new AttackState(unit);
         }
@@ -41,7 +41,7 @@ public partial class Unit : MonoBehaviour
     class AttackState : UnitState
     {
         LevelManager levelManager;
-        EntityHit<Enemy> hit;
+        EntityHit hit;
         Coroutine attackCoro;
         public AttackState(Unit unit) : base(unit)
         {
@@ -50,7 +50,7 @@ public partial class Unit : MonoBehaviour
         {
             levelManager = LevelManager._instance;
             hit = levelManager.GetClosestEnemy(unit.gameObject);
-            attackCoro = unit.StartCoroutine(Attack(0));
+            attackCoro = unit.StartCoroutine(StartAttacking());
         }
         protected override void OnUpdate()
         {
@@ -65,25 +65,28 @@ public partial class Unit : MonoBehaviour
         {
             Stop();
         }
-        IEnumerator Attack(float delay)
+        IEnumerator StartAttacking()
         {
-            if (delay != 0)
-                yield return new WaitForSeconds(delay);
-            Debug.Log("ATTACKK!!");
-            if (hit.entity != null)
+            float attackDelay = 1 / unit.stats.GetStatValue(StatType.AttackSpeed);
+            do
             {
-                float attackDelay = 1 / unit.stats.GetStatValue(StatType.AttackSpeed);
-                //Todo: Animation and sound
-                unit.transform.DOLocalRotate(unit.transform.rotation.eulerAngles + Vector3.up * 360, attackDelay / 2, RotateMode.FastBeyond360);
-                GameObject projectile = Instantiate(unit.projectile, unit.transform.position, Quaternion.identity);
-                projectile.GetComponent<Projectile>().Init(hit.entity.transform.position, hit.entity.stats);
-                attackCoro = unit.StartCoroutine(Attack(attackDelay));
-            }
+                if (Time.time >= unit.lastAttackTime + attackDelay)
+                {
+                    unit.lastAttackTime = Time.time;
+                    unit.transform.DOLocalRotate(unit.transform.rotation.eulerAngles + Vector3.up * 360, attackDelay / 2, RotateMode.FastBeyond360);
+                    GameObject projectile = Instantiate(unit.projectile, unit.transform.position, Quaternion.identity);
+                    projectile.GetComponent<Projectile>().Init(unit, hit.entity);
+                }
+                yield return null;
+            } while (attackCoro != null && hit.entity != null);
         }
         void Stop()
         {
             if (attackCoro != null)
+            {
                 unit.StopCoroutine(attackCoro);
+                attackCoro = null;
+            }
         }
     }
 }

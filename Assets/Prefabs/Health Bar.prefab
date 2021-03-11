@@ -351,5 +351,5 @@ MonoBehaviour:
   fill: {fileID: 7311778787472661788}
   damageFill: {fileID: 7311778787265047660}
   damageFillDelay: 1
-  timeUntilDisapear: 2
+  timeUntilDisapear: 4
   healthbarHeight: {x: 0, y: 0, z: 0}

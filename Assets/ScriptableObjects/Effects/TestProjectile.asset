@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ad718bb62682d47b92ac8fe369dc62, type: 3}
   m_Name: TestProjectile
   m_EditorClassIdentifier: 
-  AffectedTargets: 1
-  targetStat: 0
+  affectedTargets: 0
+  affectedStat: 0
   effectType: 2
-  inPercentage: 0
-  isRelativeToMax: 0
-  amount: -1000
-  duration: 2
-  tickTime: 1
+  inPercentage: 1
+  isRelativeToMax: 1
+  amount: -5
+  duration: 4
+  tickTime: 0.2

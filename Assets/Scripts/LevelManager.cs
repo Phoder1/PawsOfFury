@@ -20,52 +20,35 @@ public class LevelManager : MonoSingleton<LevelManager>
         enemies = new List<Enemy>();
     }
 
-    public EntityHit<Enemy> GetClosestEnemy(GameObject gameObject)
+    public EntityHit GetClosestEnemy(GameObject gameObject) => GetClosestEntity(gameObject, enemies);
+    public EntityHit GetClosestUnit(GameObject gameObject) => GetClosestEntity(gameObject, units);
+    public EntityHit GetClosestEntity<T>(GameObject gameObject, List<T> entityList) where T : Entity
     {
         float minDistance = Mathf.Infinity;
-        Enemy closestEnemy = null;
-        if (enemies.Count != 0)
+        Entity closestEntity = null;
+        if (entityList.Count != 0)
         {
-            closestEnemy = enemies[0];
-            foreach (Enemy enemy in enemies)
+            closestEntity = entityList[0];
+            foreach (T entity in entityList)
             {
-                float distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
+                float distance = Vector3.Distance(gameObject.transform.position, entity.transform.position);
                 if (distance < minDistance)
                 {
                     minDistance = distance;
-                    closestEnemy = enemy;
+                    closestEntity = entity;
                 }
             }
         }
-        return new EntityHit<Enemy>(closestEnemy, minDistance);
-    }
-    public EntityHit<Unit> GetClosestUnit(GameObject gameObject)
-    {
-        float minDistance = Mathf.Infinity;
-        Unit closestUnit = null;
-        if (units.Count != 0)
-        {
-            closestUnit = units[0];
-            foreach (Unit unit in units)
-            {
-                float distance = Vector3.Distance(gameObject.transform.position, unit.transform.position);
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    closestUnit = unit;
-                }
-            }
-        }
-        return new EntityHit<Unit>(closestUnit, minDistance);
+        return new EntityHit(closestEntity, minDistance);
     }
 
 }
-public class EntityHit<T>
+public class EntityHit
 {
-    public T entity;
+    public Entity entity;
     public float distance;
 
-    public EntityHit(T entity, float distance)
+    public EntityHit(Entity entity, float distance)
     {
         this.entity = entity;
         this.distance = distance;

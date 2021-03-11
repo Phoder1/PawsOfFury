@@ -12,12 +12,9 @@ public enum StatType
     AttackSpeed,
     Range
 }
-public partial class Unit : MonoBehaviour
-{
-    
-    [SerializeField] GameObject UiObject;
+public partial class Unit : Entity
+{ 
     public GameObject projectile;
-    [SerializeField] DefualtStats defualtStats;
 
     [Tooltip("Height 0 is the center of the Unit.")]
     [SerializeField] float healthbarHeight;
@@ -27,10 +24,12 @@ public partial class Unit : MonoBehaviour
     NavScript navScript;
 
     protected HealthBar healthBar;
-    public EntityStats stats;
+    
     StateMachine state;
+    float lastAttackTime;
     private void Start()
     {
+        lastAttackTime = -Mathf.Infinity;
         LevelManager._instance.AddToList(this);
         mainCam = Camera.main;
         UiObject = Instantiate(UiObject, mainCam.WorldToScreenPoint(transform.position) + Vector3.up * healthbarHeight, transform.rotation);
@@ -40,12 +39,6 @@ public partial class Unit : MonoBehaviour
         FillDictionary();
         navScript = GetComponent<NavScript>();
         state = new StateMachine(new WalkState(this));
-        for (int i = 5; i < 20; i++)
-        {
-            Invoke("Damage", i);
-        }
-        Invoke("Heal", 6.5f);
-        Invoke("Damage", 7);
     }
     private void Update()
     {
@@ -72,14 +65,5 @@ public partial class Unit : MonoBehaviour
         stats.Add( new Stat(this, StatType.AttackSpeed, defualtStats.AttackSpeed));
         stats.Add( new Stat(this, StatType.WalkSpeed, defualtStats.WalkSpeed));
         stats.Add( new Stat(this, StatType.Range, defualtStats.Range));
-    }
-
-    void Damage()
-    {
-        stats.AddToStat(StatType.HP, -5);
-    }
-    void Heal()
-    {
-        stats.AddToStat(StatType.HP, 25);
     }
 }

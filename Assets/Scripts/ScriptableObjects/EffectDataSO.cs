@@ -7,10 +7,10 @@ public enum EffectType { Instant, Toggle, OverTime }
 public class EffectDataSO : ScriptableObject
 {
     [Tooltip("Which target types should be affected.")]
-    [SerializeField] Target AffectedTargets;
+    [SerializeField] TargetTypes affectedTargets;
 
     [Tooltip("The affected stat")]
-    [SerializeField] StatType targetStat;
+    [SerializeField] StatType affectedStat;
     
     [Tooltip("The type of effect: \n" +
         "Instant = instant effect\n" +
@@ -26,7 +26,7 @@ public class EffectDataSO : ScriptableObject
     [SerializeField] bool isRelativeToMax;
 
     [Tooltip("The effect amount.\n" +
-        "If set to Overtime that's the total damage over the duration.\n" +
+        "If set to Overtime that's the damage everytick.\n" +
         "If was set to percentage:\n" +
         "(10 = 10%, 110 = 110%)")]
     [SerializeField] float amount;
@@ -36,11 +36,11 @@ public class EffectDataSO : ScriptableObject
     [SerializeField] float duration;
 
     [Tooltip("When set to overtime, this is the time between additions of the amount.")]
-    [Min(0.03f)]
+    [Min(0.2f)]
     [SerializeField] float tickTime;
 
-    public Target AffectedTargets1 => AffectedTargets;
-    public StatType TargetStat => targetStat;
+    public TargetTypes AffectedTargets => affectedTargets;
+    public StatType TargetStat => affectedStat;
     public EffectType EffectType => effectType;
     public bool InPercentage => inPercentage;
     public bool IsRelativeToMax => isRelativeToMax;

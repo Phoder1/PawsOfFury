@@ -1,37 +1,69 @@
 ﻿using DG.Tweening;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
 public class Projectile : MonoBehaviour
 {
     [SerializeField] float travelTime;
-    [SerializeField] float radius;
     [SerializeField] bool AOE;
     [SerializeField] EffectDataSO effectData;
+    [SerializeField] float radius;
+    [SerializeField] TargetTypes targets;
 
-    EntityStats entity;
-    public void Init(Vector3 target, EntityStats entity, Action<Collision> callback = null)
+    Entity target;
+    Entity attackingEntity;
+    Action<Collider[]> callback;
+    public void Init(Entity attackingEntity, Entity target, Action<Collider[]> callback = null)
     {
+        this.target = target;
+        this.attackingEntity = attackingEntity;
+        this.callback = callback;
         //Todo: Animation and sound
-        this.entity = entity;
-        transform.DOMove(target, 1).OnComplete(ReachedTarget);
+        transform.DOMove(target.transform.position, 1).OnComplete(ReachedTarget);
+
     }
 
     void ReachedTarget()
     {
         //Todo: Move to projectile
         //Todo: Animation and sound
-        new EffectController(entity, effectData);
+        if (target != null && !AOE)
+            new EffectController(target.stats, effectData);
+        else
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+            List<Collider> relevantColliders = new List<Collider>();
+            foreach (Collider collider in colliders)
+            {
+                Entity entity = collider.gameObject.GetComponent<Entity>();
+                if (entity != null)
+                {
+                    switch (entity)
+                    {
+                        case Enemy enemy:
+                            if (targets.HasFlag(TargetTypes.Enemy))
+                            {
+                                new EffectController(enemy.stats, effectData);
+                                relevantColliders.Add(collider);
+                            }
+                            break;
+                        case Unit unit:
+                            if ((targets.HasFlag(TargetTypes.Unit) && unit != this.attackingEntity)
+                                || (targets.HasFlag(TargetTypes.Self) && unit == this.attackingEntity))
+                            {
+                                new EffectController(unit.stats, effectData);
+                                relevantColliders.Add(collider);
+                            }
+                            break;
+                    }
+
+                }
+            }
+            
+        }
         Destroy(gameObject);
         //Check hit
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
     }
     private void OnDrawGizmos()
     {
@@ -39,7 +71,8 @@ public class Projectile : MonoBehaviour
     }
 }
 
-class ProjectileHit{
+class ProjectileHit
+{
 
 
 }

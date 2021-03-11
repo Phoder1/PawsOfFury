@@ -12,53 +12,78 @@ public class HealthBar : MonoBehaviour
     [SerializeField] float damageFillDelay;
 
     [Tooltip("Amount of time of not taking/recieving HP until bar starts disapearing.")]
-    public float timeUntilDisapear;
+    [SerializeField] float timeUntilDisapear;
     const float minFadeDuration = 0.5f;
 
     Image[] healthBarImages;
     [HideInInspector] public Vector3 healthbarHeight;
     private Canvas canvas;
-    Coroutine UpdateDamageFillCoro;
+    Coroutine updateDamageFillCoro;
+    Coroutine hideHealthBarCoro;
+    bool healthBarShown = false;
     public void Init()
     {
         canvas = GameObject.FindWithTag("Canvas").GetComponent<Canvas>();
         transform.SetParent(canvas.transform);
         healthBarImages = GetComponentsInChildren<Image>();
     }
-    public void FadeInOut(float alpha, float duration)
+    void FadeInOut(float alpha, float duration)
     {
         duration = Mathf.Max(duration, minFadeDuration);
         foreach (Image image in healthBarImages)
+        {
+            image.DOComplete();
             image.DOFade(alpha, duration);
-
+        }
     }
-    public void Destroy()
+    void ShowHealthbar()
     {
-        Destroy(gameObject);
+        if (!healthBarShown)
+        {
+            FadeInOut(1, 0.5f);
+            healthBarShown = true;
+        }
     }
     public void SetValue(float value)
     {
         bool destroyed = value == 0;
-        if (fill.fillAmount >= value)
+        if (fill.fillAmount != value)
         {
-            if (UpdateDamageFillCoro != null)
-                StopCoroutine(UpdateDamageFillCoro);
+            if (updateDamageFillCoro != null)
+                StopAndNullCoroutine(ref updateDamageFillCoro);
+            if (hideHealthBarCoro != null)
+                StopAndNullCoroutine(ref hideHealthBarCoro);
+            hideHealthBarCoro = StartCoroutine(HideHealthBar());
+            if (!healthBarShown)
+                ShowHealthbar();
+
+        }
+        if (fill.fillAmount > value)
+        {
             if (!destroyed)
-                UpdateDamageFillCoro = StartCoroutine(UpdateDamageFill());
+                updateDamageFillCoro = StartCoroutine(UpdateDamageFill());
         }
         else if (damageFill.fillAmount < value)
         {
-            if (UpdateDamageFillCoro != null)
-                StopCoroutine(UpdateDamageFillCoro);
-            //damageFill.DOKill();
+            damageFill.DOComplete();
             damageFill.DOFillAmount(value, 0.2f);
         }
-        if(!destroyed)
-        fill.DOFillAmount(value, 0.2f);
+        fill.DOComplete();
+
+        if (!destroyed)
+            //    fill.fillAmount = value;
+            fill.DOFillAmount(value, 0.2f);
         else
-        fill.DOFillAmount(value, 0.2f).OnComplete(() => { Destroy(gameObject); });
+            //    Destroy(gameObject);
+            fill.DOFillAmount(value, 0.2f).OnComplete(() => Destroy(gameObject));
         //Todo: Fadeout then destroy no damage fill
         //Todo: instant damage fill update on heal
+    }
+
+    void StopAndNullCoroutine(ref Coroutine coroutine)
+    {
+        StopCoroutine(coroutine);
+        coroutine = null;
     }
 
     IEnumerator UpdateDamageFill()
@@ -69,5 +94,22 @@ public class HealthBar : MonoBehaviour
             //damageFill.DOKill();
             damageFill.DOFillAmount(fill.fillAmount, 0.5f);
         }
+    }
+    IEnumerator HideHealthBar()
+    {
+        yield return new WaitForSeconds(timeUntilDisapear);
+        if (healthBarShown)
+        {
+            FadeInOut(0, 0.5f);
+            healthBarShown = false;
+        }
+        hideHealthBarCoro = null;
+    }
+
+    private void OnDestroy()
+    {
+        foreach (Image image in healthBarImages)
+            image.DOComplete();
+        StopAllCoroutines();
     }
 }
