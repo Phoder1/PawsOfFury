@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46ad718bb62682d47b92ac8fe369dc62, type: 3}
-  m_Name: TestProjectile
+  m_Script: {fileID: 11500000, guid: 06cb16e744902a64ebc0d56e58b636de, type: 3}
+  m_Name: Target Self
   m_EditorClassIdentifier: 
-  targets: 1
-  affectedStat: 0
-  effectType: 0
-  inPercentage: 1
-  isRelativeToMax: 1
-  amount: -10
-  duration: 4
-  tickTime: 0.2
+  rulesOrder:
+  - targets: 2
+    priority: 0
+  locking: 0

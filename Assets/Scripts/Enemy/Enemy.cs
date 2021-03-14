@@ -1,26 +1,13 @@
 ﻿using Assets.StateMachine;
-using System;
 using UnityEngine;
 using Assets.Stats;
 using System.Collections.Generic;
 
-public enum StatType
+public class Enemy : Entity
 {
-    HP,
-    MaxHP,
-    WalkSpeed,
-    Damage,
-    AttackSpeed,
-    Range
-}
-[RequireComponent(typeof(NavScript))]
-public class Unit : Entity
-{
-    protected NavScript navScript;
-
+    // Start is called before the first frame update
     protected override void Start()
     {
-        navScript = GetComponent<NavScript>();
         base.Start();
     }
     protected override void OnUpdate()
@@ -31,52 +18,49 @@ public class Unit : Entity
         Stat maxHp = new Stat(this, StatType.MaxHP, defualtStats.MaxHP);
 
         stats.Add(maxHp);
-        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, healthBar, maxHp,
+        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, healthBar, maxHp, 
             new List<Reaction> {
             new Reaction(new Death(),
-            (value) => {Destroy(gameObject); })
+            (value) => {DestroyEntity(); })
             }
             ));
         stats.Add(new Stat(this, StatType.Damage, defualtStats.Damage));
         stats.Add(new Stat(this, StatType.AttackSpeed, defualtStats.AttackSpeed));
-        stats.Add(new Stat(this, StatType.WalkSpeed, defualtStats.WalkSpeed));
         stats.Add(new Stat(this, StatType.Range, defualtStats.Range));
+    }
+    public void DestroyEntity()
+    {
+        if (this != null)
+            Destroy(gameObject);
     }
 
     protected override void OnTargetLoss()
     {
-        stateMachine.State = new WalkState(this);
+        stateMachine.State = new SearchState(this);
     }
 
-    protected override EntityState DefaultState() => new WalkState(this);
+    protected override EntityState DefaultState() => new SearchState(this);
 
-    class UnitState : EntityState
+    class EnemyState : EntityState
     {
-        protected Unit Unit => (Unit)entity;
-        public UnitState(Unit unit) : base(unit)
+        public EnemyState(Enemy enemy) : base(enemy)
         {
         }
+
+        protected Enemy Enemy => (Enemy)entity;
+
     }
-    class WalkState : UnitState
+    class SearchState : EnemyState
     {
-        public WalkState(Unit unit) : base(unit)
+        public SearchState(Enemy enemy) : base(enemy)
         {
-        }
-        protected override void OnEnable()
-        {
-            Unit.navScript.StartMove();
         }
         protected override void OnUpdate()
         {
             //Todo: detection range
             detectedEntity = entity.GetEntityHit(entity.stats.GetStatValue(StatType.Range), entity.projectile.detection);
             if (detectedEntity != null && detectedEntity.entity != null)
-                Unit.stateMachine.State = new AttackState(entity);
-        }
-        protected override void OnDisable()
-        {
-            Unit.navScript.StopMove();
+                Enemy.stateMachine.State = new AttackState(entity);
         }
     }
 }
-

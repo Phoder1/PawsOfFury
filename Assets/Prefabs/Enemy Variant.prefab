@@ -12,15 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29cae4d2bcef628419cebf21315b9425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityName: Enemy
+  type: 0
   UiObject: {fileID: 7311778787983579454, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
     type: 3}
   defualtStats:
-    HP: 1000
-    MaxHP: 1000
+    HP: 100
+    MaxHP: 100
     WalkSpeed: 0
-    Damage: 100
-    AttackSpeed: 100
+    Damage: 5
+    AttackSpeed: 1
     Range: 5
+  projectile:
+    gameobject: {fileID: 3871618179018856722, guid: 4a4f91d5b1ea33a4c8fd849529827ca4,
+      type: 3}
+    detection: {fileID: 11400000, guid: 83196211348e55c4b8b9883f37b70f9c, type: 2}
+    targeting: {fileID: 11400000, guid: 83196211348e55c4b8b9883f37b70f9c, type: 2}
+    attackSpeed: 0
+    locking: 0
+  aura:
+    projectile: {fileID: 0}
   healthbarHeight: 20
 --- !u!1001 &922499304326930715
 PrefabInstance:

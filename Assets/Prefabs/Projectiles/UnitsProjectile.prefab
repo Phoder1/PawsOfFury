@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f74bec6fc4e52a4d9c816505d71ed86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  travelTime: 2
+  speed: 3
   AOE: 1
-  effectData: {fileID: 11400000, guid: f57060d8a36a94643b58eba64c2223cf, type: 2}
+  effectsData:
+  - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}
   radius: 1
-  targets: 1
+  chainCount: 0
+  maxHeight: 0
 --- !u!1001 &3305404106425048204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,7 +99,7 @@ PrefabInstance:
     - target: {fileID: 1758066029445514654, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_Name
-      value: Projectile Variant
+      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1758066029445514653, guid: 96c9125b9f4f2584b9e8ef447f1767d1, type: 3}

@@ -28,7 +28,12 @@ public enum Priority { DPS, SmallestMaxHP, LargestMaxHP, LowestCurrentHP, Shorte
 [CreateAssetMenu(fileName = "new Targeting Settings",menuName = "ScriptableObjects/" + "Targeting")]
 public class TargetingSO : ScriptableObject
 {
-    [SerializeField] TargetTypes[] targets;
-    [SerializeField] Priority[] priorities;
-    [SerializeField] bool locking;
+    [SerializeField] TargetingRule[] rulesOrder;
+    public TargetingRule[] RulesOrder => rulesOrder;
+}
+[Serializable]
+public class TargetingRule
+{
+    public TargetTypes targets;
+    public Priority priority;
 }

@@ -14,7 +14,7 @@ public class EffectDataSoEditor : Editor
     SerializedProperty tickTimeProperty;
     private void OnEnable()
     {
-        targetsProperty = serializedObject.FindProperty("affectedTargets");
+        targetsProperty = serializedObject.FindProperty("targets");
         affectedStatProperty = serializedObject.FindProperty("affectedStat");
         effectTypeProperty = serializedObject.FindProperty("effectType");
         inPrecentageProperty = serializedObject.FindProperty("inPercentage");

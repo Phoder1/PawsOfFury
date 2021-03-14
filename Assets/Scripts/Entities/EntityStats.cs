@@ -1,22 +1,23 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EntityStats
+namespace Assets.Stats
 {
-    Dictionary<StatType, Stat> statDict;
-
-    public EntityStats()
+    public class EntityStats
     {
-        statDict = new Dictionary<StatType, Stat>();
-    }
+        Dictionary<StatType, Stat> statDict;
 
-    public Stat GetStat(StatType statType) => statDict[statType];
-    public float GetStatValue(StatType statType) => GetStat(statType).GetSetValue;
-    public void SetStatValue(StatType statType, float value) => GetStat(statType).GetSetValue = value;
-    public void AddToStat(StatType statType, float value) => GetStat(statType).GetSetValue += value;
-    public void Add(Stat stat) => statDict.Add(stat.statType, stat);
+        public EntityStats()
+        {
+            statDict = new Dictionary<StatType, Stat>();
+        }
+
+        public Stat GetStat(StatType statType) => statDict[statType];
+        public float GetStatValue(StatType statType) => GetStat(statType).GetSetValue;
+        public void SetStatValue(StatType statType, float value) => GetStat(statType).GetSetValue = value;
+        public void AddToStat(StatType statType, float value) => GetStat(statType).GetSetValue += value;
+        public void Add(Stat stat) => statDict.Add(stat.statType, stat);
+    }
     public class Stat
     {
         public StatType statType;
@@ -25,9 +26,9 @@ public class EntityStats
         protected MonoBehaviour entity;
         protected CoroutineHandler coroutineHandler;
         public bool GetIsCapped => maxStat != null;
-        private Reaction[] reactions;
+        private List<Reaction> reactions;
 
-        public Stat(MonoBehaviour entity, StatType statType, float getSetValue, Stat maxStat = null, Reaction[] reactions = null)
+        public Stat(MonoBehaviour entity, StatType statType, float getSetValue, Stat maxStat = null, List<Reaction> reactions = null)
         {
             coroutineHandler = CoroutineHandler._instance;
             Init();
@@ -58,7 +59,7 @@ public class EntityStats
     public class HpStat : Stat
     {
         HealthBar healthBar;
-        public HpStat(MonoBehaviour unit, StatType statType, float getSetValue, HealthBar healthBar, Stat maxStat = null, Reaction[] reactions = null) : base(unit, statType, getSetValue, maxStat, reactions)
+        public HpStat(MonoBehaviour unit, StatType statType, float getSetValue, HealthBar healthBar, Stat maxStat = null, List<Reaction> reactions = null) : base(unit, statType, getSetValue, maxStat, reactions)
         {
             this.healthBar = healthBar;
             UpdateHealthBar();
@@ -107,4 +108,5 @@ public class EntityStats
     {
         public bool CheckCondition(float value) => value <= 0;
     }
+
 }

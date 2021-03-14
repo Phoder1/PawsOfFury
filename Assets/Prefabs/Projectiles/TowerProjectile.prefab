@@ -1,74 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1298232689
+--- !u!114 &-1956864212057453217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428258682919953849}
+  m_GameObject: {fileID: 3871618179018856722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd7fee8c7ba5564bb5a71472625d0dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f74bec6fc4e52a4d9c816505d71ed86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 1298232690}
-  range: 5
---- !u!195 &1298232690
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428258682919953849}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.3
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &1837227820297537156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428258682919953849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 226361319ea58724f880f820414581e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityName: Unit
-  type: 0
-  UiObject: {fileID: 7311778787983579454, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
-    type: 3}
-  defualtStats:
-    HP: 100
-    MaxHP: 100
-    WalkSpeed: 100
-    Damage: 100
-    AttackSpeed: 1
-    Range: 3
-  projectile:
-    gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
-      type: 3}
-    detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    attackSpeed: 0
-  aura:
-    projectile: {fileID: 0}
-  healthbarHeight: 20
---- !u!1001 &844378790540320807
+  speed: 3
+  AOE: 1
+  effectsData:
+  - {fileID: 11400000, guid: 3b495eef57bc64449929bbbfac00ee00, type: 2}
+  radius: 1
+  chainCount: 0
+  maxHeight: 0
+--- !u!1001 &3305404106425048204
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -83,22 +34,22 @@ PrefabInstance:
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
@@ -108,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.59
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
@@ -118,17 +69,17 @@ PrefabInstance:
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
@@ -145,26 +96,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1758066029445514653, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514654, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_Name
-      value: Unit
+      value: TowerProjectile
       objectReference: {fileID: 0}
-    - target: {fileID: 1758066029445514654, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
-      propertyPath: m_Layer
-      value: 8
+      propertyPath: m_Color.b
+      value: 0.88059235
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1758066029445514653, guid: 96c9125b9f4f2584b9e8ef447f1767d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 96c9125b9f4f2584b9e8ef447f1767d1, type: 3}
---- !u!1 &1428258682919953849 stripped
+--- !u!1 &3871618179018856722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1758066029445514654, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
     type: 3}
-  m_PrefabInstance: {fileID: 844378790540320807}
+  m_PrefabInstance: {fileID: 3305404106425048204}
   m_PrefabAsset: {fileID: 0}

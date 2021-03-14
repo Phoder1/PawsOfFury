@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4737437322747879935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428258682919953849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ae31b61039cd841b993432ad1141f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile:
+    gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
+      type: 3}
+    detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
+    targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
+    attackSpeed: 0
+    locking: 0
 --- !u!114 &1298232689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23,7 +42,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1428258682919953849}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -48,23 +67,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226361319ea58724f880f820414581e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityName: Unit
-  type: 0
+  entityName: Lich
+  type: 3
   UiObject: {fileID: 7311778787983579454, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
     type: 3}
   defualtStats:
-    HP: 100
-    MaxHP: 100
+    HP: 400
+    MaxHP: 400
     WalkSpeed: 100
     Damage: 100
-    AttackSpeed: 1
+    AttackSpeed: 0.1
     Range: 3
   projectile:
-    gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
+    gameobject: {fileID: 3871618179018856722, guid: 3b7feb0ac33226c4290f892c16b4e244,
       type: 3}
     detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    attackSpeed: 0
+    targeting: {fileID: 11400000, guid: bf7f4f2138993cd49bc4677573358a83, type: 2}
+    attackSpeed: 1
+    locking: 0
   aura:
     projectile: {fileID: 0}
   healthbarHeight: 20
@@ -83,17 +103,17 @@ PrefabInstance:
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514652, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
@@ -145,20 +165,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1758066029445514653, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514654, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_Name
-      value: Unit
+      value: Lich
       objectReference: {fileID: 0}
     - target: {fileID: 1758066029445514654, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ae55f240143a8747b88fbacaaa1522a,
+        type: 3}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.06848522
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.06848522
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5377358
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216302, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216302, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216302, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96c9125b9f4f2584b9e8ef447f1767d1, type: 3}

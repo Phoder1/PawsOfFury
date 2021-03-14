@@ -7,11 +7,35 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     List<Unit> units;
     List<Enemy> enemies;
-    public Vector3 levelEndPos => levelEnd.position;
-    public void AddToList(Unit unit) => units.Add(unit);
-    public void RemoveFromList(Unit unit) => units.Remove(unit);
-    public void AddToList(Enemy enemy) => enemies.Add(enemy);
-    public void RemoveFromList(Enemy enemy) => enemies.Remove(enemy);
+    public Vector3 LevelEndPos => levelEnd.position;
+
+    public Unit[] Units => units.ToArray();
+    public Enemy[] Enemies => enemies.ToArray();
+
+    public void AddToList<T>(T entity) where T : Entity
+    {
+        switch (entity)
+        {
+            case Unit unit:
+                units.Add(unit);
+                break;
+            case Enemy enemy:
+                enemies.Add(enemy);
+                break;
+        }
+    }
+    public void RemoveFromList<T>(T entity) where T : Entity
+    {
+        switch (entity)
+        {
+            case Unit unit:
+                units.Remove(unit);
+                break;
+            case Enemy enemy:
+                enemies.Remove(enemy);
+                break;
+        }
+    }
 
     public override void Awake()
     {
@@ -19,29 +43,10 @@ public class LevelManager : MonoSingleton<LevelManager>
         units = new List<Unit>();
         enemies = new List<Enemy>();
     }
-
-    public EntityHit GetClosestEnemy(GameObject gameObject) => GetClosestEntity(gameObject, enemies);
-    public EntityHit GetClosestUnit(GameObject gameObject) => GetClosestEntity(gameObject, units);
-    public EntityHit GetClosestEntity<T>(GameObject gameObject, List<T> entityList) where T : Entity
-    {
-        float minDistance = Mathf.Infinity;
-        Entity closestEntity = null;
-        if (entityList.Count != 0)
-        {
-            closestEntity = entityList[0];
-            foreach (T entity in entityList)
-            {
-                float distance = Vector3.Distance(gameObject.transform.position, entity.transform.position);
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    closestEntity = entity;
-                }
-            }
-        }
-        return new EntityHit(closestEntity, minDistance);
-    }
-
+}
+public static class GlobalEffects
+{
+    public static bool disableTaunts;
 }
 public class EntityHit
 {

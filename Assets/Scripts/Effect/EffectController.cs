@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using UnityEngine;
-using static EntityStats;
+using Assets.Stats;
+
 
 public class EffectController
 {
-    private readonly EffectDataSO effectData;
+    private readonly EffectData effectData;
     private readonly EntityStats stats;
     Coroutine effectCoro;
     private readonly CoroutineHandler effectHandler;
+
 
     private Stat GetStat
     {
         get
         {
             if (stats != null)
-                return stats.GetStat(effectData.TargetStat);
+                return stats.GetStat(effectData.affectedStat);
             return null;
 
         }
     }
-    public EffectController(EntityStats stats, EffectDataSO effectData)
+    public EffectController(EntityStats stats, EffectData effectData)
     {
         this.effectData = effectData;
         this.stats = stats;
@@ -33,7 +35,7 @@ public class EffectController
         Stop();
         if (GetStat != null)
         {
-            switch (effectData.EffectType)
+            switch (effectData.effectType)
             {
                 case EffectType.Instant:
                     AddFixedAmount();
@@ -60,13 +62,13 @@ public class EffectController
     // instantly add/remove fixed amount 
     private void AddFixedAmount()
     {
-        GetStat.GetSetValue += (effectData.InPercentage) ? AmountFromPercentage(GetStat.GetSetValue, effectData.Amount, effectData.IsRelativeToMax) : effectData.Amount;
+        GetStat.GetSetValue += (effectData.inPercentage) ? AmountFromPercentage(GetStat.GetSetValue, effectData.amount, effectData.isRelativeToMax) : effectData.amount;
 
     }
     //  Add/remove fixed amount -> wait -> return to previous State
     private void ToggleAmountOverTime()
     {
-        float toggleAmount = effectData.InPercentage ? AmountFromPercentage(GetStat.GetSetValue, effectData.Amount, effectData.IsRelativeToMax) : effectData.Amount;
+        float toggleAmount = effectData.inPercentage ? AmountFromPercentage(GetStat.GetSetValue, effectData.amount, effectData.isRelativeToMax) : effectData.amount;
         GetStat.GetSetValue += toggleAmount;
         //Disable amount
         effectCoro = effectHandler.StartCoroutine(ResetToggleAmount(toggleAmount));
@@ -75,7 +77,7 @@ public class EffectController
     private IEnumerator ResetToggleAmount(float amount)
     {
         Debug.Log("Toggle Coro");
-        yield return new WaitForSeconds(effectData.Duration);
+        yield return new WaitForSeconds(effectData.duration);
         if (GetStat != null)
             GetStat.GetSetValue -= amount;
     }
@@ -84,26 +86,26 @@ public class EffectController
     {
         Debug.Log("DOT Coro");
         float startingTime = Time.time;
-        if (effectData.InPercentage)
+        if (effectData.inPercentage)
         {
-            float amountRatio = effectData.Amount / 100;
-            for (int i = 0; i < Mathf.FloorToInt(effectData.Duration / effectData.TickTime); i++)
+            float amountRatio = effectData.amount / 100;
+            for (int i = 0; i < Mathf.FloorToInt(effectData.duration / effectData.tickTime); i++)
             {
                 if (GetStat == null)
                     yield break;
-                float tickAmount = amountRatio * ((effectData.IsRelativeToMax && GetStat.GetIsCapped) ? GetStat.maxStat.GetSetValue : GetStat.GetSetValue);
+                float tickAmount = amountRatio * ((effectData.isRelativeToMax && GetStat.GetIsCapped) ? GetStat.maxStat.GetSetValue : GetStat.GetSetValue);
                 GetStat.GetSetValue += tickAmount;
-                yield return new WaitForSeconds(effectData.TickTime);
+                yield return new WaitForSeconds(effectData.tickTime);
             }
         }
         else
         {
-            while (startingTime + effectData.Duration > Time.time)
+            while (startingTime + effectData.duration > Time.time)
             {
                 if (GetStat == null)
                     yield break;
-                GetStat.GetSetValue += effectData.Amount * effectData.TickTime;
-                yield return new WaitForSeconds(effectData.TickTime);
+                GetStat.GetSetValue += effectData.amount * effectData.tickTime;
+                yield return new WaitForSeconds(effectData.tickTime);
             }
 
         }

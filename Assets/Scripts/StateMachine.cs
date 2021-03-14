@@ -1,11 +1,11 @@
 ﻿namespace Assets.StateMachine
 {
-    class StateMachine
+    public class StateMachine
     {
         State state;
-        public StateMachine(State state)
+        public StateMachine(State startState)
         {
-            State = state;
+            State = startState;
         }
         public State State
         {
@@ -23,7 +23,7 @@
             }
         }
     }
-    abstract class State
+    public abstract class State
     {
         bool enabled;
 
