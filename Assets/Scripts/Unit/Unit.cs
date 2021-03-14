@@ -33,7 +33,7 @@ public class Unit : Entity
         stats.Add(maxHp);
         stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, healthBar, maxHp,
             new List<Reaction> {
-            new Reaction(new Death(),
+            new Reaction(Reaction.DeathCondition,
             (value) => {Destroy(gameObject); })
             }
             ));
@@ -47,7 +47,10 @@ public class Unit : Entity
     {
         stateMachine.State = new WalkState(this);
     }
+    protected override void DetectedOutOfRange()
+    {
 
+    }
     protected override EntityState DefaultState() => new WalkState(this);
 
     class UnitState : EntityState

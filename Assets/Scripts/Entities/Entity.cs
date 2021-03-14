@@ -79,7 +79,6 @@ public abstract class Entity : MonoBehaviour
     }
     private void Update()
     {
-        stateMachine.State.Update();
         UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position) + Vector3.up * healthbarHeight;
         CastAura();
         OnUpdate();
@@ -88,15 +87,16 @@ public abstract class Entity : MonoBehaviour
     {
         transform.DOComplete();
         levelManager.RemoveFromList(this);
-        stateMachine.State = null;
         OnDestroyEvent?.Invoke();
+        stateMachine.State = null;
     }
     protected abstract void OnUpdate();
     private void CastAura()
     {
     }
     protected abstract void FillDictionary();
-    protected abstract void OnTargetLoss();
+    protected virtual void OnTargetLoss() { }
+    protected virtual void DetectedOutOfRange() { }
     public EntityHit GetEntityHit(float range, TargetingSO targeting)
     {
         EntityHit hit = null;
@@ -205,24 +205,25 @@ public abstract class Entity : MonoBehaviour
                 }
                 return entities[0];
             }
+            int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
+            {
+                if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
+                    return -1;
+                if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
+                    return 1;
+                if (a.selected && !b.selected)
+                    return -1;
+                if (!a.selected && b.selected)
+                    return 1;
+                if (aFirstCondition)
+                    return -1;
+                if (bFirstCondition)
+                    return 1;
+                return 0;
+            }
         }
     }
-    int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
-    {
-        if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
-            return -1;
-        if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
-            return 1;
-        if (a.selected && !b.selected)
-            return -1;
-        if (!a.selected && b.selected)
-            return 1;
-        if (aFirstCondition)
-            return -1;
-        if (bFirstCondition)
-            return 1;
-        return 0;
-    }
+    
     protected abstract class EntityState : State
     {
         protected EntityHit detectedEntity;
@@ -269,15 +270,14 @@ public abstract class Entity : MonoBehaviour
                         GameObject projectile = Instantiate(entity.projectile.gameobject, entity.transform.position, Quaternion.identity);
                         projectile.GetComponent<Projectile>().Init(entity, targetEntity.entity, callback: entity.projectile.callback);
                     }
+                    else
+                    {
+                        entity.DetectedOutOfRange();
+                    }
                 }
             }
             else
                 entity.OnTargetLoss();
-
-        }
-        void TargetDestroyed()
-        {
-
         }
         protected override void OnDisable()
         {

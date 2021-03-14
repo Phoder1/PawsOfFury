@@ -76,7 +76,7 @@ MonoBehaviour:
     MaxHP: 400
     WalkSpeed: 100
     Damage: 100
-    AttackSpeed: 0.1
+    AttackSpeed: 1
     Range: 3
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 3b7feb0ac33226c4290f892c16b4e244,

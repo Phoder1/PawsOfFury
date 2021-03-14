@@ -1,10 +1,13 @@
-﻿namespace Assets.StateMachine
+﻿using UnityEngine;
+namespace Assets.StateMachine
 {
     public class StateMachine
     {
         State state;
+        StateMachineHandler stateMachineHandler;
         public StateMachine(State startState)
         {
+            stateMachineHandler = StateMachineHandler._instance;
             State = startState;
         }
         public State State
@@ -16,12 +19,27 @@
                 {
                     if (state != null)
                         state.Disable();
+                    else
+                        stateMachineHandler.Subscribe(this);
                     state = value;
                     if (state != null)
                         state.Enable();
+                    else
+                        stateMachineHandler.UnSubscribe(this);
                 }
             }
         }
+        public void Update()
+        {
+            if (state != null)
+                state.Update();
+        }
+        public void Reset()
+        {
+            if (state != null)
+                state.Update();
+        }
+        ~StateMachine() => State = null;
     }
     public abstract class State
     {

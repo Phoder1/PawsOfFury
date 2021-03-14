@@ -1,6 +1,4 @@
-﻿using Assets.StateMachine;
-using UnityEngine;
-using Assets.Stats;
+﻿using Assets.Stats;
 using System.Collections.Generic;
 
 public class Enemy : Entity
@@ -18,12 +16,10 @@ public class Enemy : Entity
         Stat maxHp = new Stat(this, StatType.MaxHP, defualtStats.MaxHP);
 
         stats.Add(maxHp);
-        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, healthBar, maxHp, 
+        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, healthBar, maxHp,
             new List<Reaction> {
-            new Reaction(new Death(),
-            (value) => {DestroyEntity(); })
-            }
-            ));
+            new Reaction( Reaction.DeathCondition, (value) => {DestroyEntity(); } ) 
+            }));
         stats.Add(new Stat(this, StatType.Damage, defualtStats.Damage));
         stats.Add(new Stat(this, StatType.AttackSpeed, defualtStats.AttackSpeed));
         stats.Add(new Stat(this, StatType.Range, defualtStats.Range));

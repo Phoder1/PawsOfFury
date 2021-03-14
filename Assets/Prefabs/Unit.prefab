@@ -65,6 +65,7 @@ MonoBehaviour:
     detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
     targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
     attackSpeed: 0
+    locking: 0
   aura:
     projectile: {fileID: 0}
   healthbarHeight: 20

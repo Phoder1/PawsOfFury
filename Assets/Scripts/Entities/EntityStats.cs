@@ -51,8 +51,7 @@ namespace Assets.Stats
                     this.value = Mathf.Min(this.value, maxStat.GetSetValue);
                 if (reactions != null)
                     foreach (Reaction reaction in reactions)
-                        if (reaction.CheckCondition(this.value))
-                            reaction.reactionAction?.Invoke(this.value);
+                        reaction.TryInvokingReaction(this);
             }
         }
     }
@@ -77,22 +76,26 @@ namespace Assets.Stats
         }
         void UpdateHealthBar() => healthBar.SetValue(GetSetValue / maxStat.GetSetValue);
     }
+    public delegate bool ReactionCondition(Stat stat);
     public class Reaction
     {
-        private IReactionCondition reactionCondition;
-        public Action<float> reactionAction;
-
-        public Reaction(IReactionCondition reactionCondition, Action<float> reactionAction)
+        private readonly ReactionCondition reactionCondition;
+        public readonly Action<Stat> reactionAction;
+        public Reaction(ReactionCondition reactionCondition, Action<Stat> reactionAction)
         {
             this.reactionCondition = reactionCondition;
             this.reactionAction = reactionAction;
         }
+        public bool TryInvokingReaction(Stat stat)
+        {
+            bool conditionMet = CheckCondition(stat);
+            if ( conditionMet)
+                reactionAction?.Invoke(stat);
+            return conditionMet;
 
-        public bool CheckCondition(float value) => reactionCondition.CheckCondition(value);
-    }
-    public interface IReactionCondition
-    {
-        bool CheckCondition(float value);
+        }
+        public bool CheckCondition(Stat stat) => reactionCondition(stat);
+        public static ReactionCondition DeathCondition => (x) => x.GetSetValue <= 0;
     }
     [Serializable]
     public struct DefualtStats
@@ -103,10 +106,6 @@ namespace Assets.Stats
         public float Damage;
         public float AttackSpeed;
         public float Range;
-    }
-    public class Death : IReactionCondition
-    {
-        public bool CheckCondition(float value) => value <= 0;
     }
 
 }

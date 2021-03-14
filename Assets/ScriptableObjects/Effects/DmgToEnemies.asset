@@ -18,5 +18,5 @@ MonoBehaviour:
   inPercentage: 0
   isRelativeToMax: 0
   amount: -5
-  duration: 0
-  tickTime: 0
+  duration: 2.67
+  tickTime: 0.68
