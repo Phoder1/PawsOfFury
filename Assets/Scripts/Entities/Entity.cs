@@ -77,20 +77,19 @@ public abstract class Entity : MonoBehaviour
         FillDictionary();
         stateMachine = new StateMachine(DefaultState());
     }
-    private void Update()
+    protected virtual void Update()
     {
+        stateMachine.Update();
         UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position) + Vector3.up * healthbarHeight;
         CastAura();
-        OnUpdate();
     }
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         transform.DOComplete();
         levelManager.RemoveFromList(this);
         OnDestroyEvent?.Invoke();
         stateMachine.State = null;
     }
-    protected abstract void OnUpdate();
     private void CastAura()
     {
     }

@@ -4,10 +4,8 @@ namespace Assets.StateMachine
     public class StateMachine
     {
         State state;
-        StateMachineHandler stateMachineHandler;
         public StateMachine(State startState)
         {
-            stateMachineHandler = StateMachineHandler._instance;
             State = startState;
         }
         public State State
@@ -15,29 +13,27 @@ namespace Assets.StateMachine
             get => state;
             set
             {
-                if (state != value)
-                {
-                    if (state != null)
-                        state.Disable();
-                    else
-                        stateMachineHandler.Subscribe(this);
-                    state = value;
-                    if (state != null)
-                        state.Enable();
-                    else
-                        stateMachineHandler.UnSubscribe(this);
-                }
+                if (state == value)
+                    return;
+
+                if (state != null)
+                    state.Disable();
+
+                state = value;
+
+                if (state != null)
+                    state.Enable();
             }
         }
         public void Update()
         {
-            if (state != null)
-                state.Update();
+            if (State != null)
+                State.Update();
         }
         public void Reset()
         {
-            if (state != null)
-                state.Update();
+            if (State != null)
+                State.Reset();
         }
         ~StateMachine() => State = null;
     }

@@ -1,16 +1,9 @@
 ﻿using Assets.Stats;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Enemy : Entity
 {
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-    }
-    protected override void OnUpdate()
-    {
-    }
     protected override void FillDictionary()
     {
         Stat maxHp = new Stat(this, StatType.MaxHP, defualtStats.MaxHP);

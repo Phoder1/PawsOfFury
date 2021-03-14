@@ -12,6 +12,6 @@ public class GameManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        DOTween.CompleteAll();
+        DOTween.KillAll();
     }
 }

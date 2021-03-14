@@ -23,9 +23,6 @@ public class Unit : Entity
         navScript = GetComponent<NavScript>();
         base.Start();
     }
-    protected override void OnUpdate()
-    {
-    }
     protected override void FillDictionary()
     {
         Stat maxHp = new Stat(this, StatType.MaxHP, defualtStats.MaxHP);
