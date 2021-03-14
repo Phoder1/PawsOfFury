@@ -145,7 +145,7 @@ public abstract class Entity : MonoBehaviour
                     {
                         float aValue = a.entity.stats.GetStat(StatType.Damage).GetSetValue;
                         float bValue = b.entity.stats.GetStat(StatType.Damage).GetSetValue;
-                        return Compare(a.entity, b.entity,
+                        return Compare(a, b,
                         aValue > bValue,
                         aValue < bValue);
                     });
@@ -154,7 +154,7 @@ public abstract class Entity : MonoBehaviour
                     {
                         float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
                         float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                        return Compare(a.entity, b.entity,
+                        return Compare(a, b,
                         aValue < bValue,
                         aValue > bValue);
                     });
@@ -163,7 +163,7 @@ public abstract class Entity : MonoBehaviour
                     {
                         float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
                         float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                        return Compare(a.entity, b.entity,
+                        return Compare(a, b,
                         aValue > bValue,
                         aValue < bValue);
                     });
@@ -172,18 +172,18 @@ public abstract class Entity : MonoBehaviour
                         {
                             float aValue = a.entity.stats.GetStat(StatType.HP).GetSetValue;
                             float bValue = b.entity.stats.GetStat(StatType.HP).GetSetValue;
-                            return Compare(a.entity, b.entity,
+                            return Compare(a, b,
                             aValue < bValue,
                             aValue > bValue);
                         });
                 case Priority.ShortestDistance:
                     return PickEntity((a, b) =>
-                        Compare(a.entity, b.entity,
+                        Compare(a, b,
                         a.distance < b.distance,
                         a.distance > b.distance));
                 case Priority.Healer:
                     return PickEntity((a, b) =>
-                        Compare(a.entity, b.entity,
+                        Compare(a, b,
                         a.entity.Type.HasFlag(EntityType.Healer) && !b.entity.Type.HasFlag(EntityType.Healer),
                         !a.entity.Type.HasFlag(EntityType.Healer) && b.entity.Type.HasFlag(EntityType.Healer)));
             }
@@ -205,24 +205,23 @@ public abstract class Entity : MonoBehaviour
                 }
                 return entities[0];
             }
-            
-            int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
-            {
-                if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
-                    return -1;
-                if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
-                    return 1;
-                if (a.selected && !b.selected)
-                    return -1;
-                if (!a.selected && b.selected)
-                    return 1;
-                if (aFirstCondition)
-                    return -1;
-                if (bFirstCondition)
-                    return 1;
-                return 0;
-            }
         }
+    }
+    int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
+    {
+        if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
+            return -1;
+        if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
+            return 1;
+        if (a.selected && !b.selected)
+            return -1;
+        if (!a.selected && b.selected)
+            return 1;
+        if (aFirstCondition)
+            return -1;
+        if (bFirstCondition)
+            return 1;
+        return 0;
     }
     protected abstract class EntityState : State
     {
