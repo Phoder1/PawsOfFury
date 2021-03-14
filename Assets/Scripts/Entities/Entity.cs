@@ -124,7 +124,6 @@ public abstract class Entity : MonoBehaviour
 
         EntityHit RuleOutEntities(List<EntityHit> entities, Priority priority)
         {
-            // Maybe insert the switch case inside the sort function?
             if (entities.Count == 0)
                 return null;
             for (int i = 0; i < entities.Count; i++)
