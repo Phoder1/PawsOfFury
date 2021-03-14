@@ -112,123 +112,117 @@ public abstract class Entity : MonoBehaviour
             else if (rule.targets.HasFlag(TargetTypes.Enemy))
             {
                 List<EntityHit> enemies = new List<Entity>(levelManager.Enemies).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, transform.position)));
-                RuleOutEntities(ref enemies, rule.priority);
-                return enemies[0];
+                return RuleOutEntities(enemies, rule.priority);
             }
             else if (rule.targets.HasFlag(TargetTypes.Unit))
             {
                 List<EntityHit> units = new List<Entity>(levelManager.Units).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, transform.position)));
-                RuleOutEntities(ref units, rule.priority);
-                return units[0];
+                return RuleOutEntities(units, rule.priority);
             }
         }
         return hit;
 
         EntityHit RuleOutEntities(List<EntityHit> entities, Priority priority)
         {
-            //Todo: Remove from list if out of range during sort
-            // Sort tanks during original sort
             // Maybe insert the switch case inside the sort function?
+            if (entities.Count == 0)
+                return null;
+            for (int i = 0; i < entities.Count; i++)
+            {
+                if (entities[i] == null || entities[i].entity == null || entities[i].distance > range || entities[i].entity.Type.HasFlag(EntityType.Ghost))
+                {
+                    entities.RemoveAt(i);
+                    i--;
+                }
+            }
             if (entities.Count == 0)
                 return null;
             if (entities.Count == 1)
                 return entities[0];
-
-            for (int i = 0; i < entities.Count; i++)
-            {
-                if (entities[i] == null || entities[i].entity == null || entities[i].distance <= range || entities[i].entity.Type.HasFlag(EntityType.Ghost))
-                    entities.RemoveAt(i);
-            }
             switch (priority)
             {
                 case Priority.DPS:
-                    entities.Sort((a, b) =>
-                       {
-                           float aValue = a.entity.stats.GetStat(StatType.Damage).GetSetValue;
-                           float bValue = b.entity.stats.GetStat(StatType.Damage).GetSetValue;
-                           return Compare(a.entity, b.entity,
-                           aValue > bValue,
-                           aValue < bValue);
-                       }
-                        );
-                    break;
+                    return PickEntity((a, b) =>
+                    {
+                        float aValue = a.entity.stats.GetStat(StatType.Damage).GetSetValue;
+                        float bValue = b.entity.stats.GetStat(StatType.Damage).GetSetValue;
+                        return Compare(a.entity, b.entity,
+                        aValue > bValue,
+                        aValue < bValue);
+                    });
                 case Priority.SmallestMaxHP:
-                    entities.Sort((a, b) =>
-                        {
-                            float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                            float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                            return Compare(a.entity, b.entity,
-                            aValue < bValue,
-                            aValue > bValue);
-                        }
-                        );
-                    break;
+                    return PickEntity((a, b) =>
+                    {
+                        float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
+                        float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
+                        return Compare(a.entity, b.entity,
+                        aValue < bValue,
+                        aValue > bValue);
+                    });
                 case Priority.LargestMaxHP:
-                    entities.Sort((a, b) =>
-                        {
-                            float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                            float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                            return Compare(a.entity, b.entity,
-                            aValue > bValue,
-                            aValue < bValue);
-                        }
-                        );
-                    break;
+                    return PickEntity((a, b) =>
+                    {
+                        float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
+                        float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
+                        return Compare(a.entity, b.entity,
+                        aValue > bValue,
+                        aValue < bValue);
+                    });
                 case Priority.LowestCurrentHP:
-                    entities.Sort((a, b) =>
+                    return PickEntity((a, b) =>
                         {
                             float aValue = a.entity.stats.GetStat(StatType.HP).GetSetValue;
                             float bValue = b.entity.stats.GetStat(StatType.HP).GetSetValue;
                             return Compare(a.entity, b.entity,
                             aValue < bValue,
                             aValue > bValue);
-                        }
-                        );
-                    break;
+                        });
                 case Priority.ShortestDistance:
-                    entities.Sort((a, b) =>
-                        {
-                            return Compare(a.entity, b.entity,
-                            a.distance < b.distance,
-                            a.distance > b.distance);
-                        }
-                        );
-                    break;
+                    return PickEntity((a, b) =>
+                        Compare(a.entity, b.entity,
+                        a.distance < b.distance,
+                        a.distance > b.distance));
                 case Priority.Healer:
-                    entities.Sort((a, b) => Compare(a.entity, b.entity,
+                    return PickEntity((a, b) =>
+                        Compare(a.entity, b.entity,
                         a.entity.Type.HasFlag(EntityType.Healer) && !b.entity.Type.HasFlag(EntityType.Healer),
-                        !a.entity.Type.HasFlag(EntityType.Healer) && b.entity.Type.HasFlag(EntityType.Healer))
-                        );
-                    break;
+                        !a.entity.Type.HasFlag(EntityType.Healer) && b.entity.Type.HasFlag(EntityType.Healer)));
             }
-        }
-        EntityHit PickEntity(List<EntityHit> entities, Comparison<Entity> compare)
-        {
-            for (int i = 0; i < entities.Count-1; i++)
+            return null;
+            
+            EntityHit PickEntity(Comparison<EntityHit> compare)
             {
-                int compareValue = compare(entities[i].entity, entities[i + 1].entity);
-                if (compareValue == 1)
-                    entities.RemoveAt(i);
-                if (compareValue == -1)
-                    entities.RemoveAt(i+1);
+                while(entities.Count > 1)
+                {
+                    int compareValue = compare(entities[0], entities[1]);
+                    if (compareValue == 1)
+                    {
+                        entities.RemoveAt(0);
+                    }
+                    else if (compareValue == -1)
+                    {
+                        entities.RemoveAt(1);
+                    }
+                }
+                return entities[0];
             }
-            return entities[0];
-        }
-        int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
-        {
-            if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
-                return 1;
-            if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
-                return -1;
-            if (a.selected && !b.selected)
-                return -1;
-            if (!a.selected && b.selected)
-                return 1;
-            if (aFirstCondition)
-                return -1;
-            if (bFirstCondition)
-                return 1;
-            return 0;
+            
+            int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
+            {
+                if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
+                    return -1;
+                if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
+                    return 1;
+                if (a.selected && !b.selected)
+                    return -1;
+                if (!a.selected && b.selected)
+                    return 1;
+                if (aFirstCondition)
+                    return -1;
+                if (bFirstCondition)
+                    return 1;
+                return 0;
+            }
         }
     }
     protected abstract class EntityState : State

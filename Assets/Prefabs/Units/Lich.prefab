@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityName: Lich
-  type: 3
+  type: 4
   UiObject: {fileID: 7311778787983579454, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
     type: 3}
   defualtStats:

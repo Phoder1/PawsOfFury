@@ -62,7 +62,7 @@ public class Projectile : MonoBehaviour
             }
             hitEntities.Add(target);
         }
-        else
+        else if(AOE)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
@@ -78,30 +78,27 @@ public class Projectile : MonoBehaviour
                             case Enemy enemy:
                                 if (effects[i].targets.HasFlag(TargetTypes.Enemy))
                                 {
-                                    new EffectController(enemy.stats, effects[i]);
-                                    Debug.Log(attackingEntity.name +":" + effects[i].amount);
                                     if (!hitEntities.Contains(enemy))
                                         hitEntities.Add(enemy);
+                                    new EffectController(enemy.stats, effects[i]);
                                 }
                                 break;
                             case Unit unit:
                                 if ((effects[i].targets.HasFlag(TargetTypes.Unit) && unit != this.attackingEntity)
                                     || (effects[i].targets.HasFlag(TargetTypes.Self) && unit == this.attackingEntity))
                                 {
-                                    new EffectController(unit.stats, effects[i]);
                                     if (!hitEntities.Contains(unit))
                                         hitEntities.Add(unit);
+                                    new EffectController(unit.stats, effects[i]);
                                 }
                                 break;
                         }
                     }
-
                 }
             }
-
         }
-        Destroy(gameObject);
         callback?.Invoke(hitEntities.ToArray(), target);
+        Destroy(gameObject);
         //Check hit
     }
     private void OnDrawGizmos()
