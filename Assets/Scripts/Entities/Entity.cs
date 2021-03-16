@@ -41,7 +41,7 @@ public abstract class Entity : MonoBehaviour
 
     protected abstract EntityState DefaultState();
     public event Action OnDestroyEvent;
-    bool selected;
+    public bool selected;
     public bool Selected
     {
         get => selected;
@@ -76,12 +76,12 @@ public abstract class Entity : MonoBehaviour
         healthBar.Init();
         FillDictionary();
         stateMachine = new StateMachine(DefaultState());
+        CastAura();
     }
     protected virtual void Update()
     {
         stateMachine.Update();
         UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position) + Vector3.up * healthbarHeight;
-        CastAura();
     }
     protected virtual void OnDestroy()
     {
@@ -92,137 +92,33 @@ public abstract class Entity : MonoBehaviour
     }
     private void CastAura()
     {
+        if (aura != null && aura.gameobject != null)
+        {
+            GameObject auraObj = Instantiate(aura.gameobject, transform.position, Quaternion.identity);
+            auraObj.GetComponent<Projectile>().Init(this, this, aura.callback);
+            float castDelay = 1 / aura.rate;
+            Invoke(nameof(CastAura), castDelay);
+            Debug.Log("Casted aura");
+        }
     }
-    protected abstract void FillDictionary();
-    protected virtual void OnTargetLoss() { }
-    protected virtual void DetectedOutOfRange() { }
-    public EntityHit GetEntityHit(float range, TargetingSO targeting)
+    protected virtual void FillDictionary()
     {
-        EntityHit hit = null;
+        Stat maxHp = new Stat(this, StatType.MaxHP, defualtStats.MaxHP);
 
-        foreach (TargetingRule rule in targeting.RulesOrder)
-        {
-
-            if (rule.targets.HasFlag(TargetTypes.Self))
-            {
-                hit = new EntityHit(this, 0);
-                break;
-            }
-            else if (rule.targets.HasFlag(TargetTypes.Enemy))
-            {
-                List<EntityHit> enemies = new List<Entity>(levelManager.Enemies).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, transform.position)));
-                return RuleOutEntities(enemies, rule.priority);
-            }
-            else if (rule.targets.HasFlag(TargetTypes.Unit))
-            {
-                List<EntityHit> units = new List<Entity>(levelManager.Units).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, transform.position)));
-                return RuleOutEntities(units, rule.priority);
-            }
-        }
-        return hit;
-
-        EntityHit RuleOutEntities(List<EntityHit> entities, Priority priority)
-        {
-            if (entities.Count == 0)
-                return null;
-            for (int i = 0; i < entities.Count; i++)
-            {
-                if (entities[i] == null || entities[i].entity == null || entities[i].distance > range || entities[i].entity.Type.HasFlag(EntityType.Ghost))
-                {
-                    entities.RemoveAt(i);
-                    i--;
-                }
-            }
-            if (entities.Count == 0)
-                return null;
-            if (entities.Count == 1)
-                return entities[0];
-            switch (priority)
-            {
-                case Priority.DPS:
-                    return PickEntity((a, b) =>
-                    {
-                        float aValue = a.entity.stats.GetStat(StatType.Damage).GetSetValue;
-                        float bValue = b.entity.stats.GetStat(StatType.Damage).GetSetValue;
-                        return Compare(a, b,
-                        aValue > bValue,
-                        aValue < bValue);
-                    });
-                case Priority.SmallestMaxHP:
-                    return PickEntity((a, b) =>
-                    {
-                        float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                        float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                        return Compare(a, b,
-                        aValue < bValue,
-                        aValue > bValue);
-                    });
-                case Priority.LargestMaxHP:
-                    return PickEntity((a, b) =>
-                    {
-                        float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                        float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
-                        return Compare(a, b,
-                        aValue > bValue,
-                        aValue < bValue);
-                    });
-                case Priority.LowestCurrentHP:
-                    return PickEntity((a, b) =>
-                        {
-                            float aValue = a.entity.stats.GetStat(StatType.HP).GetSetValue;
-                            float bValue = b.entity.stats.GetStat(StatType.HP).GetSetValue;
-                            return Compare(a, b,
-                            aValue < bValue,
-                            aValue > bValue);
-                        });
-                case Priority.ShortestDistance:
-                    return PickEntity((a, b) =>
-                        Compare(a, b,
-                        a.distance < b.distance,
-                        a.distance > b.distance));
-                case Priority.Healer:
-                    return PickEntity((a, b) =>
-                        Compare(a, b,
-                        a.entity.Type.HasFlag(EntityType.Healer) && !b.entity.Type.HasFlag(EntityType.Healer),
-                        !a.entity.Type.HasFlag(EntityType.Healer) && b.entity.Type.HasFlag(EntityType.Healer)));
-            }
-            return null;
-            
-            EntityHit PickEntity(Comparison<EntityHit> compare)
-            {
-                while(entities.Count > 1)
-                {
-                    int compareValue = compare(entities[0], entities[1]);
-                    if (compareValue == 1)
-                    {
-                        entities.RemoveAt(0);
-                    }
-                    else if (compareValue == -1)
-                    {
-                        entities.RemoveAt(1);
-                    }
-                }
-                return entities[0];
-            }
-            int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
-            {
-                if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
-                    return -1;
-                if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
-                    return 1;
-                if (a.selected && !b.selected)
-                    return -1;
-                if (!a.selected && b.selected)
-                    return 1;
-                if (aFirstCondition)
-                    return -1;
-                if (bFirstCondition)
-                    return 1;
-                return 0;
-            }
-        }
+        stats.Add(maxHp);
+        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, healthBar, maxHp,
+            new List<Reaction> {
+            new Reaction( Reaction.DeathCondition, (value) => { Destroy(gameObject); } )
+            }));
+        stats.Add(new Stat(this, StatType.DamageMultiplier, 1));
+        Stat maxAttackSpeed = new Stat(this, StatType.MaxAttackSpeedMultiplier, defualtStats.MaxAttackSpeedMultiplier);
+        stats.Add(maxAttackSpeed);
+        stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed));
+        stats.Add(new Stat(this, StatType.WalkSpeed, defualtStats.WalkSpeed));
+        stats.Add(new Stat(this, StatType.RangeMultiplier, 1));
     }
-    
+    protected virtual void OnTargetLoss() { }
+    protected virtual void DetectedOutOfRange(Entity detectedEntity) { }
     protected abstract class EntityState : State
     {
         protected EntityHit detectedEntity;
@@ -247,32 +143,29 @@ public abstract class Entity : MonoBehaviour
         {
             attackCoro = entity.StartCoroutine(StartAttacking());
             if (detectedEntity == null)
-                detectedEntity = entity.GetEntityHit(entity.stats.GetStatValue(StatType.Range), entity.projectile.detection);
+                detectedEntity = Targets.GetEntityHit(entity, entity.projectile.detection);
         }
         protected override void OnUpdate()
         {
-            if (detectedEntity == null || detectedEntity.entity == null)
-            {
-                detectedEntity = entity.GetEntityHit(entity.stats.GetStatValue(StatType.Range), entity.projectile.detection);
-            }
+            detectedEntity = Targets.GetEntityHit(entity, entity.projectile.detection);
             if (detectedEntity != null && detectedEntity.entity != null)
             {
-                float attackDelay = 1 / entity.stats.GetStatValue(StatType.AttackSpeed);
+                float attackDelay = 1 / (entity.projectile.attackSpeed * entity.stats.GetStatValue(StatType.AttackSpeedMultiplier));
                 if (Time.time >= entity.lastAttackTime + attackDelay)
                 {
                     if (targetEntity == null || targetEntity.entity == null || !entity.projectile.locking)
-                        targetEntity = entity.GetEntityHit(entity.stats.GetStatValue(StatType.Range), entity.projectile.targeting);
+                        targetEntity = Targets.GetEntityHit(entity, entity.projectile.targeting);
                     if (targetEntity != null && targetEntity.entity != null)
                     {
+                        entity.DetectedInRange(detectedEntity);
                         entity.lastAttackTime = Time.time;
                         entity.transform.DOLocalRotate(entity.transform.rotation.eulerAngles + Vector3.up * 360, attackDelay / 2, RotateMode.FastBeyond360);
                         GameObject projectile = Instantiate(entity.projectile.gameobject, entity.transform.position, Quaternion.identity);
-                        projectile.GetComponent<Projectile>().Init(entity, targetEntity.entity, callback: entity.projectile.callback);
+                        Projectile projectileScript = projectile.GetComponent<Projectile>();
+                        projectileScript.Init(entity, targetEntity.entity, callback: entity.projectile.callback);
                     }
                     else
-                    {
-                        entity.DetectedOutOfRange();
-                    }
+                        entity.DetectedOutOfRange(detectedEntity);
                 }
             }
             else
@@ -300,6 +193,8 @@ public abstract class Entity : MonoBehaviour
             }
         }
     }
+
+    protected virtual void DetectedInRange(EntityHit detectedEntity) { }
 }
 [Serializable]
 public class ProjectileData
@@ -314,5 +209,8 @@ public class ProjectileData
 [Serializable]
 public class AuraData
 {
-    public GameObject projectile;
+    public GameObject gameobject;
+    public Action<Entity[], Entity> callback;
+    [Tooltip("Aura cast rate in castings per second.")]
+    public float rate;
 }

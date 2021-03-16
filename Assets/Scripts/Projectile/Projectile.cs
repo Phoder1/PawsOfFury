@@ -5,67 +5,58 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [Tooltip("Controls the speed of the projectile.")]
     [SerializeField] float speed;
-    [SerializeField] bool AOE;
     [SerializeField] EffectDataSO[] effectsData;
-    [SerializeField] float radius;
-    [SerializeField] int chainCount;
+    [Tooltip("AOE = Area Of Effect, the projectile will hit multiple targets when enabled.")]
+    [SerializeField] bool AOE;
+    [Tooltip("The radius of the damage when AOE is enabled.")]
+    [SerializeField] float aoeRadius;
+    [Tooltip("WIP")]
     [SerializeField] float maxHeight;
 
-    Entity target;
-    Entity attackingEntity;
-    Action<Entity[], Entity> callback;
+    protected Entity target;
+    protected Entity attackingEntity;
+    protected Action<Entity[], Entity> callback;
     public EffectData[] effects;
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         effects = new EffectData[effectsData.Length];
         for (int i = 0; i < effectsData.Length; i++)
             effects[i] = effectsData[i].EffectData;
     }
-    public void Init(Entity attackingEntity, Entity target, Action<Entity[], Entity> callback = null)
+    public void Init(Entity attackingEntity, Entity target, Action<Entity[], Entity> callback = null, Vector3? originPosition = null)
     {
+        if (target == null)
+            return;
         this.target = target;
         this.attackingEntity = attackingEntity;
-        this.callback = callback;
-        //Todo: Animation and sound
+        if (callback != null)
+            this.callback = callback;
+        if (originPosition == null)
+            originPosition = attackingEntity.transform.position;
+        transform.position = (Vector3)originPosition;
         if (attackingEntity != target)
         {
-            float moveTime = Vector3.Distance(transform.position, target.transform.position) / speed;
-            if (maxHeight != 0)
-            {
-                Vector3 peakHeight = transform.position + (target.transform.position - transform.position) / 2;
-                peakHeight.y += maxHeight;
-
-            }
-            else
-            {
-                transform.DOMove(target.transform.position, moveTime).OnComplete(ReachedTarget);
-            }
+            float moveTime = Vector3.Distance((Vector3)originPosition, target.transform.position) / speed;
+            transform.DOMove(target.transform.position, moveTime).OnComplete(ReachedTarget);
         }
         else
-        {
             ReachedTarget();
-        }
-
     }
-
     void ReachedTarget()
     {
-        //Todo: Move to projectile
         //Todo: Animation and sound
         List<Entity> hitEntities = new List<Entity>();
         if (target != null && !AOE)
         {
             for (int i = 0; i < effects.Length; i++)
-            {
                 new EffectController(target.stats, effects[i]);
-            }
             hitEntities.Add(target);
         }
-        else if(AOE)
+        else if (AOE)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-
+            Collider[] colliders = Physics.OverlapSphere(transform.position, aoeRadius);
             foreach (Collider collider in colliders)
             {
                 Entity entity = collider.gameObject.GetComponent<Entity>();
@@ -97,12 +88,15 @@ public class Projectile : MonoBehaviour
                 }
             }
         }
-        callback?.Invoke(hitEntities.ToArray(), target);
+        End(hitEntities.ToArray());
+    }
+    protected virtual void End(Entity[] hitEntities)
+    {
+        callback?.Invoke(hitEntities, target);
         Destroy(gameObject);
-        //Check hit
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, aoeRadius);
     }
 }

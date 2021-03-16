@@ -20,19 +20,19 @@ MonoBehaviour:
     HP: 100
     MaxHP: 100
     WalkSpeed: 0
-    Damage: 5
-    AttackSpeed: 1
-    Range: 5
+    MaxAttackSpeedMultiplier: 1
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 4a4f91d5b1ea33a4c8fd849529827ca4,
       type: 3}
     detection: {fileID: 11400000, guid: 83196211348e55c4b8b9883f37b70f9c, type: 2}
     targeting: {fileID: 11400000, guid: 83196211348e55c4b8b9883f37b70f9c, type: 2}
-    attackSpeed: 0
+    attackSpeed: 1
     locking: 0
   aura:
-    projectile: {fileID: 0}
+    gameobject: {fileID: 0}
+    rate: 0
   healthbarHeight: 20
+  selected: 0
 --- !u!1001 &922499304326930715
 PrefabInstance:
   m_ObjectHideFlags: 0

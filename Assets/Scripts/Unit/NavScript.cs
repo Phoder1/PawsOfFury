@@ -5,15 +5,21 @@ public class NavScript : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] float range;
+    Unit unit;
     // Start is called before the first frame update
     private void Start()
     {
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.SetDestination(LevelManager._instance.LevelEndPos);
+        SetDestination(LevelManager._instance.LevelEndPos);
+    }
+    public void SetDestination(Vector3 destination)
+    {
+        if (agent.destination != destination)
+            agent.SetDestination(destination);
     }
     public void StartMove()
-    {            
+    {
         agent.isStopped = false;
     }
     public void StopMove()

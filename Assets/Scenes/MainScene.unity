@@ -5299,6 +5299,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
+      propertyPath: aura.rate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
+      propertyPath: aura.gameobject
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3628989300967414961, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
       propertyPath: m_RootOrder
@@ -6013,7 +6028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870ff69e9c46f4c40bfa4d897a754867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minion: {fileID: 1428258682919953849, guid: 845451f56e0fed24a933e69bc5fb2e4e, type: 3}
+  minion: {fileID: 1428258682919953849, guid: 6ecf18d536cda7247936381dc0b72012, type: 3}
   draggedObject: {fileID: 1387103051}
   SpawnPoint: {fileID: 134554243}
   pathLayer:

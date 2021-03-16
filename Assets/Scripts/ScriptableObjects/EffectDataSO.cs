@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Stats;
+using System;
 using UnityEngine;
 
 public enum EffectType { Instant, Toggle, OverTime }

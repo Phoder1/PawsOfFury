@@ -4,15 +4,7 @@ using UnityEngine;
 using Assets.Stats;
 using System.Collections.Generic;
 
-public enum StatType
-{
-    HP,
-    MaxHP,
-    WalkSpeed,
-    Damage,
-    AttackSpeed,
-    Range
-}
+
 [RequireComponent(typeof(NavScript))]
 public class Unit : Entity
 {
@@ -23,60 +15,37 @@ public class Unit : Entity
         navScript = GetComponent<NavScript>();
         base.Start();
     }
-    protected override void FillDictionary()
-    {
-        Stat maxHp = new Stat(this, StatType.MaxHP, defualtStats.MaxHP);
 
-        stats.Add(maxHp);
-        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, healthBar, maxHp,
-            new List<Reaction> {
-            new Reaction(Reaction.DeathCondition,
-            (value) => {Destroy(gameObject); })
-            }
-            ));
-        stats.Add(new Stat(this, StatType.Damage, defualtStats.Damage));
-        stats.Add(new Stat(this, StatType.AttackSpeed, defualtStats.AttackSpeed));
-        stats.Add(new Stat(this, StatType.WalkSpeed, defualtStats.WalkSpeed));
-        stats.Add(new Stat(this, StatType.Range, defualtStats.Range));
-    }
-
-    protected override void OnTargetLoss()
+    protected override void OnTargetLoss() => stateMachine.State = new WalkState(this);
+    protected override void DetectedOutOfRange(Entity detectedEntity)
     {
-        stateMachine.State = new WalkState(this);
-    }
-    protected override void DetectedOutOfRange()
-    {
-
+        navScript.SetDestination(detectedEntity.transform.position);
+        navScript.StartMove();
     }
     protected override EntityState DefaultState() => new WalkState(this);
 
+    protected override void DetectedInRange(EntityHit detectedEntity) => navScript.StopMove();
+
     class UnitState : EntityState
     {
+        public UnitState(Unit unit) : base(unit) { }
         protected Unit Unit => (Unit)entity;
-        public UnitState(Unit unit) : base(unit)
-        {
-        }
     }
     class WalkState : UnitState
     {
-        public WalkState(Unit unit) : base(unit)
-        {
-        }
+        public WalkState(Unit unit) : base(unit) { }
         protected override void OnEnable()
         {
+            Unit.navScript.SetDestination(LevelManager._instance.LevelEndPos);
             Unit.navScript.StartMove();
         }
         protected override void OnUpdate()
         {
-            //Todo: detection range
-            detectedEntity = entity.GetEntityHit(entity.stats.GetStatValue(StatType.Range), entity.projectile.detection);
+            detectedEntity = Targets.GetEntityHit(entity, entity.projectile.detection);
             if (detectedEntity != null && detectedEntity.entity != null)
                 Unit.stateMachine.State = new AttackState(entity);
         }
-        protected override void OnDisable()
-        {
-            Unit.navScript.StopMove();
-        }
+        protected override void OnDisable() => Unit.navScript.StopMove();
     }
 }
 

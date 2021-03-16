@@ -75,9 +75,7 @@ MonoBehaviour:
     HP: 400
     MaxHP: 400
     WalkSpeed: 100
-    Damage: 100
-    AttackSpeed: 1
-    Range: 3
+    MaxAttackSpeedMultiplier: 1
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 3b7feb0ac33226c4290f892c16b4e244,
       type: 3}
@@ -86,8 +84,10 @@ MonoBehaviour:
     attackSpeed: 1
     locking: 0
   aura:
-    projectile: {fileID: 0}
+    gameobject: {fileID: 0}
+    rate: 0
   healthbarHeight: 20
+  selected: 0
 --- !u!1001 &844378790540320807
 PrefabInstance:
   m_ObjectHideFlags: 0

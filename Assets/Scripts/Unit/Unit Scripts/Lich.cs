@@ -13,7 +13,7 @@ public class Lich : MonoBehaviour
     void Reaction(Entity[] entities, Entity target)
     {
         Debug.Log(entities.Length * 2);
-        EntityHit hit = unit.GetEntityHit(unit.stats.GetStatValue(StatType.Range), projectile.targeting);
+        EntityHit hit = Targets.GetEntityHit(unit, projectile.targeting);
         if (hit != null && hit.entity != null)
         {
             target = hit.entity;
@@ -22,6 +22,5 @@ public class Lich : MonoBehaviour
             projectileScript.effects[0].amount -= entities.Length * 2;
             projectileScript.Init(unit, target);
         }
-
     }
 }

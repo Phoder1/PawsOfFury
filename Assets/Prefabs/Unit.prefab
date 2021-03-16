@@ -53,21 +53,21 @@ MonoBehaviour:
   UiObject: {fileID: 7311778787983579454, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
     type: 3}
   defualtStats:
-    HP: 100
-    MaxHP: 100
+    HP: 600
+    MaxHP: 600
     WalkSpeed: 100
-    Damage: 100
-    AttackSpeed: 1
-    Range: 3
+    MaxAttackSpeedMultiplier: 1
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
       type: 3}
     detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    attackSpeed: 0
+    targeting: {fileID: 11400000, guid: 610fd59a29249254cb43dc82e79cc80d, type: 2}
+    attackSpeed: 1
     locking: 0
   aura:
-    projectile: {fileID: 0}
+    gameobject: {fileID: 3871618179018856722, guid: ff74b155cd3a3d04d84082e68be7d892,
+      type: 3}
+    rate: 0.33
   healthbarHeight: 20
 --- !u!1001 &844378790540320807
 PrefabInstance:

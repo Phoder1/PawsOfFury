@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Assets.Stats
 {
+    public enum StatType
+    {
+        HP,
+        MaxHP,
+        WalkSpeed,
+        DamageMultiplier,
+        AttackSpeedMultiplier,
+        MaxAttackSpeedMultiplier,
+        RangeMultiplier
+    }
     public class EntityStats
     {
         Dictionary<StatType, Stat> statDict;
@@ -103,9 +113,9 @@ namespace Assets.Stats
         public float HP;
         public float MaxHP;
         public float WalkSpeed;
-        public float Damage;
-        public float AttackSpeed;
-        public float Range;
+        [Tooltip("The maximum attack speed multiplier: 1 means the character can't be buffed, 2 means it can go only up to 200% and so on.")]
+        [Min(1)]
+        public float MaxAttackSpeedMultiplier;
     }
 
 }

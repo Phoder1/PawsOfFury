@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Stats;
 [Flags] public enum TargetTypes { Enemy = 1, Self = 2, Unit = 4 }
 public static class Targets
 {
@@ -23,8 +24,160 @@ public static class Targets
         }
         return layerMask;
     }
+    public delegate bool EntityHitCondition(Entity entity);
+    /// <summary>
+    /// Returns hit depending on the targeting rule
+    /// </summary>
+    /// <param name="range"></param>
+    /// <param name="targeting"></param>
+    /// <param name="entityHitCondition"></param>
+    /// <returns></returns>
+    public static EntityHit GetEntityHit(Entity entity, TargetingSO targeting, EntityHitCondition entityHitCondition = null)
+        => GetEntityHit(entity.gameObject, targeting, entityHitCondition, entity);
+    public static EntityHit GetEntityHit(GameObject originObject, TargetingSO targeting, EntityHitCondition entityHitCondition = null, Entity attackingEntity = null)
+    {
+        LevelManager levelManager = LevelManager._instance;
+        foreach (TargetingRule rule in targeting.RulesOrder)
+        {
+            if (rule.targets.HasFlag(TargetTypes.Enemy))
+            {
+                List<EntityHit> enemies = new List<Entity>(levelManager.Enemies).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, originObject.transform.position)));
+                if (attackingEntity != null && attackingEntity is Enemy enemy && rule.targets.HasFlag(TargetTypes.Self))
+                    enemies.Add(new EntityHit(enemy, 0));
+                return RuleOutEntities(enemies, rule);
+            }
+            else if (rule.targets.HasFlag(TargetTypes.Unit))
+            {
+                List<EntityHit> units = new List<Entity>(levelManager.Units).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, originObject.transform.position)));
+                if (attackingEntity != null && attackingEntity is Unit unit && rule.targets.HasFlag(TargetTypes.Self))
+                    units.Add(new EntityHit(unit, 0));
+                return RuleOutEntities(units, rule);
+            }
+            else if (attackingEntity != null && rule.targets.HasFlag(TargetTypes.Self))
+                return new EntityHit(attackingEntity, 0);
+        }
+        return null;
+        EntityHit RuleOutEntities(List<EntityHit> entities, TargetingRule rule)
+        {
+            if (entities.Count == 0)
+                return null;
+            for (int i = 0; i < entities.Count; i++)
+            {
+                if (entities[i] == null
+                    || entities[i].entity == null
+                    || entities[i].distance > rule.range
+                    || entities[i].entity.Type.HasFlag(EntityType.Ghost)
+                    || (entityHitCondition != null && !entityHitCondition(entities[i])))
+                {
+                    entities.RemoveAt(i);
+                    i--;
+                }
+            }
+            if (entities.Count == 0)
+                return null;
+            if (entities.Count == 1)
+                return entities[0];
+            foreach(EntityType entityType in Enum.GetValues(typeof(EntityType)))
+                if (rule.tagPriority.HasFlag(entityType))
+                {
+                    entities = PickEntity((a, b) =>
+                        Compare(a, b,
+                        a.entity.Type.HasFlag(entityType) && !b.entity.Type.HasFlag(entityType),
+                        !a.entity.Type.HasFlag(entityType) && b.entity.Type.HasFlag(entityType)));
+                }
+            switch (rule.priority)
+            {
+                //Todo: Add a way to calculate DPS
+                //case Priority.DPS: 
+                //    return PickEntity((a, b) =>
+                //    {
+                //        float aValue = a.entity.stats.GetStat(StatType.Damage).GetSetValue;
+                //        float bValue = b.entity.stats.GetStat(StatType.Damage).GetSetValue;
+                //        return Compare(a, b,
+                //        aValue > bValue,
+                //        aValue < bValue);
+                //    });
+                case Priority.SmallestMaxHP:
+                    entities = PickEntity((a, b) =>
+                    {
+                        float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
+                        float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
+                        return Compare(a, b,
+                        aValue < bValue,
+                        aValue > bValue);
+                    });
+                    break;
+                case Priority.LargestMaxHP:
+                    entities = PickEntity((a, b) =>
+                    {
+                        float aValue = a.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
+                        float bValue = b.entity.stats.GetStat(StatType.MaxHP).GetSetValue;
+                        return Compare(a, b,
+                        aValue > bValue,
+                        aValue < bValue);
+                    });
+                    break;
+                case Priority.LowestCurrentHP:
+                    entities = PickEntity((a, b) =>
+                    {
+                        float aValue = a.entity.stats.GetStat(StatType.HP).GetSetValue;
+                        float bValue = b.entity.stats.GetStat(StatType.HP).GetSetValue;
+                        return Compare(a, b,
+                        aValue < bValue,
+                        aValue > bValue);
+                    });
+                    break;
+                case Priority.ShortestDistance:
+                    entities = PickEntity((a, b) =>
+                        Compare(a, b,
+                        a.distance < b.distance,
+                        a.distance > b.distance));
+                    break;
+            }
+            if (entities.Count > 0)
+                return entities[0];
+            return null;
+            List<EntityHit> PickEntity(Comparison<EntityHit> compare)
+            {
+                for (int i = 0; i < entities.Count - 1; i++)
+                {
+                    int compareValue = compare(entities[i], entities[i + 1]);
+                    if (compareValue == 1)
+                    {
+                        entities.RemoveAt(i);
+                        i--;
+                    }
+                    else if (compareValue == -1)
+                    {
+                        entities.RemoveAt(i + 1);
+                        i--;
+                    }
+                }
+                return entities;
+            }
+            int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
+            {
+                if (!GlobalEffects.disableTaunts)
+                {
+                    if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
+                        return -1;
+                    if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
+                        return 1;
+                }
+                if (a.selected && !b.selected)
+                    return -1;
+                if (!a.selected && b.selected)
+                    return 1;
+                if (aFirstCondition)
+                    return -1;
+                if (bFirstCondition)
+                    return 1;
+                return 0;
+            }
+        }
+    }
 }
-public enum Priority { DPS, SmallestMaxHP, LargestMaxHP, LowestCurrentHP, ShortestDistance, Healer }
+public enum Priority { ShortestDistance, SmallestMaxHP, LargestMaxHP, LowestCurrentHP }
 [CreateAssetMenu(fileName = "new Targeting Settings",menuName = "ScriptableObjects/" + "Targeting")]
 public class TargetingSO : ScriptableObject
 {
@@ -36,4 +189,9 @@ public class TargetingRule
 {
     public TargetTypes targets;
     public Priority priority;
+    public EntityType tagPriority;
+    public float range;
+    public bool affectedByaunt;
+    public bool canDetectGhosts;
+    public bool affectedBySelection;
 }
