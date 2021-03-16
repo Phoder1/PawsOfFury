@@ -19,9 +19,9 @@ MonoBehaviour:
   aoeRadius: 0
   maxHeight: 0
   chainCount: 4
-  endEffectAmountRatio: 1
+  endEffectAmountRatio: 0.5
   targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-  forceUniqueTargets: 1
+  forceUniqueTargets: 0
 --- !u!1001 &3305404106425048204
 PrefabInstance:
   m_ObjectHideFlags: 0

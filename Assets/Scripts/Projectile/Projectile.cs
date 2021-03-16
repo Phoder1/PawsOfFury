@@ -27,6 +27,7 @@ public class Projectile : MonoBehaviour
     }
     public void Init(Entity attackingEntity, Entity target, Action<Entity[], Entity> callback = null, Vector3? originPosition = null)
     {
+        transform.DOComplete();
         if (target == null)
             return;
         this.target = target;
@@ -39,7 +40,8 @@ public class Projectile : MonoBehaviour
         if (attackingEntity != target)
         {
             float moveTime = Vector3.Distance((Vector3)originPosition, target.transform.position) / speed;
-            transform.DOMove(target.transform.position, moveTime).OnComplete(ReachedTarget);
+            Vector3 targetPos = target.transform.position;
+            transform.DOMove(targetPos, moveTime).OnComplete(ReachedTarget);
         }
         else
             ReachedTarget();
@@ -92,6 +94,7 @@ public class Projectile : MonoBehaviour
     }
     protected virtual void End(Entity[] hitEntities)
     {
+        transform.DOComplete();
         callback?.Invoke(hitEntities, target);
         Destroy(gameObject);
     }

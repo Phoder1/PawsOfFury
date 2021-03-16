@@ -58,5 +58,5 @@ public class EntityHit
         this.entity = entity;
         this.distance = distance;
     }
-    public static implicit operator Entity(EntityHit x) => x.entity;
+    public static implicit operator Entity(EntityHit x) => x?.entity;
 }

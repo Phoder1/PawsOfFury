@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,28 +28,30 @@ public class ChainingProjectile : Projectile
     }
     protected override void End(Entity[] hitEntities)
     {
+        transform.DOComplete();
         if (forceUniqueTargets)
             hitHistory.Add(target);
-        callback?.Invoke(hitEntities, target);
         if (currentBounce >= chainCount)
-            ChainEnd();
+            ChainEnd(hitEntities);
         else
         {
             for (int i = 0; i < effects.Length; i++)
-                effects[i].amount = Mathf.Lerp(originalEffects[i].amount, endEffectAmounts[i], currentBounce / (chainCount - 1));
+                effects[i].amount = Mathf.Lerp(originalEffects[i].amount, endEffectAmounts[i], ((float)currentBounce+1) / (float)chainCount);
             Targets.EntityHitCondition newTargetCondition = (x) => x != target;
             if (forceUniqueTargets)
                 newTargetCondition = (x) => !hitHistory.Contains(x) && x != attackingEntity;
-            Entity newTarget = Targets.GetEntityHit(target.gameObject, targeting, newTargetCondition, attackingEntity);
+            Entity newTarget = Targets.GetEntityHit(transform.position, targeting, newTargetCondition, attackingEntity);
             currentBounce++;
             if (newTarget != null)
-                Init(attackingEntity, newTarget, callback, target.transform.position);
+                Init(attackingEntity, newTarget, callback, transform.position);
             else
-                ChainEnd();
+                ChainEnd(hitEntities);
         }
     }
-    void ChainEnd()
+    void ChainEnd(Entity[] hitEntities)
     {
+        //callback?.Invoke(hitEntities, target);
+        transform.DOComplete();
         Destroy(gameObject);
     }
 }

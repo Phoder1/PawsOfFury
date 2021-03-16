@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections;
+﻿using Assets.Stats;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Stats;
 [Flags] public enum TargetTypes { Enemy = 1, Self = 2, Unit = 4 }
 public static class Targets
 {
-    public static LayerMask GetLayerMask(TargetTypes targetTypes) {
+    public static LayerMask GetLayerMask(TargetTypes targetTypes)
+    {
         LayerMask layerMask = 0;
-        if(targetTypes.HasFlag(TargetTypes.Enemy))
+        if (targetTypes.HasFlag(TargetTypes.Enemy))
         {
             if (layerMask == 0)
                 layerMask = 11;
             else
                 layerMask |= 11;
         }
-        if(targetTypes.HasFlag(TargetTypes.Self) || targetTypes.HasFlag(TargetTypes.Unit))
+        if (targetTypes.HasFlag(TargetTypes.Self) || targetTypes.HasFlag(TargetTypes.Unit))
         {
             if (layerMask == 0)
                 layerMask = 8;
@@ -33,22 +33,22 @@ public static class Targets
     /// <param name="entityHitCondition"></param>
     /// <returns></returns>
     public static EntityHit GetEntityHit(Entity entity, TargetingSO targeting, EntityHitCondition entityHitCondition = null)
-        => GetEntityHit(entity.gameObject, targeting, entityHitCondition, entity);
-    public static EntityHit GetEntityHit(GameObject originObject, TargetingSO targeting, EntityHitCondition entityHitCondition = null, Entity attackingEntity = null)
+        => GetEntityHit(entity.gameObject.transform.position, targeting, entityHitCondition, entity);
+    public static EntityHit GetEntityHit(Vector3 originPosition, TargetingSO targeting, EntityHitCondition entityHitCondition = null, Entity attackingEntity = null)
     {
         LevelManager levelManager = LevelManager._instance;
         foreach (TargetingRule rule in targeting.RulesOrder)
         {
             if (rule.targets.HasFlag(TargetTypes.Enemy))
             {
-                List<EntityHit> enemies = new List<Entity>(levelManager.Enemies).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, originObject.transform.position)));
+                List<EntityHit> enemies = new List<Entity>(levelManager.Enemies).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, originPosition)));
                 if (attackingEntity != null && attackingEntity is Enemy enemy && rule.targets.HasFlag(TargetTypes.Self))
                     enemies.Add(new EntityHit(enemy, 0));
                 return RuleOutEntities(enemies, rule);
             }
             else if (rule.targets.HasFlag(TargetTypes.Unit))
             {
-                List<EntityHit> units = new List<Entity>(levelManager.Units).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, originObject.transform.position)));
+                List<EntityHit> units = new List<Entity>(levelManager.Units).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, originPosition)));
                 if (attackingEntity != null && attackingEntity is Unit unit && rule.targets.HasFlag(TargetTypes.Self))
                     units.Add(new EntityHit(unit, 0));
                 return RuleOutEntities(units, rule);
@@ -66,7 +66,7 @@ public static class Targets
                 if (entities[i] == null
                     || entities[i].entity == null
                     || entities[i].distance > rule.range
-                    || entities[i].entity.Type.HasFlag(EntityType.Ghost)
+                    || (!rule.canDetectGhosts && entities[i].entity.Type.HasFlag(EntityType.Ghost))
                     || (entityHitCondition != null && !entityHitCondition(entities[i])))
                 {
                     entities.RemoveAt(i);
@@ -77,7 +77,7 @@ public static class Targets
                 return null;
             if (entities.Count == 1)
                 return entities[0];
-            foreach(EntityType entityType in Enum.GetValues(typeof(EntityType)))
+            foreach (EntityType entityType in Enum.GetValues(typeof(EntityType)))
                 if (rule.tagPriority.HasFlag(entityType))
                 {
                     entities = PickEntity((a, b) =>
@@ -133,6 +133,9 @@ public static class Targets
                         a.distance < b.distance,
                         a.distance > b.distance));
                     break;
+                case Priority.Random:
+                    entities = new List<EntityHit>() { entities[UnityEngine.Random.Range(0, entities.Count)] };
+                    break;
             }
             if (entities.Count > 0)
                 return entities[0];
@@ -157,17 +160,20 @@ public static class Targets
             }
             int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
             {
-                if (!GlobalEffects.disableTaunts)
+                if (!GlobalEffects.disableTaunts && rule.affectedByTaunt)
                 {
                     if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
                         return -1;
                     if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
                         return 1;
                 }
-                if (a.selected && !b.selected)
-                    return -1;
-                if (!a.selected && b.selected)
-                    return 1;
+                if (rule.affectedBySelection)
+                {
+                    if (a.selected && !b.selected)
+                        return -1;
+                    if (!a.selected && b.selected)
+                        return 1;
+                }
                 if (aFirstCondition)
                     return -1;
                 if (bFirstCondition)
@@ -177,8 +183,8 @@ public static class Targets
         }
     }
 }
-public enum Priority { ShortestDistance, SmallestMaxHP, LargestMaxHP, LowestCurrentHP }
-[CreateAssetMenu(fileName = "new Targeting Settings",menuName = "ScriptableObjects/" + "Targeting")]
+public enum Priority { ShortestDistance, SmallestMaxHP, LargestMaxHP, LowestCurrentHP, Random }
+[CreateAssetMenu(fileName = "new Targeting Settings", menuName = "ScriptableObjects/" + "Targeting")]
 public class TargetingSO : ScriptableObject
 {
     [SerializeField] TargetingRule[] rulesOrder;
@@ -191,7 +197,7 @@ public class TargetingRule
     public Priority priority;
     public EntityType tagPriority;
     public float range;
-    public bool affectedByaunt;
+    public bool affectedByTaunt;
     public bool canDetectGhosts;
     public bool affectedBySelection;
 }
