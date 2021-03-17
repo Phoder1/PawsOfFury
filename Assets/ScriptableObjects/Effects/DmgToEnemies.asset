@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ad718bb62682d47b92ac8fe369dc62, type: 3}
   m_Name: DmgToEnemies
   m_EditorClassIdentifier: 
-  targets: 3
+  targets: 1
   affectedStat: 0
   effectType: 0
   inPercentage: 0

@@ -12,12 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ae31b61039cd841b993432ad1141f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityName: Lich
+  type: 4
+  UiObject: {fileID: 7311778787983579454, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+    type: 3}
+  healthbarHeight: 20
+  defualtStats:
+    HP: 400
+    MaxHP: 400
+    WalkSpeed: 100
+    MaxAttackSpeedMultiplier: 2
   projectile:
+    gameobject: {fileID: 3871618179018856722, guid: 3b7feb0ac33226c4290f892c16b4e244,
+      type: 3}
+    detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
+    targeting: {fileID: 11400000, guid: bf7f4f2138993cd49bc4677573358a83, type: 2}
+    attackSpeed: 1
+    locking: 0
+  aura:
+    gameobject: {fileID: 0}
+    rate: 0
+  lastAttackTime: 0
+  selected: 0
+  lichAttackProjectile:
     gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
       type: 3}
     detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
     targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    attackSpeed: 0
+    attackSpeed: 1
     locking: 0
 --- !u!114 &1298232689
 MonoBehaviour:
@@ -55,39 +77,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1837227820297537156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428258682919953849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 226361319ea58724f880f820414581e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityName: Lich
-  type: 4
-  UiObject: {fileID: 7311778787983579454, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
-    type: 3}
-  defualtStats:
-    HP: 400
-    MaxHP: 400
-    WalkSpeed: 100
-    MaxAttackSpeedMultiplier: 1
-  projectile:
-    gameobject: {fileID: 3871618179018856722, guid: 3b7feb0ac33226c4290f892c16b4e244,
-      type: 3}
-    detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    targeting: {fileID: 11400000, guid: bf7f4f2138993cd49bc4677573358a83, type: 2}
-    attackSpeed: 1
-    locking: 0
-  aura:
-    gameobject: {fileID: 0}
-    rate: 0
-  healthbarHeight: 20
-  selected: 0
 --- !u!1001 &844378790540320807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,6 +189,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.5377358
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -571414501
       objectReference: {fileID: 0}
     - target: {fileID: 1758066030511216302, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}

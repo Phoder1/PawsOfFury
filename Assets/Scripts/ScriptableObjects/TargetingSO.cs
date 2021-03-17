@@ -25,16 +25,16 @@ public static class Targets
         return layerMask;
     }
     public delegate bool EntityHitCondition(Entity entity);
-    /// <summary>
-    /// Returns hit depending on the targeting rule
-    /// </summary>
-    /// <param name="range"></param>
-    /// <param name="targeting"></param>
-    /// <param name="entityHitCondition"></param>
-    /// <returns></returns>
     public static EntityHit GetEntityHit(Entity entity, TargetingSO targeting, EntityHitCondition entityHitCondition = null)
         => GetEntityHit(entity.gameObject.transform.position, targeting, entityHitCondition, entity);
     public static EntityHit GetEntityHit(Vector3 originPosition, TargetingSO targeting, EntityHitCondition entityHitCondition = null, Entity attackingEntity = null)
+    {
+        List<EntityHit> possibleHits = GetEntityHits(originPosition, targeting, entityHitCondition, attackingEntity);
+        return possibleHits.Count == 0 ? null : possibleHits[0]; 
+    }
+    public static List<EntityHit> GetEntityHits(Entity entity, TargetingSO targeting, EntityHitCondition entityHitCondition = null)
+        => GetEntityHits(entity.gameObject.transform.position, targeting, entityHitCondition, entity);
+    public static List<EntityHit> GetEntityHits(Vector3 originPosition, TargetingSO targeting, EntityHitCondition entityHitCondition = null, Entity attackingEntity = null)
     {
         LevelManager levelManager = LevelManager._instance;
         foreach (TargetingRule rule in targeting.RulesOrder)
@@ -54,13 +54,13 @@ public static class Targets
                 return RuleOutEntities(units, rule);
             }
             else if (attackingEntity != null && rule.targets.HasFlag(TargetTypes.Self))
-                return new EntityHit(attackingEntity, 0);
+                return new List<EntityHit>() { new EntityHit(attackingEntity, 0) };
         }
         return null;
-        EntityHit RuleOutEntities(List<EntityHit> entities, TargetingRule rule)
+        List<EntityHit> RuleOutEntities(List<EntityHit> entities, TargetingRule rule)
         {
             if (entities.Count == 0)
-                return null;
+                return entities;
             for (int i = 0; i < entities.Count; i++)
             {
                 if (entities[i] == null
@@ -73,10 +73,8 @@ public static class Targets
                     i--;
                 }
             }
-            if (entities.Count == 0)
-                return null;
-            if (entities.Count == 1)
-                return entities[0];
+            if (entities.Count == 0 || entities.Count == 1)
+                return entities;
             foreach (EntityType entityType in Enum.GetValues(typeof(EntityType)))
                 if (rule.tagPriority.HasFlag(entityType))
                 {
@@ -134,40 +132,39 @@ public static class Targets
                         a.distance > b.distance));
                     break;
                 case Priority.Random:
-                    entities = new List<EntityHit>() { entities[UnityEngine.Random.Range(0, entities.Count)] };
+                    Shuffle.ListShuffle(ref entities);
                     break;
             }
-            if (entities.Count > 0)
-                return entities[0];
-            return null;
+            return entities;
             List<EntityHit> PickEntity(Comparison<EntityHit> compare)
             {
-                for (int i = 0; i < entities.Count - 1; i++)
-                {
-                    int compareValue = compare(entities[i], entities[i + 1]);
-                    if (compareValue == 1)
-                    {
-                        entities.RemoveAt(i);
-                        i--;
-                    }
-                    else if (compareValue == -1)
-                    {
-                        entities.RemoveAt(i + 1);
-                        i--;
-                    }
-                }
+                entities.Sort(compare);
+                //for (int i = 0; i < entities.Count - 1; i++)
+                //{
+                //    int compareValue = compare(entities[i], entities[i + 1]);
+                //    if (compareValue == 1)
+                //    {
+                //        entities.RemoveAt(i);
+                //        i--;
+                //    }
+                //    else if (compareValue == -1)
+                //    {
+                //        entities.RemoveAt(i + 1);
+                //        i--;
+                //    }
+                //}
                 return entities;
             }
             int Compare(Entity a, Entity b, bool aFirstCondition, bool bFirstCondition)
             {
-                if (!GlobalEffects.disableTaunts && rule.affectedByTaunt)
+                if (!GlobalEffects.disableTaunts && !rule.ignoresTaunt)
                 {
                     if (a.Type.HasFlag(EntityType.Tank) && !b.Type.HasFlag(EntityType.Tank))
                         return -1;
                     if (!a.Type.HasFlag(EntityType.Tank) && b.Type.HasFlag(EntityType.Tank))
                         return 1;
                 }
-                if (rule.affectedBySelection)
+                if (!rule.ignoresSelected)
                 {
                     if (a.selected && !b.selected)
                         return -1;
@@ -197,7 +194,7 @@ public class TargetingRule
     public Priority priority;
     public EntityType tagPriority;
     public float range;
-    public bool affectedByTaunt;
+    public bool ignoresTaunt;
     public bool canDetectGhosts;
-    public bool affectedBySelection;
+    public bool ignoresSelected;
 }

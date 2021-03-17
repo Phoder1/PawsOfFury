@@ -15,9 +15,8 @@ MonoBehaviour:
   speed: 9
   effectsData:
   - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}
-  AOE: 1
+  AOE: 0
   aoeRadius: 2
-  chainCount: 0
   maxHeight: 0
 --- !u!1001 &3305404106425048204
 PrefabInstance:

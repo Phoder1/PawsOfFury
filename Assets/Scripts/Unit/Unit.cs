@@ -8,6 +8,8 @@ using System.Collections.Generic;
 [RequireComponent(typeof(NavScript))]
 public class Unit : Entity
 {
+    protected override EntityState DefaultState() => new WalkState(this);
+    protected virtual EntityState AttackingState => new AttackState(this);
     protected NavScript navScript;
 
     protected override void Start()
@@ -22,9 +24,8 @@ public class Unit : Entity
         navScript.SetDestination(detectedEntity.transform.position);
         navScript.StartMove();
     }
-    protected override EntityState DefaultState() => new WalkState(this);
 
-    protected override void DetectedInRange(EntityHit detectedEntity) => navScript.StopMove();
+    public override void DetectedInRange(EntityHit detectedEntity) => navScript.StopMove();
 
     class UnitState : EntityState
     {
@@ -43,8 +44,9 @@ public class Unit : Entity
         {
             detectedEntity = Targets.GetEntityHit(entity, entity.projectile.detection);
             if (detectedEntity != null && detectedEntity.entity != null)
-                Unit.stateMachine.State = new AttackState(entity);
+                Unit.stateMachine.State = Unit.AttackingState;
         }
+
         protected override void OnDisable() => Unit.navScript.StopMove();
     }
 }

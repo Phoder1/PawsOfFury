@@ -61,7 +61,7 @@ MonoBehaviour:
     gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
       type: 3}
     detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    targeting: {fileID: 11400000, guid: 610fd59a29249254cb43dc82e79cc80d, type: 2}
+    targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
     attackSpeed: 1
     locking: 0
   aura:
@@ -69,6 +69,8 @@ MonoBehaviour:
       type: 3}
     rate: 0.33
   healthbarHeight: 20
+  lastAttackTime: 0
+  selected: 0
 --- !u!1001 &844378790540320807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +162,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -571414501
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96c9125b9f4f2584b9e8ef447f1767d1, type: 3}

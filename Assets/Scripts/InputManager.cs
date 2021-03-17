@@ -19,7 +19,9 @@ public class InputManager : MonoSingleton<InputManager>
             Ray mouseRay = mainCam.ScreenPointToRay(Input.mousePosition);
         }
     }
-    public Vector3 RayToPlanePosition(Ray ray)
+
+    public Vector3 RayToPlanePosition(Ray ray) => RayToPlanePosition(ray, dragHeight);
+    public Vector3 RayToPlanePosition(Ray ray, float height)
     {
 
         float X = ray.origin.x + ray.direction.x * (dragHeight - ray.origin.y) / ray.direction.y;

@@ -43,6 +43,15 @@ TagManager:
   - name: Background
     uniqueID: 2475415969
     locked: 0
+  - name: Path
+    uniqueID: 2862675137
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Selection
+    uniqueID: 1008167017
+    locked: 0
+  - name: Entity
+    uniqueID: 3723552795
     locked: 0

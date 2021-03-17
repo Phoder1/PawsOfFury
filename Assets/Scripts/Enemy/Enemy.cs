@@ -8,8 +8,8 @@ public class Enemy : Entity
     protected override EntityState DefaultState() => new SearchState(this);
     class EnemyState : EntityState
     {
-        public EnemyState(Enemy enemy) : base(enemy) { }
         protected Enemy Enemy => (Enemy)entity;
+        public EnemyState(Enemy enemy) : base(enemy) { }
     }
     class SearchState : EnemyState
     {

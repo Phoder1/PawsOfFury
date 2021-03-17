@@ -1,14 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 namespace Assets.StateMachine
 {
-    public class StateMachine
+    public class StateMachine<T> where T : State
     {
-        State state;
-        public StateMachine(State startState)
+        T state;
+        public StateMachine(T startState = null)
         {
             State = startState;
         }
-        public State State
+        public T State
         {
             get => state;
             set
@@ -25,17 +26,14 @@ namespace Assets.StateMachine
                     state.Enable();
             }
         }
-        public void Update()
-        {
-            if (State != null)
-                State.Update();
-        }
+        public void Update() => State?.Update();
         public void Reset()
         {
             if (State != null)
                 State.Reset();
         }
         ~StateMachine() => State = null;
+        public static implicit operator T(StateMachine<T> x) => x.State;
     }
     public abstract class State
     {

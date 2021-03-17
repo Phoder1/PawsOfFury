@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6b9f93a51dc164c9196ebdc39cc1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  entityName: 
   effectsData:
   - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}
-  AOE: 0
   aoeRadius: 0
+  speed: 12
+  AOE: 0
   maxHeight: 0
   chainCount: 4
   endEffectAmountRatio: 0.5
-  targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-  forceUniqueTargets: 0
+  targeting: {fileID: 11400000, guid: 03601613dc57c78469779e3709961b41, type: 2}
+  forceUniqueTargets: 1
 --- !u!1001 &3305404106425048204
 PrefabInstance:
   m_ObjectHideFlags: 0

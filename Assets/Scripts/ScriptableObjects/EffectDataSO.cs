@@ -64,15 +64,16 @@ public class EffectDataSO : ScriptableObject
     public float Amount => amount;
     public float Duration => duration;
     public float TickTime => tickTime;
-    public EffectData EffectData => new EffectData(
-        Targets,
-        AffectedStat,
-        EffectType,
-        InPercentage,
-        IsRelativeToMax,
-        Amount,
-        Duration,
-        TickTime);
+    public static implicit operator EffectData(EffectDataSO x) 
+        => new EffectData(
+        x.Targets,
+        x.AffectedStat,
+        x.EffectType,
+        x.InPercentage,
+        x.IsRelativeToMax,
+        x.Amount,
+        x.Duration,
+        x.TickTime);
 }
 public class EffectData
 {
