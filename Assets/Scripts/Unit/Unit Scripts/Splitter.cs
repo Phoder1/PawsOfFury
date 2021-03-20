@@ -1,5 +1,4 @@
-﻿using Assets.StateMachine;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 public class Splitter : Unit
@@ -10,7 +9,8 @@ public class Splitter : Unit
     class SplitAttackState : AttackState
     {
         Splitter Splitter => (Splitter)entity;
-        public SplitAttackState(Splitter splitter) : base(splitter) {
+        public SplitAttackState(Splitter splitter) : base(splitter)
+        {
         }
         protected override void Attack()
         {

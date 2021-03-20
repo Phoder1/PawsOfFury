@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
     [SerializeField] Transform levelEnd;
+    public Tilemap tilemap;
+
 
     List<Unit> units;
     List<Enemy> enemies;

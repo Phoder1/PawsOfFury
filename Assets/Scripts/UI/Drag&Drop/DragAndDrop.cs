@@ -3,21 +3,23 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Tilemaps;
 
-public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
+public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 {
     private enum PressState { DefaultState, Pressed, Dragging }
     private PressState pressState;
     [SerializeField] TextMeshProUGUI text;
 
     StateMachine<ButtonState> stateMachine;
-    protected Camera mainCam;
-    protected LevelManager levelManager;
-    protected InputManager inputManager;
+    protected static Camera mainCam;
+    protected static LevelManager levelManager;
+    protected static InputManager inputManager;
     protected abstract ButtonState GetDefaultState();
     protected abstract ButtonState GetPressedState();
     protected abstract ButtonState GetDraggedState();
     protected abstract string ButtonText();
+    protected static bool positionValid;
     protected virtual void Start()
     {
         mainCam = Camera.main;
@@ -51,6 +53,22 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
         stateMachine.State = GetDefaultState();
     }
     protected abstract void Drop();
+    protected TileBase GetTileAtPosition(Vector3 worldPosition)
+    {
+        worldPosition.y = 0;
+        return levelManager.tilemap.GetTile(levelManager.tilemap.WorldToCell(worldPosition));
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        positionValid = false;
+        if (pressState == PressState.Dragging)
+        {
+            pressState = PressState.Pressed;
+            stateMachine.State = GetPressedState();
+        }
+    }
+
     protected abstract class ButtonState : State
     {
 

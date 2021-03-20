@@ -22,7 +22,6 @@ public class DragMinion : DragAndDrop
     class ButtonState_Minion : ButtonState
     {
         protected new DragMinion button => (DragMinion)base.button;
-        protected bool positionValid;
         public ButtonState_Minion(DragAndDrop button) : base(button) { }
         protected override void OnEnable()
         {
@@ -49,7 +48,7 @@ public class DragMinion : DragAndDrop
         }
         protected override void OnUpdate()
         {
-            button.draggedObject.transform.position = button.inputManager.RayToPlanePosition(button.mainCam.ScreenPointToRay(Input.mousePosition));
+            button.draggedObject.transform.position = inputManager.RayToPlanePosition(mainCam.ScreenPointToRay(Input.mousePosition));
             if (Physics.Raycast(button.draggedObject.transform.position, Vector3.down, out RaycastHit floorHit, button.draggedObject.transform.position.y + 0.5f, button.pathLayer))
             {
                 button.SpawnPoint.transform.position = new Vector3(button.draggedObject.transform.position.x, floorHit.point.y + 0.5f, button.draggedObject.transform.position.z);

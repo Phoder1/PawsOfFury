@@ -30,7 +30,6 @@ public class DragSpell : DragAndDrop
     class ButtonState_Spell : ButtonState
     {
         protected new DragSpell button => (DragSpell)base.button;
-        protected bool positionValid;
         public ButtonState_Spell(DragAndDrop button) : base(button) { }
         protected override void OnEnable()
         {
@@ -54,8 +53,8 @@ public class DragSpell : DragAndDrop
         }
         protected override void OnUpdate()
         {
-            Ray mouseRay = button.mainCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(mouseRay, out RaycastHit floorHit, button.mainCam.farClipPlane, button.pathLayer))
+            Ray mouseRay = mainCam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(mouseRay, out RaycastHit floorHit, mainCam.farClipPlane, button.pathLayer))
             {
                 button.SpawnPoint.transform.position = floorHit.point + Vector3.up * 0.4f;
                 button.spawnPointSprite.color = Color.green;
@@ -63,7 +62,7 @@ public class DragSpell : DragAndDrop
             }
             else
             {
-                button.SpawnPoint.transform.position = button.inputManager.RayToPlanePosition(mouseRay, button.SpawnPoint.transform.position.y);
+                button.SpawnPoint.transform.position = inputManager.RayToPlanePosition(mouseRay, button.SpawnPoint.transform.position.y);
                 button.spawnPointSprite.color = Color.red;
                 positionValid = false;
             }
