@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DragMinion : DragAndDrop
 {
@@ -12,7 +11,11 @@ public class DragMinion : DragAndDrop
     protected override ButtonState GetDraggedState() => new DragState_Minion(this);
     protected override ButtonState GetPressedState() => null;
     protected override string ButtonText() => minion.GetComponent<Unit>().entityName;
-    protected override void Drop() => Instantiate(minion, draggedObject.transform.position - Vector3.up * InputManager._instance.dragHeight, Quaternion.identity);
+    protected override void Drop()
+    {
+        if (positionValid)
+            Instantiate(minion, draggedObject.transform.position - Vector3.up * InputManager._instance.dragHeight, Quaternion.identity);
+    }
     protected override void Start()
     {
         spawnPointSprite = SpawnPoint.GetComponent<SpriteRenderer>();

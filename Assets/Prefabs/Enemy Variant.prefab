@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &5319788352700797056
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628989300967414963}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0a6f62aa898f34488afed4393efa116, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &970597044813884630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16,6 +35,7 @@ MonoBehaviour:
   type: 0
   UiObject: {fileID: 7311778787983579454, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
     type: 3}
+  healthbarHeight: 20
   defualtStats:
     HP: 100
     MaxHP: 100
@@ -31,7 +51,7 @@ MonoBehaviour:
   aura:
     gameobject: {fileID: 0}
     rate: 0
-  healthbarHeight: 20
+  lastAttackTime: 0
   selected: 0
 --- !u!1001 &922499304326930715
 PrefabInstance:
@@ -58,17 +78,17 @@ PrefabInstance:
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}

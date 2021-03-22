@@ -31,6 +31,7 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
     private void Update() => stateMachine.Update();
     public void OnPointerDown(PointerEventData eventData)
     {
+        positionValid = false;
         if (pressState == PressState.DefaultState)
         {
             pressState = PressState.Pressed;

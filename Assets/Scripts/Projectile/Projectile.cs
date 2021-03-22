@@ -13,6 +13,8 @@ public class Projectile : Spell
     [SerializeField] float maxHeight;
 
     protected Entity target;
+    public event Action OnProjectileAnimation;
+    public void ProjectileAnimRecall() => OnProjectileAnimation?.Invoke();
     public void Init(Entity attackingEntity, Entity target, Action<Entity[], Entity> callback = null, Vector3? originPosition = null)
     {
         transform.DOComplete();

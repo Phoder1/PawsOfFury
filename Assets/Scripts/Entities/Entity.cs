@@ -39,9 +39,12 @@ public abstract class Entity : MonoBehaviour
 
     public EntityType Type => type;
 
-
     protected abstract EntityState DefaultState();
     public event Action OnDestroyEvent;
+
+    public event Action OnAttackAnimation;
+    public void AttackAnimRecall() => OnAttackAnimation?.Invoke();
+
     [HideInInspector]
     public bool selected;
     public bool Selected
@@ -84,6 +87,7 @@ public abstract class Entity : MonoBehaviour
     {
         stateMachine.Update();
         UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position) + Vector3.up * healthbarHeight;
+        
     }
     protected virtual void OnDestroy()
     {

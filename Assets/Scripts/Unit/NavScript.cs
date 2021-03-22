@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class NavScript : MonoBehaviour
 {
-    [SerializeField] NavMeshAgent agent;
+    public NavMeshAgent agent;
     [SerializeField] float range;
     Unit unit;
     // Start is called before the first frame update

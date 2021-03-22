@@ -45,6 +45,7 @@ public class Unit : Entity
             detectedEntity = Targets.GetEntityHit(entity, entity.projectile.detection);
             if (detectedEntity != null && detectedEntity.entity != null)
                 Unit.stateMachine.State = Unit.AttackingState;
+            //Debug.Log(Unit.navScript.agent.velocity.x < 0 ? "Left" : "Right");
         }
 
         protected override void OnDisable() => Unit.navScript.StopMove();
