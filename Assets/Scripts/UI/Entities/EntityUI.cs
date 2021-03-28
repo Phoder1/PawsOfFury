@@ -28,10 +28,7 @@ public class EntityUI : MonoBehaviour
             return;
         target.enabled = state;
         if (state)
-        {
-            Debug.Log("WTF");
             target.DOFade(0f, 1f).From(1).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
-        }
         else
             target.DOComplete();
     }
