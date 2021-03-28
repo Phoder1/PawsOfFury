@@ -19,7 +19,10 @@ public class Projectile : Spell
     {
         transform.DOComplete();
         if (target == null)
+        {
+            Destroy(gameObject);
             return;
+        }
         this.target = target;
         this.attackingEntity = attackingEntity;
         if (callback != null)
@@ -38,17 +41,20 @@ public class Projectile : Spell
     }
     void ReachedTarget()
     {
-        //Todo: Animation and sound
         List<Entity> hitEntities = new List<Entity>();
-        if (target != null && !AOE)
+        if (target == null)
+        {
+            End(hitEntities.ToArray());
+            return;
+        }
+        //Todo: Animation and sound
+        if (!AOE)
         {
             Array.ForEach(effects, (x) => new EffectController(target.stats, x));
             hitEntities.Add(target);
         }
-        else if (AOE)
-        {
+        else
             hitEntities = ApplyEffect();
-        }
         End(hitEntities.ToArray());
     }
 }

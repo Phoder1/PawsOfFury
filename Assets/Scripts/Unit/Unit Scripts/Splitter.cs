@@ -16,7 +16,10 @@ public class Splitter : Unit
         {
             DetectedInRange(detectedEntity);
             entity.lastAttackTime = Time.time;
-            entity.transform.DOLocalRotate(entity.transform.rotation.eulerAngles + Vector3.up * 360, attackDelay / 2, RotateMode.FastBeyond360);
+            Splitter.animator.SetTrigger("AttackTrigger");
+        }
+        public override void AnimationRecall()
+        {
             for (int i = 0; i < Mathf.Min(possibleTargets.Count, Splitter.maxAttackCount); i++)
             {
                 GameObject projectile = Instantiate(entity.projectile.gameobject, entity.transform.position, Quaternion.identity);

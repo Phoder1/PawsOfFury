@@ -45,5 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityName: Test spell
   effectsData:
-  - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}
+  - {fileID: 11400000, guid: 4543bbeadd718244cb638378a63053cb, type: 2}
   aoeRadius: 2

@@ -5,6 +5,9 @@ using UnityEngine.Tilemaps;
 public class LevelManager : MonoSingleton<LevelManager>
 {
     [SerializeField] Transform levelEnd;
+    [Rename("entity UIs obj")]
+    [SerializeField] Transform entityUIsObj;
+    public Transform EntityUIsObj => entityUIsObj;
     public Tilemap tilemap;
 
 
@@ -14,6 +17,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     public Unit[] Units => units.ToArray();
     public Enemy[] Enemies => enemies.ToArray();
+
 
     public void AddToList<T>(T entity) where T : Entity
     {
@@ -43,6 +47,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     public override void Awake()
     {
         base.Awake();
+        BlackBoard.levelManager = _instance;
         units = new List<Unit>();
         enemies = new List<Enemy>();
     }

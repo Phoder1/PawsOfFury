@@ -40,7 +40,6 @@ namespace Assets.Stats
 
         public Stat(MonoBehaviour entity, StatType statType, float getSetValue, Stat maxStat = null, List<Reaction> reactions = null)
         {
-            coroutineHandler = CoroutineHandler._instance;
             Init();
             this.entity = entity;
             this.statType = statType;
@@ -67,10 +66,10 @@ namespace Assets.Stats
     }
     public class HpStat : Stat
     {
-        HealthBar healthBar;
-        public HpStat(MonoBehaviour unit, StatType statType, float getSetValue, HealthBar healthBar, Stat maxStat = null, List<Reaction> reactions = null) : base(unit, statType, getSetValue, maxStat, reactions)
+        EntityUI entityUI;
+        public HpStat(MonoBehaviour unit, StatType statType, float getSetValue, EntityUI entityUI, Stat maxStat = null, List<Reaction> reactions = null) : base(unit, statType, getSetValue, maxStat, reactions)
         {
-            this.healthBar = healthBar;
+            this.entityUI = entityUI;
             UpdateHealthBar();
         }
         public override float GetSetValue
@@ -80,11 +79,11 @@ namespace Assets.Stats
             {
                 float currValue = GetSetValue;
                 base.GetSetValue = value;
-                if (GetSetValue != currValue && healthBar != null)
+                if (GetSetValue != currValue && entityUI != null)
                     UpdateHealthBar();
             }
         }
-        void UpdateHealthBar() => healthBar.SetValue(GetSetValue / maxStat.GetSetValue);
+        void UpdateHealthBar() => entityUI.SetHealthBarValue(GetSetValue / maxStat.GetSetValue);
     }
     public delegate bool ReactionCondition(Stat stat);
     public class Reaction
@@ -106,6 +105,8 @@ namespace Assets.Stats
         }
         public bool CheckCondition(Stat stat) => reactionCondition(stat);
         public static ReactionCondition DeathCondition => (x) => x.GetSetValue <= 0;
+        public static ReactionCondition AlwaysTrue => (x) => true;
+        public static implicit operator List<Reaction>(Reaction x) => new List<Reaction>() { x };
     }
     [Serializable]
     public struct DefualtStats

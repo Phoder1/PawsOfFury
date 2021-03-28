@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static BlackBoard;
 [Flags] public enum TargetTypes { Enemy = 1, Self = 2, Unit = 4 }
 public static class Targets
 {
@@ -36,7 +37,6 @@ public static class Targets
         => GetEntityHits(entity.gameObject.transform.position, targeting, entityHitCondition, entity);
     public static List<EntityHit> GetEntityHits(Vector3 originPosition, TargetingSO targeting, EntityHitCondition entityHitCondition = null, Entity attackingEntity = null)
     {
-        LevelManager levelManager = LevelManager._instance;
         foreach (TargetingRule rule in targeting.RulesOrder)
         {
             if (rule.targets.HasFlag(TargetTypes.Enemy))
@@ -67,10 +67,12 @@ public static class Targets
                     || entities[i].entity == null
                     || entities[i].distance > rule.range
                     || (!rule.canDetectGhosts && entities[i].entity.Type.HasFlag(EntityType.Ghost))
-                    || (entityHitCondition != null && !entityHitCondition(entities[i])))
+                    || (entityHitCondition != null && !entityHitCondition(entities[i]))
+                    || Physics.Raycast(originPosition, entities[i].entity.transform.position - originPosition, entities[i].distance, LayerMask.GetMask("Wall")))
                 {
                     entities.RemoveAt(i);
                     i--;
+                    continue;
                 }
             }
             if (entities.Count == 0 || entities.Count == 1)

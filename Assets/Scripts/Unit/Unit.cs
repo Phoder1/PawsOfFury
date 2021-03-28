@@ -37,7 +37,7 @@ public class Unit : Entity
         public WalkState(Unit unit) : base(unit) { }
         protected override void OnEnable()
         {
-            Unit.navScript.SetDestination(LevelManager._instance.LevelEndPos);
+            Unit.navScript.SetDestination(BlackBoard.levelManager.LevelEndPos);
             Unit.navScript.StartMove();
         }
         protected override void OnUpdate()

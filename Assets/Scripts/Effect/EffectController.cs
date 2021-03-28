@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿using Assets.Stats;
+using System.Collections;
 using UnityEngine;
-using Assets.Stats;
+using static BlackBoard;
 
 
 public class EffectController
@@ -8,7 +9,6 @@ public class EffectController
     private readonly EffectData effectData;
     private readonly EntityStats stats;
     Coroutine effectCoro;
-    private readonly CoroutineHandler effectHandler;
 
 
     private Stat GetStat
@@ -25,7 +25,6 @@ public class EffectController
     {
         this.effectData = effectData;
         this.stats = stats;
-        effectHandler = CoroutineHandler._instance;
         Begin();
     }
     private float AmountFromPercentage(float amountOfStat, float precentage, bool isRelativeToMax)
@@ -44,7 +43,7 @@ public class EffectController
                     ToggleAmountOverTime();
                     break;
                 case EffectType.OverTime:
-                    effectCoro = CoroutineHandler._instance.StartCoroutine(AddEffectOverTime());
+                    effectCoro = coroutineHandler.StartCoroutine(AddEffectOverTime());
                     break;
                 default:
                     return;
@@ -55,7 +54,7 @@ public class EffectController
     {
         if (effectCoro != null)
         {
-            effectHandler.StopCoroutine(effectCoro);
+            coroutineHandler.StopCoroutine(effectCoro);
             effectCoro = null;
         }
     }
@@ -69,14 +68,17 @@ public class EffectController
     private void ToggleAmountOverTime()
     {
         float toggleAmount = effectData.inPercentage ? AmountFromPercentage(GetStat.GetSetValue, effectData.amount, effectData.isRelativeToMax) : effectData.amount;
+        float originalValue = GetStat.GetSetValue;
         GetStat.GetSetValue += toggleAmount;
+        float toggleDelta = GetStat.GetSetValue - originalValue;
         //Disable amount
-        effectCoro = effectHandler.StartCoroutine(ResetToggleAmount(toggleAmount));
+        Debug.Log(toggleDelta);
+        if (toggleDelta != 0)
+            effectCoro = coroutineHandler.StartCoroutine(ResetToggleAmount(toggleDelta));
     }
 
     private IEnumerator ResetToggleAmount(float amount)
     {
-        Debug.Log("Toggle Coro");
         yield return new WaitForSeconds(effectData.duration);
         if (GetStat != null)
             GetStat.GetSetValue -= amount;
