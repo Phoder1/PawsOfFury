@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static BlackBoard;
 
 public class DragSpell : DragAndDrop
 {

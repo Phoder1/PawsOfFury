@@ -11,7 +11,7 @@ public class NavScript : MonoBehaviour
     {
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        SetDestination(LevelManager._instance.LevelEndPos);
+        SetDestination(BlackBoard.levelManager.LevelEndPos);
     }
     public void SetDestination(Vector3 destination)
     {

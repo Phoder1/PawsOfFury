@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static BlackBoard;
 
 public class DragMinion : DragAndDrop
 {
@@ -14,7 +15,7 @@ public class DragMinion : DragAndDrop
     protected override void Drop()
     {
         if (positionValid)
-            Instantiate(minion, draggedObject.transform.position - Vector3.up * InputManager._instance.dragHeight, Quaternion.identity);
+            Instantiate(minion, draggedObject.transform.position - Vector3.up * BlackBoard.inputManager.dragHeight, Quaternion.identity);
     }
     protected override void Start()
     {
@@ -51,7 +52,11 @@ public class DragMinion : DragAndDrop
         }
         protected override void OnUpdate()
         {
-            button.draggedObject.transform.position = inputManager.RayToPlanePosition(mainCam.ScreenPointToRay(Input.mousePosition));
+            //Todo: Touch
+            //if (Input.touchCount > 0)
+            //    pointerPosition = Input.GetTouch(0).position;
+            Vector2 pointerPosition = Input.mousePosition;
+            button.draggedObject.transform.position = inputManager.RayToPlanePosition(mainCam.ScreenPointToRay(pointerPosition));
             if (Physics.Raycast(button.draggedObject.transform.position, Vector3.down, out RaycastHit floorHit, button.draggedObject.transform.position.y + 0.5f, button.pathLayer))
             {
                 button.SpawnPoint.transform.position = new Vector3(button.draggedObject.transform.position.x, floorHit.point.y + 0.5f, button.draggedObject.transform.position.z);

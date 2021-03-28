@@ -52,6 +52,6 @@ TagManager:
   - name: Selection
     uniqueID: 1008167017
     locked: 0
-  - name: Entity
+  - name: Objects
     uniqueID: 3723552795
     locked: 0

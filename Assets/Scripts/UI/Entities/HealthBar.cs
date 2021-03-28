@@ -17,14 +17,22 @@ public class HealthBar : MonoBehaviour
 
     Image[] healthBarImages;
     [HideInInspector] public Vector3 healthbarHeight;
-    private Canvas canvas;
     Coroutine updateDamageFillCoro;
     Coroutine hideHealthBarCoro;
     bool healthBarShown = false;
-    public void Init()
+    float height = 0;
+
+    public float Height
     {
-        canvas = GameObject.FindWithTag("Canvas").GetComponent<Canvas>();
-        transform.SetParent(canvas.transform);
+        get => height;
+        set
+        {
+            height = value;
+            transform.localPosition = Vector3.up * height;
+        }
+    }
+    private void Start()
+    {
         healthBarImages = GetComponentsInChildren<Image>();
     }
     void FadeInOut(float alpha, float duration)
@@ -75,7 +83,7 @@ public class HealthBar : MonoBehaviour
             fill.DOFillAmount(value, 0.2f);
         else
             //    Destroy(gameObject);
-            fill.DOFillAmount(value, 0.2f).OnComplete(() => Destroy(gameObject));
+            fill.DOFillAmount(value, 0.2f).OnComplete(() => Destroy(transform.parent.gameObject));
         //Todo: Fadeout then destroy no damage fill
         //Todo: instant damage fill update on heal
     }

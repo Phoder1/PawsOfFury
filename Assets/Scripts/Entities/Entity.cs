@@ -2,9 +2,9 @@
 using Assets.Stats;
 using DG.Tweening;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static BlackBoard;
 
 [Flags]
 public enum EntityType
@@ -15,6 +15,7 @@ public enum EntityType
     Buffer = 8,
     Ghost = 16
 }
+[RequireComponent(typeof(Collider))]
 public abstract class Entity : MonoBehaviour
 {
     public string entityName;
@@ -29,13 +30,12 @@ public abstract class Entity : MonoBehaviour
 
 
     public EntityStats stats;
+    protected Animator animator;
     protected Camera mainCam;
-    protected HealthBar healthBar;
+    protected EntityUI ui;
     protected StateMachine<EntityState> stateMachine;
     [HideInInspector]
     public float lastAttackTime;
-
-    protected LevelManager levelManager;
 
     public EntityType Type => type;
 
@@ -43,7 +43,11 @@ public abstract class Entity : MonoBehaviour
     public event Action OnDestroyEvent;
 
     public event Action OnAttackAnimation;
-    public void AttackAnimRecall() => OnAttackAnimation?.Invoke();
+    public void AttackAnimRecall()
+    {
+        OnAttackAnimation?.Invoke();
+        stateMachine.State.AnimationRecall();
+    }
 
     [HideInInspector]
     public bool selected;
@@ -55,13 +59,14 @@ public abstract class Entity : MonoBehaviour
             if (selected != value)
             {
                 selected = value;
+                ui.Selected = value;
                 if (selected)
                 {
-                    InputManager._instance.ChangeSelection();
-                    InputManager._instance.OnChangedSelection += DisableSelection;
+                    inputManager.ResetSelection();
+                    inputManager.OnResetSelection += DisableSelection;
                 }
                 else
-                    InputManager._instance.OnChangedSelection -= DisableSelection;
+                    inputManager.OnResetSelection -= DisableSelection;
 
             }
         }
@@ -71,28 +76,34 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
+        animator = GetComponent<Animator>();
         mainCam = Camera.main;
-        levelManager = LevelManager._instance;
         lastAttackTime = -Mathf.Infinity;
         stats = new EntityStats();
-        UiObject = Instantiate(UiObject, mainCam.WorldToScreenPoint(transform.position) + Vector3.up * healthbarHeight, transform.rotation);
+        UiObject = Instantiate(UiObject, mainCam.WorldToScreenPoint(transform.position), transform.rotation, levelManager.EntityUIsObj);
         levelManager.AddToList(this);
-        healthBar = UiObject.GetComponent<HealthBar>();
-        healthBar.Init();
+        ui = UiObject.GetComponent<EntityUI>();
+        ui.HealthBarHeight = healthbarHeight;
         FillDictionary();
         stateMachine = new StateMachine<EntityState>(DefaultState());
         CastAura();
     }
+    private void OnMouseUp()
+    {
+        Selected = !Selected;
+    }
     protected virtual void Update()
     {
         stateMachine.Update();
-        UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position) + Vector3.up * healthbarHeight;
-        
+        UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position);
+
     }
     protected virtual void OnDestroy()
     {
         transform.DOComplete();
         levelManager.RemoveFromList(this);
+        if (OnDestroyEvent != null)
+            Debug.Log(OnDestroyEvent.GetInvocationList().Length);
         OnDestroyEvent?.Invoke();
         stateMachine.State = null;
     }
@@ -104,7 +115,6 @@ public abstract class Entity : MonoBehaviour
             auraObj.GetComponent<Projectile>().Init(this, this, aura.callback);
             float castDelay = 1 / aura.rate;
             Invoke(nameof(CastAura), castDelay);
-            Debug.Log("Casted aura");
         }
     }
     protected virtual void FillDictionary()
@@ -112,14 +122,11 @@ public abstract class Entity : MonoBehaviour
         Stat maxHp = new Stat(this, StatType.MaxHP, defualtStats.MaxHP);
 
         stats.Add(maxHp);
-        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, healthBar, maxHp,
-            new List<Reaction> {
-            new Reaction( Reaction.DeathCondition, (value) => { Destroy(gameObject); } )
-            }));
+        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, ui, maxHp, new Reaction(Reaction.DeathCondition, (value) => { Destroy(gameObject); })));
         stats.Add(new Stat(this, StatType.DamageMultiplier, 1));
         Stat maxAttackSpeed = new Stat(this, StatType.MaxAttackSpeedMultiplier, defualtStats.MaxAttackSpeedMultiplier);
         stats.Add(maxAttackSpeed);
-        stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed));
+        stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed, new Reaction(Reaction.AlwaysTrue, (value) => { if(animator) animator.speed = value.GetSetValue; Debug.Log(this.ToString() + " Speed: " + value.GetSetValue); })));
         stats.Add(new Stat(this, StatType.WalkSpeed, defualtStats.WalkSpeed));
         stats.Add(new Stat(this, StatType.RangeMultiplier, 1));
     }
@@ -134,6 +141,7 @@ public abstract class Entity : MonoBehaviour
         {
             this.entity = entity != null ? entity : throw new ArgumentNullException(nameof(entity));
         }
+        public virtual void AnimationRecall() { }
     }
     protected class AttackState : EntityState
     {
@@ -170,12 +178,22 @@ public abstract class Entity : MonoBehaviour
         }
         protected virtual void Attack()
         {
+            TargetEntity.entity.OnDestroyEvent += CancelAttack;
             DetectedInRange(detectedEntity);
             entity.lastAttackTime = Time.time;
-            entity.transform.DOLocalRotate(entity.transform.rotation.eulerAngles + Vector3.up * 360, attackDelay / 2, RotateMode.FastBeyond360);
-            GameObject projectile = Instantiate(entity.projectile.gameobject, entity.transform.position, Quaternion.identity);
-            Projectile projectileScript = projectile.GetComponent<Projectile>();
-            projectileScript.Init(entity, TargetEntity.entity, callback: entity.projectile.callback);
+            entity.animator.SetTrigger("AttackTrigger");
+            //entity.transform.DOLocalRotate(entity.transform.rotation.eulerAngles + Vector3.up * 360, attackDelay / 2, RotateMode.FastBeyond360);
+
+        }
+        public override void AnimationRecall()
+        {
+            if (TargetEntity != null && TargetEntity.entity != null)
+            {
+                TargetEntity.entity.OnDestroyEvent -= CancelAttack;
+                GameObject projectile = Instantiate(entity.projectile.gameobject, entity.transform.position, Quaternion.identity);
+                Projectile projectileScript = projectile.GetComponent<Projectile>();
+                projectileScript.Init(entity, TargetEntity.entity, callback: entity.projectile.callback);
+            }
         }
         protected override void OnDisable() => Stop();
         void Stop()
@@ -186,7 +204,16 @@ public abstract class Entity : MonoBehaviour
                 attackCoro = null;
             }
         }
+        void CancelAttack()
+        {
+            if (entity == null)
+                return;
+            entity.animator.SetTrigger("Reset");
+            entity.lastAttackTime = 0;
+        }
+
     }
+
 }
 [Serializable]
 public class ProjectileData

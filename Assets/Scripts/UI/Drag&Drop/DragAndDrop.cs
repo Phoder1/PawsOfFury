@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
+using static BlackBoard;
 
 public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 {
@@ -13,8 +14,6 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
 
     StateMachine<ButtonState> stateMachine;
     protected static Camera mainCam;
-    protected static LevelManager levelManager;
-    protected static InputManager inputManager;
     protected abstract ButtonState GetDefaultState();
     protected abstract ButtonState GetPressedState();
     protected abstract ButtonState GetDraggedState();
@@ -23,8 +22,6 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
     protected virtual void Start()
     {
         mainCam = Camera.main;
-        levelManager = LevelManager._instance;
-        inputManager = InputManager._instance;
         text.text = ButtonText();
         stateMachine = new StateMachine<ButtonState>(GetDefaultState());
     }

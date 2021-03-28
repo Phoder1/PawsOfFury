@@ -1,36 +1,22 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoSingleton<InputManager>
 {
-    Camera mainCam;
     public float dragHeight;
-    public event Action OnChangedSelection;
-    private void Start()
+    public event Action OnResetSelection;
+    public override void Awake()
     {
-        mainCam = Camera.main;
-    }
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            Ray mouseRay = mainCam.ScreenPointToRay(Input.mousePosition);
-        }
+        base.Awake();
+        BlackBoard.inputManager = _instance;
     }
 
-    public Vector3 RayToPlanePosition(Ray ray) => RayToPlanePosition(ray, dragHeight);
-    public Vector3 RayToPlanePosition(Ray ray, float height)
+    public Vector3 RayToPlanePosition(Ray ray) => InputTools.RayToPlanePosition(ray, dragHeight, PlaneOrientation.XZ);
+    public Vector3 RayToPlanePosition(Ray ray, float height) => InputTools.RayToPlanePosition(ray, height, PlaneOrientation.XZ);
+    public void ResetSelection()
     {
-
-        float X = ray.origin.x + ray.direction.x * (dragHeight - ray.origin.y) / ray.direction.y;
-        float Z = ray.origin.z + ray.direction.z * (dragHeight - ray.origin.y) / ray.direction.y;
-        return new Vector3(X, dragHeight, Z);
-
+        OnResetSelection?.Invoke();
     }
-    public void ChangeSelection()
-    {
-        OnChangedSelection?.Invoke();
-    }
+
+
 }

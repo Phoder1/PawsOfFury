@@ -29,7 +29,7 @@ public class ChainingProjectile : Projectile
     protected override void End(Entity[] hitEntities)
     {
         transform.DOComplete();
-        if (forceUniqueTargets)
+        if (forceUniqueTargets && target != null)
             hitHistory.Add(target);
         if (currentBounce >= chainCount)
             ChainEnd(hitEntities);

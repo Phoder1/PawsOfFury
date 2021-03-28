@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 public abstract class MonoSingleton<T> : MonoBehaviour where T : Component
 {
-    public static T _instance;
+    protected static T _instance;
 
     public virtual void Awake() {
         if (isActiveAndEnabled) {
