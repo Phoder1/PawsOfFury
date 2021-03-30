@@ -17,6 +17,7 @@ public class Unit : Entity
     {
         navScript = GetComponent<NavScript>();
         base.Start();
+        navScript.Speed = stats.GetStatValue(StatType.WalkSpeed);
     }
 
     protected override void OnTargetLoss() => stateMachine.State = new WalkState(this);
