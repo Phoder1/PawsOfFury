@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityName: Enemy
+  goldValue: 20
   type: 0
   UiObject: {fileID: 6817828928379908365, guid: 1646f9192471bf54bab21516bbf969fd,
     type: 3}

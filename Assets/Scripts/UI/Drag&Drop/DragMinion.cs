@@ -11,19 +11,24 @@ public class DragMinion : DragAndDrop
     [LocalComponent]
     public Button button;
     [SerializeField] LayerMask pathLayer;
+    protected Entity unit;
     protected SpriteRenderer spawnPointSprite;
     protected SpriteRenderer draggedEntitySprite;
     protected SpriteRenderer entitySprite;
 
     protected override ButtonsState GetDraggedState() => new DragState_Minion(this);
-    protected override string ButtonText() => entity.GetComponent<Unit>().entityName;
+    protected override string ButtonText() => unit.entityName;
     protected override void Drop()
     {
         if (positionValid)
+        {
+            levelManager.Gold -= unit.goldValue;
             Instantiate(entity, draggedEntity.transform.position - Vector3.up * inputManager.dragHeight, Quaternion.identity);
+        }
     }
     protected override void Start()
     {
+        unit = entity.GetComponent<Unit>();
         spawnPointSprite = SpawnPoint.GetComponent<SpriteRenderer>();
         draggedEntitySprite = draggedEntity.GetComponentInChildren<SpriteRenderer>();
         entitySprite = entity.GetComponentInChildren<SpriteRenderer>();
@@ -46,6 +51,12 @@ public class DragMinion : DragAndDrop
 
         protected override void OnEnable()
         {
+            if (button.unit.goldValue > levelManager.Gold)
+            {
+                Debug.Log("Not enough gold! you only have " + levelManager.Gold + " out of " + button.unit.goldValue);
+                inputManager.dragState = null;
+                return;
+            }
             base.OnEnable();
             button.draggedEntitySprite.sprite = button.entitySprite.sprite;
             button.draggedEntity.SetActive(true);

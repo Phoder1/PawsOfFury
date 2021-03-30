@@ -3,12 +3,12 @@ using System;
 using UnityEngine;
 using Assets.Stats;
 using System.Collections.Generic;
+using static BlackBoard;
 
 
 [RequireComponent(typeof(NavScript))]
 public class Unit : Entity
 {
-    [SerializeField] int goldCost;
     protected override EntityState DefaultState() => new WalkState(this);
     protected virtual EntityState AttackingState => new AttackState(this);
     protected NavScript navScript;

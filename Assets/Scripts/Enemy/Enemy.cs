@@ -1,12 +1,17 @@
 ﻿using Assets.Stats;
 using System.Collections.Generic;
 using UnityEngine;
+using static BlackBoard;
 
 public class Enemy : Entity
 {
-    [SerializeField] int goldReward;
     protected override void OnTargetLoss() => stateMachine.State = new SearchState(this);
     protected override EntityState DefaultState() => new SearchState(this);
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        levelManager.Gold += goldValue;
+    }
     class EnemyState : EntityState
     {
         protected Enemy Enemy => (Enemy)entity;

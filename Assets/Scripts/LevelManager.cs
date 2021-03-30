@@ -21,6 +21,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     public Unit[] Units => units.ToArray();
     public Enemy[] Enemies => enemies.ToArray();
+    [SerializeField] int startingGold;
     int gold;
     public int Gold
     {
@@ -30,10 +31,11 @@ public class LevelManager : MonoSingleton<LevelManager>
             if (gold != value)
             {
                 gold = value;
-                uiManager.SetGold(Gold);
+                UiManager._instance.SetGold(Gold);
             }
         }
     }
+    void UpdateGoldValue() => Gold = startingGold;
 
     public void AddToList<T>(T entity) where T : Entity
     {
@@ -66,6 +68,10 @@ public class LevelManager : MonoSingleton<LevelManager>
         BlackBoard.levelManager = _instance;
         units = new List<Unit>();
         enemies = new List<Enemy>();
+    }
+    private void Start()
+    {
+        UpdateGoldValue();
     }
 }
 public static class GlobalEffects

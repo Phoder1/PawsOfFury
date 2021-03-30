@@ -20,6 +20,7 @@ public enum EntityType
 public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public string entityName;
+    public int goldValue;
     [SerializeField] EntityType type;
     [SerializeField] protected GameObject UiObject;
     [SerializeField] protected float healthbarHeight;
@@ -72,6 +73,8 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             }
         }
     }
+
+
     void DisableSelection() => Selected = false;
 
 
