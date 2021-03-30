@@ -819,7 +819,7 @@ PrefabInstance:
     - target: {fileID: 3628989300967414961, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3628989300967414961, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
@@ -2066,7 +2066,7 @@ PrefabInstance:
     - target: {fileID: 3628989300967414961, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3628989300967414961, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
@@ -2671,8 +2671,8 @@ Camera:
   m_GameObject: {fileID: 1041477284}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.22144893, g: 0.31132078, b: 0.2439169, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4982,7 +4982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1218904974}
-  entity: {fileID: 4025256064503350889, guid: 74931de6ae262184f9d5de570e927812, type: 3}
+  entity: {fileID: 3269433762606668826, guid: 6c11bdefb2a9aea4585cec4eb92f562e, type: 3}
   draggedEntity: {fileID: 1387103051}
   SpawnPoint: {fileID: 134554243}
   button: {fileID: 220443313}
@@ -5626,7 +5626,7 @@ PrefabInstance:
     - target: {fileID: 3341197770366226218, guid: 45dc508d9c05b9340bb8abaaca6c4bd4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3341197770366226218, guid: 45dc508d9c05b9340bb8abaaca6c4bd4,
         type: 3}
@@ -5836,6 +5836,11 @@ PrefabInstance:
       propertyPath: entityUIsObj
       value: 
       objectReference: {fileID: 1524923167}
+    - target: {fileID: 4473882820393996156, guid: cbb9f786e51696d42ba269ee45966582,
+        type: 3}
+      propertyPath: startingGold
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb9f786e51696d42ba269ee45966582, type: 3}
 --- !u!1001 &4737921398121202791

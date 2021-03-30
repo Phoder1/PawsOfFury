@@ -21,7 +21,7 @@ MonoBehaviour:
   defualtStats:
     HP: 600
     MaxHP: 600
-    WalkSpeed: 10
+    WalkSpeed: 3
     MaxAttackSpeedMultiplier: 1
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,

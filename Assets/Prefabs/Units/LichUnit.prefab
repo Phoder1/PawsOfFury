@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityName: Lich
+  goldValue: 0
   type: 4
   UiObject: {fileID: 6817828928379908365, guid: 1646f9192471bf54bab21516bbf969fd,
     type: 3}
@@ -35,7 +36,7 @@ MonoBehaviour:
   lastAttackTime: 0
   selected: 0
   lichAttackProjectile:
-    gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
+    gameobject: {fileID: 3871618179018856722, guid: d0eecd414accb204c831f7d00bc5d89a,
       type: 3}
     detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
     targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
