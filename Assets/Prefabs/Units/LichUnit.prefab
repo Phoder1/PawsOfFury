@@ -35,6 +35,9 @@ MonoBehaviour:
     rate: 0
   lastAttackTime: 0
   selected: 0
+  placeableLayers:
+    serializedVersion: 2
+    m_Bits: 4096
   lichAttackProjectile:
     gameobject: {fileID: 3871618179018856722, guid: d0eecd414accb204c831f7d00bc5d89a,
       type: 3}

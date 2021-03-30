@@ -9,6 +9,7 @@ using static BlackBoard;
 [RequireComponent(typeof(NavScript))]
 public class Unit : Entity
 {
+    public LayerMask placeableLayers;
     protected override EntityState DefaultState() => new WalkState(this);
     protected virtual EntityState AttackingState => new AttackState(this);
     protected NavScript navScript;

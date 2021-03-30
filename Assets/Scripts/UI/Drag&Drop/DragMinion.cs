@@ -8,10 +8,7 @@ public class DragMinion : DragAndDrop
     [SerializeField] GameObject entity;
     [SerializeField] GameObject draggedEntity;
     [SerializeField] GameObject SpawnPoint;
-    [LocalComponent]
-    public Button button;
-    [SerializeField] LayerMask pathLayer;
-    protected Entity unit;
+    protected Unit unit;
     protected SpriteRenderer spawnPointSprite;
     protected SpriteRenderer draggedEntitySprite;
     protected SpriteRenderer entitySprite;
@@ -59,6 +56,7 @@ public class DragMinion : DragAndDrop
             }
             base.OnEnable();
             button.draggedEntitySprite.sprite = button.entitySprite.sprite;
+            button.draggedEntitySprite.color = button.entitySprite.color;
             button.draggedEntity.SetActive(true);
             button.SpawnPoint.SetActive(true);
         }
@@ -76,7 +74,7 @@ public class DragMinion : DragAndDrop
             //    pointerPosition = Input.GetTouch(0).position;
             Vector2 pointerPosition = Input.mousePosition;
             button.draggedEntity.transform.position = inputManager.RayToPlanePosition(mainCam.ScreenPointToRay(pointerPosition));
-            if (Physics.Raycast(button.draggedEntity.transform.position, Vector3.down, out RaycastHit floorHit, button.draggedEntity.transform.position.y + 0.5f, button.pathLayer))
+            if (Physics.Raycast(button.draggedEntity.transform.position, Vector3.down, out RaycastHit floorHit, button.draggedEntity.transform.position.y + 0.5f, button.unit.placeableLayers))
             {
                 button.SpawnPoint.transform.position = new Vector3(button.draggedEntity.transform.position.x, floorHit.point.y + 0.5f, button.draggedEntity.transform.position.z);
                 button.spawnPointSprite.color = Color.green;
