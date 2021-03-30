@@ -1,84 +1,59 @@
-﻿using Assets.StateMachine;
-using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 using static BlackBoard;
+using static InputManager;
 
 public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 {
-    private enum PressState { DefaultState, Pressed, Dragging }
-    private PressState pressState;
     [SerializeField] TextMeshProUGUI text;
 
-    StateMachine<ButtonState> stateMachine;
+
     protected static Camera mainCam;
-    protected abstract ButtonState GetDefaultState();
-    protected abstract ButtonState GetPressedState();
-    protected abstract ButtonState GetDraggedState();
+    protected abstract ButtonsState GetDraggedState();
+    protected abstract void Drop();
     protected abstract string ButtonText();
     protected static bool positionValid;
     protected virtual void Start()
     {
         mainCam = Camera.main;
         text.text = ButtonText();
-        stateMachine = new StateMachine<ButtonState>(GetDefaultState());
     }
-    private void Update() => stateMachine.Update();
     public void OnPointerDown(PointerEventData eventData)
     {
         positionValid = false;
-        if (pressState == PressState.DefaultState)
+        if (inputManager.PressState == PressState.DefaultState)
         {
-            pressState = PressState.Pressed;
-            stateMachine.State = GetPressedState();
+            inputManager.PressState = PressState.Pressed;
+            inputManager.dragState = GetDraggedState();
         }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (pressState == PressState.Pressed)
+        if (inputManager.PressState == PressState.Pressed)
         {
-            pressState = PressState.Dragging;
-            stateMachine.State = GetDraggedState();
+            inputManager.PressState = PressState.Dragging;
+            inputManager.StartDragging();
         }
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (pressState == PressState.Dragging)
+        if (inputManager.PressState == PressState.Dragging)
             Drop();
-        pressState = PressState.DefaultState;
-        stateMachine.State = GetDefaultState();
+        inputManager.PressState = PressState.DefaultState;
     }
-    protected abstract void Drop();
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        positionValid = false;
+        if (inputManager.PressState == PressState.Dragging)
+        {
+            inputManager.PressState = PressState.Pressed;
+        }
+    }
     protected TileBase GetTileAtPosition(Vector3 worldPosition)
     {
         worldPosition.y = 0;
         return levelManager.tilemap.GetTile(levelManager.tilemap.WorldToCell(worldPosition));
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        positionValid = false;
-        if (pressState == PressState.Dragging)
-        {
-            pressState = PressState.Pressed;
-            stateMachine.State = GetPressedState();
-        }
-    }
-
-    protected abstract class ButtonState : State
-    {
-
-        protected DragAndDrop button;
-
-        protected ButtonState(DragAndDrop button)
-        {
-            this.button = button ?? throw new ArgumentNullException(nameof(button));
-        }
-    }
-    class DefaultState : ButtonState
-    {
-        public DefaultState(DragAndDrop button) : base(button) { }
     }
 }

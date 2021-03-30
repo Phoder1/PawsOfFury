@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static BlackBoard;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
+    //[Style(AttributeStyle.FoldOut)]
+    public bool disabled;
+    [Hide(nameof(disabled),false, 1)]
     [SerializeField] Transform levelEnd;
     [Rename("entity UIs obj")]
     [SerializeField] Transform entityUIsObj;
@@ -17,7 +21,19 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     public Unit[] Units => units.ToArray();
     public Enemy[] Enemies => enemies.ToArray();
-
+    int gold;
+    public int Gold
+    {
+        get => gold;
+        set
+        {
+            if (gold != value)
+            {
+                gold = value;
+                uiManager.SetGold(Gold);
+            }
+        }
+    }
 
     public void AddToList<T>(T entity) where T : Entity
     {

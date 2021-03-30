@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    [SerializeField] int goldReward;
     protected override void OnTargetLoss() => stateMachine.State = new SearchState(this);
     protected override EntityState DefaultState() => new SearchState(this);
     class EnemyState : EntityState

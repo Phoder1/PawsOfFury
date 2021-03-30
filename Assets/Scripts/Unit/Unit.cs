@@ -8,6 +8,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(NavScript))]
 public class Unit : Entity
 {
+    [SerializeField] int goldCost;
     protected override EntityState DefaultState() => new WalkState(this);
     protected virtual EntityState AttackingState => new AttackState(this);
     protected NavScript navScript;

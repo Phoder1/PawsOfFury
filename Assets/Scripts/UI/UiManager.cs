@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UiManager : MonoBehaviour
+public class UiManager : MonoSingleton<UiManager>
 {
+    [SerializeField] string goldText;
     [SerializeField] TextMeshProUGUI gold;
-    // Start is called before the first frame update
-    void Start()
+    public void SetGold(int value) => gold.text = goldText + value;
+    public override void Awake()
     {
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Awake();
+        BlackBoard.uiManager = _instance;
     }
 }

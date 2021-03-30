@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using static BlackBoard;
+using static InputManager;
 
 public class DragSpell : DragAndDrop
 {
@@ -11,10 +9,7 @@ public class DragSpell : DragAndDrop
     [SerializeField] LayerMask pathLayer;
     protected SpriteRenderer spawnPointSprite;
     protected override string ButtonText() => spell.GetComponent<Spell>().entityName;
-
-    protected override ButtonState GetDefaultState() => null;
-    protected override ButtonState GetDraggedState() => new DragState_Spell(this);
-    protected override ButtonState GetPressedState() => null;
+    protected override ButtonsState GetDraggedState() => new DragState_Spell(this);
     protected override void Drop()
     {
         GameObject spellObj = Instantiate(spell, SpawnPoint.transform.position, Quaternion.identity);
@@ -28,7 +23,7 @@ public class DragSpell : DragAndDrop
         spawnPointSprite = SpawnPoint.GetComponent<SpriteRenderer>();
         base.Start();
     }
-    class ButtonState_Spell : ButtonState
+    class ButtonState_Spell : ButtonsState
     {
         protected new DragSpell button => (DragSpell)base.button;
         public ButtonState_Spell(DragAndDrop button) : base(button) { }

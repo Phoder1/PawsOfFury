@@ -4,6 +4,7 @@ using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using static BlackBoard;
 
 [Flags]
@@ -16,7 +17,7 @@ public enum EntityType
     Ghost = 16
 }
 [RequireComponent(typeof(Collider))]
-public abstract class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public string entityName;
     [SerializeField] EntityType type;
@@ -88,15 +89,13 @@ public abstract class Entity : MonoBehaviour
         stateMachine = new StateMachine<EntityState>(DefaultState());
         CastAura();
     }
-    private void OnMouseUp()
-    {
-        Selected = !Selected;
-    }
+    public void OnPointerUp(PointerEventData eventData) => Selected = !Selected;
+    public void OnPointerDown(PointerEventData eventData) { }
     protected virtual void Update()
     {
         stateMachine.Update();
         UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position);
-
+        
     }
     protected virtual void OnDestroy()
     {

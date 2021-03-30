@@ -43,4 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7c46570f909434ca9abb3baac5a85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disabled: 0
   levelEnd: {fileID: 0}
+  entityUIsObj: {fileID: 0}
+  tilemap: {fileID: 0}

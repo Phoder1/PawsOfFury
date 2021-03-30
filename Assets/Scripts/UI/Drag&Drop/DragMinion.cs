@@ -1,29 +1,36 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using static BlackBoard;
+using static InputManager;
 
 public class DragMinion : DragAndDrop
 {
-    [SerializeField] GameObject minion;
-    [SerializeField] GameObject draggedObject;
+    [SerializeField] GameObject entity;
+    [SerializeField] GameObject draggedEntity;
     [SerializeField] GameObject SpawnPoint;
+    [LocalComponent]
+    public Button button;
     [SerializeField] LayerMask pathLayer;
     protected SpriteRenderer spawnPointSprite;
-    protected override ButtonState GetDefaultState() => null;
-    protected override ButtonState GetDraggedState() => new DragState_Minion(this);
-    protected override ButtonState GetPressedState() => null;
-    protected override string ButtonText() => minion.GetComponent<Unit>().entityName;
+    protected SpriteRenderer draggedEntitySprite;
+    protected SpriteRenderer entitySprite;
+
+    protected override ButtonsState GetDraggedState() => new DragState_Minion(this);
+    protected override string ButtonText() => entity.GetComponent<Unit>().entityName;
     protected override void Drop()
     {
         if (positionValid)
-            Instantiate(minion, draggedObject.transform.position - Vector3.up * BlackBoard.inputManager.dragHeight, Quaternion.identity);
+            Instantiate(entity, draggedEntity.transform.position - Vector3.up * inputManager.dragHeight, Quaternion.identity);
     }
     protected override void Start()
     {
         spawnPointSprite = SpawnPoint.GetComponent<SpriteRenderer>();
+        draggedEntitySprite = draggedEntity.GetComponentInChildren<SpriteRenderer>();
+        entitySprite = entity.GetComponentInChildren<SpriteRenderer>();
         base.Start();
     }
 
-    class ButtonState_Minion : ButtonState
+    class ButtonState_Minion : ButtonsState
     {
         protected new DragMinion button => (DragMinion)base.button;
         public ButtonState_Minion(DragAndDrop button) : base(button) { }
@@ -40,13 +47,14 @@ public class DragMinion : DragAndDrop
         protected override void OnEnable()
         {
             base.OnEnable();
-            button.draggedObject.SetActive(true);
+            button.draggedEntitySprite.sprite = button.entitySprite.sprite;
+            button.draggedEntity.SetActive(true);
             button.SpawnPoint.SetActive(true);
         }
         protected override void OnDisable()
         {
             base.OnDisable();
-            button.draggedObject.SetActive(false);
+            button.draggedEntity.SetActive(false);
             button.SpawnPoint.SetActive(false);
             positionValid = false;
         }
@@ -56,16 +64,16 @@ public class DragMinion : DragAndDrop
             //if (Input.touchCount > 0)
             //    pointerPosition = Input.GetTouch(0).position;
             Vector2 pointerPosition = Input.mousePosition;
-            button.draggedObject.transform.position = inputManager.RayToPlanePosition(mainCam.ScreenPointToRay(pointerPosition));
-            if (Physics.Raycast(button.draggedObject.transform.position, Vector3.down, out RaycastHit floorHit, button.draggedObject.transform.position.y + 0.5f, button.pathLayer))
+            button.draggedEntity.transform.position = inputManager.RayToPlanePosition(mainCam.ScreenPointToRay(pointerPosition));
+            if (Physics.Raycast(button.draggedEntity.transform.position, Vector3.down, out RaycastHit floorHit, button.draggedEntity.transform.position.y + 0.5f, button.pathLayer))
             {
-                button.SpawnPoint.transform.position = new Vector3(button.draggedObject.transform.position.x, floorHit.point.y + 0.5f, button.draggedObject.transform.position.z);
+                button.SpawnPoint.transform.position = new Vector3(button.draggedEntity.transform.position.x, floorHit.point.y + 0.5f, button.draggedEntity.transform.position.z);
                 button.spawnPointSprite.color = Color.green;
                 positionValid = true;
             }
             else
             {
-                button.SpawnPoint.transform.position = new Vector3(button.draggedObject.transform.position.x, button.SpawnPoint.transform.position.y, button.draggedObject.transform.position.z);
+                button.SpawnPoint.transform.position = new Vector3(button.draggedEntity.transform.position.x, button.SpawnPoint.transform.position.y, button.draggedEntity.transform.position.z);
                 button.spawnPointSprite.color = Color.red;
                 positionValid = false;
             }
