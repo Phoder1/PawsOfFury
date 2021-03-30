@@ -5,9 +5,6 @@ using static BlackBoard;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
-    //[Style(AttributeStyle.FoldOut)]
-    public bool disabled;
-    [Hide(nameof(disabled),false, 1)]
     [SerializeField] Transform levelEnd;
     [Rename("entity UIs obj")]
     [SerializeField] Transform entityUIsObj;
