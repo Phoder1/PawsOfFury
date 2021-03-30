@@ -35,6 +35,9 @@ MonoBehaviour:
     rate: 0.33
   lastAttackTime: 0
   selected: 0
+  placeableLayers:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &3533389354516274656
 MonoBehaviour:
   m_ObjectHideFlags: 0
