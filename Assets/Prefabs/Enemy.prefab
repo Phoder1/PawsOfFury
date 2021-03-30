@@ -34,6 +34,7 @@ MonoBehaviour:
     rate: 0
   lastAttackTime: 0
   selected: 0
+  goldReward: 0
 --- !u!1001 &922499304326930715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,11 +112,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4508563580025433752, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508563580025433752, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508563580025433752, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4508563580025433755, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d62f8f7162981404b9f2c7253ea4cf24,
+      objectReference: {fileID: 21300000, guid: fbc61207120fbac4c85ec5008d47bf3d,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8130013def55024d821218c438f91db, type: 3}
