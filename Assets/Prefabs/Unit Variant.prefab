@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityName: Unit
+  goldValue: 10
   type: 0
   UiObject: {fileID: 6817828928379908365, guid: 1646f9192471bf54bab21516bbf969fd,
     type: 3}
@@ -20,7 +21,7 @@ MonoBehaviour:
   defualtStats:
     HP: 600
     MaxHP: 600
-    WalkSpeed: 100
+    WalkSpeed: 10
     MaxAttackSpeedMultiplier: 1
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
