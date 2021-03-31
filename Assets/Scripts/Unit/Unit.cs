@@ -24,8 +24,7 @@ public class Unit : Entity
     protected override void OnTargetLoss() => stateMachine.State = new WalkState(this);
     protected override void DetectedOutOfRange(Entity detectedEntity)
     {
-        navScript.SetDestination(detectedEntity.transform.position);
-        navScript.StartMove();
+        navScript.StartMove(detectedEntity.transform.position);
     }
 
     public override void DetectedInRange(EntityHit detectedEntity) => navScript.StopMove();
@@ -40,15 +39,13 @@ public class Unit : Entity
         public WalkState(Unit unit) : base(unit) { }
         protected override void OnEnable()
         {
-            Unit.navScript.SetDestination(BlackBoard.levelManager.LevelEndPos);
-            Unit.navScript.StartMove();
+            Unit.navScript.StartMove(levelManager.LevelEndPos);
         }
         protected override void OnUpdate()
         {
             detectedEntity = Targets.GetEntityHit(entity, entity.projectile.detection);
             if (detectedEntity != null && detectedEntity.entity != null)
                 Unit.stateMachine.State = Unit.AttackingState;
-            //Debug.Log(Unit.navScript.agent.velocity.x < 0 ? "Left" : "Right");
         }
 
         protected override void OnDisable() => Unit.navScript.StopMove();

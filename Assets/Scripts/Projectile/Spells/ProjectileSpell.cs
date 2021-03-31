@@ -1,31 +1,40 @@
-﻿using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell : MonoBehaviour
+public class ProjectileSpell : Spell
 {
-    public string entityName;
-    [SerializeField] EffectDataSO[] effectsData;
-    [Tooltip("The radius of the spell.")]
-    [SerializeField] float aoeRadius;
-    protected Entity attackingEntity;
-    protected Action<Entity[], Entity> callback;
-    public EffectData[] effects;
-    protected virtual void OnEnable()
+    [Tooltip("AOE = Area Of Effect, the projectile will hit multiple targets when enabled.")]
+    [SerializeField] bool AOE;
+    Entity attackingEntity;
+    Entity target;
+    
+    public void Init(Entity attackingEntity, Entity target, EffectData[] effects, Action<Entity[], Entity> callback = null)
     {
-        effects = Array.ConvertAll(effectsData, (x) => (EffectData)x);
-    }
-    public void CastSpell(Action<Entity[], Entity> callback = null)
-    {
+        if (effects != null)
+            this.effects = effects;
+        this.target = target;
+        this.attackingEntity = attackingEntity;
         if (callback != null)
             this.callback = callback;
-        //Todo: Animation and sound
-        End(ApplyEffect().ToArray());
+        if (!hasParticles)
+        {
+            ApplyEffect();
+            DestroySpell();
+        }
+
     }
-    protected List<Entity> ApplyEffect()
+    protected override List<Entity> GetTargets()
     {
         List<Entity> hitEntities = new List<Entity>();
+        if (target == null)
+            return hitEntities;
+        if (!AOE)
+        {
+            hitEntities.Add(target);
+            return hitEntities;
+        }
         Entity[] collisions = Array.ConvertAll(Physics.OverlapSphere(transform.position, aoeRadius), (x) => x.gameObject.GetComponent<Entity>());
         foreach (Entity entity in collisions)
         {
@@ -39,21 +48,10 @@ public class Spell : MonoBehaviour
                         || (effect.targets.HasFlag(TargetTypes.Self) && entity == attackingEntity)))
                     {
                         hitEntities.Add(entity);
-                        new EffectController(entity.stats, effect);
                     }
                 }
             }
         }
         return hitEntities;
-    }
-    protected virtual void End(Entity[] hitEntities)
-    {
-        transform.DOComplete();
-        callback?.Invoke(hitEntities, null);
-        Destroy(gameObject);
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, aoeRadius);
     }
 }

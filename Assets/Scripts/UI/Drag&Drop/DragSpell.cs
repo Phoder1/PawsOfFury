@@ -8,13 +8,13 @@ public class DragSpell : DragAndDrop
     [SerializeField] GameObject SpawnPoint;
     [SerializeField] LayerMask pathLayer;
     protected SpriteRenderer spawnPointSprite;
-    protected override string ButtonText() => spell.GetComponent<Spell>().entityName;
+    protected override string ButtonText() => spell.GetComponent<CastableSpell>().spellName;
     protected override ButtonsState GetDraggedState() => new DragState_Spell(this);
     protected override void Drop()
     {
         GameObject spellObj = Instantiate(spell, SpawnPoint.transform.position, Quaternion.identity);
-        Spell spellScript = spellObj.GetComponent<Spell>();
-        spellScript.CastSpell();
+        CastableSpell spellScript = spellObj.GetComponent<CastableSpell>();
+        spellScript.Init();
     }
 
 

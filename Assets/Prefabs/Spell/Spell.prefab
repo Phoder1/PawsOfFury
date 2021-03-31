@@ -40,10 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 245351348618023110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 497b57c36e2d112448430f2717197f39, type: 3}
+  m_Script: {fileID: 11500000, guid: 1acbd8c7372f30d408c8af1a0188eb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityName: Test spell
+  spellName: Spell
+  aoeRadius: 5
   effectsData:
-  - {fileID: 11400000, guid: 4543bbeadd718244cb638378a63053cb, type: 2}
-  aoeRadius: 2
+  - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}

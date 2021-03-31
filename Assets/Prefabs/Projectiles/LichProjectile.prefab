@@ -4820,9 +4820,29 @@ MonoBehaviour:
   effectsData:
   - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}
   aoeRadius: 2
+  animator: {fileID: 1007531400872725130}
   speed: 7
   AOE: 0
   maxHeight: 0
+--- !u!95 &1007531400872725130
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871618179018856722}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5714474187103623024
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,28 +3,33 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : Spell
+public class Projectile : MonoBehaviour
 {
     [Tooltip("Controls the speed of the projectile.")]
     [SerializeField] float speed;
-    [Tooltip("AOE = Area Of Effect, the projectile will hit multiple targets when enabled.")]
-    [SerializeField] bool AOE;
-    [Tooltip("WIP")]
-    [SerializeField] float maxHeight;
+    [SerializeField] protected GameObject spell;
+    [SerializeField] EffectDataSO[] effectsData;
+    protected Entity attackingEntity;
+    protected Action<Entity[], Entity> callback;
 
     protected Entity target;
     public event Action OnProjectileAnimation;
+    public EffectData[] effects;
     public void ProjectileAnimRecall() => OnProjectileAnimation?.Invoke();
+    void OnEnable()
+    {
+        effects = Array.ConvertAll(effectsData, (x) => (EffectData)x);
+    }
     public void Init(Entity attackingEntity, Entity target, Action<Entity[], Entity> callback = null, Vector3? originPosition = null)
     {
         transform.DOComplete();
+        this.target = target;
+        this.attackingEntity = attackingEntity;
         if (target == null)
         {
             Destroy(gameObject);
             return;
         }
-        this.target = target;
-        this.attackingEntity = attackingEntity;
         if (callback != null)
             this.callback = callback;
         if (originPosition == null)
@@ -39,22 +44,18 @@ public class Projectile : Spell
         else
             ReachedTarget();
     }
-    void ReachedTarget()
+    public virtual void ReachedTarget()
     {
-        List<Entity> hitEntities = new List<Entity>();
-        if (target == null)
-        {
-            End(hitEntities.ToArray());
-            return;
-        }
-        //Todo: Animation and sound
-        if (!AOE)
-        {
-            Array.ForEach(effects, (x) => new EffectController(target.stats, x));
-            hitEntities.Add(target);
-        }
-        else
-            hitEntities = ApplyEffect();
-        End(hitEntities.ToArray());
+        var spellObject = Instantiate(spell, transform.position, Quaternion.identity);
+        ProjectileSpell projectileSpell = spellObject.GetComponent<ProjectileSpell>();
+        projectileSpell.Init(attackingEntity, target, effects, callback);
+        DestroyProjectile();
     }
+    protected virtual void DestroyProjectile()
+    {
+        transform.DOComplete();
+        Destroy(gameObject);
+    }
+    
+
 }

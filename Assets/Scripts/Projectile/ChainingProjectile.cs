@@ -14,44 +14,45 @@ public class ChainingProjectile : Projectile
     [SerializeField] bool forceUniqueTargets;
 
     float[] endEffectAmounts;
-    EffectData[] originalEffects;
+    float[] originalAmounts;
     int currentBounce = 0;
     List<Entity> hitHistory;
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
-        endEffectAmounts = Array.ConvertAll(effects, (x) => x.amount * endEffectAmountRatio);
-        originalEffects = effects;
+        originalAmounts = Array.ConvertAll(effects, (x) => x.amount);
+        endEffectAmounts = Array.ConvertAll(originalAmounts, (x) => x * endEffectAmountRatio);
         if (forceUniqueTargets)
             hitHistory = new List<Entity>();
     }
-    protected override void End(Entity[] hitEntities)
+    public  override void ReachedTarget()
     {
+        var spellObject = Instantiate(spell, transform.position, Quaternion.identity);
+        ProjectileSpell projectileSpell = spellObject.GetComponent<ProjectileSpell>();
+        projectileSpell.Init(attackingEntity, target, effects ,callback);
+
         transform.DOComplete();
         if (forceUniqueTargets && target != null)
             hitHistory.Add(target);
         if (currentBounce >= chainCount)
-            ChainEnd(hitEntities);
+            DestroyProjectile();
         else
         {
             for (int i = 0; i < effects.Length; i++)
-                effects[i].amount = Mathf.Lerp(originalEffects[i].amount, endEffectAmounts[i], ((float)currentBounce+1) / (float)chainCount);
-            Targets.EntityHitCondition newTargetCondition = (x) => x != target;
+                effects[i].amount = Mathf.Lerp(originalAmounts[i], endEffectAmounts[i], ((float)currentBounce + 1) / (float)chainCount);
+
+            Targets.EntityHitCondition newTargetCondition;
             if (forceUniqueTargets)
-                newTargetCondition = (x) => !hitHistory.Contains(x) && x != attackingEntity;
+                newTargetCondition = (x) => !hitHistory.Contains(x);
+            else
+                newTargetCondition = (x) => x != target;
+
             Entity newTarget = Targets.GetEntityHit(transform.position, targeting, newTargetCondition, attackingEntity);
             currentBounce++;
             if (newTarget != null)
                 Init(attackingEntity, newTarget, callback, transform.position);
             else
-                ChainEnd(hitEntities);
+                DestroyProjectile();
         }
-    }
-    void ChainEnd(Entity[] hitEntities)
-    {
-        //callback?.Invoke(hitEntities, target);
-        transform.DOComplete();
-        Destroy(gameObject);
     }
 }

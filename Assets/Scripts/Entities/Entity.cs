@@ -89,9 +89,10 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         ui = UiObject.GetComponent<EntityUI>();
         ui.HealthBarHeight = healthbarHeight;
         FillDictionary();
-        stateMachine = new StateMachine<EntityState>(DefaultState());
+        stateMachine = new StateMachine<EntityState>(null);
         CastAura();
     }
+    public void Init() => stateMachine.State = DefaultState();
     public void OnPointerUp(PointerEventData eventData) => Selected = !Selected;
     public void OnPointerDown(PointerEventData eventData) { }
     protected virtual void Update()
