@@ -25,6 +25,12 @@ public class ProjectileSpell : Spell
         }
 
     }
+    public static void CastSpell(GameObject spell, Vector3 position, Entity attackingEntity, Entity target, EffectData[] effects, Action<Entity[], Entity> callback = null)
+    {
+        var spellObject = Instantiate(spell, position, Quaternion.identity);
+        ProjectileSpell projectileSpell = spellObject.GetComponent<ProjectileSpell>();
+        projectileSpell.Init(attackingEntity, target, effects, callback);
+    }
     protected override List<Entity> GetTargets()
     {
         List<Entity> hitEntities = new List<Entity>();

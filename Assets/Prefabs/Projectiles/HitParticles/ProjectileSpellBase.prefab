@@ -46,8 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: 
   aoeRadius: 3
-  spellAnimator: {fileID: 2777815022141012535}
-  hasParticles: 1
+  hasParticles: 0
   AOE: 1
 --- !u!95 &2777815022141012535
 Animator:

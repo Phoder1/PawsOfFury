@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
     public event Action OnProjectileAnimation;
     public EffectData[] effects;
     public void ProjectileAnimRecall() => OnProjectileAnimation?.Invoke();
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         effects = Array.ConvertAll(effectsData, (x) => (EffectData)x);
     }
@@ -46,9 +46,7 @@ public class Projectile : MonoBehaviour
     }
     public virtual void ReachedTarget()
     {
-        var spellObject = Instantiate(spell, transform.position, Quaternion.identity);
-        ProjectileSpell projectileSpell = spellObject.GetComponent<ProjectileSpell>();
-        projectileSpell.Init(attackingEntity, target, effects, callback);
+        ProjectileSpell.CastSpell(spell, transform.position, attackingEntity, target, effects, callback);
         DestroyProjectile();
     }
     protected virtual void DestroyProjectile()

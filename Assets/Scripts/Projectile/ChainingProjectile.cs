@@ -18,8 +18,9 @@ public class ChainingProjectile : Projectile
     int currentBounce = 0;
     List<Entity> hitHistory;
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         originalAmounts = Array.ConvertAll(effects, (x) => x.amount);
         endEffectAmounts = Array.ConvertAll(originalAmounts, (x) => x * endEffectAmountRatio);
         if (forceUniqueTargets)
@@ -27,9 +28,7 @@ public class ChainingProjectile : Projectile
     }
     public  override void ReachedTarget()
     {
-        var spellObject = Instantiate(spell, transform.position, Quaternion.identity);
-        ProjectileSpell projectileSpell = spellObject.GetComponent<ProjectileSpell>();
-        projectileSpell.Init(attackingEntity, target, effects ,callback);
+        ProjectileSpell.CastSpell(spell, transform.position, attackingEntity, target, effects, callback);
 
         transform.DOComplete();
         if (forceUniqueTargets && target != null)

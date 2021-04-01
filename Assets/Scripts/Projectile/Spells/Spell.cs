@@ -8,7 +8,6 @@ public abstract class Spell : MonoBehaviour
     public string spellName;
     [Tooltip("The radius of the spell.")]
     [SerializeField] protected float aoeRadius;
-    [SerializeField] Animator spellAnimator;
     protected Action<Entity[], Entity> callback;
     public EffectData[] effects;
     [SerializeField] protected bool hasParticles;
