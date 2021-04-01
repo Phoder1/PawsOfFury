@@ -4,22 +4,27 @@ using static InputManager;
 
 public class DragSpell : DragAndDrop
 {
-    [SerializeField] GameObject spell;
+    [SerializeField] GameObject spellPrefab;
     [SerializeField] GameObject SpawnPoint;
     [SerializeField] LayerMask pathLayer;
+    CastableSpell spell;
+
     protected SpriteRenderer spawnPointSprite;
-    protected override string ButtonText() => spell.GetComponent<CastableSpell>().spellName;
+    protected override int goldValue() => spell.goldValue;
     protected override ButtonsState GetDraggedState() => new DragState_Spell(this);
+    protected override bool CheckSpawnValid() => spell.goldValue <= levelManager.Gold;
+    protected override Sprite Sprite() => spell.buttonSprite;
     protected override void Drop()
     {
-        GameObject spellObj = Instantiate(spell, SpawnPoint.transform.position, Quaternion.identity);
-        CastableSpell spellScript = spellObj.GetComponent<CastableSpell>();
+        GameObject spawnedSpell = Instantiate(spellPrefab, SpawnPoint.transform.position, Quaternion.identity);
+        CastableSpell spellScript = spawnedSpell.GetComponent<CastableSpell>();
         spellScript.Init();
     }
 
 
     protected override void Start()
     {
+        spell = spellPrefab.GetComponent<CastableSpell>();
         spawnPointSprite = SpawnPoint.GetComponent<SpriteRenderer>();
         base.Start();
     }

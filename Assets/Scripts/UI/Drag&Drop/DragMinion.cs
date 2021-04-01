@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 using static BlackBoard;
 using static InputManager;
 
 public class DragMinion : DragAndDrop
 {
-    [SerializeField] GameObject entity;
+    [SerializeField] GameObject unitPrefab;
     [SerializeField] GameObject draggedEntity;
     [Tooltip("shadow")]
     [SerializeField] GameObject shadow;
@@ -18,15 +19,17 @@ public class DragMinion : DragAndDrop
     protected SpriteRenderer entitySprite;
 
     protected override ButtonsState GetDraggedState() => new DragState_Minion(this);
-    protected override string ButtonText() => unit.entityName;
+    protected override int goldValue() => unit.goldValue;
+    protected override Sprite Sprite() => unit.buttonSpriteRenderer.sprite;
+    protected override Color SpriteColor() => unit.buttonSpriteRenderer.color;
     protected override void Drop()
     {
         if (positionValid)
         {
             levelManager.Gold -= unit.goldValue;
             Vector3 spawnPoint = draggedEntity.transform.position;
-            GameObject unitObj = Instantiate(entity, spawnPoint, Quaternion.identity);
-            unitObj.transform.DOMove(shadow.transform.position, Vector3.Distance(unitObj.transform.position, shadow.transform.position) / dropSpeed).OnComplete(() => { InitUnit(unitObj); });
+            GameObject spawnedUnit = Instantiate(unitPrefab, spawnPoint, Quaternion.identity);
+            spawnedUnit.transform.DOMove(shadow.transform.position, Vector3.Distance(spawnedUnit.transform.position, shadow.transform.position) / dropSpeed).OnComplete(() => { InitUnit(spawnedUnit); });
 
         }
 
@@ -34,12 +37,13 @@ public class DragMinion : DragAndDrop
     }
     protected override void Start()
     {
-        unit = entity.GetComponent<Unit>();
+        unit = unitPrefab.GetComponent<Unit>();
         spawnPointSprite = shadow.GetComponent<SpriteRenderer>();
         draggedEntitySprite = draggedEntity.GetComponentInChildren<SpriteRenderer>();
-        entitySprite = entity.GetComponentInChildren<SpriteRenderer>();
+        entitySprite = unitPrefab.GetComponentInChildren<SpriteRenderer>();
         base.Start();
     }
+
 
     class ButtonState_Minion : ButtonsState
     {
@@ -68,6 +72,8 @@ public class DragMinion : DragAndDrop
             button.draggedEntitySprite.color = button.entitySprite.color;
             button.draggedEntity.SetActive(true);
             button.shadow.SetActive(true);
+            
+            button.uiButton.Select();
         }
         protected override void OnDisable()
         {
@@ -75,6 +81,7 @@ public class DragMinion : DragAndDrop
             button.draggedEntity.SetActive(false);
             button.shadow.SetActive(false);
             positionValid = false;
+            EventSystem.current.SetSelectedGameObject(null);
         }
         protected override void OnUpdate()
         {

@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class CastableSpell : Spell
 {
+    public Sprite buttonSprite;
     [SerializeField] EffectDataSO[] effectsData;
+    public int goldValue;
     void OnEnable()
     {
         effects = Array.ConvertAll(effectsData, (x) => (EffectData)x);
