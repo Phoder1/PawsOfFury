@@ -24,6 +24,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
+      propertyPath: defualtStats.HP
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
       propertyPath: projectile.gameobject
       value: 
       objectReference: {fileID: 3871618179018856722, guid: cfa7a373dff25784d8b05106325ca2a3,

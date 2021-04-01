@@ -19,12 +19,12 @@ MonoBehaviour:
     type: 3}
   healthbarHeight: 20
   defualtStats:
-    HP: 400
-    MaxHP: 400
+    HP: 20
+    MaxHP: 20
     WalkSpeed: 100
     MaxAttackSpeedMultiplier: 6
   projectile:
-    gameobject: {fileID: 3871618179018856722, guid: 3b7feb0ac33226c4290f892c16b4e244,
+    gameobject: {fileID: 3871618179018856722, guid: 6add2ecadff02fa4ab2358ca4e71a58d,
       type: 3}
     detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
     targeting: {fileID: 11400000, guid: bf7f4f2138993cd49bc4677573358a83, type: 2}

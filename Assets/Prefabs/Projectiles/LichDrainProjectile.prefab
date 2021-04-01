@@ -4836,9 +4836,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  spell: {fileID: 5203324659688175804, guid: c6fb9c5b6ad4e5e4493bd25ecac24650, type: 3}
+  spell: {fileID: 5203324659688175804, guid: e1b2a53e03e321c42b0c7b50cb34e2d5, type: 3}
   effectsData:
-  - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}
+  - {fileID: 11400000, guid: cb7a1a0c006f86b4394d29a6376f6eee, type: 2}
 --- !u!1 &5714474187103623024
 GameObject:
   m_ObjectHideFlags: 0
@@ -9724,7 +9724,7 @@ PrefabInstance:
     - target: {fileID: 1758066029445514654, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
       propertyPath: m_Name
-      value: LichProjectile
+      value: LichDrainProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
