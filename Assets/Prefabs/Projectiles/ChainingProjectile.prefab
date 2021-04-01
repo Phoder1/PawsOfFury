@@ -4777,9 +4777,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -571414501
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4817,13 +4817,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6b9f93a51dc164c9196ebdc39cc1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityName: 
+  speed: 30
+  spell: {fileID: 5203324659688175804, guid: c6fb9c5b6ad4e5e4493bd25ecac24650, type: 3}
   effectsData:
   - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}
-  aoeRadius: 0
-  speed: 30
-  AOE: 0
-  maxHeight: 0
   chainCount: 4
   endEffectAmountRatio: 0.5
   targeting: {fileID: 11400000, guid: 03601613dc57c78469779e3709961b41, type: 2}
@@ -4935,6 +4932,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.40943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758066030511216301, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1758066030511216302, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}

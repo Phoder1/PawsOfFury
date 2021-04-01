@@ -24,20 +24,20 @@ public class NavScript : MonoBehaviour
     {
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        SetDestination(BlackBoard.levelManager.LevelEndPos);
     }
-    public void SetDestination(Vector3 destination)
+    public void StartMove(Vector3? destination = null)
     {
-        if (agent.destination != destination)
-            agent.SetDestination(destination);
-    }
-    public void StartMove()
-    {
+        agent.enabled = true;
+        if (destination != null)
+            agent.destination = (Vector3)destination;
         agent.isStopped = false;
     }
     public void StopMove()
     {
         if (isActiveAndEnabled && agent.isOnNavMesh)
+        {
             agent.isStopped = true;
+            //agent.enabled = false;
+        }
     }
 }
