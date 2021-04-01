@@ -7,6 +7,11 @@ public class Enemy : Entity
 {
     protected override void OnTargetLoss() => stateMachine.State = new SearchState(this);
     protected override EntityState DefaultState() => new SearchState(this);
+    protected override void Start()
+    {
+        base.Start();
+        Init();
+    }
     protected override void OnDestroy()
     {
         base.OnDestroy();

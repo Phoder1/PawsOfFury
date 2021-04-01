@@ -1,25 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1956864212057453217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3871618179018856722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f74bec6fc4e52a4d9c816505d71ed86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityName: 
-  effectsData:
-  - {fileID: 11400000, guid: 3b495eef57bc64449929bbbfac00ee00, type: 2}
-  aoeRadius: 0
-  animator: {fileID: 4566783829929954784}
-  speed: 3
-  AOE: 1
-  maxHeight: 0
 --- !u!95 &4566783829929954784
 Animator:
   serializedVersion: 3
@@ -39,6 +19,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-1956864212057453217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871618179018856722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f74bec6fc4e52a4d9c816505d71ed86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  spell: {fileID: 8358880945546188177, guid: 9aee1bfbaac531047b8c7a7dd9551360, type: 3}
+  effectsData:
+  - {fileID: 11400000, guid: 3b495eef57bc64449929bbbfac00ee00, type: 2}
 --- !u!1 &4632551642598568055
 GameObject:
   m_ObjectHideFlags: 0
