@@ -35,6 +35,7 @@ MonoBehaviour:
     rate: 0.33
   lastAttackTime: 0
   selected: 0
+  buttonSpriteRenderer: {fileID: 4025256063420912986}
   placeableLayers:
     serializedVersion: 2
     m_Bits: 4096
@@ -59,7 +60,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4025256064503350889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -89,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 4508563578942963112, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_Name
-      value: Unit Variant
+      value: UnitBase
       objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}
@@ -172,6 +173,12 @@ PrefabInstance:
 --- !u!1 &4025256064503350889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4508563578942963112, guid: a8130013def55024d821218c438f91db,
+    type: 3}
+  m_PrefabInstance: {fileID: 670253081301957569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &4025256063420912986 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4508563580025433755, guid: a8130013def55024d821218c438f91db,
     type: 3}
   m_PrefabInstance: {fileID: 670253081301957569}
   m_PrefabAsset: {fileID: 0}

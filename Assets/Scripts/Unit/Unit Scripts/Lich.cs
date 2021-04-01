@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 public class Lich : Unit
 {
     [SerializeField] ProjectileData lichAttackProjectile;
@@ -17,7 +18,7 @@ public class Lich : Unit
             target = hit.entity;
             GameObject projectileObj = Instantiate(lichAttackProjectile.gameobject, transform.position, Quaternion.identity);
             Projectile projectileScript = projectileObj.GetComponent<Projectile>();
-            projectileScript.effects[0].amount -= entities.Length * 2;
+            Array.ForEach(projectileScript.effects, (x) => { x.amount -= entities.Length * 2; });
             projectileScript.Init(this, target);
         }
     }
