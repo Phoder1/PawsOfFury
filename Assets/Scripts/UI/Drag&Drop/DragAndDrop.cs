@@ -20,17 +20,15 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
     protected abstract Sprite Sprite();
     protected virtual Color SpriteColor() => Color.white;
     protected static bool positionValid;
-    protected virtual bool CheckSpawnValid() => goldValue() <= levelManager.Gold;
+    void GoldAmountChanged(float goldAmount) => uiButton.interactable = CheckSpawnValid(goldAmount);
+    protected bool CheckSpawnValid(float goldAmount) => goldValue() <= goldAmount;
     protected virtual void Start()
     {
         mainCam = Camera.main;
         goldText.text = goldValue().ToString();
         image.sprite = Sprite();
         image.color = SpriteColor();
-    }
-    void Update()
-    {
-        uiButton.interactable = CheckSpawnValid();
+        levelManager.GoldAmountChanged += GoldAmountChanged;
     }
     public void OnPointerDown(PointerEventData eventData)
     {

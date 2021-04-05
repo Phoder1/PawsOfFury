@@ -38,7 +38,7 @@ public class DragMinion : DragAndDrop
     protected override void Start()
     {
         unit = unitPrefab.GetComponent<Unit>();
-        spawnPointSprite = shadow.GetComponent<SpriteRenderer>();
+        spawnPointSprite = shadow.GetComponentInChildren<SpriteRenderer>();
         draggedEntitySprite = draggedEntity.GetComponentInChildren<SpriteRenderer>();
         entitySprite = unitPrefab.GetComponentInChildren<SpriteRenderer>();
         base.Start();

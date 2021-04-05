@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System;
 using static BlackBoard;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
     [SerializeField] Transform levelEnd;
-    [Rename("entity UIs obj")]
+    [Rename("Entity UIs Obj")]
     [SerializeField] Transform entityUIsObj;
     public Transform EntityUIsObj => entityUIsObj;
     public Tilemap tilemap;
@@ -29,10 +30,12 @@ public class LevelManager : MonoSingleton<LevelManager>
             {
                 gold = value;
                 UiManager._instance.SetGold(Gold);
+                GoldAmountChanged?.Invoke(Gold);
             }
         }
     }
     void UpdateGoldValue() => Gold = startingGold;
+    public event Action<float> GoldAmountChanged;
 
     public void AddToList<T>(T entity) where T : Entity
     {

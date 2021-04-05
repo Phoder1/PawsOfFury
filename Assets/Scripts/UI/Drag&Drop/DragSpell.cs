@@ -12,7 +12,6 @@ public class DragSpell : DragAndDrop
     protected SpriteRenderer spawnPointSprite;
     protected override int goldValue() => spell.goldValue;
     protected override ButtonsState GetDraggedState() => new DragState_Spell(this);
-    protected override bool CheckSpawnValid() => spell.goldValue <= levelManager.Gold;
     protected override Sprite Sprite() => spell.buttonSprite;
     protected override void Drop()
     {
