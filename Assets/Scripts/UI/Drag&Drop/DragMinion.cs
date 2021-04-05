@@ -14,7 +14,7 @@ public class DragMinion : DragAndDrop
     [Suffix("Uu/s", toolTip: "Unity units per second")]
     [SerializeField] float dropSpeed;
     protected Unit unit;
-    protected SpriteRenderer spawnPointSprite;
+    protected ShadowController shadowController;
     protected SpriteRenderer draggedEntitySprite;
     protected SpriteRenderer entitySprite;
 
@@ -38,7 +38,7 @@ public class DragMinion : DragAndDrop
     protected override void Start()
     {
         unit = unitPrefab.GetComponent<Unit>();
-        spawnPointSprite = shadow.GetComponentInChildren<SpriteRenderer>();
+        shadowController = shadow.GetComponent<ShadowController>();
         draggedEntitySprite = draggedEntity.GetComponentInChildren<SpriteRenderer>();
         entitySprite = unitPrefab.GetComponentInChildren<SpriteRenderer>();
         base.Start();
@@ -93,13 +93,13 @@ public class DragMinion : DragAndDrop
             if (Physics.Raycast(button.draggedEntity.transform.position, Vector3.down, out RaycastHit floorHit, button.draggedEntity.transform.position.y + 0.5f, button.unit.placeableLayers))
             {
                 button.shadow.transform.position = new Vector3(button.draggedEntity.transform.position.x, floorHit.point.y + 0.5f, button.draggedEntity.transform.position.z);
-                button.spawnPointSprite.color = Color.green;
+                button.shadowController.Color = Color.green;
                 positionValid = true;
             }
             else
             {
                 button.shadow.transform.position = new Vector3(button.draggedEntity.transform.position.x, button.shadow.transform.position.y, button.draggedEntity.transform.position.z);
-                button.spawnPointSprite.color = Color.red;
+                button.shadowController.Color = Color.red;
                 positionValid = false;
             }
         }
