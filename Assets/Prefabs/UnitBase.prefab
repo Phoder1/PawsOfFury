@@ -19,8 +19,8 @@ MonoBehaviour:
     type: 3}
   healthbarHeight: 20
   defualtStats:
-    HP: 600
-    MaxHP: 600
+    HP: 40
+    MaxHP: 40
     WalkSpeed: 3
     MaxAttackSpeedMultiplier: 1
   projectile:
