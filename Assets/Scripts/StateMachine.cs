@@ -43,7 +43,6 @@ namespace Assets.StateMachine
         {
             if (!enabled)
             {
-                Reset();
                 OnEnable();
                 enabled = true;
             }

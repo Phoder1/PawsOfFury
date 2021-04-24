@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static BlackBoard;
+using static IngameBlackBoard;
 [Flags] public enum TargetTypes { Enemy = 1, Self = 2, Unit = 4 }
 public static class Targets
 {

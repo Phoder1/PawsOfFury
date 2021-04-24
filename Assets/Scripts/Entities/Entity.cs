@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static BlackBoard;
+using static IngameBlackBoard;
 
 [Flags]
 public enum EntityType

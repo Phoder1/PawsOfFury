@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.alontalmi.customattributes": {
+      "version": "https://github.com/Phoder1/Unity-CustomAttributes.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2a83db23b2d6f9c20b95f70578fac60044da1652"
+    },
     "com.h8man.2d.navmeshplus": {
       "version": "https://github.com/h8man/NavMeshPlus.git#master",
       "depth": 0,

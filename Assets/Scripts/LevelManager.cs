@@ -2,7 +2,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System;
-using static BlackBoard;
+using static IngameBlackBoard;
+using CustomAttributes;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
@@ -29,7 +30,7 @@ public class LevelManager : MonoSingleton<LevelManager>
             if (gold != value)
             {
                 gold = value;
-                UiManager._instance.SetGold(Gold);
+                IngameUiManager._instance.SetGold(Gold);
                 GoldAmountChanged?.Invoke(Gold);
             }
         }
@@ -62,10 +63,9 @@ public class LevelManager : MonoSingleton<LevelManager>
         }
     }
 
-    public override void Awake()
+    public override void OnAwake()
     {
-        base.Awake();
-        BlackBoard.levelManager = _instance;
+        IngameBlackBoard.levelManager = _instance;
         units = new List<Unit>();
         enemies = new List<Enemy>();
     }

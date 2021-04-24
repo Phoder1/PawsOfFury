@@ -1,7 +1,7 @@
 ﻿using Assets.Stats;
 using System.Collections;
 using UnityEngine;
-using static BlackBoard;
+using static IngameBlackBoard;
 
 
 public class EffectController

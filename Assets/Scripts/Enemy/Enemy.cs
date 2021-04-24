@@ -1,7 +1,7 @@
 ﻿using Assets.Stats;
 using System.Collections.Generic;
 using UnityEngine;
-using static BlackBoard;
+using static IngameBlackBoard;
 
 public class Enemy : Entity
 {

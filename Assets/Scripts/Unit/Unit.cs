@@ -3,14 +3,17 @@ using System;
 using UnityEngine;
 using Assets.Stats;
 using System.Collections.Generic;
-using static BlackBoard;
-
+using static IngameBlackBoard;
+using CustomAttributes;
+using Sirenix.OdinInspector;
 
 [RequireComponent(typeof(NavScript))]
 public class Unit : Entity
 {
     [LocalComponent(getComponentFromChildrens: true)] public SpriteRenderer buttonSpriteRenderer;
     public LayerMask placeableLayers;
+
+    [SerializeField, AssetsOnly] static Unit upgradedUnit;
     protected override EntityState DefaultState() => new WalkState(this);
     protected virtual EntityState AttackingState => new AttackState(this);
     protected NavScript navScript;
