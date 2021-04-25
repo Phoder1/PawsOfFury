@@ -15,7 +15,7 @@ public class MenuUiManager : MonoSingleton<MenuUiManager>
     bool inputLocked = true;
     private void Start()
     {
-        stateMachine = new StateMachine<MenuUiState>(mainUiState);
+        //stateMachine = new StateMachine<MenuUiState>(mainUiState);
     }
 }
 public interface IUiWindow
