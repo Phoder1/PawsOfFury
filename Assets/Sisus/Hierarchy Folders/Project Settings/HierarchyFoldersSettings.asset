@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b09578d46fde94893a264446e75dd1, type: 3}
+  m_Name: HierarchyFoldersSettings
+  m_EditorClassIdentifier: 
+  enableNamingRules: 0
+  defaultName: New Folder
+  autoNameOnAdd: 1
+  namePrefix: 
+  nameSuffix: 
+  forceNamesUpperCase: 0
+  removeFromBuild: 1
+  warnWhenNotRemovedFromBuild: 1
+  playModeBehaviour: 6
+  playModeStrippingMethod: 2
+  infoBoxText: 'This is a hierarchy folder and can be used for organizing objects
+    in the hierarchy.
+
+
+    When a build is being made all members will be moved
+    up the parent chain and the folder itself will be removed.'
+  enableHierarchyIcons: 1
+  doubleClickSelectsChildrens: 1
+  enableMenuItems: 1
+  enableToolbarIcon: 1
+  extensionMethodsInGlobalNamespace: 1
+  modernLight:
+    closed: {fileID: 2800000, guid: c5a46b4001dde9c489f142bc9cda7c2b, type: 3}
+    open: {fileID: 2800000, guid: ba01e978cf1fda24885d4a5674b93f99, type: 3}
+  modernDark:
+    closed: {fileID: 2800000, guid: 52af136b2403c0d4e9b4e67bfb5ff30c, type: 3}
+    open: {fileID: 2800000, guid: cb48fe56d6dd39d439280e018258f4c4, type: 3}
+  classicLight:
+    closed: {fileID: 0}
+    open: {fileID: 0}
+  classicDark:
+    closed: {fileID: 0}
+    open: {fileID: 0}
+  previousNamePrefix: '--- '
+  previousNameSuffix: ' ---'
+  defaultIconsFetched: 1

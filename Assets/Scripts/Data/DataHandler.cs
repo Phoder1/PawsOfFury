@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -13,6 +12,7 @@ namespace DataSaving
         private static readonly object WriteReadLock = new object();
         public static string persistentPath = Application.persistentDataPath;
         #region Naming Conventions
+        //Naming conventions are used to consistently determin the directory in which you save the data by it's type
         private static string DirectoryPath => persistentPath + "/Saves/";
         private static string GetFilePath(Type type) => DirectoryPath + GetFileName(type) + ".txt";
         private static string GetFileName(Type type) => type.ToString().Replace("+", "_");
@@ -20,6 +20,7 @@ namespace DataSaving
         private static bool FileExists(Type type) => File.Exists(GetFilePath(type));
         #endregion
         #region Cache
+        //The cache system caches any data that was loaded or created 
         private static readonly Dictionary<Type, DictionaryItem> dataDictionary = new Dictionary<Type, DictionaryItem>();
         private class DictionaryItem
         {
@@ -36,10 +37,12 @@ namespace DataSaving
             if (dataDictionary.TryGetValue(typeof(T), out DictionaryItem instance))
                 return (T)instance.item;
 
-            if (TryLoad(out T item))
-                return item;
+            if (!TryLoad(out T item))
+                item = new T();
 
-            return null;
+            dataDictionary.Add(typeof(T), new DictionaryItem(item));
+
+            return item;
         }
         public static void SetData<T>(T value) where T : class, IDirtyData, new()
         {
@@ -157,7 +160,7 @@ namespace DataSaving
         #endregion
     }
     #endregion
-    #region Data Interface
+    #region Dirty Data Interface
     /// <summary>
     /// A data interface which implements the IsDirt flag design pattern.
     /// <a href="https://gpgroup13.wordpress.com/a-dirty-flag-tutorial/#consider">(Refrence)</a>
@@ -171,14 +174,145 @@ namespace DataSaving
     }
     public abstract class DirtyData : IDirtyData
     {
-        protected bool _isDirty;
+        protected bool _isDirty = false;
         public virtual bool IsDirty => _isDirty;
-
         public virtual void Saved() => _isDirty = false;
         public virtual void ValueChanged() => _isDirty = true;
     }
-    #endregion
+    #region Lists
 
+    [Serializable]
+    public abstract class BaseDirtyList<T> : List<T>, IDirtyData
+    {
+        protected bool _isDirty;
+
+        public void ValueChanged() => _isDirty = true;
+        public abstract bool IsDirty { get; }
+        public abstract void Saved();
+        protected abstract void OnValueSet(int index);
+        public new T this[int index]
+        {
+            get => base[index];
+            set
+            {
+                base[index] = value;
+                OnValueSet(index);
+            }
+        }
+        public new int Capacity { get; set; }
+        public new void Add(T item)
+        {
+            base.Add(item);
+            ValueChanged();
+        }
+        public new void Clear()
+        {
+            base.Clear();
+            ValueChanged();
+        }
+        public new void AddRange(IEnumerable<T> collection)
+        {
+            base.AddRange(collection);
+            ValueChanged();
+        }
+        public new void Insert(int index, T item)
+        {
+            base.Insert(index, item);
+            ValueChanged();
+        }
+        public new void InsertRange(int index, IEnumerable<T> collection)
+        {
+            base.InsertRange(index, collection);
+            ValueChanged();
+        }
+        public new int RemoveAll(Predicate<T> match)
+        {
+            var x = base.RemoveAll(match);
+            ValueChanged();
+            return x;
+        }
+        public new void RemoveAt(int index)
+        {
+            base.RemoveAt(index);
+            ValueChanged();
+        }
+        public new void RemoveRange(int index, int count)
+        {
+            base.RemoveRange(index, count);
+            ValueChanged();
+        }
+        public new void Reverse(int index, int count)
+        {
+            base.Reverse(index, count);
+            ValueChanged();
+        }
+        public new void Reverse()
+        {
+            base.Reverse();
+            ValueChanged();
+        }
+        public new void Sort(Comparison<T> comparison)
+        {
+            base.Sort(comparison);
+            ValueChanged();
+        }
+        public new void Sort(int index, int count, IComparer<T> comparer)
+        {
+            base.Sort(index, count, comparer);
+            ValueChanged();
+        }
+        public new void Sort()
+        {
+            base.Sort();
+            ValueChanged();
+        }
+        public new void Sort(IComparer<T> comparer)
+        {
+            base.Sort(comparer);
+            ValueChanged();
+        }
+        public new void TrimExcess()
+        {
+            base.TrimExcess();
+            if (Capacity > Count)
+                ValueChanged();
+        }
+
+
+    }
+    [Serializable]
+    public class DirtyDataList<T> : BaseDirtyList<T> where T : IDirtyData
+    {
+        public override bool IsDirty
+        {
+            get
+            {
+                if (_isDirty)
+                    return true;
+
+                return Exists((x) => IsDirty);
+            }
+        }
+
+        public override void Saved()
+        {
+            ForEach((X) => X.Saved());
+            _isDirty = false;
+        }
+
+        protected override void OnValueSet(int index) => _isDirty |= this[index].IsDirty;
+
+    }
+    [Serializable]
+    public class DirtyStructList<T> : BaseDirtyList<T> where T : struct
+    {
+        public override bool IsDirty => _isDirty;
+        public override void Saved() => _isDirty = false;
+        protected override void OnValueSet(int index) => _isDirty = true;
+
+    }
+    #endregion
+    #endregion
     #region Json Parser
     public static class JsonParser
     {

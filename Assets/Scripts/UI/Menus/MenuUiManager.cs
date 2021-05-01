@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.Events;
 
 public class MenuUiManager : MonoSingleton<MenuUiManager>
 {
     [SerializeField] MenuUiState mainUiState;
-
     StateMachine<MenuUiState> stateMachine;
     bool inputLocked = true;
     private void Start()

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
   m_Name: NAME - 2
   m_EditorClassIdentifier: 
+  _uiSprite: {fileID: 21300000, guid: 44a054df1702e39458b7072b08d0f212, type: 3}
+  _description: WOWWOOWOWOWOW BEST UNIT EVERRRR!!
   id: 2
   tier: 1
-  uiSlotPrefab: {fileID: 8399917105605564619, guid: abdd34a135a76d443aeb45fd2071d5a0,
-    type: 3}
   oneStarPrefab: {fileID: 0}
   twoStarPrefab: {fileID: 0}
   threeStarPrefab: {fileID: 0}
