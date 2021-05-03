@@ -15,7 +15,7 @@ MonoBehaviour:
   _uiSprite: {fileID: 21300000, guid: 0deaf472b41b16b4fbc19d673f1eee5d, type: 3}
   _description: WOWWOOWOWOWOW BEST UNIT EVERRRR!!
   id: 5
-  tier: 1
+  tier: 2
   oneStarPrefab: {fileID: 0}
   twoStarPrefab: {fileID: 0}
   threeStarPrefab: {fileID: 0}

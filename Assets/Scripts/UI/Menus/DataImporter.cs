@@ -1,18 +1,42 @@
+using Refrences;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum DataTypes { Any, String, Int, Float, Bool, UnitSO, }
+public enum DataTypes { Any, String, Int, Float, Bool, ObjectRefrence, UnitSO, }
 [Flags] public enum TriggerCallbacks { None = 0, Manual = 1, Awake = 2, Start = 4, OnEnable = 8, OnDisable = 16 }
 public class DataImporter : MonoBehaviour
 {
     [SerializeField, EnumToggleButtons, HideLabel]
     private TriggerCallbacks ControlCallbacks = TriggerCallbacks.Manual;
-    [SerializeField]
-    private UnityEngine.Object _defaultData = default;
+
+    [SerializeField, Tooltip("The default data to use, also support refrences.")]
+    private UnityEngine.Object _defaultData;
+    public UnityEngine.Object DefaultData
+    {
+        get => _defaultData;
+        set
+        {
+            if (_defaultData == value)
+                return;
+
+            if (_defaultData is ObjectRefrence _originalRef && _originalRef != null)
+                _originalRef.OnValueChanged -= ApplyImport;
+
+            _defaultData = value;
+
+            if (_autoImport && _defaultData is ObjectRefrence _newRef && _newRef != null)
+                _newRef.OnValueChanged += ApplyImport;
+        }
+    }
+
+    [SerializeField, ShowIf("@DefaultData is ObjectRefrence"), Tooltip("Auto imports data on value changes")]
+    private bool _autoImport;
+
     [SerializeField, EnumPaging]
     private DataTypes _dataType;
+
     #region SimpleTypes
     [ShowIf("@_dataType == DataTypes.Any")]
     public UnityEvent<object> DefaultPassthrough;
@@ -24,6 +48,8 @@ public class DataImporter : MonoBehaviour
     public UnityEvent<float> FloatExport;
     [ShowIf("@_dataType == DataTypes.Bool")]
     public UnityEvent<bool> BoolExport;
+    [ShowIf("@_dataType == DataTypes.ObjectRefrence")]
+    public UnityEvent<ObjectRefrence> ObjectRefrenceExport;
     #endregion
     #region UnitSO
     [FoldoutGroup("Unit Export events", VisibleIf = "@_dataType == DataTypes.UnitSO"),]
@@ -44,7 +70,14 @@ public class DataImporter : MonoBehaviour
     public UnityEvent<bool> OwnedExport;
     #endregion
     private void Awake() => TryDefaultImport(TriggerCallbacks.Awake);
-    private void Start() => TryDefaultImport(TriggerCallbacks.Start);
+    private void Start()
+    {
+        TryDefaultImport(TriggerCallbacks.Start);
+
+        if (_autoImport && _defaultData is ObjectRefrence _ref && _ref != null)
+            _ref.OnValueChanged += ApplyImport;
+
+    }
     private void OnEnable() => TryDefaultImport(TriggerCallbacks.OnEnable);
     private void OnDisable() => TryDefaultImport(TriggerCallbacks.OnDisable);
     public void Import(object data)
@@ -55,19 +88,24 @@ public class DataImporter : MonoBehaviour
     public void ImportDefault()
     {
         if (ControlCallbacks.HasFlag(TriggerCallbacks.Manual))
-            ApplyImport(_defaultData);
+            ApplyImport(DefaultData);
     }
     private bool TryDefaultImport(TriggerCallbacks trigger)
     {
         if (ControlCallbacks.HasFlag(trigger))
         {
-            ApplyImport(_defaultData);
+            ApplyImport(DefaultData);
             return true;
         }
         return false;
     }
     private void ApplyImport(object data)
     {
+        if (data is Refrences.ObjectRefrence _ref)
+        {
+            ObjectRefrenceExport?.Invoke(_ref);
+            data = _ref.Value;
+        }
         DefaultPassthrough?.Invoke(data);
         if (data != null)
             switch (data)

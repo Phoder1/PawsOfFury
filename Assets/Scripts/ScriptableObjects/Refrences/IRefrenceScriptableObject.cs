@@ -4,8 +4,8 @@ namespace Refrences
 {
     public interface IRefrenceScriptableObject
     {
-        object Value { get; set; }
+        UnityEngine.Object Value { get; set; }
 
-        event Action<object> OnValueChanged;
+        //event Action<object> OnValueChanged;
     }
 }

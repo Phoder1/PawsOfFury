@@ -42,5 +42,10 @@ namespace Refrences
             a.RemoveListener(b);
             return a;
         }
+        public static UnityRefrenceEvent operator -(UnityRefrenceEvent a, UnityRefrenceEvent b)
+        {
+            a.RemoveListener((x) => b?.Invoke(x));
+            return a;
+        }
     }
 }

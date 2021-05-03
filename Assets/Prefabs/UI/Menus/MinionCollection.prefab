@@ -123,6 +123,7 @@ MonoBehaviour:
   scrollContent: {fileID: 1100862231301095068}
   _unitButtonPrefab: {fileID: 5636435802916976474, guid: abdd34a135a76d443aeb45fd2071d5a0,
     type: 3}
+  _ownedOnly: 0
 --- !u!1 &1100862231121921017
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: -17}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1100862231121921021
 CanvasRenderer:
@@ -249,7 +250,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1100862231301095058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,13 +268,13 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 50
     m_Bottom: 50
-  m_ChildAlignment: 1
+  m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 260, y: 350}
-  m_Spacing: {x: 0, y: 30}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Spacing: {x: 5, y: 30}
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!114 &1100862231301095059
 MonoBehaviour:
   m_ObjectHideFlags: 0

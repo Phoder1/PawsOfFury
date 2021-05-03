@@ -1,8 +1,7 @@
 using DataSaving;
-using System;
-using UnityEngine;
-using UnityEngine.UI;
+using Refrences;
 using Sirenix.OdinInspector;
+using UnityEngine;
 using static DataSaving.InventoryData;
 
 public class MinionCollection : MonoBehaviour
@@ -10,10 +9,12 @@ public class MinionCollection : MonoBehaviour
     [SerializeField]
     private GameObject scrollContent;
     [SerializeField, AssetsOnly]
-    private UnitButton _unitButtonPrefab;
+    private GameObject _unitButtonPrefab;
+    [SerializeField]
+    private bool _ownedOnly;
     private UnitsDatabaseSO database;
 
-    private void Start()
+    private void Awake()
     {
         var inventory = DataHandler.GetData<InventoryData>();
         if (inventory == null)
@@ -25,12 +26,17 @@ public class MinionCollection : MonoBehaviour
             Debug.Log(inventory);
         database = Database.UnitsDatabase;
         inventory.units[1] = new UnitData(4, 2, 5);
-        _ = DataHandler.SaveAllAsync();
 
         foreach (UnitSO unit in database.Units)
         {
-            var UnitButton = Instantiate(_unitButtonPrefab, scrollContent.transform);
-            UnitButton.unit = unit;
+            if (!_ownedOnly || unit.Owned)
+            {
+                var UnitButton = Instantiate(_unitButtonPrefab, scrollContent.transform);
+                UnitButton.GetComponent<EventPassthrough>().DefaultData = unit;
+                var importer = UnitButton.GetComponent<DataImporter>();
+                importer.DefaultData = unit;
+                importer.ImportDefault();
+            }
         }
     }
 }

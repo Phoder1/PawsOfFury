@@ -7,9 +7,9 @@ namespace Refrences
     public class ObjectRefrence : ScriptableObject, IRefrenceScriptableObject
     {
         [SerializeField]
-        protected object _value = default;
+        protected UnityEngine.Object _value = default;
 
-        public virtual object Value
+        public virtual UnityEngine.Object Value
         {
             get => _value;
             set
@@ -17,7 +17,7 @@ namespace Refrences
                 if ((value == null && _value != null) || (value != null && !value.Equals(_value)))
                 {
                     var _oldValue = _value;
-                        _value = value;
+                    _value = value;
 
                     ValueChanged(_oldValue, _value);
                     TriggerOnValueChanged();
@@ -26,6 +26,6 @@ namespace Refrences
         }
         protected virtual void ValueChanged(object oldValue, object newValue) { }
         protected void TriggerOnValueChanged() => OnValueChanged?.Invoke(Value);
-        public event Action<object> OnValueChanged = default;
+        public UnityRefrenceEvent OnValueChanged = default;
     }
 }
