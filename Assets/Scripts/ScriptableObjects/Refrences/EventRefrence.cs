@@ -1,9 +1,8 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Sirenix.OdinInspector;
-using UnityEditor.Events;
 
 namespace Refrences
 {
@@ -16,13 +15,15 @@ namespace Refrences
         public UnityRefrenceEvent eventRefrence = new UnityRefrenceEvent();
         public void TriggerEvent() => TriggerEvent(null);
         public void TriggerEvent(object obj) => eventRefrence?.Invoke(obj);
+#if UNITY_EDITOR
         private void ResetChildSubscription()
         {
             UnsubscribeFromChilds();
             SubscribeToChilds();
         }
-        private void UnsubscribeFromChilds() => _childEvents.ForEach((x) => UnityEventTools.RemovePersistentListener(x.eventRefrence, TriggerEvent));
-        private void SubscribeToChilds() => _childEvents.ForEach((x) => UnityEventTools.AddPersistentListener(x.eventRefrence, TriggerEvent));
+        private void UnsubscribeFromChilds() => _childEvents.ForEach((x) => UnityEditor.Events.UnityEventTools.RemovePersistentListener(x.eventRefrence, TriggerEvent));
+        private void SubscribeToChilds() => _childEvents.ForEach((x) => UnityEditor.Events.UnityEventTools.AddPersistentListener(x.eventRefrence, TriggerEvent));
+#endif
     }
     [Serializable]
     public class UnityRefrenceEvent : UnityEvent<object>
