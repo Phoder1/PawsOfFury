@@ -35,7 +35,6 @@ MonoBehaviour:
     rate: 0
   lastAttackTime: 0
   selected: 0
-  goldReward: 0
 --- !u!1001 &922499304326930715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43,6 +42,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 291632968315187426, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d0a6f62aa898f34488afed4393efa116, type: 2}
     - target: {fileID: 3120752962038389760, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_Controller
@@ -51,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 4508563578942963112, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: EnemyBase
       objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963112, guid: a8130013def55024d821218c438f91db,
         type: 3}
@@ -134,6 +138,51 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: fbc61207120fbac4c85ec5008d47bf3d,
         type: 3}
+    - target: {fileID: 4508563580025433755, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508563580025433755, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -97941291
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895374949023656662, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: AttackCallback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895374949023656662, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: AttackCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895374949023656662, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: AttackCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 970597044813884630}
+    - target: {fileID: 7895374949023656662, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: AttackCallback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895374949023656662, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: AttackCallback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttackAnimRecall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895374949023656662, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: AttackCallback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Entity, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895374949023656662, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: AttackCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8130013def55024d821218c438f91db, type: 3}
 --- !u!1 &3628989300967414963 stripped

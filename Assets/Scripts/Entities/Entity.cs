@@ -25,6 +25,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     [SerializeField] protected GameObject UiObject;
     [SerializeField] protected float healthbarHeight;
     [SerializeField] protected DefualtStats defualtStats;
+    [SerializeField] protected Transform FireOrigin;
 
     public ProjectileData projectile;
     [SerializeField] protected AuraData aura;
@@ -80,7 +81,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     protected virtual void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         mainCam = Camera.main;
         lastAttackTime = -Mathf.Infinity;
         stats = new EntityStats();
@@ -193,9 +194,11 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             if (TargetEntity != null && TargetEntity.entity != null)
             {
                 TargetEntity.entity.OnDestroyEvent -= CancelAttack;
-                GameObject projectile = Instantiate(entity.projectile.gameobject, entity.transform.position, Quaternion.identity);
+                
+                Vector3 firePosition = entity.FireOrigin == null? entity.transform.position : entity.FireOrigin.position; // HERE !!!!!!
+                GameObject projectile = Instantiate(entity.projectile.gameobject, firePosition, Quaternion.identity);
                 Projectile projectileScript = projectile.GetComponent<Projectile>();
-                projectileScript.Init(entity, TargetEntity.entity, callback: entity.projectile.callback);
+                projectileScript.Init(entity, TargetEntity.entity, callback: entity.projectile.callback,firePosition);
             }
         }
         protected override void OnDisable() => Stop();

@@ -22,7 +22,6 @@ public class Scroll_inGame : MonoBehaviour
 
     [SerializeField]
     GraphicRaycaster m_Raycaster;
-    [SerializeField]
     PointerEventData m_PointerEventData;
     [SerializeField]
     EventSystem m_EventSystem;

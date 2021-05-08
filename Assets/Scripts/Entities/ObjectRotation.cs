@@ -10,4 +10,5 @@ public class ObjectRotation : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x + rotationOffset, 0, 0);
     }
+
 }

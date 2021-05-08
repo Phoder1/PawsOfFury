@@ -16,7 +16,7 @@ MonoBehaviour:
   - targets: 1
     priority: 4
     tagPriority: 0
-    range: 5
+    range: 3
     ignoresTaunt: 1
     canDetectGhosts: 1
     ignoresSelected: 1
