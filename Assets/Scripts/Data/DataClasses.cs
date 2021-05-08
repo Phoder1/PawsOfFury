@@ -1,3 +1,4 @@
+using Refrences;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,69 +8,102 @@ namespace DataSaving
     [Serializable]
     public class InventoryData : DirtyData
     {
-        public DirtyDataList<UnitData> units = new DirtyDataList<UnitData>()
+        [SerializeField]
+        private DirtyDataList<UnitSlotData> _units = new DirtyDataList<UnitSlotData>()
         {
-            new UnitData(0,1,1),
-            new UnitData(0,1,1),
-            new UnitData(0,1,1),
-            new UnitData(0,1,1),
+            new UnitSlotData(1,1,1),
+            new UnitSlotData(2,1,1),
+            new UnitSlotData(3,1,1),
+            new UnitSlotData(4,1,1),
         };
-        public override bool IsDirty => base.IsDirty || units.IsDirty;
+        public DirtyDataList<UnitSlotData> Units { 
+            get => _units; 
+            set => Setter(ref _units, value); 
+        }
+        public override bool IsDirty => base.IsDirty || _units.IsDirty;
 
         public override void Saved()
         {
             base.Saved();
-            units.Saved();
+            _units.Saved();
+        }
+    }
+    [Serializable]
+    public class UnitSlotData : DirtyData
+    {
+        [SerializeField]
+        private UnitData _data = null;
+        public UnitData Data { get => _data; set => Setter(ref _data, value); }
+        public byte ID => Data.ID;
+        public byte Tier => Data.Tier;
+        
+        [SerializeField]
+        private byte _count;
+        public byte Count { get => _count; set => Setter(ref _count, value); }
+
+        public override bool IsDirty => base.IsDirty || Data.IsDirty;
+
+        public UnitSlotData(byte ID, byte tier, byte count)
+        {
+            _data = new UnitData(ID, tier);
+            _count = count;
+        }
+        public static explicit operator UnitData(UnitSlotData slot) => slot.Data;
+
+        public override void Saved()
+        {
+            base.Saved();
+            Data.Saved();
+        }
+    }
+    [Serializable]
+    public class UnitData : DirtyData
+    {
+        [SerializeField]
+        private byte _ID;
+        public byte ID
+        {
+            get => _ID;
+            set => Setter(ref _ID, value);
+        }
+        [SerializeField]
+        private byte _tier;
+        public byte Tier
+        {
+            get => _tier;
+            set => Setter(ref _tier, value);
+        }
+        public UnitData(byte iD, byte tier)
+        {
+            ID = iD;
+            Tier = tier;
+        }
+        public UnitSO UnitSO => Database.UnitsDatabase.Units.Find((x) => x.ID == ID);
+    }
+    [Serializable]
+    public class TeamData : DirtyData
+    {
+        [SerializeField]
+        private DirtyDataList<UnitData> _team = new DirtyDataList<UnitData>()
+        {
+            new UnitData(0,1),
+            new UnitData(1,1),
+            new UnitData(2,1),
+            new UnitData(3,1),
+        };
+        public DirtyDataList<UnitData> Team
+        {
+            get => _team;
+            set => Setter(ref _team, value);
         }
 
-        [Serializable]
-        public class UnitData : DirtyData
+        public override bool IsDirty => base.IsDirty || _team.IsDirty;
+
+        public override void Saved()
         {
-            [SerializeField]
-            private byte _ID;
-            public byte ID 
-            { 
-                get => _ID; 
-                set
-                {
-                    if (_ID == value)
-                        return;
-                    _ID = value;
-                    ValueChanged();
-                }
-            }
-            [SerializeField]
-            private byte _tier;
-            public byte Tier
-            {
-                get => _tier;
-                set
-                {
-                    if (_tier == value)
-                        return;
-                    _tier = value;
-                    ValueChanged();
-                }
-            }
-            [SerializeField]
-            private byte _count;
-            public byte Count
-            {
-                get => _count;
-                set
-                {
-                    if (_count == value)
-                        return;
-                    _count = value;
-                    ValueChanged();
-                }
-            }
-            public UnitData(byte iD, byte tier, byte count)
-            {
-                ID = iD;
-                Tier = tier;
-                Count = count;
-            }
+            _team.Saved();
+            base.Saved();
         }
+
     }
 }

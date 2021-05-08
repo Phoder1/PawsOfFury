@@ -11,7 +11,9 @@ public class MinionCollection : MonoBehaviour
     [SerializeField, AssetsOnly]
     private GameObject _unitButtonPrefab;
     [SerializeField]
-    private bool _ownedOnly;
+    private bool _filterUnowned;
+    [SerializeField]
+    private bool _filterTeam;
     private UnitsDatabaseSO database;
 
     private void Awake()
@@ -25,11 +27,11 @@ public class MinionCollection : MonoBehaviour
         else
             Debug.Log(inventory);
         database = Database.UnitsDatabase;
-        inventory.units[1] = new UnitData(4, 2, 5);
+        inventory.Units[1] = new UnitSlotData(4, 2, 5);
 
         foreach (UnitSO unit in database.Units)
         {
-            if (!_ownedOnly || unit.Owned)
+            if ((!_filterUnowned || unit.Owned) && (!_filterTeam ||  unit.TeamNumber != null))
             {
                 var UnitButton = Instantiate(_unitButtonPrefab, scrollContent.transform);
                 UnitButton.GetComponent<EventPassthrough>().DefaultData = unit;

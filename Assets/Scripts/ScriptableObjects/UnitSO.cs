@@ -43,7 +43,7 @@ public class UnitSO : ScriptableObject
     {
         get
         {
-            UnitData unit = DataHandler.GetData<InventoryData>().units.Find((x) => x.ID == ID);
+            UnitSlotData unit = DataHandler.GetData<InventoryData>().Units.Find((x) => x.ID == ID);
             if (unit != null)
                 return unit.Count;
             return 0;
@@ -55,11 +55,12 @@ public class UnitSO : ScriptableObject
     {
         get
         {
-            var data = DataHandler.GetData<InventoryData>().units.Find((x) => x.ID == ID);
+            var data = DataHandler.GetData<InventoryData>().Units.Find((x) => x.ID == ID);
             return data != null && data.Count > 0;
 
         }
     }
+    public int? TeamNumber => DataHandler.GetData<TeamData>().Team.FindIndex((x) => x.ID == ID);
     public GameObject GetStarLevel(byte starLevel)
     {
         switch (starLevel)

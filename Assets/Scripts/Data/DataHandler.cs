@@ -34,15 +34,18 @@ namespace DataSaving
         #region interface
         public static T GetData<T>() where T : class, IDirtyData, new()
         {
-            if (dataDictionary.TryGetValue(typeof(T), out DictionaryItem instance))
-                return (T)instance.item;
+            lock (WriteReadLock)
+            {
+                if (dataDictionary.TryGetValue(typeof(T), out DictionaryItem instance))
+                    return (T)instance.item;
 
-            if (!TryLoad(out T item))
-                item = new T();
+                if (!TryLoad(out T item))
+                    item = new T();
 
-            dataDictionary.Add(typeof(T), new DictionaryItem(item));
+                dataDictionary.Add(typeof(T), new DictionaryItem(item));
 
-            return item;
+                return item;
+            }
         }
         public static void SetData<T>(T value) where T : class, IDirtyData, new()
         {
@@ -172,12 +175,21 @@ namespace DataSaving
         void Saved();
         void ValueChanged();
     }
+    [Serializable]
     public abstract class DirtyData : IDirtyData
     {
         protected bool _isDirty = false;
         public virtual bool IsDirty => _isDirty;
         public virtual void Saved() => _isDirty = false;
         public virtual void ValueChanged() => _isDirty = true;
+        protected void Setter<T>(ref T data, T value)
+        {
+            if ((data == null && value == null) || (data != null && data.Equals(value)))
+                return;
+            data = value;
+
+            ValueChanged();
+        }
     }
     #region Lists
 
