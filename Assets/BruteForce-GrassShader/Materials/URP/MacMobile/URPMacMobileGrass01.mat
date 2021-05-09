@@ -94,6 +94,8 @@ Material:
     - _NoisePower: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ProceduralDistance: 5.5
+    - _ProceduralStrength: 1.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -101,6 +103,7 @@ Material:
     - _TilingN2: 0.05
     - _TilingN3: 1
     - _UVSec: 0
+    - _UsePR: 0
     - _UseRT: 1
     - _UseShadow: 1
     - _UseShadowCast: 1
@@ -113,3 +116,4 @@ Material:
     - _GroundColor: {r: 0.95699996, g: 0.8818866, b: 0.69860995, a: 1}
     - _ProjectedShadowColor: {r: 0.72, g: 0.70392126, b: 0.06886956, a: 1}
     - _SelfShadowColor: {r: 0.41568625, g: 0.4313725, b: 0.3607843, a: 1}
+  m_BuildTextureStacks: []

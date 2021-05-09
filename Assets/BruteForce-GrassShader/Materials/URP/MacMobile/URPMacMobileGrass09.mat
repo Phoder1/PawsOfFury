@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoGrassTex:
-        m_Texture: {fileID: 2800000, guid: 9dd5094df1a6d804c9ce68d7847e4969, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5ddef0977dde72343992a79d27da33fe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
@@ -90,10 +90,10 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GrassCut: 0
-    - _GrassSaturation: 4.94
-    - _GrassShading: 0.188
-    - _GrassThinness: 0.75
-    - _GrassThinnessIntersection: 0.13
+    - _GrassSaturation: 1
+    - _GrassShading: 0.1
+    - _GrassThinness: 1.06
+    - _GrassThinnessIntersection: 0.28
     - _Metallic: 0
     - _Mode: 0
     - _NoisePower: 1
@@ -101,6 +101,8 @@ Material:
     - _OcclusionStrength: 1
     - _OffsetValue: 2.5
     - _Parallax: 0.02
+    - _ProceduralDistance: 1.82
+    - _ProceduralStrength: 1.5
     - _RTEffect: 1
     - _RimMax: 0.62
     - _RimMin: 0.241
@@ -110,23 +112,25 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TilingN1: 6.06
+    - _TilingN1: 46.35
     - _TilingN2: 0.05
     - _TilingN3: 1
     - _UVSec: 0
+    - _UsePR: 0
     - _UseRT: 1
-    - _UseShadow: 1
+    - _UseShadow: 0
     - _UseShadowCast: 0
     - _WindForce: 0.25
     - _WindMovement: 0.55
     - _ZWrite: 1
     - __NumberOfStacks: 17
     m_Colors:
-    - _Color: {r: 0.816, g: 0.816, b: 0.816, a: 1}
+    - _Color: {r: 0.227451, g: 0.72156864, b: 0.54509807, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.95699996, g: 0.8818866, b: 0.69860995, a: 1}
     - _OffsetVector: {r: 0, g: 0, b: 0, a: 0}
     - _PJShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ProjectedShadowColor: {r: 0.45283014, g: 0.42296264, b: 0.04485581, a: 1}
+    - _ProjectedShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0.14566667, g: 0.184, b: 0.09008333, a: 1}
-    - _SelfShadowColor: {r: 0.41568625, g: 0.4313725, b: 0.3607843, a: 1}
+    - _SelfShadowColor: {r: 0.5660378, g: 0.253935, b: 0.19971521, a: 1}
+  m_BuildTextureStacks: []

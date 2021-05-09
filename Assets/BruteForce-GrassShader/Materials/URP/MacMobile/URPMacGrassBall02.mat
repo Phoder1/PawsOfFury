@@ -134,6 +134,8 @@ Material:
     - _PrioC: 1
     - _PrioD: 1
     - _PrioGround: 1
+    - _ProceduralDistance: 5.5
+    - _ProceduralStrength: 1.5
     - _RTEffect: 1
     - _RimMax: 0.591
     - _RimMin: 0.11
@@ -148,6 +150,7 @@ Material:
     - _TilingN2: 0.05
     - _TilingN3: 0.4
     - _UVSec: 0
+    - _UsePR: 0
     - _UseRT: 1
     - _UseShadow: 1
     - _UseShadowCast: 1
@@ -158,9 +161,10 @@ Material:
     m_Colors:
     - _Color: {r: 0.69411767, g: 0.64195186, b: 0.57125884, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.95699996, g: 0.8818866, b: 0.69860995, a: 1}
+    - _GroundColor: {r: 1, g: 1, b: 1, a: 1}
     - _OffsetVector: {r: 0, g: 0, b: 0, a: 0}
     - _PJShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ProjectedShadowColor: {r: 0.45098037, g: 0.23375347, b: 0.04313723, a: 1}
     - _RimColor: {r: 0.277, g: 0.25819692, b: 0.1355532, a: 1}
     - _SelfShadowColor: {r: 0.28399998, g: 0.27240813, b: 0.06665304, a: 1}
+  m_BuildTextureStacks: []
