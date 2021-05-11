@@ -23,6 +23,7 @@ MonoBehaviour:
     MaxHP: 8
     WalkSpeed: 1.5
     MaxAttackSpeedMultiplier: 3
+  FireOrigin: {fileID: 0}
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
       type: 3}
@@ -62,7 +63,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4025256064503350889}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Speed: 1
   m_Acceleration: 1
   avoidancePriority: 50
@@ -75,6 +76,20 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &8314425843220299570
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025256064503350889}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.18
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &670253081301957569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,6 +181,11 @@ PrefabInstance:
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508563578942963115, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4508563580025433755, guid: a8130013def55024d821218c438f91db,
