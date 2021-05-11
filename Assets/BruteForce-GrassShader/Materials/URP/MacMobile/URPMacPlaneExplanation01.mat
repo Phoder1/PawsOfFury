@@ -92,10 +92,10 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GrassCut: 0
-    - _GrassSaturation: 0.99
+    - _GrassSaturation: 1
     - _GrassShading: 0
-    - _GrassThinness: 1.77
-    - _GrassThinnessIntersection: 0.01
+    - _GrassThinness: 2
+    - _GrassThinnessIntersection: 0.25
     - _Metallic: 0
     - _MinimumNumberStacks: 2
     - _Mode: 0
@@ -115,7 +115,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TilingN1: 23.75
+    - _TilingN1: 57.86
     - _TilingN2: 0.05
     - _TilingN3: 3
     - _UVSec: 0
@@ -135,5 +135,5 @@ Material:
     - _PJShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ProjectedShadowColor: {r: 0.4528302, g: 0.42296267, b: 0.044855822, a: 1}
     - _RimColor: {r: 0.14566667, g: 0.184, b: 0.09008333, a: 1}
-    - _SelfShadowColor: {r: 0.3026154, g: 0.46226418, b: 0, a: 1}
+    - _SelfShadowColor: {r: 0.7921569, g: 0.19313413, b: 0, a: 1}
   m_BuildTextureStacks: []
