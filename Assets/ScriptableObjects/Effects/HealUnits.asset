@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ad718bb62682d47b92ac8fe369dc62, type: 3}
   m_Name: HealUnits
   m_EditorClassIdentifier: 
-  targets: 4
+  targets: 6
   affectedStat: 0
   effectType: 0
-  inPercentage: 0
-  isRelativeToMax: 0
-  amount: 5
+  inPercentage: 1
+  isRelativeToMax: 1
+  amount: 30
   duration: 0
   tickTime: 0
