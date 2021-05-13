@@ -95,7 +95,7 @@ Material:
     - _GrassSaturation: 1
     - _GrassShading: 0
     - _GrassThinness: 2
-    - _GrassThinnessIntersection: 0.25
+    - _GrassThinnessIntersection: 0.27
     - _Metallic: 0
     - _MinimumNumberStacks: 2
     - _Mode: 0
