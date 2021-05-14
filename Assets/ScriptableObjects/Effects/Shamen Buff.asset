@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: 6
   affectedStat: 3
-  effectType: 0
+  effectType: 1
   inPercentage: 1
   isRelativeToMax: 1
   amount: 30
