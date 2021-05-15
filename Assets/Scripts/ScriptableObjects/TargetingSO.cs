@@ -31,7 +31,7 @@ public static class Targets
     public static EntityHit GetEntityHit(Vector3 originPosition, TargetingSO targeting, EntityHitCondition entityHitCondition = null, Entity attackingEntity = null)
     {
         List<EntityHit> possibleHits = GetEntityHits(originPosition, targeting, entityHitCondition, attackingEntity);
-        return possibleHits.Count == 0 ? null : possibleHits[0]; 
+        return possibleHits.Count == 0 ? null : possibleHits[0];
     }
     public static List<EntityHit> GetEntityHits(Entity entity, TargetingSO targeting, EntityHitCondition entityHitCondition = null)
         => GetEntityHits(entity.gameObject.transform.position, targeting, entityHitCondition, entity);
@@ -42,32 +42,49 @@ public static class Targets
             if (rule.targets.HasFlag(TargetTypes.Enemy))
             {
                 List<EntityHit> enemies = new List<Entity>(levelManager.Enemies).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, originPosition)));
-                if (attackingEntity != null && attackingEntity is Enemy enemy && rule.targets.HasFlag(TargetTypes.Self))
-                    enemies.Add(new EntityHit(enemy, 0));
-                return RuleOutEntities(enemies, rule);
+
+                if (attackingEntity != null && attackingEntity is Enemy selfEnemy && !rule.targets.HasFlag(TargetTypes.Self))
+                {
+                    int index;
+                    if ((index = enemies.FindIndex((x) => x.entity == selfEnemy)) != -1)
+                        enemies.RemoveAt(index);
+                }
+                enemies = RuleOutEntities(enemies, rule);
+                if (enemies.Count > 0)
+                    return enemies;
             }
             else if (rule.targets.HasFlag(TargetTypes.Unit))
             {
                 List<EntityHit> units = new List<Entity>(levelManager.Units).ConvertAll(x => new EntityHit(x, Vector3.Distance(x.transform.position, originPosition)));
-                if (attackingEntity != null && attackingEntity is Unit unit && rule.targets.HasFlag(TargetTypes.Self))
-                    units.Add(new EntityHit(unit, 0));
-                return RuleOutEntities(units, rule);
+                if (attackingEntity != null && attackingEntity is Unit selfUnit && !rule.targets.HasFlag(TargetTypes.Self))
+                {
+                    int index;
+                    if ((index = units.FindIndex((x) => x.entity == selfUnit)) != -1)
+                        units.RemoveAt(index);
+                }
+                units = RuleOutEntities(units, rule);
+                if (units.Count > 0)
+                    return units;
             }
             else if (attackingEntity != null && rule.targets.HasFlag(TargetTypes.Self))
                 return new List<EntityHit>() { new EntityHit(attackingEntity, 0) };
         }
-        return null;
+        return new List<EntityHit>();
+
+
         List<EntityHit> RuleOutEntities(List<EntityHit> entities, TargetingRule rule)
         {
             if (entities.Count == 0)
                 return entities;
             for (int i = 0; i < entities.Count; i++)
             {
+                Stat hp = null;
                 if (entities[i] == null
                     || entities[i].entity == null
                     || entities[i].distance > rule.range
                     || (!rule.canDetectGhosts && entities[i].entity.Type.HasFlag(EntityType.Ghost))
                     || (entityHitCondition != null && !entityHitCondition(entities[i]))
+                    || (rule.ignoreFullHP && (hp = entities[i].entity.stats[StatType.HP]) != null && hp.IsFull)
                     || Physics.Raycast(originPosition, entities[i].entity.transform.position - originPosition, entities[i].distance, LayerMask.GetMask("Wall")))
                 {
                     entities.RemoveAt(i);
@@ -199,4 +216,5 @@ public class TargetingRule
     public bool ignoresTaunt;
     public bool canDetectGhosts;
     public bool ignoresSelected;
+    public bool ignoreFullHP;
 }

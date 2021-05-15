@@ -63,8 +63,6 @@ public class Scroll_inGame : MonoBehaviour
             moveTouch = Vector3.zero;
             isTouching = false;
         }
-        Debug.Log((startTouch.y - moveTouch.y) / Screen.height);
-
     }
 
     void MoveCamera()

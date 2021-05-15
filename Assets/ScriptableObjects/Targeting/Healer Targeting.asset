@@ -10,14 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06cb16e744902a64ebc0d56e58b636de, type: 3}
-  m_Name: Target Closest Unit Lowest HP
+  m_Name: Healer Targeting
   m_EditorClassIdentifier: 
   rulesOrder:
   - targets: 4
     priority: 3
     tagPriority: 0
-    range: 3
+    range: 2
     ignoresTaunt: 0
     canDetectGhosts: 0
     ignoresSelected: 0
     ignoreFullHP: 1
+  - targets: 1
+    priority: 0
+    tagPriority: 0
+    range: 2
+    ignoresTaunt: 0
+    canDetectGhosts: 0
+    ignoresSelected: 0
+    ignoreFullHP: 0

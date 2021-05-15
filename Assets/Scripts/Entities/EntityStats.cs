@@ -42,6 +42,7 @@ namespace Assets.Stats
         protected MonoBehaviour entity;
         protected CoroutineHandler coroutineHandler;
         public bool GetIsCapped => maxStat != null;
+        public bool IsFull => GetIsCapped && value == maxStat.value;
         private List<Reaction> reactions;
 
         public Stat(MonoBehaviour entity, StatType statType, float getSetValue, Stat maxStat = null, List<Reaction> reactions = null)
