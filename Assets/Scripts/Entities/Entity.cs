@@ -31,7 +31,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     [SerializeField] protected AuraData aura;
     [Tooltip("Height 0 is the center of the Unit.")]
 
-
+    [SerializeField]
     public EntityStats stats;
     protected Animator animator;
     protected Camera mainCam;
@@ -127,7 +127,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         stats.Add(maxHp);
         stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, ui, maxHp, new Reaction(Reaction.DeathCondition, (value) => { Destroy(gameObject); })));
-        stats.Add(new Stat(this, StatType.DamageMultiplier, 1));
+        stats.Add(new Stat(this, StatType.DamageMultiplier, 100));
         Stat maxAttackSpeed = new Stat(this, StatType.MaxAttackSpeedMultiplier, defualtStats.MaxAttackSpeedMultiplier);
         stats.Add(maxAttackSpeed);
         stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed, new Reaction(Reaction.AlwaysTrue, (value) => { if(animator) animator.speed = value.GetSetValue; Debug.Log(this.ToString() + " Speed: " + value.GetSetValue); })));
@@ -198,6 +198,12 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                 Vector3 firePosition = entity.FireOrigin == null? entity.transform.position : entity.FireOrigin.position; // HERE !!!!!!
                 GameObject projectile = Instantiate(entity.projectile.gameobject, firePosition, Quaternion.identity);
                 Projectile projectileScript = projectile.GetComponent<Projectile>();
+                
+                foreach(var effect in projectileScript.effects)
+                {
+                    if (effect.affectedStat == StatType.HP)
+                        effect.amount *= (entity.stats.GetStatValue(StatType.DamageMultiplier)) / 100;
+                }
                 projectileScript.Init(entity, TargetEntity.entity, callback: entity.projectile.callback,firePosition);
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Assets.Stats
@@ -13,24 +14,29 @@ namespace Assets.Stats
         MaxAttackSpeedMultiplier,
         RangeMultiplier
     }
+    [Serializable]
     public class EntityStats
     {
-        Dictionary<StatType, Stat> statDict;
-
-        public EntityStats()
+        public Stat this[StatType index]
         {
-            statDict = new Dictionary<StatType, Stat>();
+            set => this[index] = value;
+            get => stats.Find((x) => x.statType == index);
         }
 
-        public Stat GetStat(StatType statType) => statDict[statType];
+        [SerializeField, ReadOnly]
+        private List<Stat> stats =  new List<Stat>();
+
+        public Stat GetStat(StatType statType) => this[statType];
         public float GetStatValue(StatType statType) => GetStat(statType).GetSetValue;
         public void SetStatValue(StatType statType, float value) => GetStat(statType).GetSetValue = value;
         public void AddToStat(StatType statType, float value) => GetStat(statType).GetSetValue += value;
-        public void Add(Stat stat) => statDict.Add(stat.statType, stat);
+        public void Add(Stat stat) => stats.Add(stat);
     }
+    [Serializable]
     public class Stat
     {
         public StatType statType;
+        [SerializeField]
         private float value;
         public Stat maxStat;
         protected MonoBehaviour entity;

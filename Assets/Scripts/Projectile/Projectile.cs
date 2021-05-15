@@ -16,6 +16,8 @@ public class Projectile : MonoBehaviour
     public event Action OnProjectileAnimation;
     public EffectData[] effects;
     public void ProjectileAnimRecall() => OnProjectileAnimation?.Invoke();
+
+
     protected virtual void OnEnable()
     {
         effects = Array.ConvertAll(effectsData, (x) => (EffectData)x);
