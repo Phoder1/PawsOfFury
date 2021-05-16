@@ -16,7 +16,7 @@ MonoBehaviour:
   - targets: 4
     priority: 3
     tagPriority: 0
-    range: 3
+    range: 2.5
     ignoresTaunt: 0
     canDetectGhosts: 0
     ignoresSelected: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   - targets: 1
     priority: 0
     tagPriority: 0
-    range: 3
+    range: 2.5
     ignoresTaunt: 0
     canDetectGhosts: 0
     ignoresSelected: 0

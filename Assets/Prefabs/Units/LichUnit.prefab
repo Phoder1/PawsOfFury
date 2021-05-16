@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityName: Lich
   goldValue: 20
-  type: 4
+  type: 2
   UiObject: {fileID: 6817828928379908365, guid: 1646f9192471bf54bab21516bbf969fd,
     type: 3}
   healthbarHeight: 20
