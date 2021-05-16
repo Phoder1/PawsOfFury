@@ -48,6 +48,8 @@ MonoBehaviour:
   aura:
     gameobject: {fileID: 0}
     rate: 0.33
+  stats:
+    stats: []
   lastAttackTime: 0
   selected: 0
   buttonSpriteRenderer: {fileID: 4025256063420912986}
@@ -79,7 +81,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.3
   m_Speed: 1
-  m_Acceleration: 1
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -243,7 +245,8 @@ PrefabInstance:
       propertyPath: AttackCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4508563578942963115, guid: a8130013def55024d821218c438f91db, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a8130013def55024d821218c438f91db, type: 3}
 --- !u!1 &4025256064503350889 stripped
 GameObject:
