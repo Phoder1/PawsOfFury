@@ -2,6 +2,7 @@
 using Assets.Stats;
 using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -91,7 +92,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         ui.HealthBarHeight = healthbarHeight;
         FillDictionary();
         stateMachine = new StateMachine<EntityState>(null);
-        CastAura();
+        StartCoroutine(CastAura());
     }
     public void Init() => stateMachine.State = DefaultState();
     public void OnPointerUp(PointerEventData eventData) => Selected = !Selected;
@@ -100,7 +101,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         stateMachine.Update();
         UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position);
-        
+
     }
     protected virtual void OnDestroy()
     {
@@ -111,14 +112,15 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         OnDestroyEvent?.Invoke();
         stateMachine.State = null;
     }
-    private void CastAura()
+    private IEnumerator CastAura()
     {
         if (aura != null && aura.gameobject != null)
         {
+            float castDelay = 1 / aura.rate;
+            yield return new WaitForSeconds(castDelay);
             GameObject auraObj = Instantiate(aura.gameobject, transform.position, Quaternion.identity);
             auraObj.GetComponent<Projectile>().Init(this, this, aura.callback);
-            float castDelay = 1 / aura.rate;
-            Invoke(nameof(CastAura), castDelay);
+            StartCoroutine(CastAura());
         }
     }
     protected virtual void FillDictionary()
@@ -130,7 +132,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         stats.Add(new Stat(this, StatType.DamageMultiplier, 100));
         Stat maxAttackSpeed = new Stat(this, StatType.MaxAttackSpeedMultiplier, defualtStats.MaxAttackSpeedMultiplier);
         stats.Add(maxAttackSpeed);
-        stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed, new Reaction(Reaction.AlwaysTrue, (value) => { if(animator) animator.speed = value.GetSetValue; Debug.Log(this.ToString() + " Speed: " + value.GetSetValue); })));
+        stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed, new Reaction(Reaction.AlwaysTrue, (value) => { if (animator) animator.speed = value.GetSetValue; Debug.Log(this.ToString() + " Speed: " + value.GetSetValue); })));
         stats.Add(new Stat(this, StatType.WalkSpeed, defualtStats.WalkSpeed));
         stats.Add(new Stat(this, StatType.RangeMultiplier, 1));
     }
@@ -194,17 +196,20 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             if (TargetEntity != null && TargetEntity.entity != null)
             {
                 TargetEntity.entity.OnDestroyEvent -= CancelAttack;
-                
-                Vector3 firePosition = entity.FireOrigin == null? entity.transform.position : entity.FireOrigin.position; // HERE !!!!!!
+
+                Vector3 firePosition = entity.FireOrigin == null ? entity.transform.position : entity.FireOrigin.position; // HERE !!!!!!
                 GameObject projectile = Instantiate(entity.projectile.gameobject, firePosition, Quaternion.identity);
                 Projectile projectileScript = projectile.GetComponent<Projectile>();
-                
-                foreach(var effect in projectileScript.effects)
+
+                if (entity.stats.GetStatValue(StatType.DamageMultiplier) != 100)
                 {
-                    if (effect.affectedStat == StatType.HP)
-                        effect.amount *= (entity.stats.GetStatValue(StatType.DamageMultiplier)) / 100;
+                    foreach (var effect in projectileScript.effects)
+                    {
+                        if (effect.affectedStat == StatType.HP)
+                            effect.amount *= (entity.stats.GetStatValue(StatType.DamageMultiplier)) / 100;
+                    }
                 }
-                projectileScript.Init(entity, TargetEntity.entity, callback: entity.projectile.callback,firePosition);
+                projectileScript.Init(entity, TargetEntity.entity, callback: entity.projectile.callback, firePosition);
             }
         }
         protected override void OnDisable() => Stop();

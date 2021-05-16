@@ -15,8 +15,8 @@ MonoBehaviour:
   targets: 6
   affectedStat: 3
   effectType: 1
-  inPercentage: 1
-  isRelativeToMax: 1
+  inPercentage: 0
+  isRelativeToMax: 0
   amount: 30
   duration: 1
   tickTime: 1
