@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  spell: {fileID: 8358880945546188177, guid: 49bfc271167b2c342973ea2d3c9759b8, type: 3}
+  spell: {fileID: 8358880945546188177, guid: e35417115ab690c469b76ac9d502d6a9, type: 3}
   effectsData:
   - {fileID: 11400000, guid: b179e9248ac5f8447a75733783014f79, type: 2}
 --- !u!1001 &3305404106425048204
