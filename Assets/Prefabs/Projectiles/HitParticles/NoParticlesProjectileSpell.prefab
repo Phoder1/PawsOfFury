@@ -19,6 +19,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4291418117808828319, guid: 65a47e5c83e50d545a674fd776f25877,
         type: 3}
+      propertyPath: aoeRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291418117808828319, guid: 65a47e5c83e50d545a674fd776f25877,
+        type: 3}
       propertyPath: hasParticles
       value: 0
       objectReference: {fileID: 0}
