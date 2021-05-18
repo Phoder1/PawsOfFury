@@ -1,11 +1,12 @@
 ﻿using DG.Tweening;
+using Sirenix.OdinInspector;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [Tooltip("Controls the speed of the projectile.")]
+    [SerializeField] private bool hasTravelTime = true;
+    [ShowIf("@hasTravelTime"), Tooltip("Controls the speed of the projectile.")]
     [SerializeField] float speed;
     [SerializeField] protected GameObject spell;
     [SerializeField] EffectDataSO[] effectsData;
@@ -32,19 +33,27 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         if (callback != null)
             this.callback = callback;
-        if (originPosition == null)
-            originPosition = attackingEntity.transform.position;
-        transform.position = (Vector3)originPosition;
-        if (attackingEntity != target)
+
+        Vector3 targetPos = target.transform.position;
+
+        if (hasTravelTime && attackingEntity != target)
         {
+            if (originPosition == null)
+                originPosition = attackingEntity.transform.position;
+
+            transform.position = (Vector3)originPosition;
+
             float moveTime = Vector3.Distance((Vector3)originPosition, target.transform.position) / speed;
-            Vector3 targetPos = target.transform.position;
             transform.DOMove(targetPos, moveTime).OnComplete(ReachedTarget);
         }
         else
+        {
+            transform.position = targetPos;
             ReachedTarget();
+        }
     }
     public virtual void ReachedTarget()
     {
@@ -56,6 +65,6 @@ public class Projectile : MonoBehaviour
         transform.DOComplete();
         Destroy(gameObject);
     }
-    
+
 
 }

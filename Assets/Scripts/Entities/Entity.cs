@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using static IngameBlackBoard;
 
@@ -46,7 +47,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     protected abstract EntityState DefaultState();
     public event Action OnDestroyEvent;
 
-    public event Action OnAttackAnimation;
+    public UnityEvent OnAttackAnimation;
     public void AttackAnimRecall()
     {
         OnAttackAnimation?.Invoke();
@@ -129,7 +130,9 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         stats.Add(maxHp);
         stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, ui, maxHp, new Reaction(Reaction.DeathCondition, (value) => { Destroy(gameObject); })));
-        stats.Add(new Stat(this, StatType.DamageMultiplier, 100));
+        Stat maxDamage = new Stat(this, StatType.MaxDamageMultiplier, defualtStats.MaxDamageMultiplier);
+        stats.Add(maxDamage);
+        stats.Add(new Stat(this, StatType.DamageMultiplier, 100, maxDamage));
         Stat maxAttackSpeed = new Stat(this, StatType.MaxAttackSpeedMultiplier, defualtStats.MaxAttackSpeedMultiplier);
         stats.Add(maxAttackSpeed);
         stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed, new Reaction(Reaction.AlwaysTrue, (value) => { if (animator) animator.speed = value.GetSetValue; Debug.Log(this.ToString() + " Speed: " + value.GetSetValue); })));
@@ -184,12 +187,23 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         }
         protected virtual void Attack()
         {
+            if (entity is Unit)
+            {
+                if (TargetEntity.entity.transform.position.x > entity.transform.position.x)
+                    SetDirection(false);
+                else if (TargetEntity.entity.transform.position.x == entity.transform.position.x)
+                    SetDirection(UnityEngine.Random.Range(0, 2) == 1);
+                else
+                    SetDirection(true);
+            }
+
             TargetEntity.entity.OnDestroyEvent += CancelAttack;
             DetectedInRange(detectedEntity);
             entity.lastAttackTime = Time.time;
             entity.animator.SetTrigger("AttackTrigger");
             //entity.transform.DOLocalRotate(entity.transform.rotation.eulerAngles + Vector3.up * 360, attackDelay / 2, RotateMode.FastBeyond360);
 
+            void SetDirection(bool left) => entity.transform.localScale = new Vector3(left ? 1 : -1, entity.transform.localScale.y, entity.transform.localScale.z);
         }
         public override void AnimationRecall()
         {
