@@ -17,6 +17,6 @@ MonoBehaviour:
   effectType: 1
   inPercentage: 0
   isRelativeToMax: 0
-  amount: 30
+  amount: 10
   duration: 1.99
   tickTime: 1
