@@ -12,6 +12,7 @@ namespace Assets.Stats
         DamageMultiplier,
         AttackSpeedMultiplier,
         MaxAttackSpeedMultiplier,
+        MaxDamageMultiplier,
         RangeMultiplier
     }
     [Serializable]
