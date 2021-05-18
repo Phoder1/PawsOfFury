@@ -259,11 +259,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5874396324982974103, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
-      propertyPath: m_Speed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5874396324982974103, guid: 74931de6ae262184f9d5de570e927812,
-        type: 3}
       propertyPath: m_Acceleration
       value: 50
       objectReference: {fileID: 0}
