@@ -23,7 +23,7 @@ MonoBehaviour:
     MaxHP: 100
     WalkSpeed: 0
     MaxAttackSpeedMultiplier: 1
-    MaxDamageMultiplier: 0
+    MaxDamageMultiplier: 2
   FireOrigin: {fileID: 0}
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 4a4f91d5b1ea33a4c8fd849529827ca4,
@@ -38,6 +38,9 @@ MonoBehaviour:
   stats:
     stats: []
   lastAttackTime: 0
+  OnAttackAnimation:
+    m_PersistentCalls:
+      m_Calls: []
   selected: 0
 --- !u!1001 &922499304326930715
 PrefabInstance:
