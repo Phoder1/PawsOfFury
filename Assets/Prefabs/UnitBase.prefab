@@ -37,7 +37,7 @@ MonoBehaviour:
     MaxHP: 40
     WalkSpeed: 3
     MaxAttackSpeedMultiplier: 1
-    MaxDamageMultiplier: 2
+    MaxDamageMultiplier: 200
   FireOrigin: {fileID: 0}
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
@@ -52,6 +52,9 @@ MonoBehaviour:
   stats:
     stats: []
   lastAttackTime: 0
+  OnAttackAnimation:
+    m_PersistentCalls:
+      m_Calls: []
   selected: 0
   buttonSpriteRenderer: {fileID: 4025256063420912986}
   placeableLayers:
