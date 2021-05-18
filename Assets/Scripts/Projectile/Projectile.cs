@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private bool hasTravelTime = true;
     [ShowIf("@hasTravelTime"), Tooltip("Controls the speed of the projectile.")]
     [SerializeField] float speed;
+    [SerializeField] private bool travelsToTarget = true;
     [SerializeField] protected GameObject spell;
     [SerializeField] EffectDataSO[] effectsData;
     protected Entity attackingEntity;
@@ -37,14 +38,22 @@ public class Projectile : MonoBehaviour
         if (callback != null)
             this.callback = callback;
 
-        Vector3 targetPos = target.transform.position;
+        if (originPosition == null)
+            originPosition = attackingEntity.transform.position;
+
+        Vector3 targetPos;
+        if (travelsToTarget)
+            targetPos = target.transform.position;
+        else
+            targetPos = originPosition.Value;
+
+
+
+        transform.position = (Vector3)originPosition;
 
         if (hasTravelTime && attackingEntity != target)
         {
-            if (originPosition == null)
-                originPosition = attackingEntity.transform.position;
-
-            transform.position = (Vector3)originPosition;
+            
 
             float moveTime = Vector3.Distance((Vector3)originPosition, target.transform.position) / speed;
             transform.DOMove(targetPos, moveTime).OnComplete(ReachedTarget);
