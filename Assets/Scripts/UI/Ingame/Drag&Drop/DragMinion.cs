@@ -30,7 +30,8 @@ public class DragMinion : DragAndDrop
             levelManager.Gold -= unit.goldValue;
             Vector3 spawnPoint = draggedEntity.transform.position;
             GameObject spawnedUnit = Instantiate(unitPrefab, spawnPoint, Quaternion.identity);
-            spawnedUnit.transform.DOMove(shadow.transform.position, Vector3.Distance(spawnedUnit.transform.position, shadow.transform.position) / dropSpeed).OnComplete(() => { InitUnit(spawnedUnit); });
+            Vector3 targetPosition = shadow.transform.position + new Vector3(0, 0.5f, -0.5f);
+            spawnedUnit.transform.DOMove(targetPosition, Vector3.Distance(spawnedUnit.transform.position, targetPosition) / dropSpeed).OnComplete(() => { InitUnit(spawnedUnit); });
 
         }
 
@@ -93,7 +94,7 @@ public class DragMinion : DragAndDrop
             button.draggedEntity.transform.position = inputManager.RayToPlanePosition(mainCam.ScreenPointToRay(pointerPosition));
             if (Physics.Raycast(button.draggedEntity.transform.position, Vector3.down, out RaycastHit floorHit, button.draggedEntity.transform.position.y + 0.5f, button.unit.placeableLayers))
             {
-                button.shadow.transform.position = new Vector3(button.draggedEntity.transform.position.x, floorHit.point.y + 0.5f, button.draggedEntity.transform.position.z);
+                button.shadow.transform.position = new Vector3(button.draggedEntity.transform.position.x, floorHit.point.y + 0.1f, button.draggedEntity.transform.position.z);
                 button.shadowController.Color = Color.green;
                 positionValid = true;
             }

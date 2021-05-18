@@ -37,6 +37,7 @@ MonoBehaviour:
     MaxHP: 40
     WalkSpeed: 3
     MaxAttackSpeedMultiplier: 1
+    MaxDamageMultiplier: 0
   FireOrigin: {fileID: 0}
   projectile:
     gameobject: {fileID: 3871618179018856722, guid: 35967ea8c03280543ab034b4b346eca4,
@@ -137,17 +138,17 @@ PrefabInstance:
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}

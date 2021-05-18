@@ -135,8 +135,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1758066030511216302, guid: 96c9125b9f4f2584b9e8ef447f1767d1,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.2
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96c9125b9f4f2584b9e8ef447f1767d1, type: 3}

@@ -124,6 +124,9 @@ namespace Assets.Stats
         [Tooltip("The maximum attack speed multiplier: 1 means the character can't be buffed, 2 means it can go only up to 200% and so on.")]
         [Min(1)]
         public float MaxAttackSpeedMultiplier;
+        [Tooltip("The maximum damage multiplier: 1 means the character can't be buffed, 2 means it can go only up to 200% and so on.")]
+        [Min(1)]
+        public float MaxDamageMultiplier;
     }
 
 }
