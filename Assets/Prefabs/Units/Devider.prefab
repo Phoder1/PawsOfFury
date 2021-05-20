@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4495831245042486070
+--- !u!1 &2173356844491168052
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8132531658576098245}
+  - component: {fileID: 5385335526138742221}
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
@@ -16,15 +16,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8132531658576098245
+--- !u!4 &5385335526138742221
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4495831245042486070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.261, y: 0.51, z: 0}
+  m_GameObject: {fileID: 2173356844491168052}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.306, y: 0.629, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3056462538470789198}
@@ -41,7 +41,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 709de8f34d1673e4aa06afc4860d8c90,
+      objectReference: {fileID: 22100000, guid: 6cd60f8f46f86f747a049ded61d42841,
         type: 2}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
@@ -51,17 +51,17 @@ PrefabInstance:
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: goldValue
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: FireOrigin
       value: 
-      objectReference: {fileID: 8132531658576098245}
+      objectReference: {fileID: 5385335526138742221}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: entityName
-      value: Archer
+      value: Devider
       objectReference: {fileID: 0}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
@@ -75,13 +75,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
+      propertyPath: projectile.targeting
+      value: 
+      objectReference: {fileID: 11400000, guid: 2505af26f7930034ca17c99b5e14d4e1,
+        type: 2}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: projectile.gameobject
+      value: 
+      objectReference: {fileID: 3871618179018856722, guid: 0f0c81996da13f344965e60ec03de710,
+        type: 3}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
       propertyPath: defualtStats.WalkSpeed
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: projectile.attackSpeed
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
@@ -93,20 +105,60 @@ PrefabInstance:
       propertyPath: defualtStats.MaxAttackSpeedMultiplier
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: OnAttackAnimation.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: OnAttackAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: OnAttackAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: OnAttackAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: OnAttackAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: OnAttackAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: OnAttackAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: OnAttackAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4025256063420912985, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4025256063420912985, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4025256063420912985, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4025256063420912985, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
@@ -137,7 +189,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d4fc677be99abf740ac62c399016ea71,
+      objectReference: {fileID: 21300000, guid: 658144572cb0b6e4e87ca386a2eff552,
         type: 3}
     - target: {fileID: 4025256063420912986, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
@@ -167,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 4025256064503350889, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: m_Name
-      value: Archer
+      value: Devider
       objectReference: {fileID: 0}
     - target: {fileID: 4025256064503350891, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
