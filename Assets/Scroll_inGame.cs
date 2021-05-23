@@ -67,7 +67,7 @@ public class Scroll_inGame : MonoBehaviour
 
     void MoveCamera()
     {
-        Z += ((startTouch.y - moveTouch.y) * 5 / Screen.height);
+        Z += ((startTouch.y - moveTouch.y) * 10 / Screen.height);
         if (Z < minZ)
         {
             Z = minZ;
