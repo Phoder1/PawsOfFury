@@ -218,7 +218,7 @@ MonoBehaviour:
     type: 3}
   draggedEntity: {fileID: 0}
   shadow: {fileID: 0}
-  dropSpeed: 2
+  dropSpeed: 3
 --- !u!1 &1874207626308998319
 GameObject:
   m_ObjectHideFlags: 0
