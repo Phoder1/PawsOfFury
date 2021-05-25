@@ -7,6 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1151912653713755946, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: ISInitOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151912653713755946, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3269433762606668824, guid: 736f8268511b7254a844cd0aeefca291,
         type: 3}
       propertyPath: m_RootOrder

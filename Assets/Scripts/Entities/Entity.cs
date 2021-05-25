@@ -43,21 +43,18 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public float lastAttackTime;
 
     public EntityType Type => type;
+    [SerializeField] bool ISInitOnStart = false;
 
     protected abstract EntityState DefaultState();
-    public event Action OnDestroyEvent;
+    public UnityEvent OnDestroyEvent;
 
     public UnityEvent OnAttackAnimation;
-    public UnityEvent OnDeath;
     public void AttackAnimRecall()
     {
         OnAttackAnimation?.Invoke();
         stateMachine.State.AnimationRecall();
     }
-    void OnDestroy() 
-    {
-        OnDeath?.Invoke();
-    }
+   
 
     [HideInInspector]
     public bool selected;
@@ -99,6 +96,11 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         FillDictionary();
         stateMachine = new StateMachine<EntityState>(null);
         StartCoroutine(CastAura());
+        if (ISInitOnStart) 
+        {
+            Init();
+        }
+
     }
     public void Init() => stateMachine.State = DefaultState();
     public void OnPointerUp(PointerEventData eventData) => Selected = !Selected;
@@ -113,10 +115,9 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         transform.DOComplete();
         levelManager.RemoveFromList(this);
-        if (OnDestroyEvent != null)
-            Debug.Log(OnDestroyEvent.GetInvocationList().Length);
         OnDestroyEvent?.Invoke();
         stateMachine.State = null;
+
     }
     private IEnumerator CastAura()
     {
@@ -202,7 +203,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                     SetDirection(true);
             }
 
-            TargetEntity.entity.OnDestroyEvent += CancelAttack;
+            TargetEntity.entity.OnDestroyEvent.AddListener(CancelAttack);
             DetectedInRange(detectedEntity);
             entity.lastAttackTime = Time.time;
             entity.animator.SetTrigger("AttackTrigger");
@@ -214,7 +215,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         {
             if (TargetEntity != null && TargetEntity.entity != null)
             {
-                TargetEntity.entity.OnDestroyEvent -= CancelAttack;
+                TargetEntity.entity.OnDestroyEvent.RemoveListener(CancelAttack);
 
                 Vector3 firePosition = entity.FireOrigin == null ? entity.transform.position : entity.FireOrigin.position; // HERE !!!!!!
                 GameObject projectile = Instantiate(entity.projectile.gameobject, firePosition, Quaternion.identity);

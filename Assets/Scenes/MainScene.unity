@@ -260,7 +260,7 @@ PrefabInstance:
         type: 3}
       propertyPath: unitPrefab
       value: 
-      objectReference: {fileID: 3269433762606668826, guid: 531343a61f95bfb4296c6fe510595f94,
+      objectReference: {fileID: 3269433762606668826, guid: 736f8268511b7254a844cd0aeefca291,
         type: 3}
     - target: {fileID: 1874207625857313951, guid: 5f3807cc6bc55954d9dc476d22c23900,
         type: 3}
@@ -878,12 +878,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177577242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 676eea11185aa9d44a042ad5e9e9d267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalMesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  originalMesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 3}
   offsetValue: 2
   numberOfStacks: 5
 --- !u!64 &177577244
