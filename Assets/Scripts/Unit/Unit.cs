@@ -15,6 +15,7 @@ public class Unit : Entity
     protected override EntityState DefaultState() => new WalkState(this);
     protected virtual EntityState AttackingState => new AttackState(this);
     protected NavScript navScript;
+    
 
     protected override void Start()
     {

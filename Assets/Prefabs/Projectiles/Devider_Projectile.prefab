@@ -4821,7 +4821,7 @@ MonoBehaviour:
   travelsToTarget: 1
   spell: {fileID: 8358880945546188177, guid: e786d6baaf7ae224f9090021627940b3, type: 3}
   effectsData:
-  - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}
+  - {fileID: 11400000, guid: 0f36721bbe287e24b8664e2de6eb2a25, type: 2}
 --- !u!1 &9004937765549215510
 GameObject:
   m_ObjectHideFlags: 0

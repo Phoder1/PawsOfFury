@@ -48,10 +48,15 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public event Action OnDestroyEvent;
 
     public UnityEvent OnAttackAnimation;
+    public UnityEvent OnDeath;
     public void AttackAnimRecall()
     {
         OnAttackAnimation?.Invoke();
         stateMachine.State.AnimationRecall();
+    }
+    void OnDestroy() 
+    {
+        OnDeath?.Invoke();
     }
 
     [HideInInspector]
