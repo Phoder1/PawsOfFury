@@ -123,7 +123,7 @@ public class MenuUiState : State
 {
     [Required]
     public UiWindow uiWindow;
-    public 
+     
     
     public GameObject gameobject => uiWindow.gameObject;
     protected override void OnEnable()
