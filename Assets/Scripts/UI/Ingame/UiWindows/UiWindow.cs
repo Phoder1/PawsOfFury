@@ -1,23 +1,30 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class UiWindow : MonoBehaviour, IUiWindow
+public abstract class UiWindow : MonoBehaviour
 {
-    public virtual void OnReset() { }
+    #region Events
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent OnUiLock;
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent OnUiUnlock;
+    #endregion
+    private bool _uiLocked;
+    public virtual bool UiLocked
+    {
+        get => _uiLocked;
+        set
+            => Misc.Setter(ref _uiLocked, value, () =>
+            {
+                if (_uiLocked)
+                    OnUiLock?.Invoke();
+                else
+                    OnUiUnlock?.Invoke();
+            });
+    }
     public virtual void OnUpdate() { }
-
-    //public void StartInTransition(Event callback = null)
-    //{
-    //    throw new System.NotImplementedException();
-    //}
-
-    //protected abstract IEnumerator InTransition();
-    //public void StartOutTransition(Event callback = null)
-    //{
-    //    throw new System.NotImplementedException();
-    //}
-    //protected abstract IEnumerator OutTransition();
-
-
+    public virtual void OnReset() { }
 }
