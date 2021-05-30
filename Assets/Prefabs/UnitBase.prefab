@@ -52,6 +52,10 @@ MonoBehaviour:
   stats:
     stats: []
   lastAttackTime: 0
+  ISInitOnStart: 0
+  OnDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnAttackAnimation:
     m_PersistentCalls:
       m_Calls: []

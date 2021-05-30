@@ -1535,8 +1535,8 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 6939
-        atime2: 28527
-        atime3: 49922
+        atime2: 42791
+        atime3: 51272
         atime4: 65535
         atime5: 0
         atime6: 0
@@ -1755,7 +1755,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 30
+      scalar: 15
       minScalar: 0
       maxCurve:
         serializedVersion: 2
