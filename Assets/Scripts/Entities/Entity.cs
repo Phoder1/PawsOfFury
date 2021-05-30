@@ -1,5 +1,6 @@
 ﻿using Assets.StateMachine;
 using Assets.Stats;
+using CustomAttributes;
 using DG.Tweening;
 using System;
 using System.Collections;
@@ -35,7 +36,9 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     [SerializeField]
     public EntityStats stats;
-    protected Animator animator;
+
+    [LocalComponent]
+    protected AnimationHandler animationHandler;
     protected Camera mainCam;
     protected EntityUI ui;
     protected StateMachine<EntityState> stateMachine;
@@ -54,7 +57,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         OnAttackAnimation?.Invoke();
         stateMachine.State.AnimationRecall();
     }
-   
+
 
     [HideInInspector]
     public bool selected;
@@ -82,10 +85,13 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     void DisableSelection() => Selected = false;
 
-
+    void Awake()
+    {
+        if (animationHandler == null)
+            animationHandler = GetComponent<AnimationHandler>();
+    }
     protected virtual void Start()
     {
-        animator = GetComponentInChildren<Animator>();
         mainCam = Camera.main;
         lastAttackTime = -Mathf.Infinity;
         stats = new EntityStats();
@@ -96,7 +102,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         FillDictionary();
         stateMachine = new StateMachine<EntityState>(null);
         StartCoroutine(CastAura());
-        if (ISInitOnStart) 
+        if (ISInitOnStart)
         {
             Init();
         }
@@ -141,7 +147,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         stats.Add(new Stat(this, StatType.DamageMultiplier, 100, maxDamage));
         Stat maxAttackSpeed = new Stat(this, StatType.MaxAttackSpeedMultiplier, defualtStats.MaxAttackSpeedMultiplier);
         stats.Add(maxAttackSpeed);
-        stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed, new Reaction(Reaction.AlwaysTrue, (value) => { if (animator) animator.speed = value.GetSetValue; Debug.Log(this.ToString() + " Speed: " + value.GetSetValue); })));
+        stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed, new Reaction(Reaction.AlwaysTrue, (value) => { if (animationHandler) animationHandler.SetSpeed(value.GetSetValue); Debug.Log(this.ToString() + " Speed: " + value.GetSetValue); })));
         stats.Add(new Stat(this, StatType.WalkSpeed, defualtStats.WalkSpeed));
         stats.Add(new Stat(this, StatType.RangeMultiplier, 1));
     }
@@ -206,7 +212,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             TargetEntity.entity.OnDestroyEvent.AddListener(CancelAttack);
             DetectedInRange(detectedEntity);
             entity.lastAttackTime = Time.time;
-            entity.animator.SetTrigger("AttackTrigger");
+            entity.animationHandler.SetTrigger("AttackTrigger");
             //entity.transform.DOLocalRotate(entity.transform.rotation.eulerAngles + Vector3.up * 360, attackDelay / 2, RotateMode.FastBeyond360);
 
             void SetDirection(bool left) => entity.transform.localScale = new Vector3(left ? 1 : -1, entity.transform.localScale.y, entity.transform.localScale.z);
@@ -245,7 +251,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         {
             if (entity == null)
                 return;
-            entity.animator.SetTrigger("Reset");
+            entity.animationHandler.SetTrigger("Reset");
             entity.lastAttackTime = 0;
         }
 

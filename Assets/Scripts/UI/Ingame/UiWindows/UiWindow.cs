@@ -11,6 +11,9 @@ public abstract class UiWindow : MonoBehaviour
     private UnityEvent OnUiLock;
     [SerializeField, FoldoutGroup("Events")]
     private UnityEvent OnUiUnlock;
+
+    [HideInInspector]
+    public WindowGroupHandler groupHandler;
     #endregion
     private bool _uiLocked;
     public virtual bool UiLocked
@@ -25,6 +28,7 @@ public abstract class UiWindow : MonoBehaviour
                     OnUiUnlock?.Invoke();
             });
     }
+    public void SelectWindow() => groupHandler.SelectWindow(this);
     public virtual void OnUpdate() { }
     public virtual void OnReset() { }
 }

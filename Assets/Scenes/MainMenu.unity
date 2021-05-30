@@ -750,6 +750,7 @@ MonoBehaviour:
   OnUiUnlock:
     m_PersistentCalls:
       m_Calls: []
+  groupHandler: {fileID: 0}
 --- !u!1 &95767315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,9 +1414,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722006454}
-        m_TargetAssemblyTypeName: MenuUiManager, Assembly-CSharp
-        m_MethodName: SelectIncubatorWindow
+      - m_Target: {fileID: 1553565983}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: SelectWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2999,6 +3000,7 @@ MonoBehaviour:
   OnUiUnlock:
     m_PersistentCalls:
       m_Calls: []
+  groupHandler: {fileID: 0}
 --- !u!1 &387237182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3845,7 +3847,7 @@ MonoBehaviour:
   animationType: 2
   targetType: 11
   forcedTargetType: 0
-  autoPlay: 1
+  autoPlay: 0
   useTargetAsV3: 0
   endValueFloat: 0
   endValueV3: {x: 0, y: 0, z: 0}
@@ -4809,9 +4811,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722006454}
-        m_TargetAssemblyTypeName: MenuUiManager, Assembly-CSharp
-        m_MethodName: SelectSpellCraftWindow
+      - m_Target: {fileID: 1745176802}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: SelectWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4941,9 +4943,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722006454}
-        m_TargetAssemblyTypeName: MenuUiManager, Assembly-CSharp
-        m_MethodName: SelectMinionBookWindow
+      - m_Target: {fileID: 1974450902}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: SelectWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5300,7 +5302,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 624548555}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 648967870}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1772634600}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 574838582}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &624548555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5576,9 +5614,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722006454}
-        m_TargetAssemblyTypeName: MenuUiManager, Assembly-CSharp
-        m_MethodName: SelectUpgradeWindow
+      - m_Target: {fileID: 386570282}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: SelectWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11213,7 +11251,7 @@ RectTransform:
   - {fileID: 478886970}
   - {fileID: 1579829755}
   m_Father: {fileID: 1722006453}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11238,6 +11276,7 @@ MonoBehaviour:
   OnUiUnlock:
     m_PersistentCalls:
       m_Calls: []
+  groupHandler: {fileID: 0}
 --- !u!1 &1223949821
 GameObject:
   m_ObjectHideFlags: 0
@@ -14706,6 +14745,7 @@ MonoBehaviour:
   OnUiUnlock:
     m_PersistentCalls:
       m_Calls: []
+  groupHandler: {fileID: 0}
 --- !u!1 &1554686772
 GameObject:
   m_ObjectHideFlags: 0
@@ -17182,8 +17222,8 @@ RectTransform:
   m_Children:
   - {fileID: 1553565982}
   - {fileID: 386570281}
-  - {fileID: 1745176801}
   - {fileID: 1219597465}
+  - {fileID: 1745176801}
   - {fileID: 1974450901}
   - {fileID: 94536837}
   m_Father: {fileID: 1476464285}
@@ -17206,18 +17246,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7173b2c59348c747bde099c4af1736c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incubator:
-    uiWindow: {fileID: 1553565983}
-  upgrade:
-    uiWindow: {fileID: 386570282}
-  spellCraft:
-    uiWindow: {fileID: 1745176802}
-  merge:
-    uiWindow: {fileID: 1219597466}
-  minionBook:
-    uiWindow: {fileID: 1974450902}
-  levelSelect:
-    uiWindow: {fileID: 94536838}
+  states:
+  - uiWindow: {fileID: 1553565983}
+  - uiWindow: {fileID: 386570282}
+  - uiWindow: {fileID: 1219597466}
+  - uiWindow: {fileID: 1745176802}
+  - uiWindow: {fileID: 1974450902}
+  - uiWindow: {fileID: 94536838}
   transitionTime: 0.7
   transitionCurve:
     serializedVersion: 2
@@ -17417,7 +17452,7 @@ RectTransform:
   - {fileID: 85014489}
   - {fileID: 379764143}
   m_Father: {fileID: 1722006453}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17442,6 +17477,7 @@ MonoBehaviour:
   OnUiUnlock:
     m_PersistentCalls:
       m_Calls: []
+  groupHandler: {fileID: 0}
 --- !u!1 &1749903548
 GameObject:
   m_ObjectHideFlags: 0
@@ -17674,9 +17710,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722006454}
-        m_TargetAssemblyTypeName: MenuUiManager, Assembly-CSharp
-        m_MethodName: SelectMergeWindow
+      - m_Target: {fileID: 1219597466}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: SelectWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19072,6 +19108,7 @@ MonoBehaviour:
   OnUiUnlock:
     m_PersistentCalls:
       m_Calls: []
+  groupHandler: {fileID: 0}
 --- !u!1 &1978979683
 GameObject:
   m_ObjectHideFlags: 0
@@ -20130,9 +20167,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722006454}
-        m_TargetAssemblyTypeName: MenuUiManager, Assembly-CSharp
-        m_MethodName: SelectLevelSelectWindow
+      - m_Target: {fileID: 94536838}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: SelectWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
