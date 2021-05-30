@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1024472394856475009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3269433762606668826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cbcd26b71ccaf42931ac0ba9e9f5a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Prefab: {fileID: 7219897945737232799, guid: 8e8c256424ac39a4997067e29458e00d, type: 3}
-  DefaultAmount: 2
 --- !u!1 &2173356844491168052
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,6 +30,20 @@ Transform:
   m_Father: {fileID: 3056462538470789198}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1024472394856475009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3269433762606668826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cbcd26b71ccaf42931ac0ba9e9f5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 7219897945737232799, guid: 8e8c256424ac39a4997067e29458e00d, type: 3}
+  DefaultAmount: 2
 --- !u!1001 &1910592489285442163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ PrefabInstance:
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: defualtStats.MaxAttackSpeedMultiplier
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}

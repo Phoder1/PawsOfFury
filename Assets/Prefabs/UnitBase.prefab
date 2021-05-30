@@ -36,7 +36,7 @@ MonoBehaviour:
     HP: 40
     MaxHP: 40
     WalkSpeed: 3
-    MaxAttackSpeedMultiplier: 1
+    MaxAttackSpeedMultiplier: 2
     MaxDamageMultiplier: 200
   FireOrigin: {fileID: 0}
   projectile:

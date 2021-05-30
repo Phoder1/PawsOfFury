@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6551597916962364680}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0.5}
+  m_LocalPosition: {x: -0.1, y: -0.5, z: 0.5}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 3269433762606668824}
@@ -222,7 +222,7 @@ PrefabInstance:
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: defualtStats.MaxAttackSpeedMultiplier
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4025256063420912985, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}

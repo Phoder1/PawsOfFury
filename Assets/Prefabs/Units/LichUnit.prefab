@@ -1,58 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &506065094634599340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3269433762606668826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86ae31b61039cd841b993432ad1141f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityName: Lich
-  goldValue: 20
-  type: 2
-  UiObject: {fileID: 6817828928379908365, guid: 1646f9192471bf54bab21516bbf969fd,
-    type: 3}
-  healthbarHeight: 20
-  defualtStats:
-    HP: 14
-    MaxHP: 14
-    WalkSpeed: 1.3
-    MaxAttackSpeedMultiplier: 3
-    MaxDamageMultiplier: 200
-  FireOrigin: {fileID: 6435941107991516610}
-  projectile:
-    gameobject: {fileID: 3871618179018856722, guid: 6add2ecadff02fa4ab2358ca4e71a58d,
-      type: 3}
-    detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    targeting: {fileID: 11400000, guid: bf7f4f2138993cd49bc4677573358a83, type: 2}
-    attackSpeed: 0.8
-    locking: 0
-  aura:
-    gameobject: {fileID: 0}
-    rate: 0
-  stats:
-    stats: []
-  lastAttackTime: 0
-  OnAttackAnimation:
-    m_PersistentCalls:
-      m_Calls: []
-  selected: 0
-  buttonSpriteRenderer: {fileID: 3269433761524322089}
-  placeableLayers:
-    serializedVersion: 2
-    m_Bits: 4096
-  lichAttackProjectile:
-    gameobject: {fileID: 3871618179018856722, guid: d0eecd414accb204c831f7d00bc5d89a,
-      type: 3}
-    detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
-    attackSpeed: 0.8
-    locking: 0
 --- !u!1 &2029271025475509245
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,6 +30,63 @@ Transform:
   m_Father: {fileID: 3056462538470789198}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &506065094634599340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3269433762606668826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ae31b61039cd841b993432ad1141f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityName: Lich
+  goldValue: 20
+  type: 2
+  UiObject: {fileID: 6817828928379908365, guid: 1646f9192471bf54bab21516bbf969fd,
+    type: 3}
+  healthbarHeight: 20
+  defualtStats:
+    HP: 14
+    MaxHP: 14
+    WalkSpeed: 1.3
+    MaxAttackSpeedMultiplier: 2
+    MaxDamageMultiplier: 200
+  FireOrigin: {fileID: 6435941107991516610}
+  projectile:
+    gameobject: {fileID: 3871618179018856722, guid: 6add2ecadff02fa4ab2358ca4e71a58d,
+      type: 3}
+    detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
+    targeting: {fileID: 11400000, guid: bf7f4f2138993cd49bc4677573358a83, type: 2}
+    attackSpeed: 0.8
+    locking: 0
+  aura:
+    gameobject: {fileID: 0}
+    rate: 0
+  stats:
+    stats: []
+  lastAttackTime: 0
+  ISInitOnStart: 0
+  OnDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  selected: 0
+  buttonSpriteRenderer: {fileID: 3269433761524322089}
+  placeableLayers:
+    serializedVersion: 2
+    m_Bits: 4096
+  lichAttackProjectile:
+    gameobject: {fileID: 3871618179018856722, guid: d0eecd414accb204c831f7d00bc5d89a,
+      type: 3}
+    detection: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
+    targeting: {fileID: 11400000, guid: d37826c6f350a79439779b57a3dcdee8, type: 2}
+    attackSpeed: 0.8
+    locking: 0
 --- !u!1001 &1910592489285442163
 PrefabInstance:
   m_ObjectHideFlags: 0
