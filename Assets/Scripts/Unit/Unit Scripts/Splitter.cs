@@ -16,7 +16,7 @@ public class Splitter : Unit
         {
             DetectedInRange(detectedEntity);
             entity.lastAttackTime = Time.time;
-            Splitter.animator.SetTrigger("AttackTrigger");
+            Splitter.animationHandler.SetTrigger("AttackTrigger");
         }
         public override void AnimationRecall()
         {
