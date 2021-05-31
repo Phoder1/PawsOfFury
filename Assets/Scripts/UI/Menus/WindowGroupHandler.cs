@@ -70,7 +70,7 @@ public class WindowGroupHandler : MonoBehaviour
     private void Start()
     {
         states.ForEach((x) => x.uiWindow.groupHandler = this);
-        stateMachine = new StateMachine<MenuUiState>(states[_defaultStateNumber], true);
+        stateMachine = new StateMachine<MenuUiState>(states[_defaultStateNumber]);
         transform.localPosition -= CurrentState.uiWindow.transform.localPosition;
         windowNameText.text = CurrentState.uiWindow.name;
     }
