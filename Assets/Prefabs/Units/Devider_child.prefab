@@ -107,7 +107,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: Devider_child
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4174958333825282432, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174958333825282432, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174958333825282432, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669638647750430476, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: AttackCallback.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1024472394856475009, guid: 736f8268511b7254a844cd0aeefca291, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 736f8268511b7254a844cd0aeefca291, type: 3}
 --- !u!1 &7219897945737232799 stripped
 GameObject:

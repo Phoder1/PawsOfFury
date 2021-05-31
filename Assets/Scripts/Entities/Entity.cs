@@ -61,6 +61,8 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     [HideInInspector]
     public bool selected;
+    private bool gameIsShuttingDown;
+
     public bool Selected
     {
         get => selected;
@@ -117,14 +119,23 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position);
 
     }
+    void OnApplicationQuit()
+    {
+        this.gameIsShuttingDown = true;
+    }
+
     protected virtual void OnDestroy()
     {
+        if (!gameIsShuttingDown) 
+        { 
         transform.DOComplete();
         levelManager.RemoveFromList(this);
         OnDestroyEvent?.Invoke();
         stateMachine.State = null;
+        }
 
     }
+
     private IEnumerator CastAura()
     {
         if (aura != null && aura.gameobject != null)
