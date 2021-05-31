@@ -8,14 +8,6 @@ public abstract class UiWindow : MonoBehaviour
 {
     #region Events
     [SerializeField, FoldoutGroup("Events")]
-    private UnityEvent OnTransitionIn_Start;
-    [SerializeField, FoldoutGroup("Events")]
-    private UnityEvent OnTransitionIn_End;
-    [SerializeField, FoldoutGroup("Events")]
-    private UnityEvent OnTransitionOut_Start;
-    [SerializeField, FoldoutGroup("Events")]
-    private UnityEvent OnTransitionOut_End;
-    [SerializeField, FoldoutGroup("Events")]
     private UnityEvent OnUiLock;
     [SerializeField, FoldoutGroup("Events")]
     private UnityEvent OnUiUnlock;
@@ -39,8 +31,4 @@ public abstract class UiWindow : MonoBehaviour
     public void SelectWindow() => groupHandler.SelectWindow(this);
     public virtual void OnUpdate() { }
     public virtual void OnReset() { }
-    public void TransitionInEnd() => OnTransitionIn_End?.Invoke();
-    public void TransitionOutEnd() => OnTransitionOut_End?.Invoke();
-    public void TransitionInStart() => OnTransitionIn_Start?.Invoke();
-    public void TransitionOutStart() => OnTransitionOut_Start?.Invoke();
 }
