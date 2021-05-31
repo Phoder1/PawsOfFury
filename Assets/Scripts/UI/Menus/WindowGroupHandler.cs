@@ -1,8 +1,7 @@
 using Assets.StateMachine;
-using CustomAttributes;
 using DG.Tweening;
 using Sirenix.OdinInspector;
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,31 +13,18 @@ public class WindowGroupHandler : MonoBehaviour
 
     #region States
 
-    [FoldoutGroup("States")]
+    [FoldoutGroup("States"), ValueDropdown("TreeViewOfInts")]
     [SerializeField] private int _defaultStateNumber;
-    [FoldoutGroup("States")]
+    [FoldoutGroup("States"), ListDrawerSettings(Expanded = true)]
     [SerializeField] private List<MenuUiState> states;
-    //[FoldoutGroup("States")]
-    //[SerializeField] MenuUiState incubator;
-    //[FoldoutGroup("States")]
-    //[SerializeField] MenuUiState upgrade;
-    //[FoldoutGroup("States")]
-    //[SerializeField] MenuUiState spellCraft;
-    //[FoldoutGroup("States")]
-    //[SerializeField] MenuUiState merge;
-    //[FoldoutGroup("States")]
-    //[SerializeField] MenuUiState minionBook;
-    //[FoldoutGroup("States")]
-    //[SerializeField] MenuUiState levelSelect;
     #endregion
-
     [FoldoutGroup("Transition")]
     [SerializeField] float transitionTime;
     [FoldoutGroup("Transition")]
     [SerializeField] AnimationCurve transitionCurve;
     [SerializeField] TextMeshProUGUI windowNameText;
     #endregion
-
+    private IEnumerable TreeViewOfInts => states.ConvertAll((x) => new ValueDropdownItem(x.Name, states.FindIndex((y) => y == x)));
     #region Events
     [SerializeField, FoldoutGroup("Events")]
     private UnityEvent OnUiLock;
@@ -84,29 +70,15 @@ public class WindowGroupHandler : MonoBehaviour
     private void Start()
     {
         states.ForEach((x) => x.uiWindow.groupHandler = this);
-        stateMachine = new StateMachine<MenuUiState>(null);
-        CurrentState = states[_defaultStateNumber];
-
-        
-        //incubator.uiWindow.groupHandler = this;
-        //upgrade.uiWindow.groupHandler = this;
-        //spellCraft.uiWindow.groupHandler = this;
-        //merge.uiWindow.groupHandler = this;
-        //minionBook.uiWindow.groupHandler = this;
-        //levelSelect.uiWindow.groupHandler = this;
+        stateMachine = new StateMachine<MenuUiState>(states[_defaultStateNumber], true);
+        transform.localPosition -= CurrentState.uiWindow.transform.localPosition;
+        windowNameText.text = CurrentState.uiWindow.name;
     }
     #endregion
 
     #region State select
-    //public void SelectIncubatorWindow() => CurrentState = incubator;
-    //public void SelectUpgradeWindow() => CurrentState = upgrade;
-    //public void SelectSpellCraftWindow() => CurrentState = spellCraft;
-    //public void SelectMergeWindow() => CurrentState = merge;
-    //public void SelectMinionBookWindow() => CurrentState = minionBook;
-    //public void SelectLevelSelectWindow() => CurrentState = levelSelect;
     public void SelectWindow(UiWindow window) => CurrentState = states.Find((x) => x.uiWindow == window);
     #endregion
-
     private void OnStateChange(MenuUiState from)
     {
         UiLocked = true;
@@ -124,31 +96,21 @@ public class WindowGroupHandler : MonoBehaviour
 
         transitionTween.OnComplete(OnComplete);
 
+        from.uiWindow.TransitionOutStart();
+        CurrentState.uiWindow.TransitionInStart();
+
         void OnComplete()
         {
             UiLocked = false;
+
+            from.uiWindow.TransitionOutEnd();
+            CurrentState.uiWindow.TransitionInEnd();
 
             if (from != null && from != CurrentState)
                 from.gameobject.SetActive(false);
 
             CurrentState.uiWindow.UiLocked = false;
+
         }
     }
 }
-//[Serializable]
-//public class MenuUiState : State
-//{
-//    [Required]
-//    public UiWindow uiWindow; 
-    
-//    public GameObject gameobject => uiWindow.gameObject;
-//    protected override void OnEnable()
-//    {
-//        gameobject.SetActive(true);
-//    }
-//    protected override void OnDisable()
-//    {
-//        uiWindow.UiLocked = true;
-//    }
-//    protected override void OnUpdate() { }
-//}

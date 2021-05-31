@@ -126,6 +126,7 @@ public class MenuUiState : State
      
     
     public GameObject gameobject => uiWindow.gameObject;
+    public string Name => uiWindow.name.SplitCamelCase();
     protected override void OnEnable()
     {
         gameobject.SetActive(true);

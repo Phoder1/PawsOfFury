@@ -1,13 +1,14 @@
-﻿using System;
-using UnityEngine;
-namespace Assets.StateMachine
+﻿namespace Assets.StateMachine
 {
     public class StateMachine<T> where T : State
     {
         T state;
-        public StateMachine(T startState = null)
+        public StateMachine(T startState = null, bool skipEnable = false)
         {
-            State = startState;
+            if (skipEnable)
+                state = startState;
+            else
+                State = startState;
         }
         public T State
         {
