@@ -46,7 +46,7 @@ MonoBehaviour:
   spellName: Basic Spell
   aoeRadius: 5
   hasParticles: 0
-  buttonSprite: {fileID: 21300000, guid: a366440c7c91282468394958390ff458, type: 3}
+  buttonSprite: {fileID: 21300000, guid: f6571bfa0012d284982f0f0535e15738, type: 3}
   effectsData:
   - {fileID: 11400000, guid: 5c1ed6e198616c74fa416010dc44c472, type: 2}
   goldValue: 5
