@@ -73,6 +73,7 @@ public class WindowGroupHandler : MonoBehaviour
         stateMachine = new StateMachine<MenuUiState>(states[_defaultStateNumber]);
         transform.localPosition -= CurrentState.uiWindow.transform.localPosition;
         windowNameText.text = CurrentState.uiWindow.name;
+        CurrentState.uiWindow.SetActive(true);
     }
     #endregion
 
