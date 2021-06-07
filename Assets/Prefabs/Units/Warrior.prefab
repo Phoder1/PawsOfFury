@@ -129,7 +129,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4425067342292771571}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -373,7 +373,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -549,7 +549,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.3607843, g: 0.88616705, b: 1, a: 1}
+      maxColor: {r: 0.9333334, g: 0.6666667, b: 0.12941177, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5171,7 +5171,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8f025ed66a4593f469b1cb75101501d4, type: 2}
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f00a27f116efc9840baeda709a48102e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5230,6 +5230,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: d2a10ab90c9284a44818612d6a509958,
         type: 2}
+    - target: {fileID: 1515363951222047937, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: type
@@ -5331,6 +5336,21 @@ PrefabInstance:
         type: 3}
       propertyPath: OnAttackAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961200604377329904, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961200604377329904, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c65e62aa8c7db43468984f629253c30d, type: 3}
+    - target: {fileID: 3961200604377329904, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4025256063420912985, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
@@ -5476,6 +5496,11 @@ PrefabInstance:
     - target: {fileID: 4025256064503350891, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464877928301060005, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5874396324982974103, guid: 74931de6ae262184f9d5de570e927812,

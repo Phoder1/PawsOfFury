@@ -19630,6 +19630,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: 57f4d5bc12880d34dbdb940eae638a51,
         type: 2}
+    - target: {fileID: 1515363951222047937, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1549136891570394457, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: type
@@ -19698,6 +19703,11 @@ PrefabInstance:
       propertyPath: defualtStats.MaxAttackSpeedMultiplier
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3961200604377329904, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dafafb04389c396498d94f8f6761e6db, type: 3}
     - target: {fileID: 4025256063420912985, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -19842,6 +19852,11 @@ PrefabInstance:
     - target: {fileID: 4025256064503350891, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464877928301060005, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5874396324982974103, guid: 74931de6ae262184f9d5de570e927812,
