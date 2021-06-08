@@ -9740,8 +9740,13 @@ PrefabInstance:
     - target: {fileID: 3621939892519583050, guid: 65a47e5c83e50d545a674fd776f25877,
         type: 3}
       propertyPath: m_Volume
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 3621939892519583050, guid: 65a47e5c83e50d545a674fd776f25877,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b9ccdb0c1dcf6bd4ba0f68f436d3327b, type: 3}
     - target: {fileID: 4291418117808828319, guid: 65a47e5c83e50d545a674fd776f25877,
         type: 3}
       propertyPath: AOE
@@ -9755,7 +9760,7 @@ PrefabInstance:
     - target: {fileID: 5110417707166886727, guid: 65a47e5c83e50d545a674fd776f25877,
         type: 3}
       propertyPath: m_Name
-      value: RegularProjectileSpell
+      value: Tower_Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 8796973223715196396, guid: 65a47e5c83e50d545a674fd776f25877,
         type: 3}

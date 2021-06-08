@@ -32,6 +32,26 @@ PrefabInstance:
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3269433761524322089, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.78679246
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269433761524322089, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.92850107
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269433761524322089, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269433761524322090, guid: 736f8268511b7254a844cd0aeefca291,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3269433762606668824, guid: 736f8268511b7254a844cd0aeefca291,
         type: 3}
       propertyPath: m_RootOrder
