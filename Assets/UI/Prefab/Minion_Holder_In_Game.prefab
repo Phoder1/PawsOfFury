@@ -74,7 +74,7 @@ PrefabInstance:
     - target: {fileID: 499491182707082764, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
       propertyPath: m_Name
-      value: Minion_Holder
+      value: Minion_Holder_In_Game
       objectReference: {fileID: 0}
     - target: {fileID: 499491182707082767, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}

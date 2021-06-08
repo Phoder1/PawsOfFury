@@ -147,6 +147,22 @@ PrefabInstance:
       propertyPath: draggedEntity
       value: 
       objectReference: {fileID: 1387103051}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: shadow
+      value: 
+      objectReference: {fileID: 134554243}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: unitPrefab
+      value: 
+      objectReference: {fileID: 3269433762606668826, guid: 43c2ed2d2013bbb4dae77b36558a5ff2,
+        type: 3}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: draggedEntity
+      value: 
+      objectReference: {fileID: 1387103051}
     - target: {fileID: 1874207625857313940, guid: 5f3807cc6bc55954d9dc476d22c23900,
         type: 3}
       propertyPath: m_Name
@@ -11282,6 +11298,22 @@ PrefabInstance:
       objectReference: {fileID: 3269433762606668826, guid: 531343a61f95bfb4296c6fe510595f94,
         type: 3}
     - target: {fileID: 160427667590969449, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: draggedEntity
+      value: 
+      objectReference: {fileID: 1387103051}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: shadow
+      value: 
+      objectReference: {fileID: 134554243}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: unitPrefab
+      value: 
+      objectReference: {fileID: 3269433762606668826, guid: 531343a61f95bfb4296c6fe510595f94,
+        type: 3}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
         type: 3}
       propertyPath: draggedEntity
       value: 
@@ -29077,6 +29109,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1428946933 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2986691190653030234, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7330563592955216119}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1434156197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29804,6 +29848,22 @@ PrefabInstance:
       objectReference: {fileID: 3269433762606668826, guid: f46056462aced8543b2e7e855df0a5a3,
         type: 3}
     - target: {fileID: 160427667590969449, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: draggedEntity
+      value: 
+      objectReference: {fileID: 1387103051}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: shadow
+      value: 
+      objectReference: {fileID: 134554243}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: unitPrefab
+      value: 
+      objectReference: {fileID: 3269433762606668826, guid: f46056462aced8543b2e7e855df0a5a3,
+        type: 3}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
         type: 3}
       propertyPath: draggedEntity
       value: 
@@ -42223,6 +42283,22 @@ PrefabInstance:
       propertyPath: draggedEntity
       value: 
       objectReference: {fileID: 1387103051}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: shadow
+      value: 
+      objectReference: {fileID: 134554243}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: unitPrefab
+      value: 
+      objectReference: {fileID: 3269433762606668826, guid: e62afecd1fe9f1940ae37c922a5baf94,
+        type: 3}
+    - target: {fileID: 803874509742821747, guid: 5f3807cc6bc55954d9dc476d22c23900,
+        type: 3}
+      propertyPath: draggedEntity
+      value: 
+      objectReference: {fileID: 1387103051}
     - target: {fileID: 1874207625857313940, guid: 5f3807cc6bc55954d9dc476d22c23900,
         type: 3}
       propertyPath: m_Name
@@ -42882,7 +42958,7 @@ PrefabInstance:
     - target: {fileID: 529503619, guid: b9dc9f14bd8b33948b2dcc9685e70fec, type: 3}
       propertyPath: uiButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1428946933}
     - target: {fileID: 529503619, guid: b9dc9f14bd8b33948b2dcc9685e70fec, type: 3}
       propertyPath: SpawnPoint
       value: 
@@ -42892,6 +42968,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 245351348618023110, guid: 63482f56bb1f3154893845d69db83eca,
         type: 3}
+    - target: {fileID: 1283327893000606102, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6571bfa0012d284982f0f0535e15738,
+        type: 3}
+    - target: {fileID: 5153523373267081566, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100.3457
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153523373267081566, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 116.6265
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153523373267081566, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.8754
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153523373267081566, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.4368
+      objectReference: {fileID: 0}
     - target: {fileID: 7458682961373244897, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
         type: 3}
       propertyPath: shadow
@@ -42902,6 +43004,16 @@ PrefabInstance:
       propertyPath: draggedEntity
       value: 
       objectReference: {fileID: 1387103051}
+    - target: {fileID: 7489212189196657646, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970398427999110395, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9203635083469388049, guid: b9dc9f14bd8b33948b2dcc9685e70fec,
         type: 3}
       propertyPath: m_PreserveAspect
