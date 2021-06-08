@@ -10,7 +10,7 @@ using static InputManager;
 public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 {
     [SerializeField] TextMeshProUGUI goldText;
-    [LocalComponent(true)] [SerializeField] protected Button uiButton;
+    [LocalComponent(getComponentFromChildrens: true)] [SerializeField] protected Button uiButton;
     [SerializeField] protected Image image;
 
 
@@ -26,9 +26,13 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
     protected virtual void Start()
     {
         mainCam = Camera.main;
-        goldText.text = goldValue().ToString();
-        image.sprite = Sprite();
-        image.color = SpriteColor();
+        if (goldText != null)
+            goldText.text = goldValue().ToString();
+        if (image != null)
+        {
+            image.sprite = Sprite();
+            image.color = SpriteColor();
+        }
         levelManager.GoldAmountChanged += GoldAmountChanged;
     }
     public void OnPointerDown(PointerEventData eventData)

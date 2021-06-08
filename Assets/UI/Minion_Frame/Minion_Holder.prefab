@@ -98,6 +98,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 499491182707082767}
+  - component: {fileID: 7533690655977317144}
+  - component: {fileID: 301553830628266635}
   m_Layer: 5
   m_Name: Minion_Holder
   m_TagString: Untagged
@@ -127,6 +129,153 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7533690655977317144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499491182707082764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe7e780e46242b41b96e8bffd191a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventRefrence: {fileID: 0}
+  DefaultData: {fileID: 0}
+  _passThroughEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _earlyPassthroughEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _latePassthroughEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &301553830628266635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499491182707082764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5462040b6e7755241b5c569d0bb2afb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ControlCallbacks: 1
+  _defaultData: {fileID: 0}
+  _autoImport: 0
+  _dataType: 6
+  DefaultPassthrough:
+    m_PersistentCalls:
+      m_Calls: []
+  StringExport:
+    m_PersistentCalls:
+      m_Calls: []
+  IntExport:
+    m_PersistentCalls:
+      m_Calls: []
+  FloatExport:
+    m_PersistentCalls:
+      m_Calls: []
+  BoolExport:
+    m_PersistentCalls:
+      m_Calls: []
+  ObjectRefrenceExport:
+    m_PersistentCalls:
+      m_Calls: []
+  UnitSoPassthrough:
+    m_PersistentCalls:
+      m_Calls: []
+  IdExport:
+    m_PersistentCalls:
+      m_Calls: []
+  TierExport:
+    m_PersistentCalls:
+      m_Calls: []
+  DescriptionExport:
+    m_PersistentCalls:
+      m_Calls: []
+  CountExport:
+    m_PersistentCalls:
+      m_Calls: []
+  UnitSpriteExport:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8218815029356585203}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  TierCrystalExport:
+    m_PersistentCalls:
+      m_Calls: []
+  TierBorderColorExport:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6972540495523086586}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Graphic, UnityEngine.UI
+        m_MethodName: set_color
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4889713496256962463}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Graphic, UnityEngine.UI
+        m_MethodName: set_color
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 499491184546941997}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Graphic, UnityEngine.UI
+        m_MethodName: set_color
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  TierBackgroundColorExport:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 924855066669185644}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Graphic, UnityEngine.UI
+        m_MethodName: set_color
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OwnedExport:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &499491184546941995
 GameObject:
   m_ObjectHideFlags: 0
