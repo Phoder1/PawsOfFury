@@ -5,20 +5,18 @@ using UnityEngine.Audio;
 
 public class Boss_Sound_Handler : MonoBehaviour
 {
-    [SerializeField]
-    Entity Boss;
-    float HP;
-    bool Started_Music;
+    bool Started_Music = false;
     [SerializeField]
     AudioSource AudioSource;
+    [SerializeField]
+    AudioClip Boos_Music;
+  
 
-    // Start is called before the first frame update
-    void Start()
+    public void set_music_Boss()
     {
-        Boss = GetComponent<Entity>();
-    }
-
-   void set_music_Boss() 
-    {
+        if (!Started_Music)
+        {
+            AudioSource.PlayOneShot(Boos_Music);
+        }
     }
 }
