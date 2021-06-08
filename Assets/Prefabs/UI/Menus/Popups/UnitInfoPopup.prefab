@@ -774,7 +774,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ControlCallbacks: 1
-  defaultData: {fileID: 0}
+  _defaultData: {fileID: 0}
+  _autoImport: 0
   _dataType: 5
   DefaultPassthrough:
     m_PersistentCalls:
@@ -789,6 +790,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   BoolExport:
+    m_PersistentCalls:
+      m_Calls: []
+  ObjectRefrenceExport:
     m_PersistentCalls:
       m_Calls: []
   UnitSoPassthrough:
@@ -990,6 +994,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UnitInfoPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990290801566268050, guid: 8f6731392ca14bd40a9534291893a083,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990290801566268051, guid: 8f6731392ca14bd40a9534291893a083,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990290801566268051, guid: 8f6731392ca14bd40a9534291893a083,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990290801566268051, guid: 8f6731392ca14bd40a9534291893a083,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990290801711606954, guid: 8f6731392ca14bd40a9534291893a083,
+        type: 3}
+      propertyPath: isFrom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990290801711606954, guid: 8f6731392ca14bd40a9534291893a083,
+        type: 3}
+      propertyPath: endValueFloat
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3990290801711606954, guid: 8f6731392ca14bd40a9534291893a083,
         type: 3}
