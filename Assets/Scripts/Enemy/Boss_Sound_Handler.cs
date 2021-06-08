@@ -16,6 +16,8 @@ public class Boss_Sound_Handler : MonoBehaviour
     {
         if (!Started_Music)
         {
+            Started_Music = true;
+            AudioSource.Stop();
             AudioSource.PlayOneShot(Boos_Music);
         }
     }
