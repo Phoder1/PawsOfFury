@@ -13,7 +13,6 @@ public class LevelManager : MonoSingleton<LevelManager>
     public Transform EntityUIsObj => entityUIsObj;
     public Tilemap tilemap;
 
-
     List<Unit> units;
     List<Enemy> enemies;
     public Vector3 LevelEndPos => levelEnd.position;
