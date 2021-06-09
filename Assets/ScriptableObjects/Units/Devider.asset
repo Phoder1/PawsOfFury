@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
+  m_Name: Devider
+  m_EditorClassIdentifier: 
+  _uiSprite: {fileID: 21300000, guid: 658144572cb0b6e4e87ca386a2eff552, type: 3}
+  _description: Reproduce so fast, some say he shots um up.
+  id: 6
+  tier: 2
+  oneStarPrefab: {fileID: 3269433762606668826, guid: 736f8268511b7254a844cd0aeefca291,
+    type: 3}
+  twoStarPrefab: {fileID: 0}
+  threeStarPrefab: {fileID: 0}
+  higherChanceUnits: []

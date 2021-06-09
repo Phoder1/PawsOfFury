@@ -77,7 +77,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.433
+    m_Value: 0.4
     min: 0
     max: 1
   smoothness:
@@ -103,8 +103,8 @@ MonoBehaviour:
   active: 0
   m_AdvancedMode: 0
   postExposure:
-    m_OverrideState: 1
-    m_Value: 0.2
+    m_OverrideState: 0
+    m_Value: 0
   contrast:
     m_OverrideState: 0
     m_Value: 100
@@ -144,7 +144,6 @@ MonoBehaviour:
   - {fileID: -7011558710299706105}
   - {fileID: -2214449472421337732}
   - {fileID: 7961947493570658072}
-  - {fileID: 4292831815911863812}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -161,26 +160,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
-    m_Value: 0
---- !u!114 &4292831815911863812
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
-  m_Name: ChromaticAberration
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0.1
-    min: 0
-    max: 1
+    m_Value: 2
 --- !u!114 &7961947493570658072
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -196,21 +176,21 @@ MonoBehaviour:
   active: 0
   m_AdvancedMode: 0
   shadows:
-    m_OverrideState: 0
-    m_Value: {x: 1, y: 0.86203116, z: 0.83204174, w: 0}
+    m_OverrideState: 1
+    m_Value: {x: 0.85675335, y: 0.86825967, z: 1, w: 0.21078835}
   midtones:
     m_OverrideState: 0
-    m_Value: {x: 0.09933472, y: 1, z: 0, w: 0}
+    m_Value: {x: 0.9997296, y: 0.85599774, z: 1, w: 0}
   highlights:
     m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.95941824, y: 0.98203236, z: 1, w: 0}
   shadowsStart:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 0.12
     min: 0
   shadowsEnd:
     m_OverrideState: 0
-    m_Value: 0.3
+    m_Value: 0.31
     min: 0
   highlightsStart:
     m_OverrideState: 0
