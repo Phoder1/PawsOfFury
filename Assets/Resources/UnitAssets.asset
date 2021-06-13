@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tierAssets:
   - _crystalSprite: {fileID: 21300000, guid: d63f5071b2d7fb24c87580a46e49e608, type: 3}
-    _borderColor: {r: 0.10111747, g: 0.754717, b: 0.08116763, a: 1}
-    _backgroundColor: {r: 0.5442506, g: 0.735849, b: 0.5561358, a: 1}
+    _borderColor: {r: 0.38823533, g: 0.77647066, b: 0.3647059, a: 1}
+    _backgroundColor: {r: 0.32156864, g: 0.43921572, b: 0.40784317, a: 1}
   - _crystalSprite: {fileID: 21300000, guid: 1a88ebca7a3989143a560a10fdda597e, type: 3}
-    _borderColor: {r: 0.37992162, g: 0.44690245, b: 0.8679245, a: 1}
-    _backgroundColor: {r: 0.53032404, g: 0.59193903, b: 0.78800005, a: 1}
+    _borderColor: {r: 0.37254903, g: 0.5529412, b: 0.7686275, a: 1}
+    _backgroundColor: {r: 0.7490196, g: 0.8196079, b: 0.8078432, a: 1}
   - _crystalSprite: {fileID: 21300000, guid: cd0f9b475bcfc44448fc10135e91e05f, type: 3}
-    _borderColor: {r: 0.6603774, g: 0.13955142, b: 0.5035024, a: 1}
-    _backgroundColor: {r: 0.735849, g: 0.40692452, b: 0.6479709, a: 1}
+    _borderColor: {r: 0.7294118, g: 0.21960786, b: 0.38823533, a: 1}
+    _backgroundColor: {r: 0.8588236, g: 0.4666667, b: 0.53333336, a: 1}

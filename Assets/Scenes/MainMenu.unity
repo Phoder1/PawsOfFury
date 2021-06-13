@@ -3214,8 +3214,8 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 0.7
-  easeType: 13
+  duration: 0.3
+  easeType: 10
   easeCurve:
     serializedVersion: 2
     m_Curve:
@@ -4382,8 +4382,8 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 0.7
-  easeType: 37
+  duration: 0.3
+  easeType: 10
   easeCurve:
     serializedVersion: 2
     m_Curve:
@@ -4644,8 +4644,8 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 0.7
-  easeType: 37
+  duration: 0.3
+  easeType: 10
   easeCurve:
     serializedVersion: 2
     m_Curve:
@@ -6200,8 +6200,8 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 0.7
-  easeType: 13
+  duration: 0.3
+  easeType: 10
   easeCurve:
     serializedVersion: 2
     m_Curve:
