@@ -67,6 +67,10 @@ public class DataImporter : MonoBehaviour
     [FoldoutGroup("Unit Export events")]
     public UnityEvent<Sprite> TierCrystalExport;
     [FoldoutGroup("Unit Export events")]
+    public UnityEvent<Color> TierBorderColorExport;
+    [FoldoutGroup("Unit Export events")]
+    public UnityEvent<Color> TierBackgroundColorExport;
+    [FoldoutGroup("Unit Export events")]
     public UnityEvent<bool> OwnedExport;
     #endregion
     private void Awake() => TryDefaultImport(TriggerCallbacks.Awake);
@@ -129,6 +133,8 @@ public class DataImporter : MonoBehaviour
                     CountExport?.Invoke(unitData.Count);
                     UnitSpriteExport?.Invoke(unitData.UiSprite);
                     TierCrystalExport?.Invoke(unitData.TierCrystal);
+                    TierBorderColorExport?.Invoke(unitData.BorderColor);
+                    TierBackgroundColorExport?.Invoke(unitData.BackgroundColor);
                     OwnedExport?.Invoke(unitData.Owned);
                     break;
             }

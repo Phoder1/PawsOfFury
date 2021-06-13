@@ -50,7 +50,9 @@ public class UnitSO : ScriptableObject
 
         }
     }
-    public Sprite TierCrystal => Database.TierCrystals[Tier - 1];
+    public Sprite TierCrystal => Database.UnitAssets.TierAssets[Tier - 1].CrystalSprite;
+    public Color BackgroundColor => Database.UnitAssets.TierAssets[Tier - 1].BackgroundColor;
+    public Color BorderColor => Database.UnitAssets.TierAssets[Tier - 1].BorderColor;
     public bool Owned
     {
         get

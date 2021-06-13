@@ -26,5 +26,4 @@ public static class Database
             return _unitAssets;
         }
     }
-    public readonly static Sprite[] TierCrystals = UnitAssets.TierCrystals;
 }
