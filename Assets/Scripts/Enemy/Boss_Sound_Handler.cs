@@ -19,6 +19,7 @@ public class Boss_Sound_Handler : MonoBehaviour
             Started_Music = true;
             AudioSource.Stop();
             AudioSource.PlayOneShot(Boos_Music);
+            //AudioSource.volume -= 0.1f;
         }
     }
 }

@@ -14874,12 +14874,12 @@ PrefabInstance:
     - target: {fileID: 3961200604377329904, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: m_Pitch
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3961200604377329904, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3961200604377329904, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
@@ -14888,8 +14888,13 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: dafafb04389c396498d94f8f6761e6db, type: 3}
     - target: {fileID: 3961200604377329904, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      propertyPath: m_PlayOnAwake
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961200604377329904, guid: 74931de6ae262184f9d5de570e927812,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4025256063420912985, guid: 74931de6ae262184f9d5de570e927812,
         type: 3}

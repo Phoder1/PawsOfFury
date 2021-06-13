@@ -20,6 +20,10 @@ public class Scroll_inGame : MonoBehaviour
     float maxZ;
 
 
+    Rigidbody rb;
+
+
+
     [SerializeField]
     GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
@@ -31,12 +35,26 @@ public class Scroll_inGame : MonoBehaviour
     {
         isTouching = false;
         Z = transform.position.z;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
         checkTouch();
+        if (transform.position.z >= maxZ)
+        {
+            rb.isKinematic = true;
+            rb.isKinematic = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, maxZ-0.01f);
+
+        }
+        else if (transform.position.z <= minZ)
+        {
+            rb.isKinematic = true;
+            rb.isKinematic = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, minZ+0.01f);
+        }
     }
     void checkTouch()
     {
@@ -67,18 +85,7 @@ public class Scroll_inGame : MonoBehaviour
 
     void MoveCamera()
     {
-        Z += ((startTouch.y - moveTouch.y) * 10 / Screen.height);
-        if (Z < minZ)
-        {
-            Z = minZ;
-        }
-        if (Z > maxZ)
-        {
-            Z = maxZ;
-        }
-        transform.position = new Vector3(transform.position.x, transform.position.y, Z);
-
-
+        rb.AddForce(transform.forward * (startTouch.y - moveTouch.y) *2, ForceMode.Acceleration);
     }
 
 

@@ -4719,7 +4719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1219597465
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5526,6 +5526,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minion_Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 499491182707082764, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 499491182707082767, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5850,7 +5855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1553565982
 RectTransform:
   m_ObjectHideFlags: 0
