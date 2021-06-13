@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7d48ec320621f4f9f9ad9518bd29c8, type: 3}
   m_Name: UnitAssets
   m_EditorClassIdentifier: 
-  _tierCrystals:
-  - {fileID: 21300000, guid: 1a88ebca7a3989143a560a10fdda597e, type: 3}
-  - {fileID: 21300000, guid: d63f5071b2d7fb24c87580a46e49e608, type: 3}
-  - {fileID: 21300000, guid: cd0f9b475bcfc44448fc10135e91e05f, type: 3}
+  _tierAssets:
+  - _crystalSprite: {fileID: 21300000, guid: d63f5071b2d7fb24c87580a46e49e608, type: 3}
+    _borderColor: {r: 0.10111747, g: 0.754717, b: 0.08116763, a: 1}
+    _backgroundColor: {r: 0.5442506, g: 0.735849, b: 0.5561358, a: 1}
+  - _crystalSprite: {fileID: 21300000, guid: 1a88ebca7a3989143a560a10fdda597e, type: 3}
+    _borderColor: {r: 0.37992162, g: 0.44690245, b: 0.8679245, a: 1}
+    _backgroundColor: {r: 0.53032404, g: 0.59193903, b: 0.78800005, a: 1}
+  - _crystalSprite: {fileID: 21300000, guid: cd0f9b475bcfc44448fc10135e91e05f, type: 3}
+    _borderColor: {r: 0.6603774, g: 0.13955142, b: 0.5035024, a: 1}
+    _backgroundColor: {r: 0.735849, g: 0.40692452, b: 0.6479709, a: 1}
