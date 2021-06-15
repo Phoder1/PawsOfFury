@@ -20,4 +20,6 @@ MonoBehaviour:
     type: 3}
   twoStarPrefab: {fileID: 0}
   threeStarPrefab: {fileID: 0}
-  higherChanceUnits: []
+  higherChanceUnits:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 16be06fb3bc98fa49a91aa2a01834f23, type: 2}

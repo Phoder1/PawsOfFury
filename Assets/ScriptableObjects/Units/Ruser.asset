@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
-  m_Name: Bomber
+  m_Name: Ruser
   m_EditorClassIdentifier: 
-  _uiSprite: {fileID: 21300000, guid: e8998cf3929564c48b3ee472ac702afa, type: 3}
-  _description: 'The Bomber does AOE Damage '
-  id: 1
-  tier: 1
-  oneStarPrefab: {fileID: 3269433762606668826, guid: 9c6499d5c22a2b641af2bde5d1253373,
-    type: 3}
+  _uiSprite: {fileID: 21300000, guid: a1fd490bd20d14240a2f9cfc0f627a1a, type: 3}
+  _description: Lets go!!!
+  id: 6
+  tier: 3
+  oneStarPrefab: {fileID: 0}
   twoStarPrefab: {fileID: 0}
   threeStarPrefab: {fileID: 0}
-  higherChanceUnits:
-  - {fileID: 11400000, guid: 16be06fb3bc98fa49a91aa2a01834f23, type: 2}
+  higherChanceUnits: []
