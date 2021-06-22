@@ -31,7 +31,7 @@ public class InputManager : MonoSingleton<InputManager>
         }
     }
 
-    public override void OnAwake() => IngameBlackBoard.inputManager = _instance;
+    public override void OnAwake() => IngameBlackBoard.inputManager = instance;
     private void Start()
     {
         stateMachine = new StateMachine<ButtonsState>(null);

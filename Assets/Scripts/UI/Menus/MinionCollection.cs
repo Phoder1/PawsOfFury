@@ -31,6 +31,9 @@ public class MinionCollection : MonoBehaviour
 
         foreach (UnitSO unit in database.Units)
         {
+            if (unit == null)
+                continue;
+
             if ((!_filterUnowned || unit.Owned) && (!_filterTeam ||  unit.TeamNumber != null))
             {
                 var UnitButton = Instantiate(_unitButtonPrefab, scrollContent.transform);

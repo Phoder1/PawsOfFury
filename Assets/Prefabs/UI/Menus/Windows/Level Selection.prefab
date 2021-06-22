@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6940274228767890297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5902181197051733569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a63c1fe010d7b94988f8254454aeb88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneIndex: 1
 --- !u!1 &6162098535089433522
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,6 +84,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d683026a36ca4c49a441756f8453f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnLoadStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLoadFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6162098535268006980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,17 +1946,38 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6162098535089433522}
+      objectReference: {fileID: 6940274228767890297}
     - target: {fileID: 2016240168514498776, guid: f63869f5560aa47429267e52b534a481,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016240168514498776, guid: f63869f5560aa47429267e52b534a481,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016240168514498776, guid: f63869f5560aa47429267e52b534a481,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016240168514498776, guid: f63869f5560aa47429267e52b534a481,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63869f5560aa47429267e52b534a481, type: 3}
 --- !u!224 &6428557350344849441 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 915067596909776816, guid: f63869f5560aa47429267e52b534a481,
+    type: 3}
+  m_PrefabInstance: {fileID: 6162098535220180881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5902181197051733569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 318886405919134160, guid: f63869f5560aa47429267e52b534a481,
     type: 3}
   m_PrefabInstance: {fileID: 6162098535220180881}
   m_PrefabAsset: {fileID: 0}
