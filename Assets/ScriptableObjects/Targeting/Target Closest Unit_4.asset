@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06cb16e744902a64ebc0d56e58b636de, type: 3}
-  m_Name: Target Closest Unit
+  m_Name: Target Closest Unit_4
   m_EditorClassIdentifier: 
   rulesOrder:
   - targets: 4
     priority: 0
     tagPriority: 0
-    range: 3
+    range: 4
     ignoresTaunt: 0
     canDetectGhosts: 0
     ignoresSelected: 0
