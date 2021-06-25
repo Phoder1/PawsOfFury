@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 using System;
 using static IngameBlackBoard;
 using CustomAttributes;
+using UnityEngine.Events;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
@@ -19,6 +20,8 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     public Unit[] Units => units.ToArray();
     public Enemy[] Enemies => enemies.ToArray();
+    [SerializeField] int CheapestMinion;// TODO - assaign this variable to te value of the cheapest minion on his current team
+    [SerializeField] UnityEvent PlayerLose;
     [SerializeField] int startingGold;
     int gold;
     public int Gold
@@ -55,6 +58,8 @@ public class LevelManager : MonoSingleton<LevelManager>
         {
             case Unit unit:
                 units.Remove(unit);
+                if (Check_Player_Lose())
+                    PlayerLose.Invoke();
                 break;
             case Enemy enemy:
                 enemies.Remove(enemy);
@@ -72,6 +77,21 @@ public class LevelManager : MonoSingleton<LevelManager>
     {
         UpdateGoldValue();
     }
+
+   private bool Check_Player_Lose()
+   {
+        if(units.Count == 0 && gold < CheapestMinion) 
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+   }
+
+
+
 }
 public static class GlobalEffects
 {

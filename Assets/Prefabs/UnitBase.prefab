@@ -93,9 +93,9 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 30
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
-  m_AutoRepath: 1
+  m_AutoRepath: 0
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 3
@@ -5022,6 +5022,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitBase
       objectReference: {fileID: 0}
+    - target: {fileID: 4508563578942963112, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963114, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_RootOrder
@@ -5097,6 +5102,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4508563580025433753, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4508563580025433755, guid: a8130013def55024d821218c438f91db,
         type: 3}
       propertyPath: m_Sprite
@@ -5117,6 +5127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayerID
       value: -1147346115
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978805134373921065, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7895374949023656662, guid: a8130013def55024d821218c438f91db,
         type: 3}

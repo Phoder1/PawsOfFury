@@ -10,7 +10,10 @@ public class Boss_Sound_Handler : MonoBehaviour
     AudioSource AudioSource;
     [SerializeField]
     AudioClip Boos_Music;
+    [SerializeField]
+    AudioClip Win_Music;
   
+
 
     public void set_music_Boss()
     {
@@ -19,7 +22,13 @@ public class Boss_Sound_Handler : MonoBehaviour
             Started_Music = true;
             AudioSource.Stop();
             AudioSource.PlayOneShot(Boos_Music);
-            //AudioSource.volume -= 0.1f;
+            AudioSource.volume -= 0.05f;
         }
+    }
+
+    public void Boss_Dead_Music()
+    {
+        AudioSource.Stop();
+        AudioSource.PlayOneShot(Win_Music);
     }
 }
