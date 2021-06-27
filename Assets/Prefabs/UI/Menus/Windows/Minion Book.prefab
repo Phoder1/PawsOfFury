@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollContent: {fileID: 8690779739908393807}
-  _unitButtonPrefab: {fileID: 499491182707082764, guid: b0370400004729a49b135704c7d3ca8a,
+  _unitButtonPrefab: {fileID: 6276935848271651243, guid: c9c33d74955a5ce45a671a3bbb04bf78,
     type: 3}
   _filterUnowned: 0
   _filterTeam: 1
@@ -595,6 +595,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   TierCrystalExport:
+    m_PersistentCalls:
+      m_Calls: []
+  TierBorderColorExport:
+    m_PersistentCalls:
+      m_Calls: []
+  TierBackgroundColorExport:
     m_PersistentCalls:
       m_Calls: []
   OwnedExport:

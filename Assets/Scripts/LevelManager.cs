@@ -32,7 +32,7 @@ public class LevelManager : MonoSingleton<LevelManager>
             if (gold != value)
             {
                 gold = value;
-                IngameUiManager._instance.SetGold(Gold);
+                IngameUiManager.instance.SetGold(Gold);
                 GoldAmountChanged?.Invoke(Gold);
             }
         }
@@ -69,7 +69,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     public override void OnAwake()
     {
-        IngameBlackBoard.levelManager = _instance;
+        IngameBlackBoard.levelManager = instance;
         units = new List<Unit>();
         enemies = new List<Enemy>();
     }

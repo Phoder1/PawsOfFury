@@ -12,5 +12,5 @@ public class CoroutineHandler : MonoSingleton<CoroutineHandler>
     {
         StopAllCoroutines();
     }
-    public override void OnAwake() => IngameBlackBoard.coroutineHandler = _instance;
+    public override void OnAwake() => IngameBlackBoard.coroutineHandler = instance;
 }
