@@ -16130,11 +16130,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
-      propertyPath: healthbarHeight
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
       propertyPath: defualtStats.MaxHP
       value: 25
       objectReference: {fileID: 0}
@@ -16292,16 +16287,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7454157641824529091, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7454157641824529091, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: rotationOffset
-      value: -20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a074af5668e76374fba5371ae63bf77f, type: 3}

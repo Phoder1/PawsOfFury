@@ -7,7 +7,7 @@ public class Settings_UI : MonoBehaviour
 {
     [SerializeField]
     AudioMixer Mixer;
-
+   
 
     // Start is called before the first frame update
     void Start()
@@ -31,5 +31,24 @@ public class Settings_UI : MonoBehaviour
                 Mixer.SetFloat("Volume", 0);
                 PlayerPrefs.SetFloat("Volume", 0);
             }
+    }
+
+    public void StopGame()
+    {
+        StartCoroutine(StopGameInumarator());
+        
+    }
+    IEnumerator StopGameInumarator()
+    {
+        if (Time.timeScale != 0)
+        {
+        yield return new WaitForSeconds(0.5f);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        yield return new WaitForSeconds(0.5f);
+        }
     }
 }

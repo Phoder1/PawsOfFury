@@ -15,9 +15,9 @@ MonoBehaviour:
   entityName: Enemy
   goldValue: 20
   type: 0
-  UiObject: {fileID: 6817828928379908365, guid: 1646f9192471bf54bab21516bbf969fd,
+  UiObject: {fileID: 6817828928379908365, guid: c480a874215ef864392a0fd8114d28ab,
     type: 3}
-  healthbarHeight: 20
+  healthbarHeight: -40
   defualtStats:
     HP: 100
     MaxHP: 100
@@ -38,6 +38,10 @@ MonoBehaviour:
   stats:
     stats: []
   lastAttackTime: 0
+  ISInitOnStart: 0
+  OnDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnAttackAnimation:
     m_PersistentCalls:
       m_Calls: []

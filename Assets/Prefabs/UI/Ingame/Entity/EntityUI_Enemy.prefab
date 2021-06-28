@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1269796466222656079}
   - component: {fileID: 6841697429568909480}
-  - component: {fileID: 2429371601540946686}
+  - component: {fileID: 92162014854701023}
   m_Layer: 5
-  m_Name: EntityUI
+  m_Name: EntityUI_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 3021641922394283051}
   target: {fileID: 77161379579168632}
---- !u!223 &2429371601540946686
+--- !u!223 &92162014854701023
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,40 +156,100 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269796466222656079}
     m_Modifications:
+    - target: {fileID: -3897918759220296171, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: timeUntilDisapear
+      value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778786424998039, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778786424998041, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778786424998041, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778786424998041, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778786424998041, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.4245283
+      objectReference: {fileID: 0}
     - target: {fileID: 7311778786424998041, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778787265047658, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778787265047660, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7311778787265047660, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7311778787472661786, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778787472661788, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7311778787472661788, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7311778787636688663, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7311778787636688664, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 65.9708
       objectReference: {fileID: 0}
     - target: {fileID: 7311778787636688664, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 15
+      value: 18.223
       objectReference: {fileID: 0}
     - target: {fileID: 7311778787636688664, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.000012398
       objectReference: {fileID: 0}
     - target: {fileID: 7311778787636688664, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 40
+      value: 38.38852
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778787636688665, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7311778787636688665, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
         type: 3}
@@ -200,6 +260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311778787983579454, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7311778787983579455, guid: 17e1ec83bc8f0ed449c4cab56ab33f61,
         type: 3}
