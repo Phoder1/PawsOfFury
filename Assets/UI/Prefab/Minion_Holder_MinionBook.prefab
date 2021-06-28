@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raycastTarget: {fileID: 6276935848718740362}
+  _maxSpeed: 1.7
+  _minSnapDistance: 1
+  _disableScrollRectOnDrag: 0
 --- !u!1001 &5904970559692187559
 PrefabInstance:
   m_ObjectHideFlags: 0

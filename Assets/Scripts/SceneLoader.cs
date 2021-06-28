@@ -29,5 +29,6 @@ public class SceneLoader : MonoBehaviour
         OnLoadFinish?.Invoke();
         yield return SceneManager.UnloadSceneAsync(currentScene);
         BlackScreen.instance.FadeOut();
+        GameManager.instance.NewSceneLoaded();
     }
 }

@@ -8,12 +8,18 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 {
     [SerializeField]
     private Image _raycastTarget;
+    [SerializeField, Tooltip("In screen heights per second")]
+    private float _maxSpeed = 3f;
+    [SerializeField, Tooltip("In cards ratio")]
+    private float _minSnapDistance = 1f;
+    [SerializeField]
+    private bool _disableScrollRectOnDrag = false;
     private Canvas _canvas;
     private LayoutGroup _layoutGroup;
     private ScrollRect _scrollRect;
     private EventTrigger _contentEventTrigger;
     private Image _contentBackgroundImage;
-
+    private RectTransform _rectTransform;
 
     private Transform _parent;
     private int _siblingIndex;
@@ -45,7 +51,8 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                     case DragState.Dragged:
                         transform.SetParent(_parent);
                         transform.SetSiblingIndex(_siblingIndex);
-                        //_layoutGroup.enabled = true;
+                        if (_disableScrollRectOnDrag)
+                            _layoutGroup.enabled = true;
                         break;
                 }
             }
@@ -60,7 +67,8 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                         _raycastTarget.raycastTarget = false;
                         break;
                     case DragState.Dragged:
-                        //_layoutGroup.enabled = false;
+                        if (_disableScrollRectOnDrag)
+                            _layoutGroup.enabled = false;
                         transform.SetParent(_canvas.transform, true);
                         transform.SetAsLastSibling();
                         break;
@@ -77,6 +85,7 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         _layoutGroup = GetComponentInParent<LayoutGroup>();
         //_contentEventTrigger.triggers.Find((x) => x.eventID == EventTriggerType.PointerExit)?.callback.AddListener(OnContentPointerExit);
         _contentBackgroundImage = transform.parent.parent.GetComponent<Image>();
+        _rectTransform = GetComponent<RectTransform>();
     }
     void Start()
     {
@@ -85,7 +94,20 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     }
     void Update()
     {
+        if (State == DragState.Dragged)
+        {
+            Vector3 targetPos = transform.position;
 
+            if (_pointerID == -1)
+                targetPos = Input.mousePosition;
+
+            if (_pointerID >= 0)
+                targetPos = Input.GetTouch(_pointerID).position;
+
+            float maxSpeed = _maxSpeed * Screen.height;
+            Vector3 movement = Vector3.ClampMagnitude(targetPos - transform.position, maxSpeed * Time.deltaTime);
+            transform.position += movement;
+        }
     }
     #endregion
     #region Pointer callbacks
@@ -122,35 +144,30 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
         if (State == DragState.Pressed)
         {
-            _scrollRect.OnDrag(eventData);
-            List<RaycastResult> raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventData, raycastResults);
-            if (!raycastResults.Exists((x) => x.gameObject == _contentBackgroundImage.gameObject))
+            if (Input.mousePosition.y > transform.position.y + _rectTransform.rect.height * _minSnapDistance)
             {
-                var rectTransform = _contentBackgroundImage.rectTransform;
-                var min = rectTransform.rect.min + (Vector2)rectTransform.position;
-                var max = rectTransform.rect.max + (Vector2)rectTransform.position;
-                if (eventData.position.x < max.x && eventData.position.x > min.x
-                    && eventData.position.y > max.y)
+                State = DragState.Dragged;
+                _pointerID = eventData.pointerId;
+            }
+            else
+            {
+                List<RaycastResult> raycastResults = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(eventData, raycastResults);
+                if (!raycastResults.Exists((x) => x.gameObject == _contentBackgroundImage.gameObject))
                 {
-                    State = DragState.Dragged;
-                    _pointerID = eventData.pointerId;
+                    var rectTransform = _contentBackgroundImage.rectTransform;
+                    var min = rectTransform.rect.min + (Vector2)rectTransform.position;
+                    var max = rectTransform.rect.max + (Vector2)rectTransform.position;
+                    if (eventData.position.x < max.x && eventData.position.x > min.x
+                        && eventData.position.y > max.y)
+                    {
+                        State = DragState.Dragged;
+                        _pointerID = eventData.pointerId;
+                    }
                 }
             }
         }
-        if (State == DragState.Dragged)
-        {
-            Vector3 pos = transform.position;
-
-            if (_pointerID == -1)
-                pos = Input.mousePosition;
-
-            if (_pointerID >= 0)
-                pos = Input.GetTouch(_pointerID).position;
-
-            transform.position = pos;
-        }
-        else
+        if (State != DragState.Dragged)
             _scrollRect.OnDrag(eventData);
     }
 

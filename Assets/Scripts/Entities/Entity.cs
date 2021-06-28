@@ -39,7 +39,18 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     [LocalComponent]
     protected AnimationHandler animationHandler;
-    protected Camera mainCam;
+    private Camera mainCam;
+    protected Camera MainCam 
+    {
+        get
+        {
+            if(mainCam == null)
+            {
+                mainCam = Camera.main;
+            }
+            return mainCam;
+        }
+    }
     protected EntityUI ui;
     protected StateMachine<EntityState> stateMachine;
     [HideInInspector]
@@ -94,10 +105,9 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     }
     protected virtual void Start()
     {
-        mainCam = Camera.main;
         lastAttackTime = -Mathf.Infinity;
         stats = new EntityStats();
-        UiObject = Instantiate(UiObject, mainCam.WorldToScreenPoint(transform.position), transform.rotation, levelManager.EntityUIsObj);
+        UiObject = Instantiate(UiObject, MainCam.WorldToScreenPoint(transform.position), transform.rotation, levelManager.EntityUIsObj);
         levelManager.AddToList(this);
         ui = UiObject.GetComponent<EntityUI>();
         ui.HealthBarHeight = healthbarHeight;
@@ -116,7 +126,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     protected virtual void Update()
     {
         stateMachine.Update();
-        UiObject.transform.position = mainCam.WorldToScreenPoint(transform.position);
+        UiObject.transform.position = MainCam.WorldToScreenPoint(transform.position);
 
     }
     void OnApplicationQuit()
@@ -182,7 +192,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         protected void DetectedInRange(EntityHit detectedEntity) => entity.DetectedInRange(detectedEntity);
 
         Coroutine attackCoro;
-        protected float attackDelay => 1 / (entity.projectile.attackSpeed * entity.stats.GetStatValue(StatType.AttackSpeedMultiplier));
+        protected float AttackDelay => 1 / (entity.projectile.attackSpeed * entity.stats.GetStatValue(StatType.AttackSpeedMultiplier));
         public AttackState(Entity entity) : base(entity) { }
         protected override void OnEnable()
         {
@@ -195,7 +205,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             detectedEntity = Targets.GetEntityHit(entity, entity.projectile.detection);
             if (detectedEntity != null && detectedEntity.entity != null)
             {
-                if (Time.time >= entity.lastAttackTime + attackDelay)
+                if (Time.time >= entity.lastAttackTime + AttackDelay)
                 {
                     if (TargetEntity == null || TargetEntity.entity == null || !entity.projectile.locking)
                         possibleTargets = Targets.GetEntityHits(entity, entity.projectile.targeting);
