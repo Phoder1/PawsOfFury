@@ -37,10 +37,7 @@ public class MinionCollection : MonoBehaviour
             if ((!_filterUnowned || unit.Owned) && (!_filterTeam ||  unit.TeamNumber != null))
             {
                 var UnitButton = Instantiate(_unitButtonPrefab, scrollContent.transform);
-                UnitButton.GetComponent<EventPassthrough>().DefaultData = unit;
-                var importer = UnitButton.GetComponent<DataImporter>();
-                importer.DefaultData = unit;
-                importer.ImportDefault();
+                UnitButton.GetComponent<UiUnitController>().Unit = unit;
             }
         }
     }

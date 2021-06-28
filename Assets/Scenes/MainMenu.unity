@@ -9536,6 +9536,39 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4286824170
       objectReference: {fileID: 0}
+    - target: {fileID: 7516219638282032763, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: _unitTeamNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516219638282032763, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: _teamUnitRefrence
+      value: 
+      objectReference: {fileID: 11400000, guid: 65d40915c08654c4580c872f674630ef,
+        type: 2}
+    - target: {fileID: 8017442386228868522, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: _unitTeamNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8017442386228868522, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: _teamUnitRefrence
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f3913a32c89b2f45bb9e67a7429c259,
+        type: 2}
+    - target: {fileID: 8602033729553581397, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: _unitTeamNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602033729553581397, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: _teamUnitRefrence
+      value: 
+      objectReference: {fileID: 11400000, guid: ed63b3479d1ccce4b9a971248256ced2,
+        type: 2}
     - target: {fileID: 8690779739908393806, guid: 6e7cf623e500fcf45bc10eec6a09b006,
         type: 3}
       propertyPath: m_SizeDelta.x

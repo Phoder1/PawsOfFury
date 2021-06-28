@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Path
   - Canvas
+  - UI Minion Team
   layers:
   - Default
   - TransparentFX

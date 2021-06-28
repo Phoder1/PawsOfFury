@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "d0b7ea2376477d4c99f23bff357556f037e23d61"
     },
+    "com.alontalmi.datahandler": {
+      "version": "https://github.com/Phoder1/DataHandler.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "877fbeef9bc4ea0adc7253055b08111449954b3b"
+    },
     "com.h8man.2d.navmeshplus": {
       "version": "https://github.com/h8man/NavMeshPlus.git#master",
       "depth": 0,
@@ -102,7 +109,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.8",
+      "version": "2.0.9",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -194,7 +201,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.26",
+      "version": "1.1.27",
       "depth": 0,
       "source": "registry",
       "dependencies": {

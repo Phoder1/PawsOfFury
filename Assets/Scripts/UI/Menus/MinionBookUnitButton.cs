@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum DragState { None, Pressed, Dragged }
-public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IScrollHandler
+public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IScrollHandler
 {
     [SerializeField]
     private Image _raycastTarget;
@@ -20,6 +20,11 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     [SerializeField]
     private UnityEvent OnPress;
+    [Space]
+    [SerializeField]
+    private TagFilter _teamTag;
+    private UnitSO _unit;
+    public UnitSO Unit { get => _unit; set => _unit = value; }
     private Canvas _canvas;
     private LayoutGroup _layoutGroup;
     private ScrollRect _scrollRect;
@@ -153,7 +158,11 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     {
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, raycastResults);
+        var teamUnit = raycastResults.Find((x) => _teamTag.Contains(x.gameObject.tag)).gameObject;
 
+        UiUnitController ctrl;
+        if (teamUnit != null && (ctrl = teamUnit.GetComponentInParent<UiUnitController>()) != null)
+            ctrl.Unit = _unit;
 
         State = DragState.None;
         _dragDistance = 0;

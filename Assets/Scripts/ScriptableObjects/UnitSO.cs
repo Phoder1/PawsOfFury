@@ -2,7 +2,6 @@ using DataSaving;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
-using static DataSaving.InventoryData;
 
 [CreateAssetMenu(menuName = "SO/UnitSO")]
 public class UnitSO : ScriptableObject
@@ -47,7 +46,6 @@ public class UnitSO : ScriptableObject
             if (unit != null)
                 return unit.Count;
             return 0;
-
         }
     }
     public Sprite TierCrystal => Database.UnitAssets.TierAssets[Tier - 1].CrystalSprite;
@@ -59,10 +57,9 @@ public class UnitSO : ScriptableObject
         {
             var data = DataHandler.GetData<InventoryData>().Units.Find((x) => x.ID == ID);
             return data != null && data.Count > 0;
-
         }
     }
-    public int? TeamNumber => DataHandler.GetData<TeamData>().Team.FindIndex((x) => x.ID == ID);
+    public int? TeamNumber => DataHandler.GetData<TeamData>()?.Team?.FindIndex((x) => x.ID == ID);
     public GameObject GetStarLevel(byte starLevel)
     {
         switch (starLevel)

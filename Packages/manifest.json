@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.alontalmi.customattributes": "https://github.com/Phoder1/Unity-CustomAttributes.git",
+    "com.alontalmi.datahandler": "https://github.com/Phoder1/DataHandler.git",
     "com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git#master",
     "com.unity.2d.animation": "5.0.5",
     "com.unity.2d.sprite": "1.0.0",
@@ -10,11 +11,11 @@
     "com.unity.cinemachine": "2.6.4",
     "com.unity.collab-proxy": "1.3.9",
     "com.unity.ide.rider": "2.0.7",
-    "com.unity.ide.visualstudio": "2.0.8",
+    "com.unity.ide.visualstudio": "2.0.9",
     "com.unity.ide.vscode": "1.2.3",
     "com.unity.recorder": "2.5.5",
     "com.unity.render-pipelines.universal": "10.4.0",
-    "com.unity.test-framework": "1.1.26",
+    "com.unity.test-framework": "1.1.27",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.4.8",
     "com.unity.toolchain.win-x86_64-linux-x86_64": "0.1.20-preview",
