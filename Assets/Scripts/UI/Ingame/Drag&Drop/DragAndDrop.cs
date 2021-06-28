@@ -12,20 +12,19 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
     [SerializeField] TextMeshProUGUI goldText;
     [LocalComponent(getComponentFromChildrens: true)] [SerializeField] protected Button uiButton;
     [SerializeField] protected Image image;
-
-
-    protected static Camera mainCam;
+    protected static Camera MainCam => GameManager.MainCam;
     protected abstract ButtonsState GetDraggedState();
     protected abstract void Drop();
     protected abstract int goldValue();
     protected abstract Sprite Sprite();
     protected virtual Color SpriteColor() => Color.white;
     protected static bool positionValid;
+
+
     void GoldAmountChanged(float goldAmount) => uiButton.interactable = CheckSpawnValid(goldAmount);
     protected bool CheckSpawnValid(float goldAmount) => goldValue() <= goldAmount;
     protected virtual void Start()
     {
-        mainCam = Camera.main;
         if (goldText != null)
             goldText.text = goldValue().ToString();
         if (image != null)

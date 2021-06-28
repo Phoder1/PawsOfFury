@@ -11,7 +11,7 @@ public class SceneLoader : MonoBehaviour
     private UnityEvent OnLoadStart;
     [SerializeField]
     private UnityEvent OnLoadFinish;
-    public void TransitionToScene(int scene)
+    public void TransitionToScene(string scene)
     {
         OnTransitionStart?.Invoke();
         var _blackScreen = BlackScreen.instance;
@@ -20,7 +20,7 @@ public class SceneLoader : MonoBehaviour
 
         void StartSceneLoad() => GameManager.instance.StartCoroutine(LoadSceneRoutine(scene));
     }
-    private IEnumerator LoadSceneRoutine(int scene)
+    private IEnumerator LoadSceneRoutine(string scene)
     {
         var currentScene = SceneManager.GetActiveScene();
 

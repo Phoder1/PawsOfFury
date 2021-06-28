@@ -53,8 +53,8 @@ public class DragSpell : DragAndDrop
         }
         protected override void OnUpdate()
         {
-            Ray mouseRay = mainCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(mouseRay, out RaycastHit floorHit, mainCam.farClipPlane, button.pathLayer))
+            Ray mouseRay = MainCam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(mouseRay, out RaycastHit floorHit, MainCam.farClipPlane, button.pathLayer))
             {
                 button.shadow.transform.position = floorHit.point + Vector3.up * 0.4f;
                 button.shadowController.Color = Color.green;

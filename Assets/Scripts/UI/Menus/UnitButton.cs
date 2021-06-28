@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -14,6 +15,11 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     private float _minSnapDistance = 1f;
     [SerializeField]
     private bool _disableScrollRectOnDrag = false;
+    [SerializeField, Tooltip("The max distance (in card heights) before it counts as drag")]
+    private float _maxPressDistance = 0.3f;
+
+    [SerializeField]
+    private UnityEvent OnPress;
     private Canvas _canvas;
     private LayoutGroup _layoutGroup;
     private ScrollRect _scrollRect;
@@ -25,6 +31,9 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     private int _siblingIndex;
     private int _pointerID;
     private DragState _state = DragState.None;
+    private Vector3 _dragLastPosition;
+    private float _cardHeight;
+    private float _dragDistance;
     public DragState State
     {
         get => _state;
@@ -47,6 +56,11 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                         break;
                     case DragState.Pressed:
                         _raycastTarget.raycastTarget = true;
+                        if (_dragDistance <= _maxPressDistance * _cardHeight)
+                        {
+                            OnPress?.Invoke();
+                            Debug.Log("Pressed");
+                        }
                         break;
                     case DragState.Dragged:
                         transform.SetParent(_parent);
@@ -65,6 +79,7 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                         break;
                     case DragState.Pressed:
                         _raycastTarget.raycastTarget = false;
+                        _dragLastPosition = transform.position;
                         break;
                     case DragState.Dragged:
                         if (_disableScrollRectOnDrag)
@@ -86,6 +101,7 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         //_contentEventTrigger.triggers.Find((x) => x.eventID == EventTriggerType.PointerExit)?.callback.AddListener(OnContentPointerExit);
         _contentBackgroundImage = transform.parent.parent.GetComponent<Image>();
         _rectTransform = GetComponent<RectTransform>();
+        _cardHeight = _rectTransform.rect.height;
     }
     void Start()
     {
@@ -114,7 +130,6 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public void OnPointerDown(PointerEventData eventData)
     {
         State = DragState.Pressed;
-        Debug.Log("pressed");
     }
     private void OnContentPointerExit(BaseEventData baseEventData)
     {
@@ -136,11 +151,17 @@ public class UnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+
+
         State = DragState.None;
+        _dragDistance = 0;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        _dragDistance += (transform.position - _dragLastPosition).magnitude;
 
         if (State == DragState.Pressed)
         {

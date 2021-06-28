@@ -91,7 +91,7 @@ public class DragMinion : DragAndDrop
             //if (Input.touchCount > 0)
             //    pointerPosition = Input.GetTouch(0).position;
             Vector2 pointerPosition = new Vector2(Input.mousePosition.x, (Input.mousePosition.y + 200f));
-            button.draggedEntity.transform.position = inputManager.RayToPlanePosition(mainCam.ScreenPointToRay(pointerPosition));
+            button.draggedEntity.transform.position = inputManager.RayToPlanePosition(MainCam.ScreenPointToRay(pointerPosition));
             if (Physics.Raycast(button.draggedEntity.transform.position, Vector3.down, out RaycastHit floorHit, button.draggedEntity.transform.position.y + 0.5f, button.unit.placeableLayers))
             {
                 button.shadow.transform.position = new Vector3(button.draggedEntity.transform.position.x, floorHit.point.y + 0.1f, button.draggedEntity.transform.position.z);

@@ -39,18 +39,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     [LocalComponent]
     protected AnimationHandler animationHandler;
-    private Camera mainCam;
-    protected Camera MainCam 
-    {
-        get
-        {
-            if(mainCam == null)
-            {
-                mainCam = Camera.main;
-            }
-            return mainCam;
-        }
-    }
+    protected Camera MainCam => GameManager.MainCam;
     protected EntityUI ui;
     protected StateMachine<EntityState> stateMachine;
     [HideInInspector]

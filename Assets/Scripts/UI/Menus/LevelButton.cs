@@ -4,35 +4,39 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
+using System;
 
 public class LevelButton : MonoBehaviour
 {
     [SerializeField, ValueDropdown("Scenes"), InspectorName("Scene")]
-    private int _sceneIndex;
+    private string _sceneName;
 
     private SceneLoader _sceneLoader;
 
 #if UNITY_EDITOR
-    private ValueDropdownList<int> Scenes
+    private string[] Scenes
     {
         get
         {
-            ValueDropdownList<int> dropDownList = new ValueDropdownList<int>();
-            var editorScenes = UnityEditor.EditorBuildSettings.scenes;
-            for (int i = 0; i < editorScenes.Length; i++)
-            {
+            var scenes = UnityEditor.EditorBuildSettings.scenes;
+            string[] sceneNames = new string[scenes.Length];
 
-                var path = editorScenes[i].path.Split('/');
-                dropDownList.Add(new ValueDropdownItem<int>(path[path.Length - 1], i));
-            }
+            for (int i = 0; i < scenes.Length; i++)
+                sceneNames[i] = GetFileName(scenes[i].path);
 
-            return dropDownList;
+            return sceneNames;
         }
+    }
+    private string GetFileName(string path)
+    {
+        var splitPath = path.Split('/');
+        splitPath = splitPath[splitPath.Length - 1].Split('.');
+        return splitPath[splitPath.Length - 2];
     }
 #endif
     private void Awake()
     {
         _sceneLoader = GetComponentInParent<SceneLoader>();
     }
-    public void LoadScene() => _sceneLoader.TransitionToScene(_sceneIndex);
+    public void LoadScene() => _sceneLoader.TransitionToScene(_sceneName);
 }

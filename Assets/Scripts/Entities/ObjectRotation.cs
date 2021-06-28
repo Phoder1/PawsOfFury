@@ -14,6 +14,6 @@ public class ObjectRotation : MonoBehaviour
 
     public void RotateToCamera()
     {
-        transform.rotation = Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x + rotationOffset, 0, 0);
+        transform.rotation = Quaternion.Euler(GameManager.MainCam.transform.rotation.eulerAngles.x + rotationOffset, 0, 0);
     }
 }

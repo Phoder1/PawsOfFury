@@ -22,4 +22,17 @@ public class GameManager : MonoSingleton<GameManager>
         DOTween.KillAll();
     }
     public void NewSceneLoaded() => OnNewScene?.Invoke();
+
+    private static Camera mainCam;
+    public static Camera MainCam
+    {
+        get
+        {
+            if (mainCam == null)
+            {
+                mainCam = Camera.main;
+            }
+            return mainCam;
+        }
+    }
 }
