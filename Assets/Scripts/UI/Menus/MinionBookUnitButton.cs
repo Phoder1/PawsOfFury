@@ -23,8 +23,8 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
     [Space]
     [SerializeField]
     private TagFilter _teamTag;
-    private UnitSO _unit;
-    public UnitSO Unit { get => _unit; set => _unit = value; }
+    private UnitInformation _unit;
+    public UnitInformation Unit { get => _unit; set => _unit = value; }
     private Canvas _canvas;
     private LayoutGroup _layoutGroup;
     private ScrollRect _scrollRect;

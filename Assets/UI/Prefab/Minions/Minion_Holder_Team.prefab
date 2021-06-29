@@ -153,15 +153,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
+      propertyPath: _importFromTeamOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
       propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
       propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: d7355d66ef1ccb14eb09d733e1919442,
-        type: 2}
+      objectReference: {fileID: 2574730155211418805}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
       propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[4].m_Target
@@ -180,7 +184,7 @@ PrefabInstance:
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
       propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: set_Value
+      value: set_UnitInfo
       objectReference: {fileID: 0}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
@@ -190,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
       propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: Refrences.ObjectRefrence, Assembly-CSharp
+      value: TeamUnitHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}

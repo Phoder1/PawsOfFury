@@ -26,7 +26,8 @@ namespace Refrences
 
             }
         }
-        public Object DefaultData = default;
+
+
         [SerializeField, TabGroup("Default", true,AnimateVisibility = false)]
         private UnityRefrenceEvent _passThroughEvent;
         [SerializeField, TabGroup("Early", true, AnimateVisibility = false)]
@@ -34,6 +35,8 @@ namespace Refrences
         [SerializeField, TabGroup("Late", true, AnimateVisibility = false)]
         private UnityRefrenceEvent _latePassthroughEvent;
 
+        private object _defaultData = default;
+        public object DefaultData { get => _defaultData; set => _defaultData = value; }
         private void Start()
         {
             if (_eventRefrence != null)
@@ -50,7 +53,6 @@ namespace Refrences
                 _latePassthroughEvent?.Invoke(data);
             }
         }
-        public void SetDefaultData(object data) => DefaultData = (Object)data;
 
     }
 }

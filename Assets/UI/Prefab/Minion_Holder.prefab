@@ -142,12 +142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5619ea50d9a105d47a43df6b3249563d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _importFromTeamOnStart: 0
+  _teamNumber: 0
   OnUnitAssign:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7533690655977317144}
         m_TargetAssemblyTypeName: Refrences.EventPassthrough, Assembly-CSharp
-        m_MethodName: SetDefaultData
+        m_MethodName: set_DefaultData
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -194,7 +196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventRefrence: {fileID: 0}
-  DefaultData: {fileID: 0}
   _passThroughEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -217,7 +218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ControlCallbacks: 1
-  _defaultData: {fileID: 0}
   _autoImport: 0
   _dataType: 6
   DefaultPassthrough:

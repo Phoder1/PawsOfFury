@@ -15,8 +15,6 @@ MonoBehaviour:
   goldText: {fileID: 1380758551734100868}
   uiButton: {fileID: 5032672430879339464}
   image: {fileID: 9037093680589679876}
-  unitPrefab: {fileID: 4025256064503350889, guid: 74931de6ae262184f9d5de570e927812,
-    type: 3}
   draggedEntity: {fileID: 0}
   shadow: {fileID: 0}
   dropSpeed: 3
@@ -205,6 +203,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
+      propertyPath: _importFromTeamOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 160427667590969449}
+    - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: set_UnitInformation
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: DragMinion, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
+        type: 3}
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5464275275689573905, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}

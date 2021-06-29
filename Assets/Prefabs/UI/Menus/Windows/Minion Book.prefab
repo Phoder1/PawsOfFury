@@ -273,7 +273,7 @@ MonoBehaviour:
   _unitButtonPrefab: {fileID: 6276935848271651243, guid: c9c33d74955a5ce45a671a3bbb04bf78,
     type: 3}
   _filterUnowned: 0
-  _filterTeam: 1
+  _filterTeam: 0
 --- !u!222 &8690779739927904422
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -549,6 +549,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8690779739443382187}
     m_Modifications:
+    - target: {fileID: 6808482155183015078, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
+        type: 3}
+      propertyPath: _teamNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8116102787312728512, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
         type: 3}
       propertyPath: m_Name
@@ -854,14 +859,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6808482155183015078, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
         type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: 65d40915c08654c4580c872f674630ef,
-        type: 2}
-    - target: {fileID: 6808482155183015078, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
-        type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: set_Value
+      propertyPath: _teamNumber
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8116102787312728512, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
         type: 3}
@@ -995,14 +994,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6808482155183015078, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
         type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: 2f3913a32c89b2f45bb9e67a7429c259,
-        type: 2}
-    - target: {fileID: 6808482155183015078, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
-        type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: set_Value
+      propertyPath: _teamNumber
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8116102787312728512, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
         type: 3}
@@ -1136,14 +1129,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6808482155183015078, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
         type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: ed63b3479d1ccce4b9a971248256ced2,
-        type: 2}
-    - target: {fileID: 6808482155183015078, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
-        type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: set_Value
+      propertyPath: _teamNumber
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8116102787312728512, guid: ac1f2d25356f0524e9347d5b4d63b9a1,
         type: 3}

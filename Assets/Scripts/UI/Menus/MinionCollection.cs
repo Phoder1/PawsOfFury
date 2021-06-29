@@ -34,10 +34,10 @@ public class MinionCollection : MonoBehaviour
             if (unit == null)
                 continue;
 
-            if ((!_filterUnowned || unit.Owned) && (!_filterTeam ||  unit.TeamNumber != null))
+            if ((!_filterUnowned || unit.Owned) && (!_filterTeam ||  unit.TeamNumber == null))
             {
                 var UnitButton = Instantiate(_unitButtonPrefab, scrollContent.transform);
-                UnitButton.GetComponent<UiUnitController>().Unit = unit;
+                UnitButton.GetComponent<UiUnitController>().Unit = unit.GetUnitInformation();
             }
         }
     }

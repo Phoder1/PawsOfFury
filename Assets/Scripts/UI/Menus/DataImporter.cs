@@ -11,9 +11,8 @@ public class DataImporter : MonoBehaviour
     [SerializeField, EnumToggleButtons, HideLabel]
     private TriggerCallbacks ControlCallbacks = TriggerCallbacks.Manual;
 
-    [SerializeField, Tooltip("The default data to use, also support refrences.")]
-    private UnityEngine.Object _defaultData;
-    public UnityEngine.Object DefaultData
+    private object _defaultData;
+    public object DefaultData
     {
         get => _defaultData;
         set
@@ -111,6 +110,8 @@ public class DataImporter : MonoBehaviour
             data = _ref.Value;
         }
         DefaultPassthrough?.Invoke(data);
+
+
         if (data != null)
             switch (data)
             {
@@ -126,16 +127,16 @@ public class DataImporter : MonoBehaviour
                 case bool _bool:
                     BoolExport?.Invoke(_bool);
                     break;
-                case UnitSO unitData:
-                    DescriptionExport?.Invoke(unitData.Description);
-                    IdExport?.Invoke(unitData.ID);
-                    TierExport?.Invoke(unitData.Tier);
-                    CountExport?.Invoke(unitData.Count);
-                    UnitSpriteExport?.Invoke(unitData.UiSprite);
-                    TierCrystalExport?.Invoke(unitData.TierCrystal);
-                    TierBorderColorExport?.Invoke(unitData.BorderColor);
-                    TierBackgroundColorExport?.Invoke(unitData.BackgroundColor);
-                    OwnedExport?.Invoke(unitData.Owned);
+                case UnitInformation unitData:
+                    DescriptionExport?.Invoke(unitData.unitSO.Description);
+                    IdExport?.Invoke(unitData.unitSO.ID);
+                    TierExport?.Invoke(unitData.unitSO.Tier);
+                    CountExport?.Invoke(unitData.slotData?.Count ?? 0);
+                    UnitSpriteExport?.Invoke(unitData.unitSO.UiSprite);
+                    TierCrystalExport?.Invoke(unitData.unitSO.TierCrystal);
+                    TierBorderColorExport?.Invoke(unitData.unitSO.BorderColor);
+                    TierBackgroundColorExport?.Invoke(unitData.unitSO.BackgroundColor);
+                    OwnedExport?.Invoke(unitData.slotData != null);
                     break;
             }
     }

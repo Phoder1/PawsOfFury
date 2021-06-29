@@ -8,16 +8,20 @@ using CustomAttributes;
 
 public class DragMinion : DragAndDrop
 {
-    [SerializeField] GameObject unitPrefab;
     [SerializeField] GameObject draggedEntity;
     [Tooltip("shadow")]
     [SerializeField] GameObject shadow;
     [Suffix("Uu/s", toolTip: "Unity units per second")]
     [SerializeField] float dropSpeed;
+
+    private GameObject unitPrefab;
     protected Unit unit;
     protected ShadowController shadowController;
     protected SpriteRenderer draggedEntitySprite;
     protected SpriteRenderer entitySprite;
+    private UnitInformation unitInformation;
+
+    public UnitInformation UnitInformation { get => unitInformation; set => unitInformation = value; }
 
     protected override ButtonsState GetDraggedState() => new DragState_Minion(this);
     protected override int goldValue() => unit.goldValue;
@@ -39,6 +43,7 @@ public class DragMinion : DragAndDrop
     }
     protected override void Start()
     {
+        unitPrefab = UnitInformation.unitSO.GetPrefab(unitInformation.slotData?.Level ?? 1);
         unit = unitPrefab.GetComponent<Unit>();
         shadowController = shadow.GetComponent<ShadowController>();
         draggedEntitySprite = draggedEntity.GetComponentInChildren<SpriteRenderer>();

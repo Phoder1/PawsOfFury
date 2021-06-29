@@ -11,25 +11,23 @@ public class TeamUnitHandler : MonoBehaviour
     private bool _allowAnyUnit;
 
     private TeamData selectionSaver;
-    private UnitSO unitSO;
-    public UnitSO UnitSO
+    private UnitInformation unitInfo;
+    public UnitInformation UnitInfo
     {
-        get => unitSO;
+        get => unitInfo;
         set
         {
-            if (unitSO == value)
+            if (unitInfo == value)
                 return;
 
-            unitSO = value;
+            unitInfo = value;
 
-            selectionSaver.Team[_unitTeamNumber - 1] = new UnitData((byte)unitSO.ID, 1, false);
+            selectionSaver.Team[_unitTeamNumber - 1] = (byte)unitInfo.unitSO.ID;
             DataHandler.Save(typeof(TeamData));
         }
     }
-    private void Start()
+    private void Awake()
     {
         selectionSaver = DataHandler.GetData<TeamData>();
-
-        GetComponent<UiUnitController>().Unit = selectionSaver.Team[_unitTeamNumber - 1].UnitSO;
     }
 }

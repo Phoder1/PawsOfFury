@@ -1,17 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class UiUnitController : MonoBehaviour
 {
     [SerializeField]
-    private UnityEvent<UnitSO> OnUnitAssign;
+    private bool _importFromTeamOnStart;
+    [SerializeField, ShowIf("@_importFromTeamOnStart")]
+    private int _teamNumber;
+    [SerializeField]
+    private UnityEvent<UnitInformation> OnUnitAssign;
 
-    private UnitSO _unit;
-    public UnitSO Unit 
-    { 
-        get => _unit; 
+    private UnitInformation _unit;
+    public UnitInformation Unit
+    {
+        get => _unit;
         set
         {
             if (value == null || value == _unit)
@@ -22,11 +25,16 @@ public class UiUnitController : MonoBehaviour
             OnUnitAssign?.Invoke(_unit);
         }
     }
-    public void SetUnit(UnitSO unit, bool withCallBacks = true)
+    public void SetUnit(UnitInformation unit, bool withCallBacks = true)
     {
         if (withCallBacks)
             Unit = unit;
         else
             _unit = unit;
+    }
+    private void Start()
+    {
+        if (_importFromTeamOnStart)
+            Unit = _teamNumber.GetTeamUnitID().GetUnitInformation();
     }
 }

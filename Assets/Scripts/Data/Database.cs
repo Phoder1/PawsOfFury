@@ -1,3 +1,4 @@
+using DataSaving;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,5 +26,19 @@ public static class Database
 
             return _unitAssets;
         }
+    }
+    public static UnitSO GetUnitSO(this byte ID) => UnitsDatabase.Units.Find((x) => x.ID == ID);
+    public static UnitInformation GetUnitInformation(this UnitSO SO) => new UnitInformation(SO, SO.SlotData);
+    public static UnitInformation GetUnitInformation(this byte ID)
+    {
+        UnitSO SO = ID.GetUnitSO();
+        UnitSlotData slotData = SO.SlotData;
+        return new UnitInformation(SO, slotData);
+    }
+    public static byte GetTeamUnitID(this int teamNumber)
+    {
+
+        Debug.Log(teamNumber);
+        return DataHandler.GetData<TeamData>().Team[teamNumber - 1];
     }
 }
