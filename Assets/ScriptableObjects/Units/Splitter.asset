@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 21300000, guid: 24f042f31cb3ed240a7e966adc42c2e6, type: 3}
   _description: He shots He score, and even 4
-  id: 6
+  id: 13
   tier: 2
   oneStarPrefab: {fileID: 0}
   twoStarPrefab: {fileID: 0}

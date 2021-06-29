@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 21300000, guid: 61c01a4a023887b4083509b771e1b16e, type: 3}
   _description: Double Trouble With an AXE
-  id: 2
+  id: 6
   tier: 2
   oneStarPrefab: {fileID: 3269433762606668826, guid: 25dba61b4193bfa4c8aa33783f31dd0f,
     type: 3}

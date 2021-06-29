@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 21300000, guid: 051c814afad1bfc44aef30d5f46a300b, type: 3}
   _description: They see him Rolling they Hating
-  id: 6
+  id: 14
   tier: 2
   oneStarPrefab: {fileID: 0}
   twoStarPrefab: {fileID: 0}

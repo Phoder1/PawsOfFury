@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 21300000, guid: 658144572cb0b6e4e87ca386a2eff552, type: 3}
   _description: Reproduce so fast, some say he shots um up.
-  id: 6
+  id: 9
   tier: 2
   oneStarPrefab: {fileID: 3269433762606668826, guid: 736f8268511b7254a844cd0aeefca291,
     type: 3}

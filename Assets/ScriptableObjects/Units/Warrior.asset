@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 21300000, guid: 54221d8d3f06f274d9fa38d080d1ef56, type: 3}
   _description: Slash and roar
-  id: 6
+  id: 1
   tier: 1
   oneStarPrefab: {fileID: 3269433762606668826, guid: 43c2ed2d2013bbb4dae77b36558a5ff2,
     type: 3}

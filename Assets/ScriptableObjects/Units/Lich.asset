@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 21300000, guid: 4545380ea3959ce4e9927df56e8bd0c2, type: 3}
   _description: The Lich drains his allies HP to attack with greater force
-  id: 0
+  id: 8
   tier: 3
   oneStarPrefab: {fileID: 3269433762606668826, guid: 6c11bdefb2a9aea4585cec4eb92f562e,
     type: 3}

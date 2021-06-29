@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 21300000, guid: 2d2fd4eb0e7168a4c930fc5e61a1432a, type: 3}
   _description: She cant Damage, but BOY does she Heal
-  id: 3
+  id: 2
   tier: 1
   oneStarPrefab: {fileID: 3269433762606668826, guid: f46056462aced8543b2e7e855df0a5a3,
     type: 3}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiSprite: {fileID: 21300000, guid: b7e1185fecbc4c7449a9f9ffaab6ec7f, type: 3}
   _description: Big Ass Dragon, territorial much
-  id: 6
+  id: 16
   tier: 3
   oneStarPrefab: {fileID: 0}
   twoStarPrefab: {fileID: 0}
