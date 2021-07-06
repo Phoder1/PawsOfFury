@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using static IngameBlackBoard;
 [Flags] public enum TargetTypes { Enemy = 1, Self = 2, Unit = 4 }
+public enum Priority { ShortestDistance, SmallestMaxHP, LargestMaxHP, LowestCurrentHP, Random }
+[CreateAssetMenu(menuName = Database.SOBehaveFol + "Targeting")]
+public class TargetingSO : ScriptableObject
+{
+    [SerializeField] TargetingRule[] rulesOrder;
+    public TargetingRule[] RulesOrder => rulesOrder;
+}
 public static class Targets
 {
     public static LayerMask GetLayerMask(TargetTypes targetTypes)
@@ -199,13 +206,7 @@ public static class Targets
         }
     }
 }
-public enum Priority { ShortestDistance, SmallestMaxHP, LargestMaxHP, LowestCurrentHP, Random }
-[CreateAssetMenu(fileName = "new Targeting Settings", menuName = "ScriptableObjects/" + "Targeting")]
-public class TargetingSO : ScriptableObject
-{
-    [SerializeField] TargetingRule[] rulesOrder;
-    public TargetingRule[] RulesOrder => rulesOrder;
-}
+
 [Serializable]
 public class TargetingRule
 {

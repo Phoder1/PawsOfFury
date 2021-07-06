@@ -11,8 +11,15 @@ public class SceneLoader : MonoBehaviour
     private UnityEvent OnLoadStart;
     [SerializeField]
     private UnityEvent OnLoadFinish;
+
+    private bool _loadingScene = false;
     public void TransitionToScene(string scene)
     {
+        if (_loadingScene)
+            return;
+
+        _loadingScene = true;
+
         OnTransitionStart?.Invoke();
         var _blackScreen = BlackScreen.instance;
         _blackScreen.FadeIn();

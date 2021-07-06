@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(menuName = "SO/UnitSO")]
+[CreateAssetMenu(menuName = Database.SODataFol + "Unit")]
 public class UnitSO : ScriptableObject
 {
     [SerializeField]

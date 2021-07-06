@@ -57,7 +57,7 @@ namespace DataSaving
             _count = count;
             IsDirty = dirty;
         }
-        public UnitSO UnitSO => Database.UnitsDatabase.Units.Find((x) => x.ID == ID);
+        public UnitSO UnitSO => Database.UnitsDatabase.Content.Find((x) => x.ID == ID);
     }
     [Serializable]
     public class TeamData : DirtyData, ISaveable

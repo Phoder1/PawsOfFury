@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum EffectType { Instant, Toggle, OverTime }
 
-[CreateAssetMenu(fileName = "new Effect Data", menuName = "ScriptableObjects/" + "Effect Data")]
+[CreateAssetMenu(menuName =  Database.SODataFol + "Effect Data")]
 public class EffectDataSO : ScriptableObject
 {
     [Tooltip(

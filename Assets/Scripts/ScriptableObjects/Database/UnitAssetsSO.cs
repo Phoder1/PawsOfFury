@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/UnitAssets")]
+[CreateAssetMenu(menuName = Database.SODatabaseFol + "Units assets")]
 public class UnitAssetsSO : ScriptableObject
 {
     [SerializeField]

@@ -5,6 +5,11 @@ using UnityEngine;
 
 public static class Database
 {
+    public const string SOFolder = "ScriptableObjects/";
+    public const string SOBehaveFol = SOFolder + "Behaviour/";
+    public const string SODataFol = SOFolder + "Data/";
+    public const string SODatabaseFol = SOFolder + "Database/";
+
     private static UnitsDatabaseSO _unitsDatabase;
     public static UnitsDatabaseSO UnitsDatabase
     {
@@ -27,7 +32,7 @@ public static class Database
             return _unitAssets;
         }
     }
-    public static UnitSO GetUnitSO(this byte ID) => UnitsDatabase.Units.Find((x) => x.ID == ID);
+    public static UnitSO GetUnitSO(this byte ID) => UnitsDatabase.Content.Find((x) => x.ID == ID);
     public static UnitInformation GetUnitInformation(this UnitSO SO) => new UnitInformation(SO, SO.SlotData);
     public static UnitInformation GetUnitInformation(this byte ID)
     {

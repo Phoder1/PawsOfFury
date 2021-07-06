@@ -30,7 +30,7 @@ public class MinionCollection : MonoBehaviour
 
         database = Database.UnitsDatabase;
 
-        foreach (UnitSO unit in database.Units)
+        foreach (UnitSO unit in database.Content)
         {
             if (unit == null)
                 continue;
@@ -92,7 +92,7 @@ public class MinionCollection : MonoBehaviour
         public Comparison<UiUnitController> Comparer => GetComparer(sorting);
 #if UNITY_EDITOR
         private string EditorName => sorting.ToString();
-        private Color ToggleColor => reverse ? Color.red : new Color(0.8f,1f,0.8f);
+        private Color ToggleColor => reverse ? new Color(1f, 0.8f, 0.8f) : new Color(0.8f,1f,0.8f);
 #endif
 
         protected Comparison<UiUnitController> GetComparer(SortingType sortingType)

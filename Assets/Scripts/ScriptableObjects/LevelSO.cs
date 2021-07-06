@@ -1,18 +1,24 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.SceneManagement;
-using Sirenix.OdinInspector;
-using System;
 
-public class LevelButton : MonoBehaviour
+[CreateAssetMenu(menuName = Database.SODataFol + "Level")]
+[InlineEditor]
+public class LevelSO : ScriptableObject
 {
+    [SerializeField, ValueDropdown("Scenes"), InspectorName("Scene")]
+    private string _sceneName;
+    [BoxGroup("Rewards")]
+    [SerializeField, Range(0,1)]
+    private float _chanceToGetACard;
+    [BoxGroup("Rewards")]
     [SerializeField]
-    private LevelSO _level;
+    private int _crystalsReward = 0;
 
-    private SceneLoader _sceneLoader;
-
+    public string SceneName => _sceneName;
+    public float ChanceToGetACard => _chanceToGetACard;
+    public int CrystalsReward => _crystalsReward;
 #if UNITY_EDITOR
     private string[] Scenes
     {
@@ -34,9 +40,4 @@ public class LevelButton : MonoBehaviour
         return splitPath[splitPath.Length - 2];
     }
 #endif
-    private void Awake()
-    {
-        _sceneLoader = GetComponentInParent<SceneLoader>();
-    }
-    public void LoadScene() => _sceneLoader.TransitionToScene(_level.SceneName);
 }
