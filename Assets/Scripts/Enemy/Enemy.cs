@@ -16,6 +16,11 @@ public class Enemy : Entity
     {
         base.OnDestroy();
         levelManager.Gold += goldValue;
+
+        if (Settings_UI.Vibrations)
+        {
+            Handheld.Vibrate();
+        }
     }
     class EnemyState : EntityState
     {

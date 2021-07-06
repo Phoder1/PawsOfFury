@@ -16141,11 +16141,16 @@ PrefabInstance:
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
+      propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
@@ -16155,7 +16160,18 @@ PrefabInstance:
       objectReference: {fileID: 7338256357347435415}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
+      propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8305811193626122286, guid: cd65d1476a5c80e4e9b0556bb788d55a,
+        type: 3}
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
+      propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
@@ -16165,12 +16181,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
+      propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: vibrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Tower_Destroyed, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
+      propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Settings_UI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
+      propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3628989299885494144, guid: a074af5668e76374fba5371ae63bf77f,
