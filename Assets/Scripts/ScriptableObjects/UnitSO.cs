@@ -56,7 +56,7 @@ public class UnitSO : ScriptableObject
     {
         get
         {
-            UnitSlotData unit = DataHandler.GetData<InventoryData>().Units.Find((x) => x.ID == ID);
+            UnitSlotData unit = DataHandler.Load<InventoryData>().Units.Find((x) => x.ID == ID);
             if (unit != null)
                 return unit.Count;
             return 0;
@@ -65,7 +65,7 @@ public class UnitSO : ScriptableObject
     public Sprite TierCrystal => Database.UnitAssets.TierAssets[Tier - 1].CrystalSprite;
     public Color BackgroundColor => Database.UnitAssets.TierAssets[Tier - 1].BackgroundColor;
     public Color BorderColor => Database.UnitAssets.TierAssets[Tier - 1].BorderColor;
-    public UnitSlotData SlotData => DataHandler.GetData<InventoryData>().Units.Find((x) => x.ID == ID);
+    public UnitSlotData SlotData => DataHandler.Load<InventoryData>().Units.Find((x) => x.ID == ID);
     public bool Owned
     {
         get
@@ -78,7 +78,7 @@ public class UnitSO : ScriptableObject
     {
         get
         {
-        var index = DataHandler.GetData<TeamData>()?.Team?.FindIndex((x) => x == ID);
+        var index = DataHandler.Load<TeamData>()?.Team?.FindIndex((x) => x == ID);
             if (index == -1)
                 return null;
 

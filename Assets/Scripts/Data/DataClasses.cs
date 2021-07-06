@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DataSaving
 {
     [Serializable]
-    public class InventoryData : DirtyData
+    public class InventoryData : DirtyData, ISaveable
     {
         [SerializeField]
         private DirtyDataList<UnitSlotData> _units = new DirtyDataList<UnitSlotData>(false)
@@ -22,10 +22,10 @@ namespace DataSaving
         }
         public override bool IsDirty => base.IsDirty || _units.IsDirty;
 
-        protected override void OnSaved()
+        protected override void OnClean()
         {
-            base.OnSaved();
-            _units.Saved();
+            base.OnClean();
+            _units.Clean();
         }
     }
     [Serializable]
@@ -60,7 +60,7 @@ namespace DataSaving
         public UnitSO UnitSO => Database.UnitsDatabase.Units.Find((x) => x.ID == ID);
     }
     [Serializable]
-    public class TeamData : DirtyData
+    public class TeamData : DirtyData, ISaveable
     {
         [SerializeField]
         private DirtyStructList<byte> _team = new DirtyStructList<byte>(false)
@@ -70,16 +70,22 @@ namespace DataSaving
             2,
             3,
         };
+
+        public TeamData()
+        {
+            _team.OnValueChange += ValueChanged;
+        }
+
         public DirtyStructList<byte> Team
         {
             get => _team;
             set => Setter(ref _team, value);
         }
         public override bool IsDirty => base.IsDirty || _team.IsDirty;
-        protected override void OnSaved()
+        protected override void OnClean()
         {
-            base.OnSaved();
-            _team.Saved();
+            base.OnClean();
+            _team.Clean();
         }
 
     }

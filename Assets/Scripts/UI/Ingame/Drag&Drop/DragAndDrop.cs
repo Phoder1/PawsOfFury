@@ -15,18 +15,18 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
     protected static Camera MainCam => GameManager.MainCam;
     protected abstract ButtonsState GetDraggedState();
     protected abstract void Drop();
-    protected abstract int goldValue();
+    protected abstract int GoldValue();
     protected abstract Sprite Sprite();
     protected virtual Color SpriteColor() => Color.white;
     protected static bool positionValid;
 
 
     void GoldAmountChanged(float goldAmount) => uiButton.interactable = CheckSpawnValid(goldAmount);
-    protected bool CheckSpawnValid(float goldAmount) => goldValue() <= goldAmount;
+    protected bool CheckSpawnValid(float goldAmount) => GoldValue() <= goldAmount;
     protected virtual void Start()
     {
         if (goldText != null)
-            goldText.text = goldValue().ToString();
+            goldText.text = GoldValue().ToString();
         if (image != null)
         {
             image.sprite = Sprite();

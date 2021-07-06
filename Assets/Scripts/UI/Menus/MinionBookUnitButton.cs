@@ -162,7 +162,7 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
 
         UiUnitController ctrl;
         if (teamUnit != null && (ctrl = teamUnit.GetComponentInParent<UiUnitController>()) != null)
-            ctrl.Unit = _unit;
+            ctrl.UnitInfo = _unit;
 
         State = DragState.None;
         _dragDistance = 0;

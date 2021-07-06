@@ -12,7 +12,7 @@ public class TeamSelectionSaver : MonoBehaviour
 
     private void Awake()
     {
-        _teamData = DataHandler.GetData<TeamData>();
+        _teamData = DataHandler.Load<TeamData>();
         _unitsDatabase = Database.UnitsDatabase;
     }
 }
