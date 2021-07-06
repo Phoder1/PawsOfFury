@@ -735,6 +735,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mixer: {fileID: 24100000, guid: 5aef5ece452ffbf449eaade4e6231f87, type: 2}
+  Sound: {fileID: 8305811193406133128}
+  Vibrate: {fileID: 8305811193576548267}
+  AudioOn: {fileID: 21300000, guid: 9235c7267cbe91347b1cd7aa12dd88a7, type: 3}
+  AudioOff: {fileID: 21300000, guid: 9383975202d42af4e80e50004bda4fec, type: 3}
+  VibrateOn: {fileID: 21300000, guid: f85a7612c1ec49a4abb4f98e5af3aaa2, type: 3}
+  VibrateOff: {fileID: 21300000, guid: 2ce4e87ef4d76d249b1a283c200704e2, type: 3}
 --- !u!1 &8305811194517234497
 GameObject:
   m_ObjectHideFlags: 0
