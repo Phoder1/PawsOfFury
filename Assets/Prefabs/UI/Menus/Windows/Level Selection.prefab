@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a63c1fe010d7b94988f8254454aeb88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneIndex: 1
+  _sceneName: 
 --- !u!1 &6162098535089433522
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,6 +84,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d683026a36ca4c49a441756f8453f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnTransitionStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnLoadStart:
     m_PersistentCalls:
       m_Calls: []
@@ -316,6 +319,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156181992408033308, guid: f63869f5560aa47429267e52b534a481,
+        type: 3}
+      propertyPath: ColorForButton.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156181992408033308, guid: f63869f5560aa47429267e52b534a481,
+        type: 3}
+      propertyPath: ColorForButton.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156181992408033308, guid: f63869f5560aa47429267e52b534a481,
+        type: 3}
+      propertyPath: ColorForButton.g
+      value: 0.83333325
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156181992408033308, guid: f63869f5560aa47429267e52b534a481,
+        type: 3}
+      propertyPath: ColorForButton.r
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2016240168514498776, guid: f63869f5560aa47429267e52b534a481,
         type: 3}
