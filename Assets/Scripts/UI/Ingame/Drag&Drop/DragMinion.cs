@@ -24,7 +24,7 @@ public class DragMinion : DragAndDrop
     public UnitInformation UnitInformation { get => unitInformation; set => unitInformation = value; }
 
     protected override ButtonsState GetDraggedState() => new DragState_Minion(this);
-    protected override int goldValue() => unit.goldValue;
+    protected override int GoldValue() => unit.goldValue;
     protected override Sprite Sprite() => unit.buttonSpriteRenderer.sprite;
     protected override Color SpriteColor() => unit.buttonSpriteRenderer.color;
     protected override void Drop()

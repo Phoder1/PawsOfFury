@@ -10,7 +10,7 @@ public class DragSpell : DragAndDrop
     CastableSpell spell;
 
     protected ShadowController shadowController;
-    protected override int goldValue() => spell.goldValue;
+    protected override int GoldValue() => spell.goldValue;
     protected override ButtonsState GetDraggedState() => new DragState_Spell(this);
     protected override Sprite Sprite() => spell.buttonSprite;
     protected override void Drop()

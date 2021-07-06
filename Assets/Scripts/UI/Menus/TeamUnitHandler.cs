@@ -6,7 +6,9 @@ public class TeamUnitHandler : MonoBehaviour
 {
     [SerializeField, MinValue(1), MaxValue(4)]
     private int _unitTeamNumber;
+#if UNITY_EDITOR
     private Color Yellow => Color.yellow;
+#endif
     [SerializeField, GUIColor("Yellow")]
     private bool _allowAnyUnit;
 
@@ -28,6 +30,6 @@ public class TeamUnitHandler : MonoBehaviour
     }
     private void Awake()
     {
-        selectionSaver = DataHandler.GetData<TeamData>();
+        selectionSaver = DataHandler.Load<TeamData>();
     }
 }

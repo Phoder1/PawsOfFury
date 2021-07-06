@@ -207,7 +207,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 75
     m_Bottom: 70
-  m_ChildAlignment: 3
+  m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 130, y: 155}
@@ -272,8 +272,12 @@ MonoBehaviour:
   scrollContent: {fileID: 8690779739908393807}
   _unitButtonPrefab: {fileID: 6276935848271651243, guid: c9c33d74955a5ce45a671a3bbb04bf78,
     type: 3}
-  _filterUnowned: 0
-  _filterTeam: 0
+  _filters: 2
+  _sortes:
+  - sorting: 0
+  - sorting: 1
+  - sorting: 2
+  sceneUnits: []
 --- !u!222 &8690779739927904422
 CanvasRenderer:
   m_ObjectHideFlags: 0

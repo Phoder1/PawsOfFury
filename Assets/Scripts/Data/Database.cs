@@ -39,6 +39,6 @@ public static class Database
     {
 
         Debug.Log(teamNumber);
-        return DataHandler.GetData<TeamData>().Team[teamNumber - 1];
+        return DataHandler.Load<TeamData>().Team[teamNumber - 1];
     }
 }

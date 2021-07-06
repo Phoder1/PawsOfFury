@@ -11,30 +11,33 @@ public class UiUnitController : MonoBehaviour
     [SerializeField]
     private UnityEvent<UnitInformation> OnUnitAssign;
 
-    private UnitInformation _unit;
-    public UnitInformation Unit
+#if UNITY_EDITOR
+    private string editorName => gameObject.name;
+#endif
+    private UnitInformation _unitInfo;
+    public UnitInformation UnitInfo
     {
-        get => _unit;
+        get => _unitInfo;
         set
         {
-            if (value == null || value == _unit)
+            if (value == null || value == _unitInfo)
                 return;
 
-            _unit = value;
+            _unitInfo = value;
 
-            OnUnitAssign?.Invoke(_unit);
+            OnUnitAssign?.Invoke(_unitInfo);
         }
     }
     public void SetUnit(UnitInformation unit, bool withCallBacks = true)
     {
         if (withCallBacks)
-            Unit = unit;
+            UnitInfo = unit;
         else
-            _unit = unit;
+            _unitInfo = unit;
     }
     private void Start()
     {
         if (_importFromTeamOnStart)
-            Unit = _teamNumber.GetTeamUnitID().GetUnitInformation();
+            UnitInfo = _teamNumber.GetTeamUnitID().GetUnitInformation();
     }
 }
