@@ -84,14 +84,6 @@ public class Settings_UI : MonoBehaviour
         }
     }
     
-    public void vibrate()
-    {
-        if (Vibrations)
-        {
-        Handheld.Vibrate();
-            Debug.Log("MUHAHAHAH");
-        }
-    }
 
 
     public void StopGame()
