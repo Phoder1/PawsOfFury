@@ -26644,6 +26644,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngameBottomPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8924190229422060915, guid: 41bab1bf7b1f8bf44854aa07fd2b89aa,
+        type: 3}
+      propertyPath: shadow
+      value: 
+      objectReference: {fileID: 134554243}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41bab1bf7b1f8bf44854aa07fd2b89aa, type: 3}
 --- !u!224 &1176031192 stripped
@@ -44235,7 +44240,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 1
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3e8435c144e7ddb4dbb5010e9109d4e3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 0fe3424368cb94047871d138411da1fa, type: 2}
 --- !u!4 &1785613351
 Transform:
   m_ObjectHideFlags: 0

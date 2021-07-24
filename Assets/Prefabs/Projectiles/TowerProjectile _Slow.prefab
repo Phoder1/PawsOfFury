@@ -32,12 +32,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasTravelTime: 1
-  speed: 2.5
+  speed: 4
   travelsToTarget: 1
   spell: {fileID: 8358880945546188177, guid: 311ea646fe9004548b3e54746f97d5d9, type: 3}
   effectsData:
   - {fileID: 11400000, guid: a501f6526dd88ea4ab41ca70446077d9, type: 2}
   - {fileID: 11400000, guid: 4e8dbb5c1505bbd438a407554bc0a798, type: 2}
+  LookAtTarget: 0
 --- !u!1 &4632551642598568055
 GameObject:
   m_ObjectHideFlags: 0

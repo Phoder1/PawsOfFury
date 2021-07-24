@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] EffectDataSO[] effectsData;
     protected Entity attackingEntity;
     protected Action<Entity[], Entity> callback;
+    [SerializeField] bool LookAtTarget;
 
     protected Entity target;
     public event Action OnProjectileAnimation;
@@ -47,6 +48,8 @@ public class Projectile : MonoBehaviour
         else
             targetPos = originPosition.Value;
 
+        if (LookAtTarget)
+            transform.LookAt(targetPos);
 
 
         transform.position = (Vector3)originPosition;
