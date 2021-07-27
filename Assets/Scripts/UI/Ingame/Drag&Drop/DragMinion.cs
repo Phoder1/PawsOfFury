@@ -101,12 +101,14 @@ public class DragMinion : DragAndDrop
             {
                 button.shadow.transform.position = new Vector3(button.draggedEntity.transform.position.x, floorHit.point.y + 0.1f, button.draggedEntity.transform.position.z);
                 button.shadowController.Color = Color.green;
+                button.draggedEntitySprite.color = Color.white;
                 positionValid = true;
             }
             else
             {
                 button.shadow.transform.position = new Vector3(button.draggedEntity.transform.position.x, button.shadow.transform.position.y, button.draggedEntity.transform.position.z);
                 button.shadowController.Color = Color.red;
+                button.draggedEntitySprite.color = Color.grey;
                 positionValid = false;
             }
         }
