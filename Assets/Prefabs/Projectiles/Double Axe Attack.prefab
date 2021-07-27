@@ -9740,11 +9740,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasTravelTime: 1
-  speed: 5
+  speed: 15
   travelsToTarget: 1
-  spell: {fileID: 8358880945546188177, guid: 9aee1bfbaac531047b8c7a7dd9551360, type: 3}
+  spell: {fileID: 8186358177616057182, guid: adb5d5ec7ccfab44f84cf51b8d248120, type: 3}
   effectsData:
   - {fileID: 11400000, guid: 0e4835e9bdaef734dbef2caeef701991, type: 2}
+  LookAtTarget: 0
 --- !u!1001 &3305404106425048204
 PrefabInstance:
   m_ObjectHideFlags: 0

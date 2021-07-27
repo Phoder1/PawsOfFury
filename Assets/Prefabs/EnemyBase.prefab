@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 0
   UiObject: {fileID: 6817828928379908365, guid: c480a874215ef864392a0fd8114d28ab,
     type: 3}
-  healthbarHeight: -40
+  healthbarHeight: -50
   defualtStats:
     HP: 100
     MaxHP: 100

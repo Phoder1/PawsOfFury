@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Chaining Targeting
   m_EditorClassIdentifier: 
   rulesOrder:
-  - targets: 1
+  - targets: 4
     priority: 4
     tagPriority: 0
     range: 3
-    ignoresTaunt: 1
-    canDetectGhosts: 1
+    ignoresTaunt: 0
+    canDetectGhosts: 0
     ignoresSelected: 1
+    ignoreFullHP: 0
