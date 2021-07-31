@@ -8,10 +8,15 @@ using DataSaving;
 [DefaultExecutionOrder(-999)]
 public class GameManager : MonoSingleton<GameManager>
 {
-    public GameManager() : base(true)
-    {
-    }
+    public GameManager() : base(true) { }
     public event Action OnNewScene;
+
+    public LinkedList<LevelSO> levelsWon = new LinkedList<LevelSO>();
+
+    public void AddLevelWon(LevelSO level)
+    {
+        levelsWon.AddLast(level);
+    }
     public override void OnAwake()
     {
         OnNewScene?.Invoke();
@@ -27,6 +32,11 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private void OnApplicationQuit()
     {
+        foreach (var level in levelsWon)
+            level.CompleteAndEarnReward();
+
+        levelsWon = new LinkedList<LevelSO>();
+
         DataHandler.SaveAll();
     }
     public void NewSceneLoaded()

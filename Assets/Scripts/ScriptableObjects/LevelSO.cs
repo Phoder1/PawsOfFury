@@ -40,6 +40,11 @@ public class LevelSO : ScriptableObject
 
         }
     }
+    public void CompleteAndEarnReward()
+    {
+        CompletedLevel();
+        EarnReward();
+    }
     public void CompletedLevel()
     {
         var level = GetLevel();
@@ -52,8 +57,6 @@ public class LevelSO : ScriptableObject
         {
             level.LevelState = LevelState.Completed;
         }
-
-        EarnReward();
     }
     private void EarnReward()
     {

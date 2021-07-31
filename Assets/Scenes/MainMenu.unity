@@ -3589,7 +3589,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &697409737
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 10
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -7019,7 +7019,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672125020
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 10
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9421,6 +9421,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722006453}
     m_Modifications:
+    - target: {fileID: 4807254359771299499, guid: 9a4ba053b22900240a027e78a7f8a28f,
+        type: 3}
+      propertyPath: _level
+      value: 
+      objectReference: {fileID: 11400000, guid: e6b2c6690b63d954986856bb1ee71465,
+        type: 2}
     - target: {fileID: 6162098535268006980, guid: 9a4ba053b22900240a027e78a7f8a28f,
         type: 3}
       propertyPath: m_Name

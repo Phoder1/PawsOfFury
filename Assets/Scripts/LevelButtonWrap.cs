@@ -23,14 +23,35 @@ public class LevelButtonWrap : MonoBehaviour
 
     LevelsData _levels;
     Level _level;
+    GameManager gameManager;
     private void Awake()
     {
         if (button == null)
             button = GetComponent<Button>();
         _levels = DataHandler.Load<LevelsData>();
+        gameManager = GameManager.instance;
+        CheckIfLevelWon();
+
         LoadLevelData();
-        LoadLevelToScreen();
+
     }
+    private void CheckIfLevelWon()
+    {
+        if (_levelButton == null || _levelButton.Level == null)
+            return;
+
+        LinkedListNode<LevelSO> levelNode = gameManager.levelsWon.Find(_levelButton.Level);
+        
+        if (levelNode == null)
+            return;
+
+        LevelWon();
+
+        levelNode.Value.CompleteAndEarnReward();
+
+        gameManager.levelsWon.Remove(levelNode);
+    }
+
     private void LoadLevelData()
     {
         if (_levelButton == null || _levelButton.Level == null)
@@ -45,11 +66,6 @@ public class LevelButtonWrap : MonoBehaviour
             _level.Name = name;
             _levels.Levels.Add(_level);
         }
-    }
-    private void LoadLevelToScreen()
-    {
-        if (_level == null)
-            return;
 
         switch (_level.LevelState)
         {
@@ -66,6 +82,23 @@ public class LevelButtonWrap : MonoBehaviour
                 break;
         }
     }
+    private void LoadLevelToScreen()
+    {
+        if (_level == null)
+            return;
+
+        switch (_level.LevelState)
+        {
+            case LevelState.Unlocked:
+                button.interactable = true;
+                break;
+            case LevelState.Completed:
+                ColorBlock tempBlock = button.colors;
+                tempBlock.normalColor = ColorForButton;
+                button.colors = tempBlock;
+                break;
+        }
+    }
     [ContextMenu("Mitz")]
     public void LevelWon()
     {
@@ -75,24 +108,28 @@ public class LevelButtonWrap : MonoBehaviour
         if (_level.LevelState < LevelState.Completed)
             _level.LevelState = LevelState.Completed;
 
-        ColorBlock tempBlock = button.colors;
-        tempBlock.normalColor = ColorForButton;
-        button.colors = tempBlock;
-
         for (int i = 0; i < AdjecentLevels.Count; i++)
         {
             AdjecentLevels[i].UnlockLevel();
         }
+
+        LoadLevelToScreen();
     }
     public void UnlockLevel()
     {
         if (_level == null)
             return;
 
+        if (_level.LevelState == LevelState.Unlocked)
+        {
+            LoadLevelToScreen();
+            return;
+        }
+
         if (_level.LevelState < LevelState.Unlocked)
             _level.LevelState = LevelState.Unlocked;
 
-        button.interactable = true;
+        LoadLevelToScreen();
     }
 }
 public enum LevelState { Locked, Unlocked, Completed }
