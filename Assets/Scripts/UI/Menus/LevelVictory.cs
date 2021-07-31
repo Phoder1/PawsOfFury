@@ -10,5 +10,9 @@ public class LevelVictory : MonoBehaviour
     [SerializeField]
     private UnityEvent<LevelSO> OnLevelComplete;
 
-    public void LevelVectory() => OnLevelComplete?.Invoke(_level);
+    public void LevelVectory()
+    {
+        _level.CompletedLevel();
+        OnLevelComplete?.Invoke(_level);
+    }
 }

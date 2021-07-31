@@ -20,12 +20,25 @@ namespace DataSaving
             set => Setter(ref _units, value);
         }
         public override bool IsDirty => base.IsDirty || _units.IsDirty;
-
         protected override void OnClean()
         {
             base.OnClean();
             _units.Clean();
         }
+
+        #region ISaveable
+        public event Action OnSaveStarted;
+        public event Action OnSaveFinished;
+        public void BeforeSave()
+        {
+            OnSaveStarted?.Invoke();
+        }
+
+        public void AfterSave()
+        {
+            OnSaveFinished?.Invoke();
+        }
+        #endregion
     }
     [Serializable]
     public class UnitSlotData : DirtyData
@@ -81,11 +94,26 @@ namespace DataSaving
             set => Setter(ref _team, value);
         }
         public override bool IsDirty => base.IsDirty || _team.IsDirty;
+
         protected override void OnClean()
         {
             base.OnClean();
             _team.Clean();
         }
+
+        #region ISaveable
+        public event Action OnSaveStarted;
+        public event Action OnSaveFinished;
+        public void BeforeSave()
+        {
+            OnSaveStarted?.Invoke();
+        }
+
+        public void AfterSave()
+        {
+            OnSaveFinished?.Invoke();
+        }
+        #endregion
 
     }
     [Serializable]
@@ -93,6 +121,7 @@ namespace DataSaving
     {
         [SerializeField]
         private DirtyDataList<Level> _levels = new DirtyDataList<Level>();
+
         public DirtyDataList<Level> Levels { get => _levels; set => Setter(ref _levels, value); }
         public override bool IsDirty { get => base.IsDirty || Levels.IsDirty; protected set => base.IsDirty = value; }
 
@@ -108,6 +137,20 @@ namespace DataSaving
         }
 
         public Level GetLevel(string levelName) => Levels.Find((x) => x.Name == levelName);
+        #region ISaveable
+        public event Action OnSaveStarted;
+        public event Action OnSaveFinished;
+        public void BeforeSave()
+        {
+            OnSaveStarted?.Invoke();
+        }
+
+        public void AfterSave()
+        {
+            OnSaveFinished?.Invoke();
+        }
+        #endregion
+
     }
     [Serializable]
     public class PlayerCurrency : DirtyData, ISaveable
@@ -119,7 +162,23 @@ namespace DataSaving
 
         [SerializeField]
         private int _crystals;
+
+
         public int Crystals { get => _crystals; set => Setter(ref _crystals, value); }
+
+        #region ISaveable
+        public event Action OnSaveStarted;
+        public event Action OnSaveFinished;
+        public void BeforeSave()
+        {
+            OnSaveStarted?.Invoke();
+        }
+
+        public void AfterSave()
+        {
+            OnSaveFinished?.Invoke();
+        }
+        #endregion
     }
 }
 

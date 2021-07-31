@@ -41,7 +41,7 @@ public class LevelButtonWrap : MonoBehaviour
 
         if (_level == null)
         {
-            _level = new Level();
+            _level = new Level(name);
             _level.Name = name;
             _levels.Levels.Add(_level);
         }
@@ -105,6 +105,13 @@ public class Level : DirtyData
 
     [SerializeField]
     private LevelState _levelState = LevelState.Locked;
+
+    public Level(string name, LevelState levelState = LevelState.Locked)
+    {
+        Name = name;
+        LevelState = levelState;
+    }
+
     public LevelState LevelState { get => _levelState; set => Setter(ref _levelState, value); }
 
 }
