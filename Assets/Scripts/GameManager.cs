@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DataSaving;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -20,6 +21,10 @@ public class GameManager : MonoSingleton<GameManager>
     private void OnDisable()
     {
         DOTween.KillAll();
+    }
+    private void OnApplicationQuit()
+    {
+        DataHandler.SaveAll();
     }
     public void NewSceneLoaded() => OnNewScene?.Invoke();
 

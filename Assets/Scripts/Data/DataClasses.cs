@@ -1,6 +1,4 @@
-using Refrences;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DataSaving
@@ -16,9 +14,10 @@ namespace DataSaving
             new UnitSlotData(2,1,1, false),
             new UnitSlotData(3,1,1, false),
         };
-        public DirtyDataList<UnitSlotData> Units { 
-            get => _units; 
-            set => Setter(ref _units, value); 
+        public DirtyDataList<UnitSlotData> Units
+        {
+            get => _units;
+            set => Setter(ref _units, value);
         }
         public override bool IsDirty => base.IsDirty || _units.IsDirty;
 
@@ -89,4 +88,26 @@ namespace DataSaving
         }
 
     }
+    [Serializable]
+    public class LevelsData : DirtyData, ISaveable
+    {
+        [SerializeField]
+        private DirtyDataList<Level> _levels = new DirtyDataList<Level>();
+        public DirtyDataList<Level> Levels { get => _levels; set => Setter(ref _levels, value); }
+        public override bool IsDirty { get => base.IsDirty || Levels.IsDirty; protected set => base.IsDirty = value; }
+
+        public LevelsData()
+        {
+            _levels.OnValueChange += ValueChanged;
+        }
+
+        protected override void OnClean()
+        {
+            base.OnClean();
+            Levels.Clean();
+        }
+
+        public Level GetLevel(string levelName) => Levels.Find((x) => x.Name == levelName);
+    }
 }
+
