@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityName: Lich
-  goldValue: 20
+  goldValue: 25
   type: 2
   UiObject: {fileID: 6817828928379908365, guid: 1646f9192471bf54bab21516bbf969fd,
     type: 3}
   healthbarHeight: 20
   defualtStats:
-    HP: 14
-    MaxHP: 14
+    HP: 28
+    MaxHP: 28
     WalkSpeed: 1.3
     MaxAttackSpeedMultiplier: 2
     MaxDamageMultiplier: 200
@@ -40,6 +40,9 @@ MonoBehaviour:
   lastAttackTime: 0
   ISInitOnStart: 0
   OnDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathEvent:
     m_PersistentCalls:
       m_Calls: []
   OnAttackAnimation:
