@@ -63,9 +63,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   selected: 0
-  unlockablePathLayer:
-    serializedVersion: 2
-    m_Bits: 8192
   buttonSpriteRenderer: {fileID: 4025256063420912986}
   placeableLayers:
     serializedVersion: 2
@@ -4888,7 +4885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1515363951222047937}
   - component: {fileID: 3961200604377329904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5030,6 +5027,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4508563578942963112, guid: a8130013def55024d821218c438f91db,
         type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508563578942963112, guid: a8130013def55024d821218c438f91db,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -5110,6 +5112,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4508563580025433753, guid: a8130013def55024d821218c438f91db,
         type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508563580025433753, guid: a8130013def55024d821218c438f91db,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -5133,6 +5140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayerID
       value: -1147346115
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978805134373921065, guid: a8130013def55024d821218c438f91db,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4978805134373921065, guid: a8130013def55024d821218c438f91db,
         type: 3}

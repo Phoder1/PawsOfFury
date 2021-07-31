@@ -34227,6 +34227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
+      propertyPath: healthbarHeight
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
       propertyPath: defualtStats.MaxHP
       value: 60
       objectReference: {fileID: 0}
