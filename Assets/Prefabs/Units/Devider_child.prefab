@@ -20,12 +20,12 @@ PrefabInstance:
     - target: {fileID: 1151912653713755946, guid: 736f8268511b7254a844cd0aeefca291,
         type: 3}
       propertyPath: defualtStats.HP
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1151912653713755946, guid: 736f8268511b7254a844cd0aeefca291,
         type: 3}
       propertyPath: defualtStats.MaxHP
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1151912653713755946, guid: 736f8268511b7254a844cd0aeefca291,
         type: 3}
