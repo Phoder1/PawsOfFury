@@ -1,8 +1,7 @@
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class Settings_UI : MonoBehaviour
 {
@@ -25,6 +24,8 @@ public class Settings_UI : MonoBehaviour
     [SerializeField]
     Sprite VibrateOff;
 
+    private bool _paused = false;
+    private Tween _pauseTween = null;
 
     // Start is called before the first frame update
     void Awake()
@@ -47,6 +48,8 @@ public class Settings_UI : MonoBehaviour
                 Vibrate.sprite = VibrateOff;
             }
         }
+
+        _pauseTween = TweenTimeScale(0, 0.4f).SetAutoKill(false).Pause();
 
     }
 
@@ -84,30 +87,26 @@ public class Settings_UI : MonoBehaviour
 
         }
     }
-    
 
 
+    private void OnDestroy()
+    {
+        if (_pauseTween.IsActive())
+            _pauseTween.Kill();
+    }
     public void StopGame()
     {
-        StartCoroutine(StopGameInumarator());
-
-    }
-    IEnumerator StopGameInumarator()
-    {
-        if (Time.timeScale != 0)
+        if (_paused)
         {
-            
-            yield return new WaitForSeconds(0.5f);
-            Time.timeScale = 0;
+            _pauseTween.PlayBackwards();
         }
         else
         {
-            Time.timeScale = 1;
-            yield return new WaitForSeconds(0.5f);
+            _pauseTween.PlayForward();
         }
+
+        _paused = !_paused;
+
     }
-
-    
-
-
+    private static Tween TweenTimeScale(float to, float duration, Ease ease = Ease.Linear) => DOTween.To(() => Time.timeScale, (x) => Time.timeScale = x, to, duration).SetEase(ease);
 }

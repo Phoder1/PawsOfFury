@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DataSaving;
 
+[DefaultExecutionOrder(-999)]
 public class GameManager : MonoSingleton<GameManager>
 {
     public GameManager() : base(true)
