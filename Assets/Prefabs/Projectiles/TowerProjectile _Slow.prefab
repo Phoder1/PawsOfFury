@@ -4881,6 +4881,7 @@ MonoBehaviour:
   effectsData:
   - {fileID: 11400000, guid: a501f6526dd88ea4ab41ca70446077d9, type: 2}
   - {fileID: 11400000, guid: 4e8dbb5c1505bbd438a407554bc0a798, type: 2}
+  - {fileID: 11400000, guid: 2b544d4ac48c5b0469390c20af5de46c, type: 2}
   LookAtTarget: 0
 --- !u!1 &3346418062887299386
 GameObject:
