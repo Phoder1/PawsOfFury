@@ -1,11 +1,12 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class UnlockPlaceablePath : MonoBehaviour
 {
-    [SerializeField]
-    private LayerMask _newLayer;
-    [SerializeField]
-    private LayerMask _unitLayer;
+    [SerializeField, ValueDropdown("@UnityEditorInternal.InternalEditorUtility.layers", IsUniqueList = true, FlattenTreeView = true, HideChildProperties = true, DropdownHeight = 180)]
+    private string _newLayer;
+    [SerializeField, ValueDropdown("@UnityEditorInternal.InternalEditorUtility.layers", IsUniqueList = true, FlattenTreeView = true, HideChildProperties = true, DropdownHeight = 180)]
+    private string _unitLayer;
     [SerializeField]
     private Collider _triggerCollider;
     [SerializeField]
@@ -16,7 +17,7 @@ public class UnlockPlaceablePath : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collided");
-        if (other.gameObject.layer == _unitLayer)
+        if (other.gameObject.layer == SortingLayer.NameToID(_unitLayer))
             Unlock();
     }
     public void Unlock()
@@ -24,7 +25,7 @@ public class UnlockPlaceablePath : MonoBehaviour
         if (_unlocked)
             return;
 
-        gameObject.layer = _newLayer;
+        gameObject.layer = SortingLayer.NameToID(_newLayer);
         _renderer.material.EnableKeyword("_EMISSION");
         _unlocked = true;
         _triggerCollider.enabled = false;
