@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Settings_UI : MonoBehaviour
 {
@@ -95,6 +96,7 @@ public class Settings_UI : MonoBehaviour
     {
         if (Time.timeScale != 0)
         {
+            
             yield return new WaitForSeconds(0.5f);
             Time.timeScale = 0;
         }
