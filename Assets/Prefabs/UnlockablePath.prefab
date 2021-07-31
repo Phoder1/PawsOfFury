@@ -44,12 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655c694d13e93d4478184f3851e80c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _newLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  _unitLayer:
-    serializedVersion: 2
-    m_Bits: 256
+  _newLayer: Placable
+  _unitLayer: Unit
   _triggerCollider: {fileID: 8605367836633052537}
   _renderer: {fileID: 3937317495373112388}
 --- !u!65 &8605367836633052537
