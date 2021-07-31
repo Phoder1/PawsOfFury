@@ -50,14 +50,14 @@ public class Unit : Entity
             if (detectedEntity != null && detectedEntity.entity != null)
                 Unit.stateMachine.State = Unit.AttackingState;
 
-            if (Physics.Raycast(Unit.transform.position, Vector3.down, out RaycastHit floorHit, 0.5f, Unit.unlockablePathLayer))
+            if (Physics.Raycast(Unit.transform.position + Vector3.up * 0.5f, Vector3.down, out RaycastHit floorHit, 1.5f, Unit.unlockablePathLayer))
             {
+                Debug.Log("Found unlockable path");
                 var unlockable = floorHit.collider.GetComponent<UnlockPlaceablePath>();
 
                 if (unlockable != null)
                 {
                     unlockable.Unlock();
-                    Debug.Log("Found unlockable path");
                 }
 
 
