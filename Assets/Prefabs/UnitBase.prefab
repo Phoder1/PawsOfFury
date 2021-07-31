@@ -56,10 +56,16 @@ MonoBehaviour:
   OnDestroyEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnAttackAnimation:
     m_PersistentCalls:
       m_Calls: []
   selected: 0
+  unlockablePathLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   buttonSpriteRenderer: {fileID: 4025256063420912986}
   placeableLayers:
     serializedVersion: 2
