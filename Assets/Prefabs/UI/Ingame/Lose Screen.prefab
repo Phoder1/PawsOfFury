@@ -665,6 +665,7 @@ GameObject:
   - component: {fileID: 1142255832898961417}
   - component: {fileID: 1142255832898961416}
   - component: {fileID: 1142255832898961419}
+  - component: {fileID: 1173561183218809757}
   m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
@@ -773,7 +774,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1142255832898961416}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1173561183218809757}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1173561183218809757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142255832898961413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a63c1fe010d7b94988f8254454aeb88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _level: {fileID: 11400000, guid: e6b2c6690b63d954986856bb1ee71465, type: 2}
 --- !u!1 &1142255833067173726
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +887,7 @@ GameObject:
   - component: {fileID: 1142255833110032258}
   - component: {fileID: 1142255833110032253}
   - component: {fileID: 1142255833110032252}
+  - component: {fileID: 4063048841202133192}
   m_Layer: 5
   m_Name: 'Menu Button '
   m_TagString: Untagged
@@ -969,7 +996,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1142255833110032253}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4063048841202133192}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4063048841202133192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142255833110032254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a63c1fe010d7b94988f8254454aeb88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _level: {fileID: 11400000, guid: e16bd3ae8f1c5224f8a516b2647f786d, type: 2}
 --- !u!1 &1142255833337524551
 GameObject:
   m_ObjectHideFlags: 0
