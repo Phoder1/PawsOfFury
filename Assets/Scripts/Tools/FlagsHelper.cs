@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class FlagsHelper
 {
+    public static int SortingLayerToLayerMask(this int sortingLayer) => (int)Mathf.Pow(2, sortingLayer);
     public static bool IsSet(this LayerMask layerMask, int layer) => (layerMask.value & layer) != 0;
 
     public static void SetValue(this ref LayerMask layerMask, int layer, bool value)
