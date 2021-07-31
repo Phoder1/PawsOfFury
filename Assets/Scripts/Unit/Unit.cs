@@ -55,7 +55,12 @@ public class Unit : Entity
                 var unlockable = floorHit.collider.GetComponent<UnlockPlaceablePath>();
 
                 if (unlockable != null)
+                {
                     unlockable.Unlock();
+                    Debug.Log("Found unlockable path");
+                }
+
+
             }
         }
 
