@@ -4,25 +4,17 @@ using UnityEngine;
 
 public static class FlagsHelper
 {
-    public static bool IsSet<T>(T flags, T flag) where T : struct
-    {
-        int flagsValue = (int)(object)flags;
-        int flagValue = (int)(object)flag;
+    public static bool IsSet(this LayerMask layerMask, int layer) => (layerMask.value & layer) != 0;
 
-        return (flagsValue & flagValue) != 0;
-    }
-    public static void Set<T>(ref T flags, T flag) where T : struct
+    public static void SetValue(this ref LayerMask layerMask, int layer, bool value)
     {
-        int flagsValue = (int)(object)flags;
-        int flagValue = (int)(object)flag;
-
-        flags = (T)(object)(flagsValue | flagValue);
+        if (value)
+            layerMask.Set(layer);
+        else
+            layerMask.Unset(layer);
     }
-    public static void Unset<T>(ref T flags, T flag) where T : struct
-    {
-        int flagsValue = (int)(object)flags;
-        int flagValue = (int)(object)flag;
+    public static void Set(this ref LayerMask layerMask, int layer) => layerMask |= layer;
 
-        flags = (T)(object)(flagsValue & (~flagValue));
-    }
+    public static void Unset(this ref LayerMask layerMask, int layer) => layerMask &= (~layer);
+    public static void Flip(this ref LayerMask layerMask) => layerMask = ~layerMask ^ ~0;
 }
