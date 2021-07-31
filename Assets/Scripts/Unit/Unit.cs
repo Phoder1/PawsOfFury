@@ -6,9 +6,6 @@ using static IngameBlackBoard;
 [RequireComponent(typeof(NavScript))]
 public class Unit : Entity
 {
-    [SerializeField]
-    protected LayerMask unlockablePathLayer;
-
     [LocalComponent(getComponentFromChildrens: true)] public SpriteRenderer buttonSpriteRenderer;
     public LayerMask placeableLayers;
     protected override EntityState DefaultState() => new WalkState(this);
@@ -49,19 +46,6 @@ public class Unit : Entity
             detectedEntity = Targets.GetEntityHit(entity, entity.projectile.detection);
             if (detectedEntity != null && detectedEntity.entity != null)
                 Unit.stateMachine.State = Unit.AttackingState;
-
-            if (Physics.Raycast(Unit.transform.position + Vector3.up * 0.5f, Vector3.down, out RaycastHit floorHit, 1.5f, Unit.unlockablePathLayer))
-            {
-                Debug.Log("Found unlockable path");
-                var unlockable = floorHit.collider.GetComponent<UnlockPlaceablePath>();
-
-                if (unlockable != null)
-                {
-                    unlockable.Unlock();
-                }
-
-
-            }
         }
 
         protected override void OnDisable() => Unit.navScript.StopMove();
