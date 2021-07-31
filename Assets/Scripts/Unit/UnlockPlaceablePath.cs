@@ -18,5 +18,7 @@ public class UnlockPlaceablePath : MonoBehaviour
         gameObject.layer = _newLayer;
         _renderer.material.EnableKeyword("_EMISSION");
         _unlocked = true;
+
+        Debug.Log("Unlocked path");
     }
 }
