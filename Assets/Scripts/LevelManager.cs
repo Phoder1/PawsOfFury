@@ -29,10 +29,10 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     public Unit[] Units => units.ToArray();
     public Enemy[] Enemies => enemies.ToArray();
-    [SerializeField] int CheapestMinion;// TODO - assaign this variable to te value of the cheapest minion on his current team
     [SerializeField] UnityEvent PlayerLose;
     [SerializeField] int startingGold;
     int gold;
+    int CheapestMinion = int.MinValue;
 
     public LevelManager() : base(false) { }
 
@@ -89,7 +89,12 @@ public class LevelManager : MonoSingleton<LevelManager>
     {
         UpdateGoldValue();
     }
-
+    public void LoadedMinion(UnitInformation unitInfo)
+    {
+        int unitPrice = unitInfo.unitSO.GetPrefab(unitInfo.slotData.Level).GetComponent<Unit>().goldValue;
+        if (CheapestMinion < 0 || CheapestMinion > unitPrice)
+            CheapestMinion = unitPrice;
+    }
    private bool Check_Player_Lose()
    {
         if(units.Count == 0 && gold < CheapestMinion) 

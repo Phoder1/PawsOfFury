@@ -26,6 +26,9 @@ public class UiUnitController : MonoBehaviour
             _unitInfo = value;
 
             OnUnitAssign?.Invoke(_unitInfo);
+
+            if (LevelManager.instance != null)
+                LevelManager.instance.LoadedMinion(_unitInfo);
         }
     }
     public void SetUnit(UnitInformation unit, bool withCallBacks = true)

@@ -12,7 +12,7 @@ public class LevelVictory : MonoBehaviour
 
     public void LevelVectory()
     {
-        _level.CompletedLevel();
+        GameManager.instance.AddLevelWon(_level);
         OnLevelComplete?.Invoke(_level);
     }
 }
