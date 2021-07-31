@@ -12,7 +12,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "a274062b0fffbde2973e52dd3c297e4252c4bc6b"
+      "hash": "11ce6ef835a0d49007afaf66c7ceb17d7062b993"
     },
     "com.h8man.2d.navmeshplus": {
       "version": "https://github.com/h8man/NavMeshPlus.git#master",
