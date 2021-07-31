@@ -38,7 +38,20 @@ MonoBehaviour:
   stats:
     stats: []
   lastAttackTime: 0
+  ISInitOnStart: 0
+  OnDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackAnimation:
+    m_PersistentCalls:
+      m_Calls: []
   selected: 0
+  unlockablePathLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   buttonSpriteRenderer: {fileID: 7512233116984932999}
   placeableLayers:
     serializedVersion: 2
