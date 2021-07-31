@@ -5,8 +5,8 @@ public class UnlockPlaceablePath : MonoBehaviour
 {
     [SerializeField, ValueDropdown("@UnityEditorInternal.InternalEditorUtility.layers", IsUniqueList = true, FlattenTreeView = true, HideChildProperties = true, DropdownHeight = 180)]
     private string _newLayer;
-    [SerializeField, ValueDropdown("@UnityEditorInternal.InternalEditorUtility.layers", IsUniqueList = true, FlattenTreeView = true, HideChildProperties = true, DropdownHeight = 180)]
-    private string _unitLayer;
+    [SerializeField]
+    private LayerMask _unitLayer;
     [SerializeField]
     private Collider _triggerCollider;
     [SerializeField]
@@ -17,7 +17,7 @@ public class UnlockPlaceablePath : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collided");
-        if (other.gameObject.layer == SortingLayer.NameToID(_unitLayer))
+        if (FlagsHelper.IsSet(_unitLayer, other.gameObject.layer))
             Unlock();
     }
     public void Unlock()
