@@ -16,7 +16,16 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     List<Unit> units;
     List<Enemy> enemies;
-    public Vector3 LevelEndPos => levelEnd.position;
+    public Vector3? LevelEndPos
+    {
+        get
+        {
+            if (levelEnd == null)
+                return null;
+
+            return levelEnd.position;
+        }
+    }
 
     public Unit[] Units => units.ToArray();
     public Enemy[] Enemies => enemies.ToArray();
@@ -24,6 +33,9 @@ public class LevelManager : MonoSingleton<LevelManager>
     [SerializeField] UnityEvent PlayerLose;
     [SerializeField] int startingGold;
     int gold;
+
+    public LevelManager() : base(false) { }
+
     public int Gold
     {
         get => gold;
@@ -69,7 +81,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     public override void OnAwake()
     {
-        IngameBlackBoard.levelManager = instance;
+        levelManager = instance;
         units = new List<Unit>();
         enemies = new List<Enemy>();
     }

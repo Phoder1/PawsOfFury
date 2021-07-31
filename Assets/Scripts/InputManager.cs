@@ -10,6 +10,11 @@ public class InputManager : MonoSingleton<InputManager>
     StateMachine<ButtonsState> stateMachine;
     public ButtonsState dragState;
     private PressState pressState;
+
+    public InputManager() : base(false)
+    {
+    }
+
     public PressState PressState { 
         get => pressState;
         set { 

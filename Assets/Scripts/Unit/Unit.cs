@@ -1,11 +1,7 @@
-﻿using Assets.StateMachine;
-using System;
-using UnityEngine;
-using Assets.Stats;
-using System.Collections.Generic;
-using static IngameBlackBoard;
+﻿using Assets.Stats;
 using CustomAttributes;
-using Sirenix.OdinInspector;
+using UnityEngine;
+using static IngameBlackBoard;
 
 [RequireComponent(typeof(NavScript))]
 public class Unit : Entity
@@ -15,7 +11,7 @@ public class Unit : Entity
     protected override EntityState DefaultState() => new WalkState(this);
     protected virtual EntityState AttackingState => new AttackState(this);
     protected NavScript navScript;
-    
+
 
     protected override void Start()
     {
@@ -42,7 +38,8 @@ public class Unit : Entity
         public WalkState(Unit unit) : base(unit) { }
         protected override void OnEnable()
         {
-            Unit.navScript.StartMove(levelManager.LevelEndPos);
+            if (levelManager.LevelEndPos != null)
+                Unit.navScript.StartMove(levelManager.LevelEndPos);
         }
         protected override void OnUpdate()
         {

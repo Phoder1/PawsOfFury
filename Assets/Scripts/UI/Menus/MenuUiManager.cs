@@ -9,8 +9,11 @@ using UnityEngine.Events;
 
 public class MenuUiManager : MonoSingleton<MenuUiManager>
 {
+    public MenuUiManager() : base(false)
+    {
+    }
     #region Serielized
-    
+
     #region States
     [FoldoutGroup("States")]
     [SerializeField] MenuUiState incubator;
@@ -60,6 +63,9 @@ public class MenuUiManager : MonoSingleton<MenuUiManager>
         }
     }
     private bool _uiLocked;
+
+    
+
     public bool UiLocked
     {
         get => _uiLocked;

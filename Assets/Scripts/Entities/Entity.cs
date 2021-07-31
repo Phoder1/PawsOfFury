@@ -50,6 +50,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     protected abstract EntityState DefaultState();
     public UnityEvent OnDestroyEvent;
+    public UnityEvent OnDeathEvent;
 
     public UnityEvent OnAttackAnimation;
     public void AttackAnimRecall()
@@ -57,7 +58,6 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         OnAttackAnimation?.Invoke();
         stateMachine.State.AnimationRecall();
     }
-
 
     [HideInInspector]
     public bool selected;
@@ -120,17 +120,23 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     }
     void OnApplicationQuit()
     {
-        this.gameIsShuttingDown = true;
+        gameIsShuttingDown = true;
     }
 
+    public void OnDeath()
+    {
+        OnDeathEvent?.Invoke();
+        Destroy(gameObject);
+    }
     protected virtual void OnDestroy()
     {
-        if (!gameIsShuttingDown) 
-        { 
-        transform.DOComplete();
-        levelManager.RemoveFromList(this);
-        OnDestroyEvent?.Invoke();
-        stateMachine.State = null;
+        if (!gameIsShuttingDown)
+        {
+            OnDestroyEvent?.Invoke();
+
+            transform.DOComplete();
+            levelManager.RemoveFromList(this);
+            stateMachine.State = null;
         }
 
     }
@@ -151,7 +157,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         Stat maxHp = new Stat(this, StatType.MaxHP, defualtStats.MaxHP);
 
         stats.Add(maxHp);
-        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, ui, maxHp, new Reaction(Reaction.DeathCondition, (value) => { Destroy(gameObject); })));
+        stats.Add(new HpStat(this, StatType.HP, defualtStats.HP, ui, maxHp, new Reaction(Reaction.DeathCondition, (value) => { OnDeath(); })));
         Stat maxDamage = new Stat(this, StatType.MaxDamageMultiplier, defualtStats.MaxDamageMultiplier);
         stats.Add(maxDamage);
         stats.Add(new Stat(this, StatType.DamageMultiplier, 100, maxDamage));

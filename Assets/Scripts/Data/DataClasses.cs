@@ -109,5 +109,17 @@ namespace DataSaving
 
         public Level GetLevel(string levelName) => Levels.Find((x) => x.Name == levelName);
     }
+    [Serializable]
+    public class PlayerCurrency : DirtyData, ISaveable
+    {
+        [SerializeField]
+        private int _monsterGoo;
+
+        public int MonsterGoo { get => _monsterGoo; set => Setter(ref _monsterGoo, value); }
+
+        [SerializeField]
+        private int _crystals;
+        public int Crystals { get => _crystals; set => Setter(ref _crystals, value); }
+    }
 }
 

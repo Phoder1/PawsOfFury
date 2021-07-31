@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6228728098697801867}
   - component: {fileID: 419568144147257785}
   - component: {fileID: 6867903740732859738}
+  - component: {fileID: 8080794761589432653}
   m_Layer: 5
   m_Name: Prize Frame (after win)
   m_TagString: Untagged
@@ -77,6 +78,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8080794761589432653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268925341879196718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1adce4305e0b164f81f776a53657fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _level: {fileID: 0}
+  _crystalsReward: {fileID: 8355163973740957575}
 --- !u!1 &1184144296084145427
 GameObject:
   m_ObjectHideFlags: 0

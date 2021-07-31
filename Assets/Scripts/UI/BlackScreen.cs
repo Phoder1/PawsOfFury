@@ -9,6 +9,10 @@ using Sirenix.OdinInspector;
 [SelectionBase]
 public class BlackScreen : MonoSingleton<BlackScreen>
 {
+    public BlackScreen() : base(true)
+    {
+    }
+
     [SerializeField]
     private float _transitionDuration;
     [SerializeField]
@@ -18,20 +22,17 @@ public class BlackScreen : MonoSingleton<BlackScreen>
     public UnityEvent OnFinishTransitionIn;
     [SerializeField, LocalComponent]
     private Image _blackScreen;
-    public override void OnAwake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+
     [Button]
     public void FadeIn()
     {
-        _blackScreen.DOFade(1, _transitionDuration).SetEase(_transitionInCurve).OnComplete(OnComplete);
+        _blackScreen.DOFade(1, _transitionDuration).SetEase(_transitionInCurve).OnComplete(OnComplete).SetUpdate(true);
 
         void OnComplete() => OnFinishTransitionIn?.Invoke();
     }
     [Button]
     public void FadeOut()
     {
-        _blackScreen.DOFade(0, _transitionDuration).SetEase(_transitionOutCurve);
+        _blackScreen.DOFade(0, _transitionDuration).SetEase(_transitionOutCurve).SetUpdate(true);
     }
 }

@@ -9,5 +9,10 @@ public class IngameUiManager : MonoSingleton<IngameUiManager>
 {
     [SerializeField] string goldPrefix;
     [SerializeField] TextMeshProUGUI gold;
+
+    public IngameUiManager() : base(false)
+    {
+    }
+
     public void SetGold(int value) => gold.text = goldPrefix + value;
 }

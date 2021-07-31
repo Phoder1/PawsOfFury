@@ -19,6 +19,11 @@ public class LevelSO : ScriptableObject
     public string SceneName => _sceneName;
     public float ChanceToGetACard => _chanceToGetACard;
     public int CrystalsReward => _crystalsReward;
+
+    public void EarnedReward()
+    {
+
+    }
 #if UNITY_EDITOR
     private string[] Scenes
     {

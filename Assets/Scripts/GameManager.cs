@@ -7,10 +7,12 @@ using DataSaving;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public GameManager() : base(true)
+    {
+    }
     public event Action OnNewScene;
     public override void OnAwake()
     {
-        DontDestroyOnLoad(gameObject);
         OnNewScene?.Invoke();
     }
     // Start is called before the first frame update
@@ -26,9 +28,16 @@ public class GameManager : MonoSingleton<GameManager>
     {
         DataHandler.SaveAll();
     }
-    public void NewSceneLoaded() => OnNewScene?.Invoke();
+    public void NewSceneLoaded()
+    {
+        Time.timeScale = 1;
+        OnNewScene?.Invoke();
+    }
 
     private static Camera mainCam;
+
+
+
     public static Camera MainCam
     {
         get
