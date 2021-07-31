@@ -110,7 +110,7 @@ public class Scroll_inGame : MonoBehaviour
         {
             if (results[i].gameObject.layer == 5) 
             {
-            Debug.Log("you clicked on "+ results[i].gameObject.name);
+            //Debug.Log("you clicked on "+ results[i].gameObject.name);
             return true;
             }
         }
