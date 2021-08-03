@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.Events;
 
 public class EventToggle : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, OnValueChanged("@Trigger()")]
     private bool _toggleValue;
 
     [SerializeField]
@@ -15,7 +16,7 @@ public class EventToggle : MonoBehaviour
 
     private void Start()
     {
-        
+        Trigger();
     }
     public void ToggleAndTrigger()
     {

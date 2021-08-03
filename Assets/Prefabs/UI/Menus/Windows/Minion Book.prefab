@@ -711,6 +711,36 @@ PrefabInstance:
       propertyPath: _stringOverrides.Array.data[0].exactMatch
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4466974306461323921, guid: 185e3d2acc15f9845afc35040c4df033,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466974306461323921, guid: 185e3d2acc15f9845afc35040c4df033,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4707857882787827282}
+    - target: {fileID: 4466974306461323921, guid: 185e3d2acc15f9845afc35040c4df033,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466974306461323921, guid: 185e3d2acc15f9845afc35040c4df033,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Load
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466974306461323921, guid: 185e3d2acc15f9845afc35040c4df033,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnitInfo, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466974306461323921, guid: 185e3d2acc15f9845afc35040c4df033,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5253374108668110830, guid: 185e3d2acc15f9845afc35040c4df033,
         type: 3}
       propertyPath: _stringOverrides.Array.data[0].exactMatch
@@ -839,6 +869,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4707857883539668101}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4707857882787827282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1441805015, guid: 185e3d2acc15f9845afc35040c4df033,
+    type: 3}
+  m_PrefabInstance: {fileID: 4707857883539668101}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ac1bfa318da694e971a8392dcd433e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5473490514332449486
 PrefabInstance:
   m_ObjectHideFlags: 0

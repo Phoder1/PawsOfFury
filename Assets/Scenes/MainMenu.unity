@@ -9421,59 +9421,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722006453}
     m_Modifications:
-    - target: {fileID: 4807254358552344767, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: _level
-      value: 
-      objectReference: {fileID: 11400000, guid: 6a59ef105d609c94eb4ac7d9a22155da,
-        type: 2}
-    - target: {fileID: 4807254359282883226, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: _level
-      value: 
-      objectReference: {fileID: 11400000, guid: fc59d3a67fd8bef4b9a9df1f41cfdd7e,
-        type: 2}
-    - target: {fileID: 4807254359415036154, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: _level
-      value: 
-      objectReference: {fileID: 11400000, guid: b2911612b8e332e46bbf4d6c3e811bd6,
-        type: 2}
-    - target: {fileID: 4807254359519846210, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: _level
-      value: 
-      objectReference: {fileID: 11400000, guid: f6f337ae829650d4ab7ed9e939b138fe,
-        type: 2}
-    - target: {fileID: 4807254359771299499, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: _level
-      value: 
-      objectReference: {fileID: 11400000, guid: e6b2c6690b63d954986856bb1ee71465,
-        type: 2}
-    - target: {fileID: 4807254359880324323, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: _level
-      value: 
-      objectReference: {fileID: 11400000, guid: abca932599da0e24a9e670bf9ff960b1,
-        type: 2}
-    - target: {fileID: 4807254360119464800, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: _level
-      value: 
-      objectReference: {fileID: 11400000, guid: 8fc7dfcefbf674244bcf8f7db1703145,
-        type: 2}
-    - target: {fileID: 4807254360163107968, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: _level
-      value: 
-      objectReference: {fileID: 11400000, guid: ed6b6e98823498e43a0c65ebf0f2e4bf,
-        type: 2}
-    - target: {fileID: 6162098535143240129, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6162098535268006980, guid: 9a4ba053b22900240a027e78a7f8a28f,
         type: 3}
       propertyPath: m_Name
@@ -10141,5 +10088,6 @@ PrefabInstance:
       propertyPath: OnTransitionOut_Start.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 709363640}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4707857882787827293, guid: 6e7cf623e500fcf45bc10eec6a09b006, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6e7cf623e500fcf45bc10eec6a09b006, type: 3}

@@ -1,33 +1,39 @@
 using CustomAttributes;
 using DataSaving;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(LevelButton), typeof(Button))]
-public class LevelButtonWrap : MonoBehaviour
+public class LevelButton : MonoBehaviour
 {
-    [SerializeField, LocalComponent]
-    private LevelButton _levelButton;
-    [SerializeField, LocalComponent]
-    private Button button;
-
     [SerializeField]
-    private Color ColorForButton;
+    private LevelSO _levelSO;
+    [SerializeField, FoldoutGroup("Completed color")]
+    private ColorBlock _completedColor = ColorBlock.defaultColorBlock;
     [SerializeField]
     private bool _startUnlocked;
 
     [SerializeField]
-    List<LevelButtonWrap> AdjecentLevels;
+    List<LevelButton> AdjecentLevels;
 
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent OnUnlock;
+
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent OnCompleted;
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent<ColorBlock> CompletedColor;
+
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent OnLocked;
     LevelsData _levels;
     Level _level;
     GameManager gameManager;
     private void Awake()
     {
-        if (button == null)
-            button = GetComponent<Button>();
         _levels = DataHandler.Load<LevelsData>();
         gameManager = GameManager.instance;
         CheckIfLevelWon();
@@ -37,10 +43,10 @@ public class LevelButtonWrap : MonoBehaviour
     }
     private void CheckIfLevelWon()
     {
-        if (_levelButton == null || _levelButton.Level == null)
+        if (_levelSO == null)
             return;
 
-        LinkedListNode<LevelSO> levelNode = gameManager.levelsWon.Find(_levelButton.Level);
+        LinkedListNode<LevelSO> levelNode = gameManager.levelsWon.Find(_levelSO);
         
         if (levelNode == null)
             return;
@@ -54,10 +60,10 @@ public class LevelButtonWrap : MonoBehaviour
 
     private void LoadLevelData()
     {
-        if (_levelButton == null || _levelButton.Level == null)
+        if (_levelSO == null)
             return;
 
-        var name = _levelButton.Level.SceneName;
+        var name = _levelSO.SceneName;
         _level = _levels.Levels.Find((x) => name == x.Name);
 
         if (_level == null)
@@ -90,12 +96,14 @@ public class LevelButtonWrap : MonoBehaviour
         switch (_level.LevelState)
         {
             case LevelState.Unlocked:
-                button.interactable = true;
+                OnUnlock?.Invoke();
                 break;
             case LevelState.Completed:
-                ColorBlock tempBlock = button.colors;
-                tempBlock.normalColor = ColorForButton;
-                button.colors = tempBlock;
+                OnCompleted?.Invoke();
+                CompletedColor?.Invoke(_completedColor);
+                break;
+            case LevelState.Locked:
+                OnLocked?.Invoke();
                 break;
         }
     }
@@ -131,6 +139,7 @@ public class LevelButtonWrap : MonoBehaviour
 
         LoadLevelToScreen();
     }
+    public void Select() => LevelSelection.SelectedLevel = _levelSO;
 }
 public enum LevelState { Locked, Unlocked, Completed }
 [Serializable]

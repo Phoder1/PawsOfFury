@@ -18,6 +18,9 @@ public class UnitSelectionTerminal : MonoBehaviour
         UnitSelection.OnSelect += (x) => OnSelect?.Invoke(x);
         UnitSelection.OnDeselect += (x) => OnDeselect?.Invoke(x);
         UnitSelection.OnDisenchant += (x) => OnDisenchant?.Invoke(x);
+
+        if (UnitSelection.SelectedUnit != null)
+            OnSelect?.Invoke(UnitSelection.SelectedUnit);
     }
     private void OnDisable()
     {

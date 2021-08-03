@@ -1,18 +1,28 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelSelectionTerminal : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent<LevelSO> OnSelect;
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent<LevelSO> OnDeselect;
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        LevelSelection.OnSelect += (x) => OnSelect?.Invoke(x);
+        LevelSelection.OnDeselect += (x) => OnDeselect?.Invoke(x);
+
+        if (LevelSelection.SelectedLevel != null)
+            OnSelect?.Invoke(LevelSelection.SelectedLevel);
     }
+    private void OnDisable()
+    {
+        LevelSelection.OnSelect -= (x) => OnSelect?.Invoke(x);
+        LevelSelection.OnDeselect -= (x) => OnDeselect?.Invoke(x);
+    }
+    public void Select(LevelSO unit) => LevelSelection.SelectedLevel = unit;
 }

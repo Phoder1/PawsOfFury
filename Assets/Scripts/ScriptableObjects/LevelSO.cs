@@ -9,6 +9,8 @@ public class LevelSO : ScriptableObject
 {
     [SerializeField, ValueDropdown("Scenes"), InspectorName("Scene")]
     private string _sceneName;
+    [SerializeField]
+    private string _levelName = string.Empty;
     [BoxGroup("Rewards")]
     [SerializeField, Range(0, 1)]
     private float _chanceToGetACard;
@@ -24,6 +26,7 @@ public class LevelSO : ScriptableObject
     private PlayerCurrency _playerCurrency = null;
     private PlayerCurrency PlayerCurrency => DataHandler.Getter(ref _playerCurrency);
     public string SceneName => _sceneName;
+    public string LevelName => _levelName == string.Empty ? StringFormating.SplitCamelCase(name) : _levelName;
     public float ChanceToGetACard => _chanceToGetACard;
     public int CrystalsReward => _crystalsReward;
     public Level GetLevel() => LevelsData.GetLevel(SceneName);
