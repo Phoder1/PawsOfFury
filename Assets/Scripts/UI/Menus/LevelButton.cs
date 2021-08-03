@@ -40,11 +40,17 @@ public class LevelButton : MonoBehaviour
     {
         _sceneLoader = GetComponentInParent<SceneLoader>();
     }
-    public void LoadScene()
+    public void LoadScene() => LoadScene(Level);
+    public void LoadScene(LevelSO level)
     {
-        if (_sceneLoader == null || _level == null)
+        if (_sceneLoader == null || level == null)
             return;
 
-        _sceneLoader.TransitionToScene(_level.SceneName);
+        _sceneLoader.TransitionToScene(level.SceneName);
+    }
+    public void LoadSelectedLevel()
+    {
+        if (LevelSelection.SelectedLevel != null)
+            LoadScene(LevelSelection.SelectedLevel);
     }
 }

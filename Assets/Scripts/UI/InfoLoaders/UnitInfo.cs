@@ -9,6 +9,13 @@ public class UnitInfo : MonoBehaviour
 {
     [FoldoutGroup("Refrences")]
 
+    [SerializeField, TabGroup("Refrences/Data", "UnitInformation")]
+    private UnityEvent<int> _gooValue;
+    [SerializeField, TabGroup("Refrences/Data", "UnitInformation")]
+    public UnityEvent<bool> _owned;
+    [SerializeField, TabGroup("Refrences/Data", "UnitInformation")]
+    public UnityEvent<bool> _disenchatable;
+
     [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
     private UnityEvent<string> _name;
     [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
@@ -19,8 +26,6 @@ public class UnitInfo : MonoBehaviour
     public UnityEvent<Color> _borderColor;
     [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
     public UnityEvent<Color> _backgroundColor;
-    [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
-    public UnityEvent<bool> _owned;
 
     [SerializeField, TabGroup("Refrences/Data", "UnitSlot")]
     private UnityEvent<int> _amount;
@@ -62,6 +67,10 @@ public class UnitInfo : MonoBehaviour
             else if (unitSO.OneStarPrefab != null)
                 Load(unitSO.OneStarPrefab.GetComponent<Unit>());
         }
+
+        _gooValue?.Invoke(unitInformation.GooValue);
+        _owned?.Invoke(unitInformation.Owned);
+        _disenchatable?.Invoke(unitInformation.Disenchantable);
     }
     public void Load(UnitSO unitSO)
     {
@@ -73,7 +82,6 @@ public class UnitInfo : MonoBehaviour
         _uiSprite?.Invoke(unitSO.UiSprite);
         _borderColor?.Invoke(unitSO.BorderColor);
         _backgroundColor?.Invoke(unitSO.BackgroundColor);
-        _owned?.Invoke(unitSO.Owned);
     }
     public void Load(UnitSlotData unitSlotData)
     {

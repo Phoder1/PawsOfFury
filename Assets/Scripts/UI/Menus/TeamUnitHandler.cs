@@ -35,11 +35,11 @@ public class TeamUnitHandler : MonoBehaviour
     public void Select()
     {
         UnitSelection.SelectedUnit = unitInfo;
-        UnitSelection.OnDeselectEvent += Deselected;
+        UnitSelection.OnDeselect += Deselected;
 
         void Deselected(UnitInformation unitButton)
         {
-            UnitSelection.OnDeselectEvent -= Deselected;
+            UnitSelection.OnDeselect -= Deselected;
         }
     }
     public void Deselect()

@@ -226,11 +226,11 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
     {
         UnitSelection.SelectedUnit = Unit;
         OnSelectUE?.Invoke();
-        UnitSelection.OnDeselectEvent += Deselected;
+        UnitSelection.OnDeselect += Deselected;
 
         void Deselected(UnitInformation unitButton)
         {
-            UnitSelection.OnDeselectEvent -= Deselected;
+            UnitSelection.OnDeselect -= Deselected;
             OnDeselectUE?.Invoke();
         }
     }

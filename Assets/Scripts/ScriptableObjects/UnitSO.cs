@@ -65,9 +65,10 @@ public class UnitSO : ScriptableObject
             return 0;
         }
     }
-    public Sprite TierCrystal => Database.UnitAssets.TierAssets[Tier - 1].CrystalSprite;
-    public Color BackgroundColor => Database.UnitAssets.TierAssets[Tier - 1].BackgroundColor;
-    public Color BorderColor => Database.UnitAssets.TierAssets[Tier - 1].BorderColor;
+    public TierAsset TierAsset => Database.UnitAssets.TierAssets[Tier - 1];
+    public Sprite TierCrystal => TierAsset.CrystalSprite;
+    public Color BackgroundColor => TierAsset.BackgroundColor;
+    public Color BorderColor => TierAsset.BorderColor;
     public UnitSlotData SlotData => DataHandler.Load<InventoryData>().Units.Find((x) => x.ID == ID);
     public bool Owned
     {
@@ -114,4 +115,10 @@ public class UnitInformation
         this.unitSO = unitSO;
         this.slotData = slotData;
     }
+
+    public bool Owned => slotData != null && slotData.Count > 0;
+    public bool Disenchantable => Amount > 1;
+    public int Level => slotData == null ? 1 : slotData.Level;
+    public int GooValue => unitSO.GooValue(Level);
+    public int Amount => slotData == null ? 0 : slotData.Count;
 }

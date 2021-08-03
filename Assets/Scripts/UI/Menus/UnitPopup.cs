@@ -12,7 +12,7 @@ public class UnitPopup : MonoBehaviour
     private void Awake()
     {
         UnitSelection.OnSelect += MinionSelected;
-        UnitSelection.OnDeselectEvent += MinionDeselected;
+        UnitSelection.OnDeselect += MinionDeselected;
 
         if(UnitSelection.SelectedUnit != null)
             MinionSelected(UnitSelection.SelectedUnit);
@@ -20,7 +20,7 @@ public class UnitPopup : MonoBehaviour
     private void OnDestroy()
     {
         UnitSelection.OnSelect -= MinionSelected;
-        UnitSelection.OnDeselectEvent -= MinionDeselected;
+        UnitSelection.OnDeselect -= MinionDeselected;
     }
 
     void MinionSelected(UnitInformation unit)
