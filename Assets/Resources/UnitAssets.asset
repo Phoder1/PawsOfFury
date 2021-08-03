@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: UnitAssets
   m_EditorClassIdentifier: 
   _tierAssets:
-  - _crystalSprite: {fileID: 21300000, guid: d63f5071b2d7fb24c87580a46e49e608, type: 3}
+  - _crystalSprite: {fileID: 21300000, guid: 1a88ebca7a3989143a560a10fdda597e, type: 3}
     _borderColor: {r: 0.38823533, g: 0.77647066, b: 0.3647059, a: 1}
     _backgroundColor: {r: 0.32156864, g: 0.43921572, b: 0.40784317, a: 1}
-  - _crystalSprite: {fileID: 21300000, guid: 1a88ebca7a3989143a560a10fdda597e, type: 3}
+  - _crystalSprite: {fileID: 21300000, guid: d63f5071b2d7fb24c87580a46e49e608, type: 3}
     _borderColor: {r: 0.37254903, g: 0.5529412, b: 0.7686275, a: 1}
     _backgroundColor: {r: 0.7490196, g: 0.8196079, b: 0.8078432, a: 1}
   - _crystalSprite: {fileID: 21300000, guid: cd0f9b475bcfc44448fc10135e91e05f, type: 3}
