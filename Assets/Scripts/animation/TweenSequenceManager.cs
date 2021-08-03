@@ -22,6 +22,7 @@ public class TweenSequenceManager : MonoBehaviour
         _sequence.SetAutoKill(false);
         _sequence.onRewind += OnWindowClose;
         _sequence.onComplete += OnWindowOpen;
+        _sequence.Pause();
         foreach (var tweenAnimation in _tweenAnimations)
         {
             Tween tween = tweenAnimation.tweenAnimation.tween;

@@ -18,12 +18,15 @@ public class Projectile : MonoBehaviour
     protected Entity target;
     public event Action OnProjectileAnimation;
     public EffectData[] effects;
+
+    public EffectDataSO[] EffectsData => effectsData;
+
     public void ProjectileAnimRecall() => OnProjectileAnimation?.Invoke();
 
 
     protected virtual void OnEnable()
     {
-        effects = Array.ConvertAll(effectsData, (x) => (EffectData)x);
+        effects = Array.ConvertAll(EffectsData, (x) => (EffectData)x);
     }
     public void Init(Entity attackingEntity, Entity target, Action<Entity[], Entity> callback = null, Vector3? originPosition = null)
     {

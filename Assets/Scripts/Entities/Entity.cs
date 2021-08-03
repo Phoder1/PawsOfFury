@@ -49,6 +49,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     [SerializeField] bool ISInitOnStart = false;
 
     protected abstract EntityState DefaultState();
+    public DefualtStats DefualtStats => defualtStats;
     public UnityEvent OnDestroyEvent;
     public UnityEvent OnDeathEvent;
 
