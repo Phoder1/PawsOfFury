@@ -2,39 +2,44 @@ using Assets.Stats;
 using DataSaving;
 using Sirenix.OdinInspector;
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UnitInfo : MonoBehaviour
 {
     [FoldoutGroup("Refrences")]
 
     [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
-    private TextMeshProUGUI _name;
+    private UnityEvent<string> _name;
     [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
-    private TextMeshProUGUI _description;
+    private UnityEvent<string> _description;
     [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
-    private Image _uiSprite;
+    private UnityEvent<Sprite> _uiSprite;
+    [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
+    public UnityEvent<Color> _borderColor;
+    [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
+    public UnityEvent<Color> _backgroundColor;
+    [SerializeField, TabGroup("Refrences/Data", "UnitSO")]
+    public UnityEvent<bool> _owned;
 
     [SerializeField, TabGroup("Refrences/Data", "UnitSlot")]
-    private TextMeshProUGUI _amount;
+    private UnityEvent<int> _amount;
     [SerializeField, TabGroup("Refrences/Data", "UnitSlot")]
-    private TextMeshProUGUI _level;
+    private UnityEvent<int> _level;
 
     [SerializeField, TabGroup("Refrences/Data", "Unit")]
-    private TextMeshProUGUI _goldValue;
+    private UnityEvent<int> _goldValue;
     [SerializeField, TabGroup("Refrences/Data", "DefualtStats")]
-    private TextMeshProUGUI _maxHealth;
+    private UnityEvent<float> _maxHealth;
     [SerializeField, TabGroup("Refrences/Data", "DefualtStats")]
-    private TextMeshProUGUI _walkSpeed;
+    private UnityEvent<float> _walkSpeed;
 
     [SerializeField, TabGroup("Refrences/Data", "ProjectileData")]
-    private TextMeshProUGUI _range;
+    private UnityEvent<float> _range;
     [SerializeField, TabGroup("Refrences/Data", "ProjectileData")]
-    private TextMeshProUGUI _attackSpeed;
+    private UnityEvent<float> _attackSpeed;
     [SerializeField, TabGroup("Refrences/Data", "ProjectileData")]
-    private TextMeshProUGUI _damage;
+    private UnityEvent<float> _damage;
     public void Load(UnitInformation unitInformation)
     {
         if (unitInformation == null)
@@ -54,7 +59,7 @@ public class UnitInfo : MonoBehaviour
         {
             if (unitSlot != null)
                 Load(unitSO.GetPrefab(unitSlot.Level).GetComponent<Unit>());
-            else if(unitSO.OneStarPrefab != null)
+            else if (unitSO.OneStarPrefab != null)
                 Load(unitSO.OneStarPrefab.GetComponent<Unit>());
         }
     }
@@ -63,24 +68,20 @@ public class UnitInfo : MonoBehaviour
         if (unitSO == null)
             return;
 
-        if (_name != null)
-            _name.text = unitSO.UnitName;
-
-        if (_description != null)
-            _description.text = unitSO.Description;
-
-        if (_uiSprite != null)
-            _uiSprite.sprite = unitSO.UiSprite;
+        _name?.Invoke(unitSO.UnitName);
+        _description?.Invoke(unitSO.Description);
+        _uiSprite?.Invoke(unitSO.UiSprite);
+        _borderColor?.Invoke(unitSO.BorderColor);
+        _backgroundColor?.Invoke(unitSO.BackgroundColor);
+        _owned?.Invoke(unitSO.Owned);
     }
     public void Load(UnitSlotData unitSlotData)
     {
         if (unitSlotData == null)
             return;
 
-        if (_amount != null)
-            _amount.text = unitSlotData.Count.ToString();
-        if (_level != null)
-            _level.text = unitSlotData.Level.ToString();
+        _amount?.Invoke(unitSlotData.Count);
+        _level?.Invoke(unitSlotData.Level);
     }
     public void Load(Unit unit)
     {
@@ -90,27 +91,20 @@ public class UnitInfo : MonoBehaviour
         Load(unit.DefualtStats);
         Load(unit.projectile);
 
-        if (_goldValue != null)
-            _goldValue.text = unit.goldValue.ToString();
+        _goldValue?.Invoke(unit.goldValue);
     }
     public void Load(DefualtStats defualtStats)
     {
-        if (_maxHealth != null)
-            _maxHealth.text = defualtStats.MaxHP.ToString();
-
-        if (_walkSpeed != null)
-            _walkSpeed.text = defualtStats.WalkSpeed.ToString();
+        _maxHealth?.Invoke(defualtStats.MaxHP);
+        _walkSpeed?.Invoke(defualtStats.WalkSpeed);
     }
     public void Load(ProjectileData projectileData)
     {
         if (projectileData == null)
             return;
 
-        if (_range != null)
-            _range.text = projectileData.targeting.RulesOrder[0].range.ToString();
-
-        if (_attackSpeed != null)
-            _attackSpeed.text = projectileData.attackSpeed.ToString();
+        _range?.Invoke(projectileData.targeting.RulesOrder[0].range);
+        _attackSpeed?.Invoke(projectileData.attackSpeed);
 
         Projectile projectile = projectileData.gameobject.GetComponent<Projectile>();
         if (projectile == null)
@@ -123,13 +117,12 @@ public class UnitInfo : MonoBehaviour
                 EffectDataSO damage = Array.Find(projectile.EffectsData, (x) => x.AffectedStat == StatType.HP);
 
                 if (damage != null && damage.Amount < 0)
-                    _damage.text = (damage.Amount * -1).ToString();
+                    _damage?.Invoke(damage.Amount * -1);
                 else
-                    _damage.text = string.Empty;
+                    _damage?.Invoke(0);
             }
             else
-                _damage.text = string.Empty;
-
+                _damage?.Invoke(0);
         }
     }
 }
