@@ -23,7 +23,7 @@ public class UnitAssetsSO : ScriptableObject
     public Color BorderColor => _borderColor;
     [SerializeField]
     private Color _backgroundColor;
-    public Color BackgroundColor => _borderColor;
+    public Color BackgroundColor => _backgroundColor;
         
     }
 }
