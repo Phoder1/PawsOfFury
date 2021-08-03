@@ -8,6 +8,9 @@ using System;
 public class UnitSO : ScriptableObject
 {
     [SerializeField]
+    private string _unitName;
+    public string UnitName => _unitName;
+    [SerializeField]
     private Sprite _uiSprite;
     public Sprite UiSprite => _uiSprite;
     [SerializeField, TextArea]
