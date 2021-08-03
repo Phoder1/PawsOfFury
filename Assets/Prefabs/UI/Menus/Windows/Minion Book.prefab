@@ -272,7 +272,7 @@ MonoBehaviour:
   scrollContent: {fileID: 8690779739908393807}
   _unitButtonPrefab: {fileID: 6276935848271651243, guid: c9c33d74955a5ce45a671a3bbb04bf78,
     type: 3}
-  _filters: 2
+  _filters: 3
   _sortes:
   - sorting: 0
     reverse: 0
