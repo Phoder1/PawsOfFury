@@ -9939,11 +9939,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minion Book
       objectReference: {fileID: 0}
-    - target: {fileID: 8690779740416044573, guid: 6e7cf623e500fcf45bc10eec6a09b006,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8690779740416044575, guid: 6e7cf623e500fcf45bc10eec6a09b006,
         type: 3}
       propertyPath: OnSetActiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target

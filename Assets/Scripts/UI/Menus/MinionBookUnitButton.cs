@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -138,8 +139,6 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
     }
     private void OnContentPointerExit(BaseEventData baseEventData)
     {
-        Debug.Log("Exit");
-
         if (State != DragState.Pressed)
             return;
 
