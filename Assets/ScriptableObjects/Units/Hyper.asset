@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
   m_Name: Hyper
   m_EditorClassIdentifier: 
+  _unitName: 
   _uiSprite: {fileID: 21300000, guid: d55396d597318bd448d29947dcb2f60b, type: 3}
-  _description: AAAAWWWOOOOO - FASTER !
+  _description: HYPE other minions making them attack faster - AWOOO
   id: 4
   tier: 1
   oneStarPrefab: {fileID: 3269433762606668826, guid: 195fb92aeb0197b4392af21b2b19e674,

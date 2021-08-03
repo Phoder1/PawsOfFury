@@ -31,12 +31,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 972123456}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -32.8472, y: -30.8621}
-  m_SizeDelta: {x: 65.6937, y: 61.724}
+  m_AnchoredPosition: {x: -40.3713, y: -37.9316}
+  m_SizeDelta: {x: 80.7419, y: 75.8629}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &583924634
 CanvasRenderer:
@@ -162,10 +162,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7243719050086312074}
-  - {fileID: 583924631}
   - {fileID: 1604940831}
   - {fileID: 374215316162128885}
   - {fileID: 6870157649865896215}
+  - {fileID: 583924631}
   m_Father: {fileID: 6493834738486149917}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -511,7 +511,7 @@ RectTransform:
   m_Children:
   - {fileID: 7816066492704443369}
   m_Father: {fileID: 972123456}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1581,7 +1581,7 @@ RectTransform:
   - {fileID: 8210163875079923678}
   - {fileID: 5301910805168973449}
   m_Father: {fileID: 972123456}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3073,7 +3073,7 @@ RectTransform:
   - {fileID: 136471415518332799}
   - {fileID: 7450270981251215632}
   m_Father: {fileID: 972123456}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3192,7 +3192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.05882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.23921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5384,21 +5384,9 @@ PrefabInstance:
     - {fileID: 3990290800939943236, guid: 8f6731392ca14bd40a9534291893a083, type: 3}
     - {fileID: 3990290800939943235, guid: 8f6731392ca14bd40a9534291893a083, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8f6731392ca14bd40a9534291893a083, type: 3}
---- !u!1 &6493834738122195217 stripped
+--- !u!1 &6493834737369758422 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3990290801192024223, guid: 8f6731392ca14bd40a9534291893a083,
-    type: 3}
-  m_PrefabInstance: {fileID: 7889990017732491662}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &6493834738486149917 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3990290801566268051, guid: 8f6731392ca14bd40a9534291893a083,
-    type: 3}
-  m_PrefabInstance: {fileID: 7889990017732491662}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6493834738486149916 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3990290801566268050, guid: 8f6731392ca14bd40a9534291893a083,
+  m_CorrespondingSourceObject: {fileID: 3990290802597593944, guid: 8f6731392ca14bd40a9534291893a083,
     type: 3}
   m_PrefabInstance: {fileID: 7889990017732491662}
   m_PrefabAsset: {fileID: 0}
@@ -5414,9 +5402,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &6493834737369758422 stripped
+--- !u!1 &6493834738486149916 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3990290802597593944, guid: 8f6731392ca14bd40a9534291893a083,
+  m_CorrespondingSourceObject: {fileID: 3990290801566268050, guid: 8f6731392ca14bd40a9534291893a083,
+    type: 3}
+  m_PrefabInstance: {fileID: 7889990017732491662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6493834738486149917 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3990290801566268051, guid: 8f6731392ca14bd40a9534291893a083,
+    type: 3}
+  m_PrefabInstance: {fileID: 7889990017732491662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6493834738122195217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3990290801192024223, guid: 8f6731392ca14bd40a9534291893a083,
     type: 3}
   m_PrefabInstance: {fileID: 7889990017732491662}
   m_PrefabAsset: {fileID: 0}

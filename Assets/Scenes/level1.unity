@@ -17755,7 +17755,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 1
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 0fe3424368cb94047871d138411da1fa, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 56ca14d11999fd44ba3efe8119194d4a, type: 2}
 --- !u!4 &1785613351
 Transform:
   m_ObjectHideFlags: 0
@@ -30627,7 +30627,7 @@ PrefabInstance:
     - target: {fileID: 4473882820393996156, guid: cbb9f786e51696d42ba269ee45966582,
         type: 3}
       propertyPath: startingGold
-      value: 15
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4473882820393996156, guid: cbb9f786e51696d42ba269ee45966582,
         type: 3}

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
+  _unitName: 
   _uiSprite: {fileID: 21300000, guid: fdb3fea5317fd164e9849bf42747ff50, type: 3}
-  _description: Tanki Tank !  with the lightnning Hammer
+  _description: Tanki Tank!  with the lightnning Hammer
   id: 3
   tier: 1
   oneStarPrefab: {fileID: 3269433762606668826, guid: 531343a61f95bfb4296c6fe510595f94,

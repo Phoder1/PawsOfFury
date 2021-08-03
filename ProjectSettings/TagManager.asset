@@ -22,7 +22,7 @@ TagManager:
   - Path
   - Enemy
   - Placable
-  - 
+  - VFX
   - 
   - 
   - 
@@ -62,4 +62,7 @@ TagManager:
     locked: 0
   - name: Units
     uniqueID: 3147621181
+    locked: 0
+  - name: VFX
+    uniqueID: 806343183
     locked: 0

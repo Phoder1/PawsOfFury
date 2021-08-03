@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
   m_Name: Double Axe
   m_EditorClassIdentifier: 
+  _unitName: 
   _uiSprite: {fileID: 21300000, guid: 61c01a4a023887b4083509b771e1b16e, type: 3}
-  _description: Double Trouble With an AXE
+  _description: 'Double Trouble With an AXE '
   id: 6
   tier: 2
   oneStarPrefab: {fileID: 3269433762606668826, guid: 25dba61b4193bfa4c8aa33783f31dd0f,
