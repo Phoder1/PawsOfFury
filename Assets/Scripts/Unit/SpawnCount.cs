@@ -7,6 +7,11 @@ public class SpawnCount : MonoBehaviour
     [SerializeField] GameObject Prefab; 
     [SerializeField] int DefaultAmount; 
 
+    private void Start()
+    {
+        
+    }
+
     public void Spawn() 
     {
         Spawn(DefaultAmount);
@@ -19,4 +24,5 @@ public class SpawnCount : MonoBehaviour
             Instantiate(Prefab, transform.position, Quaternion.identity);
         }
     }
+   
 }
