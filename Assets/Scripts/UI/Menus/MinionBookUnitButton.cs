@@ -8,28 +8,6 @@ using UnityEngine.UI;
 public enum DragState { None, Pressed, Dragged }
 public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IScrollHandler
 {
-    private static MinionBookUnitButton _selectedUnit;
-    public static MinionBookUnitButton SelectedUnit
-    {
-        get => _selectedUnit;
-        set
-        {
-            if (_selectedUnit == value)
-                return;
-
-            if (_selectedUnit != null)
-                OnDeselectEvent?.Invoke(_selectedUnit);
-
-            _selectedUnit = value;
-
-            if (_selectedUnit != null)
-                OnSelect?.Invoke(_selectedUnit);
-        }
-    }
-    public static event Action<MinionBookUnitButton> OnDeselectEvent;
-    public static event Action<MinionBookUnitButton> OnSelect;
-
-
     [SerializeField]
     private Image _raycastTarget;
     [SerializeField, Tooltip("In screen heights per second")]
@@ -246,20 +224,20 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
     }
     public void Select()
     {
-        SelectedUnit = this;
+        UnitSelection.SelectedUnit = Unit;
         OnSelectUE?.Invoke();
-        OnDeselectEvent += Deselected;
+        UnitSelection.OnDeselectEvent += Deselected;
 
-        void Deselected(MinionBookUnitButton unitButton)
+        void Deselected(UnitInformation unitButton)
         {
-            OnDeselectEvent -= Deselected;
+            UnitSelection.OnDeselectEvent -= Deselected;
             OnDeselectUE?.Invoke();
         }
     }
     public void Deselect()
     {
-        if (SelectedUnit == this)
-            SelectedUnit = null;
+        if (UnitSelection.SelectedUnit == Unit)
+            UnitSelection.SelectedUnit = null;
     }
     #endregion
 }

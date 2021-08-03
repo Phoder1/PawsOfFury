@@ -120,10 +120,10 @@ public class UnitInfo : MonoBehaviour
         {
             if (projectile.EffectsData != null)
             {
-                EffectData damage = Array.Find(projectile.EffectsData, (x) => x.AffectedStat == StatType.HP);
+                EffectDataSO damage = Array.Find(projectile.EffectsData, (x) => x.AffectedStat == StatType.HP);
 
-                if (damage != null && damage.amount < 0)
-                    _damage.text = (damage.amount * -1).ToString();
+                if (damage != null && damage.Amount < 0)
+                    _damage.text = (damage.Amount * -1).ToString();
                 else
                     _damage.text = string.Empty;
             }

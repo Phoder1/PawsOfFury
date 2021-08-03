@@ -32,4 +32,19 @@ public class TeamUnitHandler : MonoBehaviour
     {
         selectionSaver = DataHandler.Load<TeamData>();
     }
+    public void Select()
+    {
+        UnitSelection.SelectedUnit = unitInfo;
+        UnitSelection.OnDeselectEvent += Deselected;
+
+        void Deselected(UnitInformation unitButton)
+        {
+            UnitSelection.OnDeselectEvent -= Deselected;
+        }
+    }
+    public void Deselect()
+    {
+        if (UnitSelection.SelectedUnit == unitInfo)
+            UnitSelection.SelectedUnit = null;
+    }
 }

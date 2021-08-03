@@ -11,24 +11,24 @@ public class UnitPopup : MonoBehaviour
     private UnityEvent<UnitInformation> OnMinionDeselected;
     private void Awake()
     {
-        MinionBookUnitButton.OnSelect += MinionSelected;
-        MinionBookUnitButton.OnDeselectEvent += MinionDeselected;
+        UnitSelection.OnSelect += MinionSelected;
+        UnitSelection.OnDeselectEvent += MinionDeselected;
 
-        if(MinionBookUnitButton.SelectedUnit != null)
-            MinionSelected(MinionBookUnitButton.SelectedUnit);
+        if(UnitSelection.SelectedUnit != null)
+            MinionSelected(UnitSelection.SelectedUnit);
     }
     private void OnDestroy()
     {
-        MinionBookUnitButton.OnSelect -= MinionSelected;
-        MinionBookUnitButton.OnDeselectEvent -= MinionDeselected;
+        UnitSelection.OnSelect -= MinionSelected;
+        UnitSelection.OnDeselectEvent -= MinionDeselected;
     }
 
-    void MinionSelected(MinionBookUnitButton unitButton)
+    void MinionSelected(UnitInformation unit)
     {
-        OnMinionSelected?.Invoke(unitButton.Unit);
+        OnMinionSelected?.Invoke(unit);
     }
-    void MinionDeselected(MinionBookUnitButton unitButton)
+    void MinionDeselected(UnitInformation unit)
     {
-        OnMinionDeselected?.Invoke(unitButton.Unit);
+        OnMinionDeselected?.Invoke(unit);
     }
 }
