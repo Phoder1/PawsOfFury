@@ -580,6 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 0}
+  _restartLevel: 0
 --- !u!1 &1492289725
 GameObject:
   m_ObjectHideFlags: 0

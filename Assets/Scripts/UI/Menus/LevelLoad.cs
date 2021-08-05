@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
-using System;
+using UnityEngine;
 
 [HideMonoScript]
 public class LevelLoad : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, HideIf("@_restartLevel")]
     private LevelSO _level;
+    [SerializeField]
+    private bool _restartLevel = false;
     public LevelSO Level => _level;
 
     private SceneLoader _sceneLoader;
@@ -19,7 +16,13 @@ public class LevelLoad : MonoBehaviour
     {
         _sceneLoader = GetComponentInParent<SceneLoader>();
     }
-    public void LoadScene() => LoadScene(Level);
+    public void LoadScene()
+    {
+        if (_restartLevel && LevelManager.instance != null)
+            LoadScene(LevelManager.instance.Level);
+        else if (Level != null)
+            LoadScene(Level);
+    }
     public void LoadScene(LevelSO level)
     {
         if (_sceneLoader == null || level == null)

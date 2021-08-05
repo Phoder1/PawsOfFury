@@ -8,12 +8,13 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
+    [SerializeField, RequiredField(ErrorLogType.Error)] LevelSO _level;
     [SerializeField] Transform levelEnd;
     [Rename("Entity UIs Obj")]
     [SerializeField] Transform entityUIsObj;
     public Transform EntityUIsObj => entityUIsObj;
     public Tilemap tilemap;
-
+    public LevelSO Level => _level;
     List<Unit> units;
     List<Enemy> enemies;
     public Vector3? LevelEndPos

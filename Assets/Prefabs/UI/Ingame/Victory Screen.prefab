@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6068470485744027597}
   - component: {fileID: 546608961732800255}
   - component: {fileID: 6703846527361749532}
-  - component: {fileID: 8242619695060440587}
   m_Layer: 5
   m_Name: Prize Frame (after win)
   m_TagString: Untagged
@@ -78,19 +77,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8242619695060440587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142990220648262504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1adce4305e0b164f81f776a53657fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _crystalsReward: {fileID: 8193432732021291201}
 --- !u!1 &604180306475244850
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +88,6 @@ GameObject:
   - component: {fileID: 6749193597965398423}
   - component: {fileID: 1012056356343421093}
   - component: {fileID: 6095238320244417606}
-  - component: {fileID: 8934526897355825233}
   - component: {fileID: 8974551929254316120}
   m_Layer: 5
   m_Name: Minion Prize
@@ -171,19 +156,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8934526897355825233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604180306475244850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1adce4305e0b164f81f776a53657fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _crystalsReward: {fileID: 8658893453109333659}
 --- !u!114 &8974551929254316120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +255,7 @@ GameObject:
   - component: {fileID: 6312908550960679244}
   - component: {fileID: 9095116651966884972}
   - component: {fileID: 8193432732021291201}
+  - component: {fileID: 3233681681565519225}
   m_Layer: 5
   m_Name: Amount
   m_TagString: Untagged
@@ -407,6 +380,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3233681681565519225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675352119817926263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c834a596de447a74bbc6a2667996776f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnFormat:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8193432732021291201}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  prefix: 
+  suffix: 
+  _toStringFormat: 
+  _stringOverrides: []
 --- !u!1 &1997342120185660431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1532,7 @@ GameObject:
   - component: {fileID: 5594015155811679379}
   - component: {fileID: 7806773593755955497}
   - component: {fileID: 7806773593755955496}
+  - component: {fileID: 7741160310111719872}
   - component: {fileID: 1228007234}
   m_Layer: 5
   m_Name: Victory Screen
@@ -1602,11 +1607,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd3af507d239f04c9634bec903532b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: {fileID: 11400000, guid: 94810c7eddc524441994781a3ad72ce3, type: 2}
   OnLevelComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8242619695060440587}
+      - m_Target: {fileID: 7741160310111719872}
         m_TargetAssemblyTypeName: LevelInfo, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 0
@@ -1637,6 +1641,39 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: LevelVictory, Assembly-CSharp
         m_MethodName: LevelVectory
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7741160310111719872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594015155811679377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ad32944ef8a324f9e523d992b836f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name:
+    m_PersistentCalls:
+      m_Calls: []
+  _chanceToGetACard:
+    m_PersistentCalls:
+      m_Calls: []
+  _crystalReward:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3233681681565519225}
+        m_TargetAssemblyTypeName: TextFormatter, Assembly-CSharp
+        m_MethodName: Format
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2114,6 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 11400000, guid: e16bd3ae8f1c5224f8a516b2647f786d, type: 2}
+  _restartLevel: 0
 --- !u!1 &7806773594894556895
 GameObject:
   m_ObjectHideFlags: 0

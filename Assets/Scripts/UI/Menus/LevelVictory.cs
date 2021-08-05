@@ -6,13 +6,16 @@ using UnityEngine.Events;
 public class LevelVictory : MonoBehaviour
 {
     [SerializeField]
-    private LevelSO _level;
-    [SerializeField]
     private UnityEvent<LevelSO> OnLevelComplete;
 
     public void LevelVectory()
     {
-        GameManager.instance.AddLevelWon(_level);
-        OnLevelComplete?.Invoke(_level);
+        var levelManager = LevelManager.instance;
+
+        if (levelManager == null || levelManager.Level == null)
+            return;
+
+        GameManager.instance.AddLevelWon(levelManager.Level);
+        OnLevelComplete?.Invoke(levelManager.Level);
     }
 }

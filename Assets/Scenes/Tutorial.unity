@@ -2542,6 +2542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 11400000, guid: e16bd3ae8f1c5224f8a516b2647f786d, type: 2}
+  _restartLevel: 0
 --- !u!1 &493805878
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,6 +4085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 11400000, guid: 94810c7eddc524441994781a3ad72ce3, type: 2}
+  _restartLevel: 0
 --- !u!1 &992119829
 GameObject:
   m_ObjectHideFlags: 0
@@ -30177,6 +30179,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4473882820393996156, guid: cbb9f786e51696d42ba269ee45966582,
+        type: 3}
+      propertyPath: _level
+      value: 
+      objectReference: {fileID: 11400000, guid: 94810c7eddc524441994781a3ad72ce3,
+        type: 2}
     - target: {fileID: 4473882820393996156, guid: cbb9f786e51696d42ba269ee45966582,
         type: 3}
       propertyPath: tilemap

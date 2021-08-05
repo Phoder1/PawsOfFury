@@ -800,6 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 11400000, guid: e6b2c6690b63d954986856bb1ee71465, type: 2}
+  _restartLevel: 1
 --- !u!1 &1142255833067173726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 11400000, guid: e16bd3ae8f1c5224f8a516b2647f786d, type: 2}
+  _restartLevel: 0
 --- !u!1 &1142255833337524551
 GameObject:
   m_ObjectHideFlags: 0

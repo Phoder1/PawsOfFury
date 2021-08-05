@@ -36,10 +36,12 @@ public class LevelButton : MonoBehaviour
     {
         _levels = DataHandler.Load<LevelsData>();
         gameManager = GameManager.instance;
-        CheckIfLevelWon();
 
         LoadLevelData();
-
+    }
+    private void Start()
+    {
+        CheckIfLevelWon();
     }
     private void CheckIfLevelWon()
     {

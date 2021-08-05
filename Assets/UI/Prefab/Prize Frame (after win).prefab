@@ -516,7 +516,7 @@ MonoBehaviour:
         m_CallState: 2
   prefix: 
   suffix: 
-  _toStringFormat: '%'
+  _toStringFormat: P0
   _stringOverrides: []
 --- !u!1 &810775882130840184
 GameObject:
