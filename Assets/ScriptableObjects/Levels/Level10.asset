@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b9ac56ede0d2d446877a8231cba4270, type: 3}
-  m_Name: Level7
+  m_Name: Level10
   m_EditorClassIdentifier: 
-  _sceneName: level7
+  _sceneName: level10
   _levelName: 
   _chanceToGetACard: 0
-  _crystalsReward: 50
+  _crystalsReward: 20

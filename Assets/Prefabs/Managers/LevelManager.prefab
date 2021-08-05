@@ -47,7 +47,6 @@ MonoBehaviour:
   levelEnd: {fileID: 0}
   entityUIsObj: {fileID: 0}
   tilemap: {fileID: 0}
-  CheapestMinion: 10
   PlayerLose:
     m_PersistentCalls:
       m_Calls:
@@ -102,7 +101,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: b2cedcd0fb4af964aaa9f749ab12fa39, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
