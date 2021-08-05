@@ -1,3 +1,4 @@
+using DataSaving;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,9 @@ public class LevelVictory : MonoBehaviour
         if (levelManager == null || levelManager.Level == null)
             return;
 
-        GameManager.instance.AddLevelWon(levelManager.Level);
+        //GameManager.instance.AddLevelWon(levelManager.Level);
+        levelManager.Level.CompleteAndEarnReward();
         OnLevelComplete?.Invoke(levelManager.Level);
+        DataHandler.SaveAll();
     }
 }

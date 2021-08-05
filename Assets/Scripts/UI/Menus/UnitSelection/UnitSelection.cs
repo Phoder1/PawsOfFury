@@ -32,5 +32,6 @@ public static class UnitSelection
         SelectedUnit.slotData.Count--;
         DataHandler.Load<PlayerCurrency>().MonsterGoo += SelectedUnit.GooValue;
         OnDisenchant?.Invoke(SelectedUnit);
+        DataHandler.Save<PlayerCurrency>();
     }
 }

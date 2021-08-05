@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Flags] public enum Filters { Unowned = 1, Team = 2 }
+[Flags] public enum Filters { Unowned = 1, Team = 2, Mergeable = 4 }
 public enum SortingType { Tier, Level, Count }
 public class MinionCollection : MonoBehaviour
 {
@@ -64,6 +64,12 @@ public class MinionCollection : MonoBehaviour
             }
 
             if (_filters.HasFlag(Filters.Team) && uiUnit.UnitInfo.unitSO.TeamNumber != null)
+            {
+                uiUnit.gameObject.SetActive(false);
+                continue;
+            }
+
+            if(_filters.HasFlag(Filters.Mergeable) && !uiUnit.UnitInfo.Mergeable)
             {
                 uiUnit.gameObject.SetActive(false);
                 continue;

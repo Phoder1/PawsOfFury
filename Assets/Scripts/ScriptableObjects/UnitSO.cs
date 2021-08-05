@@ -118,6 +118,7 @@ public class UnitInformation
 
     public bool Owned => slotData != null && slotData.Count > 0;
     public bool Disenchantable => Amount > 1;
+    public bool Mergeable => Amount > 1;
     public int Level => slotData == null ? 1 : slotData.Level;
     public int GooValue => unitSO.GooValue(Level);
     public int Amount => slotData == null ? 0 : slotData.Count;
