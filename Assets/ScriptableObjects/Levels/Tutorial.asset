@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   _sceneName: Tutorial
-  _levelName: 
+  _levelName: Tutorial
   _chanceToGetACard: 0.149
   _crystalsReward: 10

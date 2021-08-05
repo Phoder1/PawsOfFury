@@ -4572,7 +4572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 11400000, guid: e6b2c6690b63d954986856bb1ee71465, type: 2}
-  _restartLevel: 0
+  _restartLevel: 1
 --- !u!1 &992119829
 GameObject:
   m_ObjectHideFlags: 0

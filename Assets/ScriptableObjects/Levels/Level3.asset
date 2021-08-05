@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   _sceneName: level3
-  _chanceToGetACard: 0
+  _levelName: Right or left?
+  _chanceToGetACard: 0.4
   _crystalsReward: 20

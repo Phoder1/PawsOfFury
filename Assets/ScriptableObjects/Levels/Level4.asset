@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Level4
   m_EditorClassIdentifier: 
   _sceneName: level4
-  _chanceToGetACard: 0
+  _levelName: Bomb it louder
+  _chanceToGetACard: 0.4
   _crystalsReward: 20

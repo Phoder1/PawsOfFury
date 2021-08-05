@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   _sceneName: level1
-  _chanceToGetACard: 0
+  _levelName: Once apon a start
+  _chanceToGetACard: 0.3
   _crystalsReward: 15

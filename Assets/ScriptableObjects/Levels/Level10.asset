@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Level10
   m_EditorClassIdentifier: 
   _sceneName: level10
-  _levelName: 
-  _chanceToGetACard: 0
-  _crystalsReward: 20
+  _levelName: ZIG ZAG
+  _chanceToGetACard: 0.6
+  _crystalsReward: 30

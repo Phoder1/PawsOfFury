@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Level7
   m_EditorClassIdentifier: 
   _sceneName: level7
-  _levelName: 
-  _chanceToGetACard: 0
+  _levelName: P.O.F
+  _chanceToGetACard: 0.1
   _crystalsReward: 50

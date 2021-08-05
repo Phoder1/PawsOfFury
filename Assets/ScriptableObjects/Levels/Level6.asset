@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Level6
   m_EditorClassIdentifier: 
   _sceneName: level6
-  _levelName: 
-  _chanceToGetACard: 0
+  _levelName: Triple zets
+  _chanceToGetACard: 0.1
   _crystalsReward: 50
