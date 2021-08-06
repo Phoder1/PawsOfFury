@@ -7181,27 +7181,27 @@ MonoBehaviour:
   - uiWindow: {fileID: 1745176802}
   - uiWindow: {fileID: 1974450902}
   - uiWindow: {fileID: 94536838}
-  transitionTime: 0.7
+  transitionTime: 0.3
   transitionCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 4.3634005
-      outSlope: 4.3634005
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.0282355
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.9980469
+      time: 1
       value: 1
-      inSlope: 0.20148644
-      outSlope: 0.20148644
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.050077077
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -9853,6 +9853,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1966691520576421268, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2459837451593256451, guid: 6e7cf623e500fcf45bc10eec6a09b006,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -9972,6 +9977,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690779739908393806, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690779739908393806, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690779739927904420, guid: 6e7cf623e500fcf45bc10eec6a09b006,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8690779740416044572, guid: 6e7cf623e500fcf45bc10eec6a09b006,
         type: 3}
