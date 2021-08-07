@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 499491182707082767}
   - component: {fileID: 2895861409913125738}
   - component: {fileID: 7533690655977317144}
-  - component: {fileID: 301553830628266635}
+  - component: {fileID: 1419749793129526073}
   m_Layer: 5
   m_Name: Minion_Holder
   m_TagString: Untagged
@@ -159,21 +159,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 301553830628266635}
-        m_TargetAssemblyTypeName: DataImporter, Assembly-CSharp
-        m_MethodName: set_DefaultData
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 301553830628266635}
-        m_TargetAssemblyTypeName: DataImporter, Assembly-CSharp
-        m_MethodName: Import
+      - m_Target: {fileID: 1419749793129526073}
+        m_TargetAssemblyTypeName: UnitInfo, Assembly-CSharp
+        m_MethodName: Load
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -205,7 +193,7 @@ MonoBehaviour:
   _latePassthroughEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &301553830628266635
+--- !u!114 &1419749793129526073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,46 +202,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 499491182707082764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5462040b6e7755241b5c569d0bb2afb3, type: 3}
+  m_Script: {fileID: 11500000, guid: f9ac1bfa318da694e971a8392dcd433e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlCallbacks: 1
-  _autoImport: 0
-  _dataType: 6
-  DefaultPassthrough:
+  _gooValue:
     m_PersistentCalls:
       m_Calls: []
-  StringExport:
+  _owned:
     m_PersistentCalls:
       m_Calls: []
-  IntExport:
+  _disenchatable:
     m_PersistentCalls:
       m_Calls: []
-  FloatExport:
+  _name:
     m_PersistentCalls:
       m_Calls: []
-  BoolExport:
+  _description:
     m_PersistentCalls:
       m_Calls: []
-  ObjectRefrenceExport:
-    m_PersistentCalls:
-      m_Calls: []
-  UnitSoPassthrough:
-    m_PersistentCalls:
-      m_Calls: []
-  IdExport:
-    m_PersistentCalls:
-      m_Calls: []
-  TierExport:
-    m_PersistentCalls:
-      m_Calls: []
-  DescriptionExport:
-    m_PersistentCalls:
-      m_Calls: []
-  CountExport:
-    m_PersistentCalls:
-      m_Calls: []
-  UnitSpriteExport:
+  _uiSprite:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8218815029356585203}
@@ -268,10 +235,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  TierCrystalExport:
-    m_PersistentCalls:
-      m_Calls: []
-  TierBorderColorExport:
+  _borderColor:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6972540495523086586}
@@ -310,7 +274,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  TierBackgroundColorExport:
+  _backgroundColor:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 924855066669185644}
@@ -325,7 +289,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OwnedExport:
+  _amount:
+    m_PersistentCalls:
+      m_Calls: []
+  _level:
+    m_PersistentCalls:
+      m_Calls: []
+  _goldValue:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  _walkSpeed:
+    m_PersistentCalls:
+      m_Calls: []
+  _range:
+    m_PersistentCalls:
+      m_Calls: []
+  _attackSpeed:
+    m_PersistentCalls:
+      m_Calls: []
+  _damage:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &499491184546941995

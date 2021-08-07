@@ -212,36 +212,36 @@ PrefabInstance:
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
       propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 160427667590969449}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: set_UnitInformation
       objectReference: {fileID: 0}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: DragMinion, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2895861409913125738, guid: b0370400004729a49b135704c7d3ca8a,
         type: 3}
-      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: OnUnitAssign.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8218815029356585203, guid: b0370400004729a49b135704c7d3ca8a,
