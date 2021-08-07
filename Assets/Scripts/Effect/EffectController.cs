@@ -72,7 +72,6 @@ public class EffectController
         GetStat.GetSetValue += toggleAmount;
         float toggleDelta = GetStat.GetSetValue - originalValue;
         //Disable amount
-        Debug.Log(toggleDelta);
         if (toggleDelta != 0)
             effectCoro = coroutineHandler.StartCoroutine(ResetToggleAmount(toggleDelta));
     }

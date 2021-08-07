@@ -30,6 +30,8 @@ public class WindowGroupHandler : MonoBehaviour
     private UnityEvent OnUiLock;
     [SerializeField, FoldoutGroup("Events")]
     private UnityEvent OnUiUnlock;
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent OnTransitionStart;
     #endregion
 
     #region State
@@ -99,6 +101,8 @@ public class WindowGroupHandler : MonoBehaviour
 
         from.uiWindow.TransitionOutStart();
         CurrentState.uiWindow.TransitionInStart();
+
+        OnTransitionStart?.Invoke();
 
         void OnComplete()
         {

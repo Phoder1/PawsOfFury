@@ -18,7 +18,7 @@ public class MinionCollection : MonoBehaviour
     private List<Sorter> _sortes;
 
     [SerializeField, ReadOnly, ListDrawerSettings(Expanded = false, ListElementLabelName = "editorName", IsReadOnly = true)]
-    private List<UiUnitController> sceneUnits;
+    private List<UiUnitController> sceneUnits = new List<UiUnitController>();
 
     private InventoryData inventory;
     private UnitsDatabaseSO database;
@@ -57,6 +57,9 @@ public class MinionCollection : MonoBehaviour
         //Filter
         foreach (var uiUnit in sceneUnits)
         {
+            if (uiUnit == null)
+                continue;
+
             if (_filters.HasFlag(Filters.Unowned) && !uiUnit.UnitInfo.unitSO.Owned)
             {
                 uiUnit.gameObject.SetActive(false);
@@ -79,11 +82,13 @@ public class MinionCollection : MonoBehaviour
         }
 
         //Sort
-        sceneUnits.Sort(ListHelper.CombineComparers(_sortes.ConvertAll((x) => x.Comparer)));
+        //sceneUnits.Sort(ListHelper.CombineComparers(_sortes.ConvertAll((x) => x.Comparer)));
 
-        //Set index in hierarchy 
-        for (int i = 0; i < sceneUnits.Count; i++)
-            sceneUnits[i].transform.SetSiblingIndex(i);
+        ////Set index in hierarchy 
+        //for (int i = 0; i < sceneUnits.Count; i++)
+        //{
+        //    sceneUnits[i].transform.SetSiblingIndex(i);
+        //}
     }
 
 

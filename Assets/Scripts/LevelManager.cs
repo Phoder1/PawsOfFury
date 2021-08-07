@@ -92,7 +92,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     }
     public void LoadedMinion(UnitInformation unitInfo)
     {
-        int unitPrice = unitInfo.unitSO.GetPrefab(unitInfo.slotData.Level).GetComponent<Unit>().goldValue;
+        int unitPrice = unitInfo.unitSO.GetPrefab(unitInfo.Level).GetComponent<Unit>().goldValue;
         if (CheapestMinion < 0 || CheapestMinion > unitPrice)
             CheapestMinion = unitPrice;
     }
