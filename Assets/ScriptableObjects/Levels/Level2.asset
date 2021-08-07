@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: level2
   _levelName: Slow or go
+  _replayable: 1
   _chanceToGetACard: 0.3
+  _overrideReward: {fileID: 0}
   _crystalsReward: 15

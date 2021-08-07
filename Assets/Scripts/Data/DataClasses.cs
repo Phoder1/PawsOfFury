@@ -17,7 +17,7 @@ namespace DataSaving
 
         public InventoryData()
         {
-            _units.OnValueChange += ValueChanged;
+            Units.OnValueChange += ValueChanged;
         }
 
         public DirtyDataList<UnitSlotData> Units
@@ -25,23 +25,20 @@ namespace DataSaving
             get => _units;
             set => Setter(ref _units, value);
         }
-        public override bool IsDirty => base.IsDirty || _units.IsDirty;
+        public override bool IsDirty => base.IsDirty || Units.IsDirty;
         protected override void OnClean()
         {
             base.OnClean();
-            _units.Clean();
+            Units.Clean();
         }
-        public void AddUnits(UnitInformation unit, byte amount)
+        public void AddUnits(UnitSO unit, byte amount)
         {
-            if (unit.slotData == null)
-            {
-                var slotData = Units.Find((x) => x.UnitSO == unit.unitSO);
+            var slotData = Units.Find((x) => x.UnitSO == unit);
 
-                if (slotData == null)
-                    Units.Add(new UnitSlotData((byte)unit.unitSO.ID, 1, (byte)amount));
-            }
+            if (slotData == null)
+                Units.Add(new UnitSlotData((byte)unit.ID, 1, (byte)amount));
             else
-                unit.slotData.Count++;
+                slotData.Count++;
         }
         #region ISaveable
         public event Action OnSaveStarted;

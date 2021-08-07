@@ -305,14 +305,61 @@ MonoBehaviour:
   - {fileID: 8221494202069621756}
   _animator: {fileID: 1030191868}
   _animationTriggerName: Init
+  _animationDuration: 3.683
   DiffrentTiersMessage: Units must be from the same tier
   NotAllSelectedMessage: Select 2 units
   NotAllMergableMessage: 'Error: None-mergable unit selectede'
   NotEnoughCopiesMessage: Not enogh copies
   EliteUnitMessage: Cannot merge elite units
-  OnValidUnitsSelected:
+  NotEnoughCurrencyMessage: Not enough currency
+  _gooCost:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 6963970723253839830}
+        m_TargetAssemblyTypeName: TextFormatter, Assembly-CSharp
+        m_MethodName: Format
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _crystalsCost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7892930934716285357}
+        m_TargetAssemblyTypeName: TextFormatter, Assembly-CSharp
+        m_MethodName: Format
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnValidUnitsSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnValidToMerge:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8799304958599863962}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 7820610873835955704}
         m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
         m_MethodName: set_text
@@ -323,12 +370,30 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   OnMerge:
     m_PersistentCalls:
       m_Calls: []
   OnInvalidSelection:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8799304958599863962}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInvalidToMerge:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInvalidMessage:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7820610873835955704}
@@ -930,6 +995,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4258377139600393227, guid: bd95605d929716547bd9a410c2415635,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258377139600393227, guid: bd95605d929716547bd9a410c2415635,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922767163417723985, guid: bd95605d929716547bd9a410c2415635,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922767163417723985, guid: bd95605d929716547bd9a410c2415635,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd95605d929716547bd9a410c2415635, type: 3}
 --- !u!224 &8799304957721827555 stripped
@@ -938,6 +1023,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7717003381544839608}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8799304958599863962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1226426662893811490, guid: bd95605d929716547bd9a410c2415635,
+    type: 3}
+  m_PrefabInstance: {fileID: 7717003381544839608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7820610873835955704 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 544981287236750400, guid: bd95605d929716547bd9a410c2415635,
@@ -948,5 +1045,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6963970723253839830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 845748508168556142, guid: bd95605d929716547bd9a410c2415635,
+    type: 3}
+  m_PrefabInstance: {fileID: 7717003381544839608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c834a596de447a74bbc6a2667996776f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7892930934716285357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 473193992067164181, guid: bd95605d929716547bd9a410c2415635,
+    type: 3}
+  m_PrefabInstance: {fileID: 7717003381544839608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c834a596de447a74bbc6a2667996776f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

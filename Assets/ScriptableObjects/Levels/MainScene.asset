@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: MainScene
   m_EditorClassIdentifier: 
   _sceneName: Level_Testing
+  _levelName: 
+  _replayable: 1
   _chanceToGetACard: 0
+  _overrideReward: {fileID: 0}
   _crystalsReward: 0

@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: level11
   _levelName: Highway
+  _replayable: 1
   _chanceToGetACard: 0.6
+  _overrideReward: {fileID: 0}
   _crystalsReward: 30

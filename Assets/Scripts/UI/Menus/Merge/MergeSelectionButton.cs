@@ -13,11 +13,11 @@ public class MergeSelectionButton : MonoBehaviour
 
     private UnitSelectionToken _selectionToken;
     private UnitInformation _selectedUnit;
-    private bool _merged = false;
+    private bool _locked = false;
     public UnitInformation SelectedUnit { get => _selectedUnit; private set => _selectedUnit = value; }
     public void Click()
     {
-        if (_merged)
+        if (_locked)
             return;
 
         OnClick?.Invoke();
@@ -26,7 +26,6 @@ public class MergeSelectionButton : MonoBehaviour
     }
     private void OnDisable()
     {
-        _selectionToken?.Dispose();
         Deselect();
     }
 
@@ -39,12 +38,20 @@ public class MergeSelectionButton : MonoBehaviour
     }
     private void Deselect()
     {
+        _selectionToken?.Dispose();
+
         SelectedUnit = null;
 
         OnDeselect?.Invoke();
     }
     public void StartedMerge()
     {
-        _merged = true;
+        _locked = true;
+    }
+
+    public void FinishedMerging()
+    {
+        Deselect();
+        _locked = false;
     }
 }

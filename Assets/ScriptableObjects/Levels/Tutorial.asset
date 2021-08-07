@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: Tutorial
   _levelName: Tutorial
-  _chanceToGetACard: 0.149
+  _replayable: 0
+  _chanceToGetACard: 1
+  _overrideReward: {fileID: 11400000, guid: 848821c0198751744a4e837d6871fe6f, type: 2}
   _crystalsReward: 10

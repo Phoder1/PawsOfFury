@@ -12,9 +12,6 @@ public static class UnitSelection
         get => _lastSelectedUnit;
         set
         {
-            if (_lastSelectedUnit == value)
-                return;
-
             _lastSelectedUnit = value;
 
             for (int i = 0; i < _selectionTokens.Count; i++)
@@ -90,14 +87,15 @@ public class UnitSelectionToken : IDisposable
     }
     public void Dispose()
     {
-        OnTokenDisposed?.Invoke();
         this.Unsubscribe();
 
-        SelectedUnit = null;
+        _selectedUnit = null;
         OnDeselect = null;
         OnSelect = null;
         OnDisenchant = null;
         OnTokenDisposed = null;
+
+        OnTokenDisposed?.Invoke();
     }
     public void Deselected(UnitInformation unitInformation) => OnDeselect?.Invoke(unitInformation);
     public void Selected(UnitInformation unitInformation) => OnSelect?.Invoke(unitInformation);

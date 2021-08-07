@@ -1,4 +1,3 @@
-using CustomAttributes;
 using DataSaving;
 using Sirenix.OdinInspector;
 using System;
@@ -23,7 +22,9 @@ public class LevelButton : MonoBehaviour
     private UnityEvent OnUnlock;
 
     [SerializeField, FoldoutGroup("Events")]
-    private UnityEvent OnCompleted;
+    private UnityEvent OnCompletedAndReplayable;
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent OnCompletedAndLocked;
     [SerializeField, FoldoutGroup("Events")]
     private UnityEvent<ColorBlock> CompletedColor;
 
@@ -36,7 +37,7 @@ public class LevelButton : MonoBehaviour
     {
         get
         {
-            if(_level == null && _levelSO != null)
+            if (_level == null && _levelSO != null)
             {
                 string name = _levelSO.SceneName;
 
@@ -72,7 +73,7 @@ public class LevelButton : MonoBehaviour
             return;
 
         LinkedListNode<LevelSO> levelNode = gameManager.levelsWon.Find(_levelSO);
-        
+
         if (levelNode == null)
             return;
 
@@ -115,8 +116,12 @@ public class LevelButton : MonoBehaviour
                 OnUnlock?.Invoke();
                 break;
             case LevelState.Completed:
-                OnCompleted?.Invoke();
                 CompletedColor?.Invoke(_completedColor);
+
+                if (_levelSO.Replayable)
+                    OnCompletedAndReplayable?.Invoke();
+                else
+                    OnCompletedAndLocked?.Invoke();
                 break;
             case LevelState.Locked:
                 OnLocked?.Invoke();

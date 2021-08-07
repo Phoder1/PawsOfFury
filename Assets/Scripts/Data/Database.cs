@@ -42,8 +42,6 @@ public static class Database
     }
     public static byte GetTeamUnitID(this int teamNumber)
     {
-
-        Debug.Log(teamNumber);
         return DataHandler.Load<TeamData>().Team[teamNumber - 1];
     }
 }

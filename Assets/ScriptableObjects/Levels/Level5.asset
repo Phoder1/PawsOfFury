@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: level5
   _levelName: Single zets
+  _replayable: 1
   _chanceToGetACard: 0.4
+  _overrideReward: {fileID: 0}
   _crystalsReward: 20

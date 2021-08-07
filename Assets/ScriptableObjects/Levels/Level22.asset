@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: level22
   _levelName: The final battle
+  _replayable: 1
   _chanceToGetACard: 0.6
+  _overrideReward: {fileID: 0}
   _crystalsReward: 30

@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: level12
   _levelName: trick or treat
+  _replayable: 1
   _chanceToGetACard: 0
+  _overrideReward: {fileID: 0}
   _crystalsReward: 30

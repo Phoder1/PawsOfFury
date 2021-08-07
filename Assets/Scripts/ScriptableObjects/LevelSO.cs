@@ -11,9 +11,14 @@ public class LevelSO : ScriptableObject
     private string _sceneName;
     [SerializeField]
     private string _levelName = string.Empty;
+    [SerializeField]
+    private bool _replayable = true;
     [BoxGroup("Rewards")]
     [SerializeField, Range(0, 1)]
     private float _chanceToGetACard;
+    [BoxGroup("Rewards")]
+    [SerializeField]
+    private UnitSO _overrideReward;
     [BoxGroup("Rewards")]
     [SerializeField]
     private int _crystalsReward = 0;
@@ -25,11 +30,16 @@ public class LevelSO : ScriptableObject
     [NonSerialized]
     private PlayerCurrency _playerCurrency = null;
     private PlayerCurrency PlayerCurrency => DataHandler.Getter(ref _playerCurrency);
+
+    [NonSerialized]
+    private InventoryData _inventory;
+    public InventoryData Inventory => DataHandler.Getter(ref _inventory);
     public string SceneName => _sceneName;
     public string LevelName => _levelName == string.Empty ? StringFormating.SplitCamelCase(name) : _levelName;
     public float ChanceToGetACard => _chanceToGetACard;
     public int CrystalsReward => _crystalsReward;
     public Level GetLevel() => LevelsData.GetLevel(SceneName);
+    public bool Replayable => _replayable;
     public bool IsCompleted
     {
         get
@@ -43,10 +53,10 @@ public class LevelSO : ScriptableObject
 
         }
     }
-    public void CompleteAndEarnReward()
+    public (int crystals, UnitSO unit) CompleteAndEarnReward()
     {
         CompletedLevel();
-        EarnReward();
+        return EarnReward();
     }
     public void CompletedLevel()
     {
@@ -61,9 +71,19 @@ public class LevelSO : ScriptableObject
             level.LevelState = LevelState.Completed;
         }
     }
-    private void EarnReward()
+    private (int crystals, UnitSO unit) EarnReward()
     {
         PlayerCurrency.Crystals += CrystalsReward;
+
+        UnitSO rewardUnit = _overrideReward;
+
+        if (rewardUnit == null && ChanceToGetACard > 0 && UnityEngine.Random.value <= ChanceToGetACard)
+            rewardUnit = UnitRandomizer.GetRandomUnit(1);
+
+        if (rewardUnit != null)
+            Inventory.AddUnits(rewardUnit, 1);
+
+        return (CrystalsReward, rewardUnit);
     }
 #if UNITY_EDITOR
     private string[] Scenes
@@ -79,6 +99,8 @@ public class LevelSO : ScriptableObject
             return sceneNames;
         }
     }
+
+
     private string GetFileName(string path)
     {
         var splitPath = path.Split('/');

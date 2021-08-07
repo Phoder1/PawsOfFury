@@ -164,7 +164,7 @@ public abstract class Entity : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         stats.Add(new Stat(this, StatType.DamageMultiplier, 100, maxDamage));
         Stat maxAttackSpeed = new Stat(this, StatType.MaxAttackSpeedMultiplier, defualtStats.MaxAttackSpeedMultiplier);
         stats.Add(maxAttackSpeed);
-        stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed, new Reaction(Reaction.AlwaysTrue, (value) => { if (animationHandler) animationHandler.SetSpeed(value.GetSetValue); Debug.Log(this.ToString() + " Speed: " + value.GetSetValue); })));
+        stats.Add(new Stat(this, StatType.AttackSpeedMultiplier, 1, maxAttackSpeed, new Reaction(Reaction.AlwaysTrue, (value) => { if (animationHandler) animationHandler.SetSpeed(value.GetSetValue); })));
         stats.Add(new Stat(this, StatType.WalkSpeed, defualtStats.WalkSpeed));
         stats.Add(new Stat(this, StatType.RangeMultiplier, 1));
     }

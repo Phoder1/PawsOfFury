@@ -8,6 +8,8 @@ public class LevelVictory : MonoBehaviour
 {
     [SerializeField]
     private UnityEvent<LevelSO> OnLevelComplete;
+    [SerializeField]
+    private UnityEvent<UnitSO> OnUnitWon;
 
     public void LevelVectory()
     {
@@ -17,7 +19,11 @@ public class LevelVictory : MonoBehaviour
             return;
 
         //GameManager.instance.AddLevelWon(levelManager.Level);
-        levelManager.Level.CompleteAndEarnReward();
+        var reward = levelManager.Level.CompleteAndEarnReward();
+        
+        if (reward.unit != null)
+            OnUnitWon?.Invoke(reward.unit);
+
         OnLevelComplete?.Invoke(levelManager.Level);
         DataHandler.SaveAll();
     }

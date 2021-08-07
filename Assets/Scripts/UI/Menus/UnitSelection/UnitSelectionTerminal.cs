@@ -14,7 +14,16 @@ public class UnitSelectionTerminal : MonoBehaviour
     private UnityEvent<UnitInformation> OnDisenchant;
 
     private UnitSelectionToken selectionToken;
-    private void OnEnable()
+    private void OnEnable() => EnableToken();
+
+
+    private void OnDisable() => Disabletoken();
+
+    private void Disabletoken()
+    {
+        selectionToken?.Dispose();
+    }
+    private void EnableToken()
     {
         UnitSelection.Subscribe(ref selectionToken);
 
@@ -22,10 +31,10 @@ public class UnitSelectionTerminal : MonoBehaviour
         selectionToken.OnDeselect += (x) => OnDeselect?.Invoke(x);
         selectionToken.OnDisenchant += (x) => OnDisenchant?.Invoke(x);
     }
-    private void OnDisable()
+    public void ResetToken()
     {
-        selectionToken?.Dispose();
-        selectionToken = null;
+        Disabletoken();
+        EnableToken();
     }
     public void Select(UnitInformation unit) => UnitSelection.LastSelectedUnit = unit;
     public void DisenchantSelected() => UnitSelection.DisenchantSelected();

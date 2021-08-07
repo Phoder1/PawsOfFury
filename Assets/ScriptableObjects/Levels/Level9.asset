@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: level9
   _levelName: Corners
+  _replayable: 1
   _chanceToGetACard: 0.5
+  _overrideReward: {fileID: 0}
   _crystalsReward: 20

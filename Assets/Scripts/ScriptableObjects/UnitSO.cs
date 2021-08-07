@@ -106,6 +106,9 @@ public class UnitSO : ScriptableObject
                 return null;
         }
     }
+
+    public int MergeCrystalsCost => GetMergeCrystalsCost(Tier);
+    public static int GetMergeCrystalsCost(int tier) => 50 * tier;
 }
 public class UnitInformation
 {
@@ -123,14 +126,14 @@ public class UnitInformation
     public bool Disenchantable => Amount > 1;
     public bool Mergeable => Amount > 1;
     public int Level => slotData == null ? 1 : slotData.Level;
-    public int GooValue => unitSO.GooValue(Level);
+    public int GooValue => unitSO.GooValue(unitSO.Tier);
     public int Amount => slotData == null ? 0 : slotData.Count;
 
 }
 public static class UnitRandomizer
 {
-    private static List<Randomizer<UnitInformation>> _unitRandomizers;
-    public static Randomizer<UnitInformation> GetRandomizer(int tier)
+    private static List<Randomizer<UnitSO>> _unitRandomizers;
+    public static Randomizer<UnitSO> GetRandomizer(int tier)
     {
         if (_unitRandomizers == null || tier > _unitRandomizers.Count)
             ConstructRandomizers();
@@ -141,18 +144,19 @@ public static class UnitRandomizer
     }
     private static void ConstructRandomizers()
     {
-        _unitRandomizers = new List<Randomizer<UnitInformation>>(UnitSO.MaxTier);
+        _unitRandomizers = new List<Randomizer<UnitSO>>(UnitSO.MaxTier);
         for (int i = 0; i < UnitSO.MaxTier; i++)
             _unitRandomizers.Add(CreateRandomizer(i + 1));
     }
-    private static Randomizer<UnitInformation> CreateRandomizer(int tier)
+    private static Randomizer<UnitSO> CreateRandomizer(int tier)
     {
-        var tierRandomizer = new Randomizer<UnitInformation>();
-        tierRandomizer.Add(Database.UnitsDatabase.Content.FindAll((x) => x.Tier == tier).ConvertAll((x) => new Option<UnitInformation>(x.GetUnitInformation())), false);
+        var tierRandomizer = new Randomizer<UnitSO>();
+        tierRandomizer.Add(Database.UnitsDatabase.Content.FindAll((x) => x.Tier == tier).ConvertAll((x) => new Option<UnitSO>(x)), false);
         return tierRandomizer;
     }
-    public static UnitInformation GetMergeReward( params UnitInformation[] mergedUnits)
+    public static UnitSO GetMergeReward( params UnitInformation[] mergedUnits)
     {
         return GetRandomizer(mergedUnits[0].unitSO.Tier + 1).GetRandomOption();
     }
+    public static UnitSO GetRandomUnit(int tier) => GetRandomizer(tier).GetRandomOption();
 }
