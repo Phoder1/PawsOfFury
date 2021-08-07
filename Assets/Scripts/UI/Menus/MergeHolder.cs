@@ -98,7 +98,10 @@ public class MergeHolder : MonoBehaviour
     private void CheckState()
     {
         if (_locked)
+        {
+            OnInvalidSelection?.Invoke();
             return;
+        }
 
         if (CheckIfSelectionValid(out var message))
         {
@@ -122,7 +125,6 @@ public class MergeHolder : MonoBehaviour
         {
             OnInvalidSelection?.Invoke();
             OnInvalidMessage?.Invoke(message);
-
         }
     }
     private bool CheckIfSelectionValid() => CheckIfSelectionValid(out _);
@@ -229,6 +231,8 @@ public class MergeHolder : MonoBehaviour
 
         Currency.Crystals -= _selectionButtons[0].SelectedUnit.unitSO.MergeCrystalsCost;
         Currency.MonsterGoo -= _selectionButtons[0].SelectedUnit.GooValue;
+
+        CheckState();
 
         OnMerge?.Invoke();
 
