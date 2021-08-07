@@ -13,21 +13,20 @@ public class UnitSelectionTerminal : MonoBehaviour
     [SerializeField, FoldoutGroup("Events")]
     private UnityEvent<UnitInformation> OnDisenchant;
 
+    private UnitSelectionToken selectionToken;
     private void OnEnable()
     {
-        UnitSelection.OnSelect += (x) => OnSelect?.Invoke(x);
-        UnitSelection.OnDeselect += (x) => OnDeselect?.Invoke(x);
-        UnitSelection.OnDisenchant += (x) => OnDisenchant?.Invoke(x);
+        UnitSelection.Subscribe(ref selectionToken);
 
-        if (UnitSelection.SelectedUnit != null)
-            OnSelect?.Invoke(UnitSelection.SelectedUnit);
+        selectionToken.OnSelect += (x) => OnSelect?.Invoke(x);
+        selectionToken.OnDeselect += (x) => OnDeselect?.Invoke(x);
+        selectionToken.OnDisenchant += (x) => OnDisenchant?.Invoke(x);
     }
     private void OnDisable()
     {
-        UnitSelection.OnSelect -= (x) => OnSelect?.Invoke(x);
-        UnitSelection.OnDeselect -= (x) => OnDeselect?.Invoke(x);
-        UnitSelection.OnDisenchant -= (x) => OnDisenchant?.Invoke(x);
+        selectionToken?.Dispose();
+        selectionToken = null;
     }
-    public void Select(UnitInformation unit) => UnitSelection.SelectedUnit = unit;
+    public void Select(UnitInformation unit) => UnitSelection.LastSelectedUnit = unit;
     public void DisenchantSelected() => UnitSelection.DisenchantSelected();
 }

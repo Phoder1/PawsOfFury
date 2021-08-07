@@ -23,8 +23,6 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
     private UnityEvent OnPress;
     [SerializeField]
     private UnityEvent OnSelectUE;
-    [SerializeField]
-    private UnityEvent OnDeselectUE;
 
     [Space]
     [SerializeField]
@@ -224,20 +222,13 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
     }
     public void Select()
     {
-        UnitSelection.SelectedUnit = Unit;
+        UnitSelection.LastSelectedUnit = Unit;
         OnSelectUE?.Invoke();
-        UnitSelection.OnDeselect += Deselected;
-
-        void Deselected(UnitInformation unitButton)
-        {
-            UnitSelection.OnDeselect -= Deselected;
-            OnDeselectUE?.Invoke();
-        }
     }
     public void Deselect()
     {
-        if (UnitSelection.SelectedUnit == Unit)
-            UnitSelection.SelectedUnit = null;
+        if (UnitSelection.LastSelectedUnit == Unit)
+            UnitSelection.LastSelectedUnit = null;
     }
     #endregion
 }

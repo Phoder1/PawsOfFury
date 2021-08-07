@@ -1,12 +1,14 @@
 using DataSaving;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 [CreateAssetMenu(menuName = Database.SODataFol + "Unit")]
 public class UnitSO : ScriptableObject
 {
+    public const int MaxTier = 3;
+
     [SerializeField]
     private string _unitName;
     public string UnitName => _unitName;
@@ -82,7 +84,7 @@ public class UnitSO : ScriptableObject
     {
         get
         {
-        var index = DataHandler.Load<TeamData>()?.Team?.FindIndex((x) => x == ID);
+            var index = DataHandler.Load<TeamData>()?.Team?.FindIndex((x) => x == ID);
             if (index == -1)
                 return null;
 
@@ -116,10 +118,41 @@ public class UnitInformation
         this.slotData = slotData;
     }
 
+
     public bool Owned => slotData != null && slotData.Count > 0;
     public bool Disenchantable => Amount > 1;
     public bool Mergeable => Amount > 1;
     public int Level => slotData == null ? 1 : slotData.Level;
     public int GooValue => unitSO.GooValue(Level);
     public int Amount => slotData == null ? 0 : slotData.Count;
+
+}
+public static class UnitRandomizer
+{
+    private static List<Randomizer<UnitInformation>> _unitRandomizers;
+    public static Randomizer<UnitInformation> GetRandomizer(int tier)
+    {
+        if (_unitRandomizers == null || tier > _unitRandomizers.Count)
+            ConstructRandomizers();
+        else if (_unitRandomizers[tier - 1] == null)
+            _unitRandomizers[tier - 1] = CreateRandomizer(tier);
+
+        return _unitRandomizers[tier - 1];
+    }
+    private static void ConstructRandomizers()
+    {
+        _unitRandomizers = new List<Randomizer<UnitInformation>>(UnitSO.MaxTier);
+        for (int i = 0; i < UnitSO.MaxTier; i++)
+            _unitRandomizers.Add(CreateRandomizer(i + 1));
+    }
+    private static Randomizer<UnitInformation> CreateRandomizer(int tier)
+    {
+        var tierRandomizer = new Randomizer<UnitInformation>();
+        tierRandomizer.Add(Database.UnitsDatabase.Content.FindAll((x) => x.Tier == tier).ConvertAll((x) => new Option<UnitInformation>(x.GetUnitInformation())), false);
+        return tierRandomizer;
+    }
+    public static UnitInformation GetMergeReward( params UnitInformation[] mergedUnits)
+    {
+        return GetRandomizer(mergedUnits[0].unitSO.Tier + 1).GetRandomOption();
+    }
 }

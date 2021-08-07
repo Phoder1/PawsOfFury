@@ -34,17 +34,11 @@ public class TeamUnitHandler : MonoBehaviour
     }
     public void Select()
     {
-        UnitSelection.SelectedUnit = unitInfo;
-        UnitSelection.OnDeselect += Deselected;
-
-        void Deselected(UnitInformation unitButton)
-        {
-            UnitSelection.OnDeselect -= Deselected;
-        }
+        UnitSelection.LastSelectedUnit = unitInfo;
     }
     public void Deselect()
     {
-        if (UnitSelection.SelectedUnit == unitInfo)
-            UnitSelection.SelectedUnit = null;
+        if (UnitSelection.LastSelectedUnit == unitInfo)
+            UnitSelection.LastSelectedUnit = null;
     }
 }

@@ -14,6 +14,12 @@ namespace DataSaving
             new UnitSlotData(2,1,1, false),
             new UnitSlotData(3,1,1, false),
         };
+
+        public InventoryData()
+        {
+            _units.OnValueChange += ValueChanged;
+        }
+
         public DirtyDataList<UnitSlotData> Units
         {
             get => _units;
@@ -25,7 +31,18 @@ namespace DataSaving
             base.OnClean();
             _units.Clean();
         }
+        public void AddUnits(UnitInformation unit, byte amount)
+        {
+            if (unit.slotData == null)
+            {
+                var slotData = Units.Find((x) => x.UnitSO == unit.unitSO);
 
+                if (slotData == null)
+                    Units.Add(new UnitSlotData((byte)unit.unitSO.ID, 1, (byte)amount));
+            }
+            else
+                unit.slotData.Count++;
+        }
         #region ISaveable
         public event Action OnSaveStarted;
         public event Action OnSaveFinished;
@@ -61,7 +78,6 @@ namespace DataSaving
         [SerializeField]
         private byte _count;
         public byte Count { get => _count; set => Setter(ref _count, value); }
-
         public UnitSlotData(byte ID, byte level, byte count, bool dirty = true)
         {
             _ID = ID;

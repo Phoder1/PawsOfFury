@@ -56,9 +56,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollContent: {fileID: 961283804}
-  _unitButtonPrefab: {fileID: 6276935848271651243, guid: c9c33d74955a5ce45a671a3bbb04bf78,
+  _unitButtonPrefab: {fileID: 1729498169663905032, guid: 27affa9483c68c441abd68896e5f6a24,
     type: 3}
-  _filters: 3
+  _filters: 5
   _sortes:
   - sorting: 0
     reverse: 0
