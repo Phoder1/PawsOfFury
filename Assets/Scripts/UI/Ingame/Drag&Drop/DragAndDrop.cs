@@ -21,7 +21,7 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
     protected static bool positionValid;
 
 
-    void GoldAmountChanged(float goldAmount) => uiButton.interactable = CheckSpawnValid(goldAmount);
+    void UpdateGoldAmount(float goldAmount) => uiButton.interactable = CheckSpawnValid(goldAmount);
     protected bool CheckSpawnValid(float goldAmount) => GoldValue() <= goldAmount;
     protected virtual void Start()
     {
@@ -32,7 +32,8 @@ public abstract class DragAndDrop : MonoBehaviour, IPointerDownHandler, IPointer
             image.sprite = Sprite();
             image.color = SpriteColor();
         }
-        levelManager.GoldAmountChanged += GoldAmountChanged;
+        levelManager.GoldAmountChanged += UpdateGoldAmount;
+        UpdateGoldAmount(levelManager.Gold);
     }
     public void OnPointerDown(PointerEventData eventData)
     {
