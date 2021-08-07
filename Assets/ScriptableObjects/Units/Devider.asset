@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
   m_Name: Devider
   m_EditorClassIdentifier: 
-  _unitName: 
+  _unitName: Devider
   _uiSprite: {fileID: 21300000, guid: 658144572cb0b6e4e87ca386a2eff552, type: 3}
   _description: On Death - Splits into 2 smaller Rabbits with half his original HP
     & ATTACK

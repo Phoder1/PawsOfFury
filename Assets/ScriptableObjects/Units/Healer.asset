@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
   m_Name: Healer
   m_EditorClassIdentifier: 
-  _unitName: 
+  _unitName: heala
   _uiSprite: {fileID: 21300000, guid: 2d2fd4eb0e7168a4c930fc5e61a1432a, type: 3}
   _description: Heals 10% of all minions around her every whoosh
   id: 2

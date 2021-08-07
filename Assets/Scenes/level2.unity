@@ -24056,7 +24056,7 @@ PrefabInstance:
     - target: {fileID: 4473882820393996156, guid: cbb9f786e51696d42ba269ee45966582,
         type: 3}
       propertyPath: startingGold
-      value: 15
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4473882820393996156, guid: cbb9f786e51696d42ba269ee45966582,
         type: 3}

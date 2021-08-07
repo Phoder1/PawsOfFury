@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
   m_Name: Lich
   m_EditorClassIdentifier: 
+  _unitName: The lich
   _uiSprite: {fileID: 21300000, guid: 4545380ea3959ce4e9927df56e8bd0c2, type: 3}
   _description: The Lich drains his allies HP to attack with greater force
   id: 8

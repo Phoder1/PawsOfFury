@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
   m_Name: Shamen
   m_EditorClassIdentifier: 
-  _unitName: 
+  _unitName: Shamen
   _uiSprite: {fileID: 21300000, guid: 5072f225e6fb39241bf7f00847a4272b, type: 3}
   _description: What doesent heal you - Makes you STRONGER, increase surrounding
     minions attack and deliver a strong hit

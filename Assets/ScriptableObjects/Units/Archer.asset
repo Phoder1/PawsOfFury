@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cd1d231a17ca9489e42080b5394a26, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: 
+  _unitName: Chip
   _uiSprite: {fileID: 21300000, guid: d4fc677be99abf740ac62c399016ea71, type: 3}
   _description: CHIP thrills are made of this
   id: 0
