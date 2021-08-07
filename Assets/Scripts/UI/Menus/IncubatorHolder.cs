@@ -44,9 +44,7 @@ public class IncubatorHolder : MonoBehaviour
     private void OnDestroy()
     {
         if(_hasReward && _tier != 0)
-        {
             GenerateReward();
-        }
     }
     public void AddReward(UnitInformation unit) => AddReward(unit.unitSO.Tier);
     public void AddReward(UnitSO unit) => AddReward(unit.Tier);

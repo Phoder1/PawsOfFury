@@ -303,7 +303,9 @@ MonoBehaviour:
   _selectionButtons:
   - {fileID: 6223410913667358477}
   - {fileID: 8221494202069621756}
+  _incubator: {fileID: 0}
   _animator: {fileID: 1030191868}
+  _animationDuration: 3.683
   _animationTriggerName: Init
   _animationResetName: Reset
   DiffrentTiersMessage: Units must be from the same tier

@@ -6999,11 +6999,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2413651150546243222, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
+        type: 3}
+      propertyPath: _color.b
+      value: 0.031685114
+      objectReference: {fileID: 0}
+    - target: {fileID: 2413651150546243222, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
+        type: 3}
+      propertyPath: _color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2413651150546243222, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
+        type: 3}
+      propertyPath: _color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5060931456644373569, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
         type: 3}
       propertyPath: _mergeHolder
       value: 
       objectReference: {fileID: 211236621}
+    - target: {fileID: 5060931456644373569, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
+        type: 3}
+      propertyPath: _animationDuration
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d, type: 3}
 --- !u!1001 &2979135521194580168

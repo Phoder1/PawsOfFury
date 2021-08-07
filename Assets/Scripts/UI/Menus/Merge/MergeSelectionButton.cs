@@ -10,14 +10,35 @@ public class MergeSelectionButton : MonoBehaviour
     public UnityEvent<UnitInformation> OnSelect;
     [FoldoutGroup("Events")]
     public UnityEvent OnDeselect;
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent OnLock;
+    [SerializeField, FoldoutGroup("Events")]
+    private UnityEvent OnUnlock;
 
     private UnitSelectionToken _selectionToken;
     private UnitInformation _selectedUnit;
     private bool _locked = false;
+    public bool Locked
+    {
+        get => _locked;
+        set
+        {
+            if (_locked == value)
+                return;
+
+            _locked = value;
+
+            if (_locked)
+                OnLock?.Invoke();
+            else
+                OnUnlock?.Invoke();
+        }
+    }
     public UnitInformation SelectedUnit { get => _selectedUnit; private set => _selectedUnit = value; }
+
     public void Click()
     {
-        if (_locked)
+        if (Locked)
             return;
 
         OnClick?.Invoke();
@@ -36,7 +57,7 @@ public class MergeSelectionButton : MonoBehaviour
 
         OnSelect?.Invoke(obj);
     }
-    private void Deselect()
+    public void Deselect()
     {
         _selectionToken?.Dispose();
 
@@ -46,12 +67,11 @@ public class MergeSelectionButton : MonoBehaviour
     }
     public void StartedMerge()
     {
-        _locked = true;
+        Locked = true;
     }
-
     public void FinishedMerging()
     {
         Deselect();
-        _locked = false;
+        Locked = false;
     }
 }

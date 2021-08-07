@@ -16,6 +16,9 @@ public class MergeHolder : MonoBehaviour
     private Animator _animator;
 
     [SerializeField]
+    private float _animationDuration;
+
+    [SerializeField]
     private string _animationTriggerName;
     [SerializeField]
     private string _animationResetName;
@@ -85,6 +88,9 @@ public class MergeHolder : MonoBehaviour
             _selectionButtons[i].OnSelect.RemoveListener(Selected);
 
         Currency.OnValueChange -= CheckState;
+
+        CancelInvoke();
+        Deselect();
     }
 
     public void TryMerge()
@@ -244,9 +250,15 @@ public class MergeHolder : MonoBehaviour
 
         CheckState();
 
+        Invoke(nameof(Deselect), _animationDuration);
+
         OnMerge?.Invoke();
     }
 
+    private void Deselect()
+    {
+        _selectionButtons.ForEach((x) => x.Deselect());
+    }
     public void FinishedMerging()
     {
         if (_animator != null && !string.IsNullOrWhiteSpace(_animationResetName))
