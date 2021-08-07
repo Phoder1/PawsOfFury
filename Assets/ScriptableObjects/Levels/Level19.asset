@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Level19
   m_EditorClassIdentifier: 
   _sceneName: level19
-  _levelName: big damage
+  _levelName: yes you can
   _chanceToGetACard: 0.6
   _crystalsReward: 30
