@@ -68,6 +68,7 @@ public class UnitSO : ScriptableObject
         }
     }
     public TierAsset TierAsset => Database.UnitAssets.TierAssets[Tier - 1];
+    public static TierAsset GetTierAsset(int tier) => Database.UnitAssets.TierAssets[tier - 1];
     public Sprite TierCrystal => TierAsset.CrystalSprite;
     public Color BackgroundColor => TierAsset.BackgroundColor;
     public Color BorderColor => TierAsset.BorderColor;

@@ -305,13 +305,14 @@ MonoBehaviour:
   - {fileID: 8221494202069621756}
   _animator: {fileID: 1030191868}
   _animationTriggerName: Init
-  _animationDuration: 3.683
+  _animationResetName: Reset
   DiffrentTiersMessage: Units must be from the same tier
   NotAllSelectedMessage: Select 2 units
   NotAllMergableMessage: 'Error: None-mergable unit selectede'
   NotEnoughCopiesMessage: Not enogh copies
   EliteUnitMessage: Cannot merge elite units
   NotEnoughCurrencyMessage: Not enough currency
+  UnclaimedUnitMessage: Claim your reward in the incubator!
   _gooCost:
     m_PersistentCalls:
       m_Calls:

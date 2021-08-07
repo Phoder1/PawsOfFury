@@ -9,6 +9,8 @@ public class MergeHolder : MonoBehaviour
 {
     [SerializeField]
     private List<MergeSelectionButton> _selectionButtons;
+    [SerializeField]
+    private IncubatorHolder _incubator;
 
     [SerializeField, LocalComponent]
     private Animator _animator;
@@ -16,7 +18,10 @@ public class MergeHolder : MonoBehaviour
     [SerializeField]
     private string _animationTriggerName;
     [SerializeField]
-    private float _animationDuration;
+    private string _animationResetName;
+
+
+
 
     [SerializeField, FoldoutGroup("Messages")]
     private string DiffrentTiersMessage;
@@ -30,6 +35,8 @@ public class MergeHolder : MonoBehaviour
     private string EliteUnitMessage;
     [SerializeField, FoldoutGroup("Messages")]
     private string NotEnoughCurrencyMessage;
+    [SerializeField, FoldoutGroup("Messages")]
+    private string UnclaimedUnitMessage;
 
     [SerializeField, FoldoutGroup("Merge info")]
     private UnityEvent<int> _gooCost;
@@ -100,6 +107,7 @@ public class MergeHolder : MonoBehaviour
         if (_locked)
         {
             OnInvalidSelection?.Invoke();
+            OnInvalidMessage?.Invoke(UnclaimedUnitMessage);
             return;
         }
 
@@ -226,22 +234,24 @@ public class MergeHolder : MonoBehaviour
 
         }
 
-        var unitReward = UnitRandomizer.GetMergeReward(_selectionButtons.ConvertAll((x) => x.SelectedUnit).ToArray());
-        Inventory.AddUnits(unitReward, 1);
-
         Currency.Crystals -= _selectionButtons[0].SelectedUnit.unitSO.MergeCrystalsCost;
         Currency.MonsterGoo -= _selectionButtons[0].SelectedUnit.GooValue;
+
+        if (_incubator != null)
+            _incubator.AddReward(_selectionButtons[0].SelectedUnit.unitSO.Tier + 1);
+        else
+            throw new System.Exception("No incubator refrence!");
 
         CheckState();
 
         OnMerge?.Invoke();
-
-        //Temp! should be moved to after the player opens the reward
-        Invoke(nameof(FinishedMerging), _animationDuration);
     }
 
-    private void FinishedMerging()
+    public void FinishedMerging()
     {
+        if (_animator != null && !string.IsNullOrWhiteSpace(_animationResetName))
+            _animator.SetTrigger(_animationResetName);
+
         _selectionButtons.ForEach((x) => x.FinishedMerging());
         _locked = false;
     }
