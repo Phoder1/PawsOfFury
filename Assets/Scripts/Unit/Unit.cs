@@ -12,6 +12,8 @@ public class Unit : Entity
     protected virtual EntityState AttackingState => new AttackState(this);
     protected NavScript navScript;
 
+    public virtual ProjectileData MainProjectile => projectile;
+
 
     protected override void Start()
     {

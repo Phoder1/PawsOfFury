@@ -3,6 +3,9 @@ using UnityEngine;
 public class Lich : Unit
 {
     [SerializeField] ProjectileData lichAttackProjectile;
+
+    public override ProjectileData MainProjectile => lichAttackProjectile;
+
     // Start is called before the first frame update
     protected override void Start()
     {

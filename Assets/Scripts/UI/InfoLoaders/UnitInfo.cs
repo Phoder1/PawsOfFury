@@ -97,7 +97,7 @@ public class UnitInfo : MonoBehaviour
             return;
 
         Load(unit.DefualtStats);
-        Load(unit.projectile);
+        Load(unit.MainProjectile);
 
         _goldValue?.Invoke(unit.goldValue);
     }

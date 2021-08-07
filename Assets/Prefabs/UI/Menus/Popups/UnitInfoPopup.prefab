@@ -2852,7 +2852,7 @@ MonoBehaviour:
         m_CallState: 2
   prefix: 
   suffix: 
-  _toStringFormat: G
+  _toStringFormat: G2
   _stringOverrides:
   - exactMatch: 1
     value: 0
