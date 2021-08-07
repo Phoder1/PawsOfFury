@@ -7985,22 +7985,22 @@ Transform:
   m_Children:
   - {fileID: 230677758}
   - {fileID: 392048134}
+  - {fileID: 2091697916}
   - {fileID: 1048600425}
   - {fileID: 904320057}
+  - {fileID: 888100371}
   - {fileID: 59239277}
   - {fileID: 1398109160}
-  - {fileID: 2091697916}
-  - {fileID: 1438530952}
-  - {fileID: 888100371}
-  - {fileID: 1058095753}
   - {fileID: 2064465319}
-  - {fileID: 1451387075}
+  - {fileID: 1438530952}
+  - {fileID: 1058095753}
   - {fileID: 40123522}
+  - {fileID: 1451387075}
+  - {fileID: 1275548964}
   - {fileID: 876389053}
   - {fileID: 1148335441}
-  - {fileID: 1275548964}
-  - {fileID: 1860385069}
   - {fileID: 1350806165}
+  - {fileID: 1860385069}
   - {fileID: 1724858363}
   - {fileID: 2069362849}
   m_Father: {fileID: 992119831}
@@ -12161,7 +12161,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 1
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 5003ebd4fb4ddb6488291c6ef1c954c2, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: e6ff389f6bb62d8419f7fa4d69e62bde, type: 2}
 --- !u!4 &1785613351
 Transform:
   m_ObjectHideFlags: 0
