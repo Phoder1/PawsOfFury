@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Settings_UI : MonoBehaviour
 {
-    public static bool Vibrations;
+    public static bool Vibrations = true;
 
     [SerializeField]
     AudioMixer Mixer;
@@ -55,18 +55,9 @@ public class Settings_UI : MonoBehaviour
 
     public void VibrateToggle()
     {
-        if (Vibrations)
-        {
-            Vibrations = false;
-            PlayerPrefs.SetInt("Vibration", 0);
-            Vibrate.sprite = VibrateOff;
-        }
-        else
-        {
-            Vibrations = true;
-            PlayerPrefs.SetInt("Vibration", 1);
-            Vibrate.sprite = VibrateOn;
-        }
+        Vibrations = !Vibrations;
+        PlayerPrefs.SetInt("Vibration", Vibrations ? 1 : 0);
+        Vibrate.sprite = Vibrations ? VibrateOn : VibrateOff;
     }
 
 

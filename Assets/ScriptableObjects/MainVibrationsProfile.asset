@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eda00a54e438c428523d2b61038f1e, type: 3}
+  m_Name: MainVibrationsProfile
+  m_EditorClassIdentifier: 
+  _profiles:
+  - name: TowerDeath
+    pattern:
+    - delay: 0
+      duration: 50
+    - delay: 10
+      duration: 50
+    - delay: 30
+      duration: 60
+    _cachedPattern: 000000000000000032000000000000000a0000000000000032000000000000001e000000000000003c00000000000000
+    repeat: 1
