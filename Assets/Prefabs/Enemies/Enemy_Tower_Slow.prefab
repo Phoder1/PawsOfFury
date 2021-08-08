@@ -16870,20 +16870,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7338256357347435415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615131482287577117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec523a84daea8a43bb1665b587e43b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tower_Destroyed_PF: {fileID: 6615131482287577117, guid: 0b617f39104699e41a9554de602d1cdb,
-    type: 3}
 --- !u!1 &7850438879706153096
 GameObject:
   m_ObjectHideFlags: 0
@@ -17485,35 +17471,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7338256357347435415}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: 3bd65ca2b1fe00e4d8c8043bc415c4e8,
-        type: 2}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -17523,21 +17483,6 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7338256357347435415}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CreatTowerDestroyed
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Trigger
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
@@ -17551,33 +17496,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Tower_Destroyed, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: VibrationProfile, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
       propertyPath: OnDestroyEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Tower_Destroyed, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: TowerDeath
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
-        type: 3}
-      propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 970597044813884630, guid: a074af5668e76374fba5371ae63bf77f,
         type: 3}
@@ -17714,23 +17634,23 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 6165744237049785719, guid: a074af5668e76374fba5371ae63bf77f,
+        type: 3}
+      propertyPath: Tower_Destroyed_PF
+      value: 
+      objectReference: {fileID: 6615131482287577117, guid: 0b617f39104699e41a9554de602d1cdb,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a074af5668e76374fba5371ae63bf77f, type: 3}
---- !u!4 &6615131481222433581 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3628989299885494147, guid: a074af5668e76374fba5371ae63bf77f,
-    type: 3}
-  m_PrefabInstance: {fileID: 7606977253235885230}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6615131482287577119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3628989300967414961, guid: a074af5668e76374fba5371ae63bf77f,
     type: 3}
   m_PrefabInstance: {fileID: 7606977253235885230}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6615131482287577117 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3628989300967414963, guid: a074af5668e76374fba5371ae63bf77f,
+--- !u!4 &6615131481222433581 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3628989299885494147, guid: a074af5668e76374fba5371ae63bf77f,
     type: 3}
   m_PrefabInstance: {fileID: 7606977253235885230}
   m_PrefabAsset: {fileID: 0}
