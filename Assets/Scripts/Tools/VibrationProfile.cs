@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
+using MoreMountains.NiceVibrations;
 
 [CreateAssetMenu(menuName = Database.SOFolder + "Vibration profile")]
 public class VibrationProfile : ScriptableObject
@@ -11,7 +12,7 @@ public class VibrationProfile : ScriptableObject
     private List<Profile> _profiles;
 
     private bool VibrationsOn => Settings_UI.Vibrations;
-
+    private bool VibrationsSupported => MMVibrationManager.Android() && MMVibrationManager.HapticsSupported();
     public void Trigger(int milliseconds) => Vibrate(milliseconds);
     public void Trigger(long milliseconds) => Vibrate(milliseconds);
     public void Trigger(string profileName) => Trigger(_profiles.Find((x) => x.name == profileName));
@@ -19,13 +20,13 @@ public class VibrationProfile : ScriptableObject
 
     private void Vibrate(long[] pattern, int repeat)
     {
-        if (VibrationsOn)
-            Handheld.Vibrate();
+        if (VibrationsOn && VibrationsSupported)
+            MMNVAndroid.AndroidVibrate(pattern, repeat);
     }
     private void Vibrate(long milliseconds)
     {
-        if(VibrationsOn)
-            Handheld.Vibrate();
+        if(VibrationsOn && VibrationsSupported)
+            MMNVAndroid.AndroidVibrate(milliseconds);
     }
     [Serializable, InlineProperty]
     private class Profile
