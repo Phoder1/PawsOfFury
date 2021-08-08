@@ -1140,6 +1140,7 @@ GameObject:
   - component: {fileID: 220403971}
   - component: {fileID: 220403970}
   - component: {fileID: 220403973}
+  - component: {fileID: 220403974}
   m_Layer: 5
   m_Name: Incubator_BTN
   m_TagString: Untagged
@@ -1210,31 +1211,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 220403971}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1553565983}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
-        m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
-        m_MethodName: TriggerEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &220403971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,6 +1265,47 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &220403974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220403968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1553565983}
+          m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+          m_MethodName: SelectWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
+          m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &282281875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,6 +2852,7 @@ GameObject:
   - component: {fileID: 574838586}
   - component: {fileID: 574838585}
   - component: {fileID: 574838584}
+  - component: {fileID: 574838587}
   m_Layer: 5
   m_Name: Lab_BTN_SpellCrafting !!!!!!
   m_TagString: Untagged
@@ -2903,31 +2922,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 574838585}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1745176802}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
-        m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
-        m_MethodName: TriggerEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &574838585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2966,6 +2961,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574838582}
   m_CullTransparentMesh: 1
+--- !u!114 &574838587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574838582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1745176802}
+          m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+          m_MethodName: SelectWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
+          m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &587886738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,6 +3015,7 @@ GameObject:
   - component: {fileID: 587886741}
   - component: {fileID: 587886740}
   - component: {fileID: 587886743}
+  - component: {fileID: 587886744}
   m_Layer: 5
   m_Name: 'MinionBook_BTN '
   m_TagString: Untagged
@@ -3049,31 +3086,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 587886741}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1974450902}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
-        m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
-        m_MethodName: TriggerEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &587886741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3127,6 +3140,47 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &587886744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587886738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974450902}
+          m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+          m_MethodName: SelectWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
+          m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &624548552
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,6 +3194,7 @@ GameObject:
   - component: {fileID: 624548555}
   - component: {fileID: 624548554}
   - component: {fileID: 624548557}
+  - component: {fileID: 624548558}
   m_Layer: 5
   m_Name: 'Lab_BTN '
   m_TagString: Untagged
@@ -3210,43 +3265,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 624548555}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1468645471}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
-        m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
-        m_MethodName: TriggerEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1219597466}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &624548555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3300,6 +3319,59 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &624548558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624548552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1468645471}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
+          m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1219597466}
+          m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+          m_MethodName: SelectWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1001 &625375449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3708,6 +3780,7 @@ GameObject:
   - component: {fileID: 648967874}
   - component: {fileID: 648967873}
   - component: {fileID: 648967872}
+  - component: {fileID: 648967875}
   m_Layer: 5
   m_Name: Lab_BTN_Upgrade
   m_TagString: Untagged
@@ -3777,31 +3850,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 648967873}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 386570282}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
-        m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
-        m_MethodName: TriggerEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &648967873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3840,6 +3889,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648967870}
   m_CullTransparentMesh: 1
+--- !u!114 &648967875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648967870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 386570282}
+          m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+          m_MethodName: SelectWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
+          m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &697409735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,7 +3972,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &697409737
 MonoBehaviour:
-  m_ObjectHideFlags: 10
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5339,7 +5429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.2999878, y: -136}
+  m_AnchoredPosition: {x: 2.2999878, y: -131}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &985671376
@@ -6418,7 +6508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1468645472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7219,7 +7309,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672125020
 MonoBehaviour:
-  m_ObjectHideFlags: 10
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -7654,6 +7744,7 @@ GameObject:
   - component: {fileID: 1772634604}
   - component: {fileID: 1772634603}
   - component: {fileID: 1772634602}
+  - component: {fileID: 1772634605}
   m_Layer: 5
   m_Name: Lab_BTN_Merge
   m_TagString: Untagged
@@ -7723,31 +7814,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1772634603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1219597466}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
-        m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
-        m_MethodName: TriggerEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1772634603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7786,6 +7853,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772634600}
   m_CullTransparentMesh: 1
+--- !u!114 &1772634605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772634600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1219597466}
+          m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+          m_MethodName: SelectWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
+          m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1794880700
 GameObject:
   m_ObjectHideFlags: 0
@@ -8852,6 +8960,7 @@ GameObject:
   - component: {fileID: 2112738980}
   - component: {fileID: 2112738979}
   - component: {fileID: 2112738982}
+  - component: {fileID: 2112738983}
   m_Layer: 5
   m_Name: LevelSelection_BTN
   m_TagString: Untagged
@@ -8922,31 +9031,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2112738980}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 94536838}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
-        m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
-        m_MethodName: TriggerEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2112738980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9000,6 +9085,47 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &2112738983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112738977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 94536838}
+          m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+          m_MethodName: SelectWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 2ba3173273e9efb408be030588efb269, type: 2}
+          m_TargetAssemblyTypeName: Refrences.EventRefrence, Assembly-CSharp
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2137181700
 GameObject:
   m_ObjectHideFlags: 0
@@ -9189,11 +9315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Incubator
       objectReference: {fileID: 0}
-    - target: {fileID: 62011440859495988, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 62011440859495990, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
         type: 3}
       propertyPath: OnSetActiveEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9314,20 +9435,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2413651150546243222, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
+    - target: {fileID: 2652459751626207073, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
         type: 3}
-      propertyPath: _color.b
-      value: 0.031685114
-      objectReference: {fileID: 0}
-    - target: {fileID: 2413651150546243222, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
-        type: 3}
-      propertyPath: _color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2413651150546243222, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
-        type: 3}
-      propertyPath: _color.r
-      value: 0
+      propertyPath: m_Name
+      value: Message
       objectReference: {fileID: 0}
     - target: {fileID: 4416637714636031978, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
         type: 3}
@@ -9339,11 +9450,6 @@ PrefabInstance:
       propertyPath: _mergeHolder
       value: 
       objectReference: {fileID: 211236621}
-    - target: {fileID: 5060931456644373569, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d,
-        type: 3}
-      propertyPath: _animationDuration
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e7bfd0008dee444bdb9ec3cb5bc63d, type: 3}
 --- !u!1001 &2979135521194580168
@@ -9743,11 +9849,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Selection
       objectReference: {fileID: 0}
-    - target: {fileID: 6162098535268006980, guid: 9a4ba053b22900240a027e78a7f8a28f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6162098535268006981, guid: 9a4ba053b22900240a027e78a7f8a28f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -9941,11 +10042,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Merge
-      objectReference: {fileID: 0}
-    - target: {fileID: 8038128621520207134, guid: 639fa0d2199eb6847856b87c648bf740,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8038128621520207135, guid: 639fa0d2199eb6847856b87c648bf740,
         type: 3}
@@ -10349,11 +10445,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722006453}
     m_Modifications:
-    - target: {fileID: 880740689447153928, guid: 6e7cf623e500fcf45bc10eec6a09b006,
-        type: 3}
-      propertyPath: _filters
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1288077715360278848, guid: 6e7cf623e500fcf45bc10eec6a09b006,
         type: 3}
       propertyPath: m_AnchorMax.y
