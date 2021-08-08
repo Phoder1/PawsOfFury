@@ -17,9 +17,5 @@ MonoBehaviour:
     pattern:
     - delay: 0
       duration: 50
-    - delay: 10
-      duration: 50
-    - delay: 30
-      duration: 60
-    _cachedPattern: 000000000000000032000000000000000a0000000000000032000000000000001e000000000000003c00000000000000
+    _cachedPattern: 00000000000000003200000000000000
     repeat: 1
