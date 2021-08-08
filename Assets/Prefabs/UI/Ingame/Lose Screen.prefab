@@ -85,6 +85,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1142255831943507682}
   - component: {fileID: 1142255831943507683}
+  - component: {fileID: 5812957000580981683}
+  - component: {fileID: 3285139484527797196}
   m_Layer: 5
   m_Name: Lose Screen
   m_TagString: Untagged
@@ -140,6 +142,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5812957000580981683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142255831943507677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdad25d5dc772a842bfb6ebc72ef1d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pauseTweenDuration: 0.4
+--- !u!114 &3285139484527797196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142255831943507677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad1f94ea55c5ac4b955a43996298f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CallbackTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5812957000580981683}
+        m_TargetAssemblyTypeName: Pauser, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1142255832335824389
 GameObject:
   m_ObjectHideFlags: 0
