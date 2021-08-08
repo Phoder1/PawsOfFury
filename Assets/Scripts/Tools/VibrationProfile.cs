@@ -19,13 +19,13 @@ public class VibrationProfile : ScriptableObject
 
     private void Vibrate(long[] pattern, int repeat)
     {
-        if(VibrationsOn)
-            Vibration.Vibrate(pattern, repeat);
+        if (VibrationsOn)
+            Handheld.Vibrate();
     }
     private void Vibrate(long milliseconds)
     {
         if(VibrationsOn)
-            Vibration.Vibrate(milliseconds);
+            Handheld.Vibrate();
     }
     [Serializable, InlineProperty]
     private class Profile
