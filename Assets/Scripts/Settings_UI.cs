@@ -49,7 +49,7 @@ public class Settings_UI : MonoBehaviour
             }
         }
 
-        _pauseTween = TweenTimeScale(0, 0.4f).SetAutoKill(false).Pause();
+        _pauseTween = TweenTimeScale(0, 0.4f).SetAutoKill(false).Pause().SetUpdate(true);
 
     }
 
