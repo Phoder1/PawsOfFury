@@ -361,9 +361,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _raycastTarget: {fileID: 6276935848718740362}
   _maxSpeed: 1.7
-  _minSnapDistance: 1
+  _minSnapDistance: 0.1
   _disableScrollRectOnDrag: 1
-  _maxPressDistance: 0.3
+  _maxPressDistance: 0.1
   OnPress:
     m_PersistentCalls:
       m_Calls:

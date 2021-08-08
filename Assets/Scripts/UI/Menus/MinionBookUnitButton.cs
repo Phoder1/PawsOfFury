@@ -65,7 +65,7 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
                         break;
                     case DragState.Pressed:
                         _raycastTarget.raycastTarget = true;
-                        if (_dragDistance <= _maxPressDistance * _cardHeight)
+                        if (value != DragState.Dragged && _dragDistance <= _maxPressDistance * _cardHeight)
                         {
                             OnPress?.Invoke();
                             Select();
