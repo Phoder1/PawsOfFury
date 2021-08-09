@@ -15,6 +15,6 @@ MonoBehaviour:
   _sceneName: level4
   _levelName: Bomb it louder
   _replayable: 1
-  _chanceToGetACard: 0.4
+  _chanceToGetACard: 0.5
   _overrideReward: {fileID: 0}
   _crystalsReward: 20

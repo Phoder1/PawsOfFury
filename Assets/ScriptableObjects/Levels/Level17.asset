@@ -15,6 +15,6 @@ MonoBehaviour:
   _sceneName: level17
   _levelName: big damage
   _replayable: 1
-  _chanceToGetACard: 0.6
+  _chanceToGetACard: 0.7
   _overrideReward: {fileID: 0}
-  _crystalsReward: 30
+  _crystalsReward: 45

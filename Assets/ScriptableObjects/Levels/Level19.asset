@@ -15,6 +15,6 @@ MonoBehaviour:
   _sceneName: level19
   _levelName: yes you can
   _replayable: 1
-  _chanceToGetACard: 0.6
+  _chanceToGetACard: 0.8
   _overrideReward: {fileID: 0}
-  _crystalsReward: 30
+  _crystalsReward: 50

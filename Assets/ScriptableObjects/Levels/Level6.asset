@@ -17,4 +17,4 @@ MonoBehaviour:
   _replayable: 1
   _chanceToGetACard: 0.1
   _overrideReward: {fileID: 0}
-  _crystalsReward: 50
+  _crystalsReward: 75

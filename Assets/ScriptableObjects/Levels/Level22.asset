@@ -15,6 +15,6 @@ MonoBehaviour:
   _sceneName: level22
   _levelName: The final battle
   _replayable: 1
-  _chanceToGetACard: 0.6
-  _overrideReward: {fileID: 0}
-  _crystalsReward: 30
+  _chanceToGetACard: 1
+  _overrideReward: {fileID: 11400000, guid: d9caf07b563e7f347b2a96b91ccc4bb3, type: 2}
+  _crystalsReward: 100

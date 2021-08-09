@@ -27008,7 +27008,7 @@ PrefabInstance:
     - target: {fileID: 8561765433232405148, guid: f5339afae03cf1144a28933cd5257d68,
         type: 3}
       propertyPath: maxZ
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8561765433232405148, guid: f5339afae03cf1144a28933cd5257d68,
         type: 3}

@@ -1213,6 +1213,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prize Frame (after win)
       objectReference: {fileID: 0}
+    - target: {fileID: 810775882066051182, guid: ddcdc9aba8b5cb245a126fb23a3ccf46,
+        type: 3}
+      propertyPath: m_text
+      value: 100 %
+      objectReference: {fileID: 0}
+    - target: {fileID: 810775882066051182, guid: ddcdc9aba8b5cb245a126fb23a3ccf46,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 40.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 810775882066051182, guid: ddcdc9aba8b5cb245a126fb23a3ccf46,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 810775882066051183, guid: ddcdc9aba8b5cb245a126fb23a3ccf46,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 115.9349
+      objectReference: {fileID: 0}
+    - target: {fileID: 810775882066051183, guid: ddcdc9aba8b5cb245a126fb23a3ccf46,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -306.17123
+      objectReference: {fileID: 0}
     - target: {fileID: 6228728098697801867, guid: ddcdc9aba8b5cb245a126fb23a3ccf46,
         type: 3}
       propertyPath: m_Pivot.x
