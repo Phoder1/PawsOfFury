@@ -382,6 +382,21 @@ MonoBehaviour:
   OnSelectUE:
     m_PersistentCalls:
       m_Calls: []
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4774199996045907102}
+        m_TargetAssemblyTypeName: UnitInfo, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _teamTag:
     _tags:
     - UI Minion Team
@@ -871,6 +886,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5904970559692187559}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4774199996045907102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1419749793129526073, guid: b0370400004729a49b135704c7d3ca8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5904970559692187559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6276935848271651243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ac1bfa318da694e971a8392dcd433e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6276935848718740362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 499491184546941997, guid: b0370400004729a49b135704c7d3ca8a,

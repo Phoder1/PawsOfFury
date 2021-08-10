@@ -1,3 +1,4 @@
+using DataSaving;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
     private UnityEvent OnPress;
     [SerializeField]
     private UnityEvent OnSelectUE;
+    [SerializeField]
+    private UnityEvent<UnitInformation> OnValueChanged;
 
     [Space]
     [SerializeField]
@@ -111,6 +114,8 @@ public class MinionBookUnitButton : MonoBehaviour, IPointerDownHandler, IPointer
         _contentBackgroundImage = transform.parent.parent.GetComponent<Image>();
         _rectTransform = GetComponent<RectTransform>();
         _cardHeight = _rectTransform.rect.height;
+
+        DataHandler.Load<InventoryData>().OnValueChange += () => OnValueChanged?.Invoke(Unit);
     }
     void Start()
     {

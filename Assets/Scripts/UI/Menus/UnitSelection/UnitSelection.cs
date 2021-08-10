@@ -21,10 +21,10 @@ public static class UnitSelection
     public static event Action<UnitSelectionToken> OnNewToken;
     public static void DisenchantSelected()
     {
-        if (LastSelectedUnit == null || LastSelectedUnit.unitSO == null || !LastSelectedUnit.Disenchantable)
+        if (LastSelectedUnit?.unitSO == null || !LastSelectedUnit.Disenchantable)
             return;
 
-        LastSelectedUnit.slotData.Count--;
+        LastSelectedUnit.slotData.Count--; 
         DataHandler.Load<PlayerCurrency>().MonsterGoo += LastSelectedUnit.GooValue;
         Disenchanted(LastSelectedUnit);
         DataHandler.Save<PlayerCurrency>();
